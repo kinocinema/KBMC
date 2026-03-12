@@ -1,0 +1,5 @@
+{
+  "name": "Remix: KBMC Digital Hospital Wing",
+  "description": "A comprehensive React-based digital platform for Kota Bharu Medical Centre (KBMC), featuring biophilic design, Ibadah-friendly tools, VR360 tour simulations, and patient-centric services.",
+  "requestFramePermissions": []
+}
