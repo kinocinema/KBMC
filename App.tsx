@@ -3,7 +3,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { LanguageProvider } from './LanguageContext';
 import Navbar from './components/Navbar';
-import { Facebook, Instagram, Youtube, Video } from 'lucide-react';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
 import Home from './pages/Home';
 import FindDoctor from './pages/FindDoctor';
 import PatientGuide from './pages/PatientGuide';
@@ -75,7 +75,12 @@ const App: React.FC = () => {
                         <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white" />
                       </a>
                       <a href="https://www.tiktok.com/@kbmc_official?_t=8p32vlGZMpO&_r=1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
-                        <Video className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                        <img 
+                          src="https://storage.googleapis.com/igc-health/logoinsurance/tik-tok%20line%202.png" 
+                          alt="TikTok" 
+                          className="w-5 h-5 brightness-0 invert opacity-40 group-hover:opacity-100 transition-opacity"
+                          referrerPolicy="no-referrer"
+                        />
                       </a>
                       <a href="https://www.youtube.com/@kotabharumedicalcentre" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
                         <Youtube className="w-5 h-5 text-gray-400 group-hover:text-white" />

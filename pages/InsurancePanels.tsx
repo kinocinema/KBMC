@@ -16,41 +16,41 @@ const InsurancePanels: React.FC = () => {
     { 
       category: t('insurance.category.major'), 
       providers: [
-        { name: 'AIA Bhd', domain: 'aia.com.my' },
-        { name: 'Prudential', domain: 'prudential.com.my' },
-        { name: 'Great Eastern', domain: 'greateasternlife.com' },
-        { name: 'Allianz', domain: 'allianz.com.my' },
-        { name: 'Etiqa Takaful', domain: 'etiqa.com.my' },
-        { name: 'Tokio Marine', domain: 'tokiomarine.com' },
-        { name: 'Manulife', domain: 'manulife.com.my' },
-        { name: 'Berjaya Sompo', domain: 'berjayasompo.com.my' },
-        { name: 'Zurich Takaful', domain: 'zurich.com.my' }
+        { name: 'AIA Bhd', domain: 'aia.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/aia-seeklogo.png' },
+        { name: 'Prudential', domain: 'prudential.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/prudential-seeklogo.png' },
+        { name: 'Great Eastern', domain: 'greateasternlife.com', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/great-eastern-seeklogo.png' },
+        { name: 'Allianz', domain: 'allianz.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/allianz-sigorta-seeklogo.png' },
+        { name: 'Etiqa Takaful', domain: 'etiqa.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/NicePng_logo-vector-png_3285029.png' },
+        { name: 'Tokio Marine', domain: 'tokiomarine.com', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/tokio_marine-logo.png' },
+        { name: 'Manulife', domain: 'manulife.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/Manulife-Logo.wine.svg' },
+        { name: 'Berjaya Sompo', domain: 'berjayasompo.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/BErjaya%20Sompo.png' },
+        { name: 'Zurich Takaful', domain: 'zurich.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/Zurich_stac_R_takaful_rgb.jpg' }
       ] 
     },
     { 
       category: t('insurance.category.tpa'), 
       providers: [
-        { name: 'PMCare', domain: 'pmcare.com.my' },
-        { name: 'MediExpress', domain: 'mediexpress.com.my' },
-        { name: 'HealthConnect', domain: 'healthconnect.com.my' },
-        { name: 'MHC Asia', domain: 'mhcasia.com' },
-        { name: 'Cuepacs Care', domain: 'cuepacscare.my' },
-        { name: 'Eximius Medical', domain: 'eximius.com.my' }
+        { name: 'PM Care', domain: 'pmcare.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/PM%20Care.png' },
+        { name: 'Mediexpress', domain: 'mediexpress.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/Screenshot%202026-03-13%20161700.png' },
+        { name: 'MHC Asia', domain: 'mhcasia.com', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/mhc-logo.png' },
+        { name: 'Cuepacs Care', domain: 'cuepacscare.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/Cuepacs%20care.jpg' },
+        { name: 'Eximius Medical', domain: 'eximius.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/Eximius%20Medical.png' },
+        { name: 'Health Connect', domain: 'healthconnect.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/logoinsurance/HEALTH-CONNECT.png' }
       ] 
     },
     { 
       category: t('insurance.category.corporate'), 
       providers: [
-        { name: 'PETRONAS', domain: 'petronas.com' },
-        { name: 'Tenaga Nasional', domain: 'tnb.com.my' },
-        { name: 'Telekom Malaysia', domain: 'tm.com.my' },
-        { name: 'Public Bank', domain: 'pbebank.com' },
-        { name: 'CIMB Bank', domain: 'cimb.com.my' },
-        { name: 'Affin Bank', domain: 'affinbank.com.my' },
-        { name: 'Sime Darby', domain: 'simedarby.com' },
-        { name: 'FELDA', domain: 'felda.com.my' },
-        { name: 'PERKESO', domain: 'perkeso.gov.my' },
-        { name: 'UTHM', domain: 'uthm.edu.my' }
+        { name: 'PETRONAS', domain: 'petronas.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/PETRONAS.png' },
+        { name: 'Tenaga Nasional', domain: 'tnb.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/Tenaga_Nasional_logo.svg' },
+        { name: 'Telekom Malaysia', domain: 'tm.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/Logo_of_the_Telekom_Malaysia.svg' },
+        { name: 'Public Bank', domain: 'pbebank.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/public-bank.svg' },
+        { name: 'CIMB Bank', domain: 'cimb.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/CIMB-Logo.jpg' },
+        { name: 'Affin Bank', domain: 'affinbank.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/AFFIN_BANK_Logo_Full_Colour.png' },
+        { name: 'Sime Darby', domain: 'simedarby.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/295_sime_darby.jpg' },
+        { name: 'FELDA', domain: 'felda.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/felda-seeklogo.png' },
+        { name: 'PERKESO', domain: 'perkeso.gov.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/PERKESO_logo.png' },
+        { name: 'UTHM', domain: 'uthm.edu.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/logo-uthm.png' }
       ] 
     }
   ];
@@ -94,16 +94,16 @@ const InsurancePanels: React.FC = () => {
                </div>
                
                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                  {group.providers.map((p, idx) => (
+                  {group.providers.map((p: any, idx) => (
                     <div 
                       key={p.name} 
                       className={`bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#83C5BE]/30 transition-all duration-500 group flex flex-col items-center justify-center gap-4 text-center min-h-[160px] ${isVisible ? `animate-fade-in-up stagger-${idx % 5 + 1}` : 'opacity-0'}`}
                     >
-                       <div className="w-20 h-20 flex items-center justify-center relative">
+                       <div className="w-full h-16 flex items-center justify-center relative px-4">
                           <img 
-                            src={`https://logo.clearbit.com/${p.domain}`} 
+                            src={p.logoUrl || `https://logo.clearbit.com/${p.domain}`} 
                             alt={p.name}
-                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-125"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${p.name}&background=EDF6F9&color=006D77&bold=true&size=128`;
                             }}
