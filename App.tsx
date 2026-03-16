@@ -11,11 +11,8 @@ import Services from './pages/Services';
 import About from './pages/About';
 import DoctorProfile from './pages/DoctorProfile';
 import RoomRates from './pages/RoomRates';
-import HealthScreening from './pages/HealthScreening';
 import InsurancePanels from './pages/InsurancePanels';
 import ContactUs from './pages/ContactUs';
-import Careers from './pages/Careers';
-import PatientRights from './pages/PatientRights';
 import AIChatbot from './components/AIChatbot';
 
 const App: React.FC = () => {
@@ -33,11 +30,8 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/room-rates" element={<RoomRates />} />
-              <Route path="/health-screening" element={<HealthScreening />} />
               <Route path="/insurance-panels" element={<InsurancePanels />} />
               <Route path="/contact-us" element={<ContactUs />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="/patient-rights" element={<PatientRights />} />
             </Routes>
           </main>
           
@@ -92,10 +86,9 @@ const App: React.FC = () => {
                 <div>
                   <h4 className="font-bold mb-6 text-lg">Quick Links</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
+                    <li><Link to="/about" className="hover:text-[#83C5BE] transition-colors">About KBMC</Link></li>
                     <li><Link to="/find-doctor" className="hover:text-[#83C5BE] transition-colors">Our Specialists</Link></li>
                     <li><Link to="/room-rates" className="hover:text-[#83C5BE] transition-colors">Room Rates</Link></li>
-                    <li><Link to="/health-screening" className="hover:text-[#83C5BE] transition-colors">Health Screening</Link></li>
-                    <li><Link to="/careers" className="hover:text-[#83C5BE] transition-colors">Career Opportunities</Link></li>
                   </ul>
                 </div>
 
@@ -104,7 +97,6 @@ const App: React.FC = () => {
                   <ul className="space-y-4 text-sm text-gray-400">
                     <li><Link to="/patient-guide" className="hover:text-[#83C5BE] transition-colors">Admission Guide</Link></li>
                     <li><Link to="/insurance-panels" className="hover:text-[#83C5BE] transition-colors">Insurance Panels</Link></li>
-                    <li><Link to="/patient-rights" className="hover:text-[#83C5BE] transition-colors">Patient Rights</Link></li>
                     <li><Link to="/contact-us" className="hover:text-[#83C5BE] transition-colors">Contact Us</Link></li>
                   </ul>
                 </div>

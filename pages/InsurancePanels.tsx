@@ -44,7 +44,7 @@ const InsurancePanels: React.FC = () => {
         { name: 'PETRONAS', domain: 'petronas.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/PETRONAS.png' },
         { name: 'Tenaga Nasional', domain: 'tnb.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/Tenaga_Nasional_logo.svg' },
         { name: 'Telekom Malaysia', domain: 'tm.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/Logo_of_the_Telekom_Malaysia.svg' },
-        { name: 'Public Bank', domain: 'pbebank.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/public-bank.svg' },
+        { name: 'Public Bank', domain: 'pbebank.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/public-bank-new.png' },
         { name: 'CIMB Bank', domain: 'cimb.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/CIMB-Logo.jpg' },
         { name: 'Affin Bank', domain: 'affinbank.com.my', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/AFFIN_BANK_Logo_Full_Colour.png' },
         { name: 'Sime Darby', domain: 'simedarby.com', logoUrl: 'https://storage.googleapis.com/igc-health/Partners/295_sime_darby.jpg' },

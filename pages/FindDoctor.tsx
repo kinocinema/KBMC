@@ -114,9 +114,9 @@ const FindDoctor: React.FC = () => {
           {filteredDoctors.map((doc, idx) => (
             <div 
               key={doc.id} 
-              className={`bg-white p-8 rounded-[3.5rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.15)] transition-all duration-700 group flex flex-col items-center text-center border border-white/50 relative overflow-hidden ${isVisible ? `animate-fade-in-up stagger-${(idx % 5) + 1}` : 'opacity-0'}`}
+              className={`bg-white p-8 rounded-[3.5rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.15)] transition-all duration-700 group flex flex-col items-center text-center border border-white/50 relative overflow-hidden h-full ${isVisible ? `animate-fade-in-up stagger-${(idx % 5) + 1}` : 'opacity-0'}`}
             >
-              <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden mb-8 bg-[#2C3E50] shadow-xl">
+              <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden mb-8 bg-[#2C3E50] shadow-xl flex-shrink-0">
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.15em] text-[#006D77] flex items-center gap-1.5 z-20 shadow-lg border border-white/50">
                   <Star className="w-3 h-3 fill-[#E29578] text-[#E29578]" />
                   {t('doctor.profile.specialized')}
@@ -129,27 +129,29 @@ const FindDoctor: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
 
-              <div className="space-y-6 w-full flex-grow flex flex-col">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-black text-[#006D77] leading-tight font-serif group-hover:text-[#E29578] transition-colors">
+              <div className="space-y-6 w-full flex-1 flex flex-col">
+                <div className="space-y-2 flex-grow-0">
+                  <h3 className="text-2xl font-black text-[#006D77] leading-tight font-serif group-hover:text-[#E29578] transition-colors min-h-[3rem] flex items-center justify-center">
                     {doc.name}
                   </h3>
-                  <p className="text-[#83C5BE] font-black text-[10px] uppercase tracking-[0.2em]">
+                  <p className="text-[#83C5BE] font-black text-[10px] uppercase tracking-[0.2em] min-h-[2.5rem] flex items-center justify-center">
                     {doc.designation}
                   </p>
                 </div>
 
-                <div className="flex justify-center">
-                  <span className={`px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-sm border ${
-                    doc.status === 'Resident' ? 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE]/20' : 
-                    doc.status === 'Sessional' ? 'bg-[#E29578]/10 text-[#E29578] border-[#E29578]/20' : 
-                    'bg-gray-50 text-gray-400 border-gray-100'
-                  }`}>
-                    {doc.status === 'Resident' ? t('doctor.status.resident') : 
-                     doc.status === 'Sessional' ? t('doctor.status.sessional') : 
-                     doc.status === 'Visiting' ? t('doctor.status.visiting') : 
-                     (doc.status || t('doctor.status.resident'))}
-                  </span>
+                <div className="flex justify-center flex-grow">
+                  <div className="self-center">
+                    <span className={`px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-sm border ${
+                      doc.status === 'Resident' ? 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE]/20' : 
+                      doc.status === 'Sessional' ? 'bg-[#E29578]/10 text-[#E29578] border-[#E29578]/20' : 
+                      'bg-gray-50 text-gray-400 border-gray-100'
+                    }`}>
+                      {doc.status === 'Resident' ? t('doctor.status.resident') : 
+                       doc.status === 'Sessional' ? t('doctor.status.sessional') : 
+                       doc.status === 'Visiting' ? t('doctor.status.visiting') : 
+                       (doc.status || t('doctor.status.resident'))}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="pt-4 mt-auto w-full">

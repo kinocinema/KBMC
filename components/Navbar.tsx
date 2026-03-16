@@ -34,7 +34,6 @@ const Navbar: React.FC = () => {
   const medicalLinks = [
     { name: t('nav.medical'), path: '/services', icon: <HeartPulse className="w-4 h-4" /> },
     { name: 'Find a Specialist', path: '/find-doctor', icon: <Stethoscope className="w-4 h-4" /> },
-    { name: 'Health Screening', path: '/health-screening', icon: <Activity className="w-4 h-4" /> },
   ];
 
   const visitorLinks = [
@@ -45,8 +44,6 @@ const Navbar: React.FC = () => {
 
   const corporateLinks = [
     { name: t('nav.hospital'), path: '/about', icon: <History className="w-4 h-4" /> },
-    { name: 'Career Opportunities', path: '/careers', icon: <Briefcase className="w-4 h-4" /> },
-    { name: 'Patient Rights', path: '/patient-rights', icon: <ClipboardList className="w-4 h-4" /> },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -91,7 +88,7 @@ const Navbar: React.FC = () => {
             <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}>
               <div className="flex items-center gap-3">
                  <Link to="/" className="flex items-center gap-3">
-                   <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-10 w-auto" />
+                   <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-14 w-auto" />
                  </Link>
               </div>
 
@@ -132,6 +129,22 @@ const Navbar: React.FC = () => {
                   </div>
                 </div>
 
+                <div className="relative group h-full flex items-center">
+                  <button className={`flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/about') || isActive('/careers') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
+                    {t('nav.hospital')} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                  </button>
+                  <div className="absolute top-full left-0 pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                    <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden">
+                      {corporateLinks.map((link) => (
+                        <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
+                          <div className="text-[#83C5BE] group-hover/item:text-[#006D77] transition-colors">{link.icon}</div>
+                          <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 <Link to="/contact-us" className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/contact-us') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
                   {t('nav.contact')}
                 </Link>
@@ -156,7 +169,7 @@ const Navbar: React.FC = () => {
             <div className={`absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
               <div className="flex flex-col h-full">
                 <div className="p-6 flex items-center justify-between border-b border-gray-100">
-                  <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-8 w-auto" />
+                  <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-12 w-auto" />
                   <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-[#006D77] transition-colors">
                     <X className="w-6 h-6" />
                   </button>

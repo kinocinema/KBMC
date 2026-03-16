@@ -175,10 +175,9 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
           <div className="space-y-10">
             <div className={`space-y-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <div className="inline-flex items-center gap-2 bg-[#006D77]/5 px-4 py-2 rounded-full text-[#006D77] text-[10px] font-black uppercase tracking-[0.3em] border border-[#006D77]/10">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{t('hero.badge')}</span>
-              </div>
+              <span className="inline-block text-[#006D77] font-black uppercase tracking-[0.3em] text-xs">
+                {t('hero.badge')}
+              </span>
               <h1 className="text-6xl md:text-8xl font-black leading-[0.95] text-[#006D77] font-serif uppercase tracking-tighter">
                 {t('hero.title')} <br/>{t('hero.title2')} <br/><span className="text-[#83C5BE]">{t('hero.italic')}</span>
               </h1>
@@ -199,10 +198,9 @@ const Home: React.FC = () => {
 
           <div className={`relative ${isVisible ? 'animate-scale-in stagger-1' : 'opacity-0'}`}>
             <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-[12px] border-white aspect-[4/5] group">
-              <img 
-                src="https://storage.googleapis.com/igc-health/Ibadah%20Friendly.png" 
+              <HeroImage 
+                src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
                 alt="KBMC Medical Excellence" 
-                className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-[5s]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/40 to-transparent opacity-60"></div>
               <div className="absolute bottom-10 left-10 right-10 bg-white/95 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-2xl border border-white/50">
@@ -257,6 +255,53 @@ const Home: React.FC = () => {
                   <img src="https://storage.googleapis.com/igc-health/Meternati%202.png" className="rounded-[4rem] shadow-2xl hover:scale-105 transition-all duration-[2s] aspect-[3/4] object-cover border-8 border-[#EDF6F9]" alt="Maternity"/>
                 </div>
              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What to Expect Section */}
+      <section className="py-32 px-4 md:px-8 bg-[#006D77] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20 space-y-4">
+            <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-sm">PATIENT JOURNEY</span>
+            <h2 className="text-5xl md:text-6xl font-bold text-white">{t('home.expect.title')}</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                title: t('home.expect.hospitality.title'),
+                desc: t('home.expect.hospitality.desc'),
+                icon: <Sparkles className="w-8 h-8" />
+              },
+              {
+                title: t('home.expect.care.title'),
+                desc: t('home.expect.care.desc'),
+                icon: <HeartPulse className="w-8 h-8" />
+              },
+              {
+                title: t('home.expect.guidance.title'),
+                desc: t('home.expect.guidance.desc'),
+                icon: <ShieldCheck className="w-8 h-8" />
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white/10 backdrop-blur-md p-10 rounded-[3rem] border border-white/20 hover:bg-white/20 transition-all group">
+                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-[#006D77] mb-8 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-white/70 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-24 text-center">
+            <div className="inline-block relative">
+              <Quote className="absolute -top-8 -left-12 w-20 h-20 text-white/10" />
+              <p className="text-2xl md:text-3xl font-bold text-white italic max-w-4xl mx-auto">
+                "{t('home.expect.quote')}"
+              </p>
+            </div>
           </div>
         </div>
       </section>

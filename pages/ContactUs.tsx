@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle, Navigation, Car } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const ContactUs: React.FC = () => {
@@ -20,77 +20,194 @@ const ContactUs: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-32 overflow-hidden">
-      {/* Hero Section */}
-      <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image & Themed Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://storage.googleapis.com/igc-health/Contact%20Us.png" 
-            alt="KBMC Contact Header" 
-            className="w-full h-full object-cover"
-          />
-          {/* Cyan/Teal Overlay - Stronger multiply effect to match image */}
-          <div className="absolute inset-0 bg-[#006D77]/75 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#006D77]/10 to-[#006D77]/30"></div>
-        </div>
-
-        {/* Content Overlay */}
-        <div className={`max-w-4xl mx-auto text-center space-y-6 relative z-10 px-4 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <p className="text-[#83C5BE] font-bold uppercase tracking-[0.5em] text-[10px] drop-shadow-sm">{t('contact.hero.badge')}</p>
-          <h1 className="text-7xl md:text-9xl font-black text-white leading-none tracking-tight">
-            {t('contact.hero.title')} <span className="text-[#E29578] italic">{t('contact.hero.title2')}</span>
-          </h1>
-          <p className="text-base md:text-lg text-white/90 leading-relaxed font-medium max-w-xl mx-auto">
-            {t('contact.hero.desc')}
-          </p>
+    <div className="min-h-screen bg-white pb-32 overflow-hidden relative">
+      {/* 1. Emergency Header - Red Box */}
+      <div className="bg-red-600 py-4 px-4 md:px-8 text-center relative z-50">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 text-white">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <Phone className="w-4 h-4 animate-pulse" />
+            </div>
+            <span className="font-black uppercase tracking-widest text-sm">{t('contact.directory.ae')}</span>
+          </div>
+          <a href="tel:+6097458000" className="text-2xl md:text-3xl font-black tracking-tighter hover:scale-105 transition-transform">
+            +60 9-745 8000
+          </a>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        {/* Left Column: Hospital Directory */}
-        <div className="lg:col-span-5 space-y-10">
-          <div className="space-y-8">
-            <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.directory.title')}</h2>
-            <div className="space-y-4">
-               {[
-                 { icon: <Phone className="text-[#E29578] w-5 h-5" />, label: t('contact.directory.registry'), value: '+609 747 7000' },
-                 { icon: <Mail className="text-[#E29578] w-5 h-5" />, label: t('contact.directory.inquiry'), value: 'info@kbmc.com.my' },
-                 { icon: <MapPin className="text-[#E29578] w-5 h-5" />, label: t('contact.directory.location'), value: t('contact.directory.location.value') },
-                 { icon: <Clock className="text-[#E29578] w-5 h-5" />, label: t('contact.directory.ae'), value: t('contact.directory.open24') }
-               ].map((item, idx) => (
-                 <div key={idx} className="flex items-center gap-6 p-5 bg-[#F8FAFB] rounded-[2.5rem] border border-gray-50/50 transition-all hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 group">
-                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0 group-hover:scale-105 transition-transform">{item.icon}</div>
-                    <div>
-                       <p className="text-[9px] font-black uppercase tracking-[0.25em] text-gray-400">{item.label}</p>
-                       <p className="text-base font-bold text-[#2C3E50] leading-tight mt-1">{item.value}</p>
-                    </div>
-                 </div>
-               ))}
+      {/* Hero Section - Minimal */}
+      <div className="bg-[#006D77] py-16 px-4 md:px-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
+        <div className={`max-w-7xl mx-auto text-center space-y-4 relative z-10 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-xs">{t('contact.hero.badge')}</span>
+          <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
+            {t('contact.hero.title')} <span className="text-[#E29578] italic">{t('contact.hero.title2')}</span>
+          </h1>
+        </div>
+      </div>
+
+      {/* 2. Interactive Map Section */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 -mt-10 relative z-20">
+        <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100">
+          <div className="h-[400px] md:h-[500px] relative">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.112444586048!2d102.25368337583626!3d6.115500027770185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b6af9999999999%3A0x6666666666666666!2sKota%20Bharu%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1710534567890!5m2!1sen!2smy" 
+              className="w-full h-full border-0 grayscale-[0.2] contrast-[1.1]"
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="KBMC Location Map"
+            ></iframe>
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md px-4">
+              <a 
+                href="https://www.google.com/maps/dir//Kota+Bharu+Medical+Centre,+Lot+179+%26+184,+Seksyen+25,+Jalan+Sultan+Yahya+Petra,+Lundang,+15150+Kota+Bharu,+Kelantan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-[#006D77] text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 hover:bg-[#005a63] transition-all transform hover:-translate-y-1 active:scale-95 w-full"
+              >
+                <Navigation className="w-5 h-5" />
+                {t('contact.maps.nav')}
+              </a>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Find Us on Maps Card */}
-          <div className="bg-[#006D77] p-10 rounded-[3.5rem] text-white space-y-8 relative overflow-hidden shadow-2xl shadow-[#006D77]/20">
-             <h3 className="text-2xl font-black tracking-tight">{t('contact.maps.title')}</h3>
-             <div className="aspect-[16/10] bg-white/10 rounded-[2.5rem] overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066&auto=format&fit=crop" 
-                  className="w-full h-full object-cover opacity-30 grayscale"
-                  alt="Map Placeholder"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                   <button className="bg-white text-[#006D77] px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl flex items-center gap-2 hover:scale-105 transition-transform active:scale-95">
-                     {t('contact.maps.nav')}
-                   </button>
-                </div>
-             </div>
+      {/* 3. Facility Guide - 3-Column Grid */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-24">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.facility.title')}</h2>
+          <div className="w-20 h-1.5 bg-[#E29578] mx-auto rounded-full"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column A */}
+          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
+            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
+              <span className="text-2xl font-black text-[#006D77]">A</span>
+            </div>
+            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.a.title')}</h3>
+            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.a.desc')}</p>
+          </div>
+          {/* Column B */}
+          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
+            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
+              <span className="text-2xl font-black text-[#006D77]">B</span>
+            </div>
+            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.b.title')}</h3>
+            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.b.desc')}</p>
+          </div>
+          {/* Column C */}
+          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
+            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
+              <span className="text-2xl font-black text-[#006D77]">C</span>
+            </div>
+            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.c.title')}</h3>
+            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.c.desc')}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Sub-page Sections */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 space-y-24 pb-24">
+        {/* LOCATION & DIRECTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <span className="text-[#E29578] font-black uppercase tracking-[0.3em] text-[10px]">{t('contact.directory.location')}</span>
+              <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.location.title')}</h2>
+            </div>
+            <div className="flex gap-6 p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50">
+              <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+                <MapPin className="text-[#E29578] w-6 h-6" />
+              </div>
+              <p className="text-lg font-bold text-[#2C3E50] leading-relaxed">
+                Lot 179-184, Jalan Sultan Yahya Petra,<br />
+                Lundang, 15200 Kota Bharu,<br />
+                Kelantan, Malaysia.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+            <img 
+              src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+              alt="KBMC Exterior" 
+              className="w-full h-80 object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
         </div>
 
-        {/* Right Column: Send a Message Form */}
-        <div className="lg:col-span-7">
-           <div className="bg-white p-12 md:p-16 rounded-[4.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.06)] border border-gray-50/50 space-y-12">
+        {/* PARKING INFO */}
+        <div className="bg-[#EDF6F9] p-12 md:p-16 rounded-[4rem] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#006D77]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
+                  <Car className="text-[#006D77] w-6 h-6" />
+                </div>
+                <h2 className="text-3xl font-black text-[#006D77] tracking-tight">{t('contact.parking.title')}</h2>
+              </div>
+              <p className="text-xl font-bold text-[#2C3E50] leading-relaxed">
+                {t('contact.parking.desc')}
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="bg-white/50 backdrop-blur-sm p-4 rounded-[2.5rem] border border-white/20">
+                <div className="bg-[#006D77] text-white px-10 py-6 rounded-[2rem] text-center space-y-1">
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Parking Status</p>
+                  <p className="text-2xl font-black">FREE PARKING</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* OPERATING HOURS */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="space-y-10">
+            <div className="space-y-4">
+              <span className="text-[#E29578] font-black uppercase tracking-[0.3em] text-[10px]">{t('contact.hours.title')}</span>
+              <h2 className="text-4xl font-black text-[#006D77] tracking-tight">OPERATING HOURS</h2>
+            </div>
+            <div className="space-y-6">
+              <div className="p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50 space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
+                    <Clock className="text-red-600 w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-black text-[#2C3E50]">{t('contact.hours.ae')}</h3>
+                </div>
+                <p className="text-2xl font-black text-red-600">24 Hours / 7 Days</p>
+              </div>
+              <div className="p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50 space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#006D77]/10 rounded-xl flex items-center justify-center">
+                    <Clock className="text-[#006D77] w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-black text-[#2C3E50]">Specialist Clinics</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-4">
+                    <span className="font-bold text-gray-500">Sun – Thurs</span>
+                    <span className="font-black text-[#006D77]">8:30 AM – 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-4">
+                    <span className="font-bold text-gray-500">Friday</span>
+                    <span className="font-black text-red-500">Closed / Emergency Only</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-gray-500">Saturday</span>
+                    <span className="font-black text-[#006D77]">8:30 AM – 12:30 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Form remains at the bottom right as per previous design but integrated */}
+          <div className="bg-white p-12 md:p-16 rounded-[4.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.06)] border border-gray-50/50 space-y-12">
               <div className="space-y-4">
                  <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.form.title')}</h2>
                  <p className="text-base text-gray-400 font-medium leading-relaxed">{t('contact.form.desc')}</p>
@@ -143,6 +260,26 @@ const ContactUs: React.FC = () => {
               )}
            </div>
         </div>
+      </div>
+
+      {/* 4. Instant Messaging Bar - Floating WhatsApp Icon */}
+      <div className="fixed bottom-8 right-8 z-[100] group flex items-center gap-4">
+        <div className="bg-white px-6 py-3 rounded-2xl shadow-2xl border border-gray-100 opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0 pointer-events-none">
+          <p className="text-[10px] font-black text-[#006D77] uppercase tracking-widest whitespace-nowrap">
+            {t('contact.whatsapp.chat')}
+          </p>
+        </div>
+        <a 
+          href="https://wa.me/601110663399" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all relative"
+        >
+          <MessageCircle className="text-white w-8 h-8" />
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white flex items-center justify-center">
+            <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+          </div>
+        </a>
       </div>
     </div>
   );
