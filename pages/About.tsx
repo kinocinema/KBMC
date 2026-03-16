@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap } from 'lucide-react';
+import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap, Users, Clock, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const About: React.FC = () => {
@@ -18,22 +18,29 @@ const About: React.FC = () => {
   ];
 
   const coreValues = [
-    { key: 'K', title: 'Kindness', desc: t('about.values.k'), icon: <HeartPulse className="w-6 h-6" /> },
-    { key: 'B', title: 'Believability', desc: t('about.values.b'), icon: <ShieldCheck className="w-6 h-6" /> },
-    { key: 'M', title: 'Mastery', desc: t('about.values.m'), icon: <Zap className="w-6 h-6" /> },
-    { key: 'C', title: 'Care', desc: t('about.values.c'), icon: <CheckCircle2 className="w-6 h-6" /> },
+    { key: 'K', title: t('about.values.k.title'), desc: t('about.values.k'), icon: <HeartPulse className="w-6 h-6" /> },
+    { key: 'B', title: t('about.values.b.title'), desc: t('about.values.b'), icon: <ShieldCheck className="w-6 h-6" /> },
+    { key: 'M', title: t('about.values.m.title'), desc: t('about.values.m'), icon: <Zap className="w-6 h-6" /> },
+    { key: 'C', title: t('about.values.c.title'), desc: t('about.values.c'), icon: <CheckCircle2 className="w-6 h-6" /> },
+  ];
+
+  const management = [
+    { name: t('about.management.ceo.name'), title: t('about.management.ceo') },
+    { name: t('about.management.md.name'), title: t('about.management.md') },
+    { name: t('about.management.don.name'), title: t('about.management.don') },
+    { name: t('about.management.coo.name'), title: t('about.management.coo') },
   ];
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* Hero Header */}
       <div className="bg-[#006D77] py-48 px-4 md:px-8 relative overflow-hidden">
-        {/* Background Image */}
+        {/* Background Image - New Hospital Building */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://storage.googleapis.com/igc-health/Welcoming.png" 
-            alt="KBMC Heritage" 
-            className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+            alt="KBMC New Hospital Building" 
+            className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
@@ -49,8 +56,67 @@ const About: React.FC = () => {
         </div>
       </div>
 
+      {/* CEO Message Section */}
+      <div id="ceo-message" className="py-32 px-4 md:px-8 bg-white relative overflow-hidden border-b border-gray-100">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
+            <div className="lg:col-span-2">
+              <div className="relative">
+                <div className="aspect-[3/4] rounded-[4rem] overflow-hidden border-8 border-[#EDF6F9] shadow-2xl">
+                  <img 
+                    src="https://storage.googleapis.com/igc-health/CEO.png" 
+                    alt="CEO Mohd Nazri Yaacob" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -right-6 bg-[#006D77] p-8 rounded-[2.5rem] shadow-2xl">
+                  <p className="text-white font-black text-xl">{t('about.ceo.name')}</p>
+                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest mt-1">{t('about.ceo.title')}</p>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-3 space-y-10">
+              <div className="space-y-4">
+                <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-sm">{t('about.ceo.headline')}</span>
+                <h2 className="text-5xl md:text-6xl font-black text-[#006D77] leading-tight">{t('about.ceo.subheadline')}</h2>
+              </div>
+              <div className="relative">
+                <Quote className="absolute -top-10 -left-12 w-24 h-24 text-[#006D77]/5" />
+                <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                  {t('about.ceo.message')}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Leadership Section */}
+      <div id="management" className="py-32 px-4 md:px-8 bg-[#F8FAFB]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-sm">{t('about.management.badge')}</span>
+            <h2 className="text-5xl font-black text-[#006D77]">{t('about.management.title')}</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {management.map((person, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all text-center space-y-4">
+                <div className="w-24 h-24 bg-[#EDF6F9] rounded-full mx-auto flex items-center justify-center text-[#006D77]">
+                  <Users className="w-10 h-10" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-[#006D77]">{person.name}</h3>
+                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest mt-1">{person.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Vision & Mission */}
-      <div className="max-w-7xl mx-auto py-32 px-4 md:px-8 space-y-24">
+      <div id="vision-mission" className="max-w-7xl mx-auto py-32 px-4 md:px-8 space-y-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className={`bg-white p-12 rounded-[4rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform group ${isVisible ? 'animate-reveal-left stagger-1' : 'opacity-0'}`}>
@@ -89,7 +155,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Core Values */}
-        <div className="space-y-12">
+        <div id="core-values" className="space-y-12">
           <div className="text-center">
             <h2 className="text-5xl font-black text-[#006D77]">{t('about.values.title')}</h2>
           </div>
@@ -121,7 +187,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Timeline */}
-      <div className="bg-[#F8FAFB] py-32 px-4 md:px-8">
+      <div id="history" className="bg-[#F8FAFB] py-32 px-4 md:px-8">
         <div className="max-w-7xl mx-auto space-y-24">
           <div className="text-center space-y-4">
             <h2 className="text-5xl font-black text-[#006D77]">{t('about.legacy.title')}</h2>
@@ -153,7 +219,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Future Growth & Location */}
-      <div className="py-32 px-4 md:px-8 bg-white">
+      <div id="future" className="py-32 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-12">
             <div className="space-y-6">
@@ -183,50 +249,99 @@ const About: React.FC = () => {
               referrerPolicy="no-referrer"
             />
             <div className="absolute -bottom-10 -right-10 bg-[#E29578] p-12 rounded-[3rem] text-white shadow-2xl hidden md:block">
-              <p className="text-4xl font-black leading-none">400+</p>
-              <p className="text-sm font-bold uppercase tracking-widest mt-2">New Jobs Created</p>
+              <p className="text-4xl font-black leading-none">{t('about.future.jobs.count')}</p>
+              <p className="text-sm font-bold uppercase tracking-widest mt-2">{t('about.future.jobs.label')}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CEO Message Section */}
-      <div className="py-32 px-4 md:px-8 bg-[#006D77] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border-[40px] border-white rounded-full"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
-            <div className="lg:col-span-2">
-              <div className="relative">
-                <div className="aspect-[3/4] rounded-[4rem] overflow-hidden border-8 border-white/20 shadow-2xl">
-                  <img 
-                    src="https://storage.googleapis.com/igc-health/CEO.png" 
-                    alt="CEO Mohd Nazri Yaacob" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-white p-8 rounded-[2.5rem] shadow-2xl">
-                  <p className="text-[#006D77] font-black text-xl">{t('about.ceo.name')}</p>
-                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest mt-1">{t('about.ceo.title')}</p>
-                </div>
-              </div>
+      {/* CEO Message Section - MOVED UP */}
+
+      {/* Hospital Directory, Operating Hours, Parking */}
+      <div id="directory" className="bg-[#F8FAFB] py-32 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Hospital Directory */}
+          <div className="bg-white p-12 rounded-[4rem] shadow-xl border border-gray-100 space-y-8">
+            <div className="w-16 h-16 bg-[#EDF6F9] rounded-2xl flex items-center justify-center text-[#006D77]">
+              <Building2 className="w-8 h-8" />
             </div>
-            <div className="lg:col-span-3 space-y-10">
-              <div className="space-y-4">
-                <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-sm">{t('about.ceo.headline')}</span>
-                <h2 className="text-5xl md:text-6xl font-black text-white leading-tight">{t('about.ceo.subheadline')}</h2>
+            <h2 className="text-4xl font-black text-[#006D77]">{t('contact.directory.title')}</h2>
+            <div className="space-y-4">
+              <div className="flex justify-between border-b border-gray-50 pb-2">
+                <span className="text-gray-500 font-bold">{t('contact.directory.registry')}</span>
+                <span className="text-[#006D77] font-black">+609 745 8000</span>
               </div>
-              <div className="relative">
-                <Quote className="absolute -top-10 -left-12 w-24 h-24 text-white/10" />
-                <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed">
-                  {t('about.ceo.message')}
-                </p>
+              <div className="flex justify-between border-b border-gray-50 pb-2">
+                <span className="text-gray-500 font-bold">{t('contact.directory.ae')}</span>
+                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8111</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-50 pb-2">
+                <span className="text-gray-500 font-bold">{t('about.directory.admission')}</span>
+                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8022</span>
+              </div>
+              <div className="flex justify-between border-b border-gray-50 pb-2">
+                <span className="text-gray-500 font-bold">{t('about.directory.pharmacy')}</span>
+                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8033</span>
               </div>
             </div>
           </div>
+
+          {/* Operating Hours */}
+          <div className="bg-[#006D77] p-12 rounded-[4rem] shadow-2xl text-white space-y-8">
+            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-[#83C5BE]">
+              <Clock className="w-8 h-8" />
+            </div>
+            <h2 className="text-4xl font-black">{t('contact.hours.title')}</h2>
+            <div className="space-y-6 text-white/80 font-medium">
+              <div>
+                <p className="text-[#83C5BE] font-black uppercase tracking-widest text-xs">{t('about.hours.ae.label')}</p>
+                <p className="text-xl">{t('contact.hours.ae')}</p>
+              </div>
+              <div>
+                <p className="text-[#83C5BE] font-black uppercase tracking-widest text-xs">{t('about.hours.clinics.label')}</p>
+                <p className="text-xl">{t('contact.hours.clinics')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Parking & Facility */}
+          <div className="bg-white p-12 rounded-[4rem] shadow-xl border border-gray-100 space-y-8">
+            <div className="w-16 h-16 bg-[#EDF6F9] rounded-2xl flex items-center justify-center text-[#006D77]">
+              <MapPin className="w-8 h-8" />
+            </div>
+            <h2 className="text-4xl font-black text-[#006D77]">{t('contact.facility.title')}</h2>
+            <div className="space-y-4 text-gray-500 font-medium">
+              <p><strong className="text-[#006D77]">{t('about.facility.parking.label')}:</strong> {t('contact.parking.desc')}</p>
+              <p><strong className="text-[#006D77]">{t('about.facility.blockA.label')}:</strong> {t('contact.facility.a.desc')}</p>
+              <p><strong className="text-[#006D77]">{t('about.facility.blockB.label')}:</strong> {t('contact.facility.b.desc')}</p>
+              <p><strong className="text-[#006D77]">{t('about.facility.blockC.label')}:</strong> {t('contact.facility.c.desc')}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Careers & Contact Links */}
+      <div className="py-32 px-4 md:px-8 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <a href="/careers" className="group bg-[#EDF6F9] p-12 rounded-[4rem] border border-[#83C5BE]/20 hover:bg-[#006D77] transition-all">
+            <div className="flex items-center justify-between">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-black text-[#006D77] group-hover:text-white transition-colors">{t('about.careers.title')}</h3>
+                <p className="text-gray-500 group-hover:text-white/70 transition-colors">{t('about.careers.desc')}</p>
+              </div>
+              <ArrowRight className="w-10 h-10 text-[#006D77] group-hover:text-white transition-all group-hover:translate-x-2" />
+            </div>
+          </a>
+          <a href="/contact-us" className="group bg-[#EDF6F9] p-12 rounded-[4rem] border border-[#83C5BE]/20 hover:bg-[#E29578] transition-all">
+            <div className="flex items-center justify-between">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-black text-[#006D77] group-hover:text-white transition-colors">{t('nav.contact')}</h3>
+                <p className="text-gray-500 group-hover:text-white/70 transition-colors">{t('about.contact.desc')}</p>
+              </div>
+              <ArrowRight className="w-10 h-10 text-[#006D77] group-hover:text-white transition-all group-hover:translate-x-2" />
+            </div>
+          </a>
         </div>
       </div>
     </div>

@@ -100,6 +100,10 @@ const Navbar: React.FC = () => {
                   {t('nav.home')}
                 </Link>
 
+                <Link to="/about" className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/about') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
+                  {t('nav.hospital')}
+                </Link>
+
                 <div className="relative group h-full flex items-center">
                   <button className={`flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/find-doctor') || isActive('/centre-of-excellence') || isActive('/services') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
                     {t('nav.medical')} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
