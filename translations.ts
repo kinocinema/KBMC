@@ -54,8 +54,8 @@ export const translations = {
     'carousel.slide3.role': 'Health Screening Patient',
     
     // Home - Legacy
-    'legacy.title': 'Kota Bharu Medical Centre',
-    'legacy.desc': 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et',
+    'legacy.title': 'The Pioneer of Private Healthcare in Kelantan',
+    'legacy.desc': 'Kota Bharu Medical Centre (KBMC) holds the distinction of being the first Private Specialist Hospital in Kelantan. Established to provide accessible, high-quality specialist care, KBMC has been a cornerstone of the regional healthcare landscape for over 25 years.',
     'legacy.cta': 'Learn more about us',
 
     // Home - Services
@@ -421,18 +421,22 @@ export const translations = {
 
     // About
     'about.heritage': 'OUR HERITAGE',
-    'about.hero.title': 'The Pioneer of Private Healthcare',
-    'about.hero.desc': 'Established in the late 1990s, KBMC has been a cornerstone of the regional healthcare landscape for over 25 years, providing accessible, high-quality specialist care.',
+    'about.hero.title': 'The Pioneer of Private Healthcare in Kelantan',
+    'about.hero.desc': 'Kota Bharu Medical Centre (KBMC) holds the distinction of being the first Private Specialist Hospital in Kelantan. Established to provide accessible, high-quality specialist care, KBMC has been a cornerstone of the regional healthcare landscape for over 25 years.',
     'about.vision.title': 'Our Vision',
     'about.vision.desc': 'To be the leading healthcare provider of choice for both domestic and international patients, recognized for delivering world-class medical excellence and compassionate care that improves the quality of life for the global community.',
     'about.mission.title': 'Our Mission',
     'about.mission.desc': 'Patient Well-being: To ensure every patient receives high-quality, personalized care. Excellence & Innovation: To continuously elevate our medical services. Global & Local Accessibility: To provide accessible healthcare services. Continuous Growth: To uphold the highest global clinical outcomes.',
-    'about.mission.wellbeing': 'Patient Well-being: To ensure every patient—local and international—receives high-quality, personalized care in a safe, supportive, and culturally inclusive environment.',
-    'about.mission.innovation': 'Excellence & Innovation: To continuously elevate our medical services and facilities to meet international healthcare standards through advanced technology and a world-class professional workforce.',
-    'about.mission.accessibility': 'Global & Local Accessibility: To provide accessible, equitable, and seamless healthcare services to the community in Kelantan while positioning KBMC as a preferred medical tourism destination.',
-    'about.mission.growth': 'Continuous Growth: To uphold the highest global clinical outcomes and patient satisfaction through a steadfast commitment to excellence, empathy, and innovation.',
+    'about.mission.wellbeing.title': 'Patient Well-being',
+    'about.mission.wellbeing.desc': 'To ensure every patient—local and international—receives high-quality, personalized care in a safe, supportive, and culturally inclusive environment.',
+    'about.mission.innovation.title': 'Excellence & Innovation',
+    'about.mission.innovation.desc': 'To continuously elevate our medical services and facilities to meet international healthcare standards through advanced technology and a world-class professional workforce.',
+    'about.mission.accessibility.title': 'Global & Local Accessibility',
+    'about.mission.accessibility.desc': 'To provide accessible, equitable, and seamless healthcare services to the community in Kelantan while positioning KBMC as a preferred medical tourism destination.',
+    'about.mission.growth.title': 'Continuous Growth',
+    'about.mission.growth.desc': 'To uphold the highest global clinical outcomes and patient satisfaction through a steadfast commitment to excellence, empathy, and innovation.',
     'about.legacy.title': 'Legacy and Milestone Dates',
-    'about.legacy.subtitle': 'OUR JOURNEY THROUGH THE YEARS',
+    'about.legacy.subtitle': 'KBMC’s journey began in the late 1990s, marked by two significant historical milestones:',
     'about.milestone.1.title': 'Official Commencement',
     'about.milestone.1.desc': '14 December 1997: Official commencement of operations following a soft launch by the Chairman.',
     'about.milestone.2.title': 'Grand Inauguration',
@@ -562,8 +566,8 @@ export const translations = {
     'carousel.slide3.role': 'Pesakit Saringan Kesihatan',
 
     // Home - Legacy
-    'legacy.title': 'Kota Bharu Medical Centre',
-    'legacy.desc': 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et',
+    'legacy.title': 'Perintis Penjagaan Kesihatan Swasta di Kelantan',
+    'legacy.desc': 'Kota Bharu Medical Centre (KBMC) memegang penghormatan sebagai Hospital Pakar Swasta pertama di Kelantan. Ditubuhkan untuk menyediakan penjagaan pakar yang mudah diakses dan berkualiti tinggi, KBMC telah menjadi tunjang landskap penjagaan kesihatan serantau selama lebih 25 tahun.',
     'legacy.cta': 'Ketahui lebih lanjut tentang kami',
 
     // Home - Services
@@ -929,18 +933,22 @@ export const translations = {
 
     // About (BM)
     'about.heritage': 'WARISAN KAMI',
-    'about.hero.title': 'Perintis Penjagaan Kesihatan Swasta',
-    'about.hero.desc': 'Ditubuhkan pada akhir 1990-an, KBMC telah menjadi tunjang landskap penjagaan kesihatan serantau selama lebih 25 tahun, menyediakan penjagaan pakar yang mudah diakses dan berkualiti tinggi.',
+    'about.hero.title': 'Perintis Penjagaan Kesihatan Swasta di Kelantan',
+    'about.hero.desc': 'Kota Bharu Medical Centre (KBMC) memegang penghormatan sebagai Hospital Pakar Swasta pertama di Kelantan. Ditubuhkan untuk menyediakan penjagaan pakar yang mudah diakses dan berkualiti tinggi, KBMC telah menjadi tunjang landskap penjagaan kesihatan serantau selama lebih 25 tahun.',
     'about.vision.title': 'Visi Kami',
     'about.vision.desc': 'Menjadi penyedia penjagaan kesihatan pilihan utama bagi pesakit domestik dan antarabangsa, diiktiraf kerana memberikan kecemerlangan perubatan bertaraf dunia dan penjagaan belas kasihan yang meningkatkan kualiti hidup komuniti global.',
     'about.mission.title': 'Misi Kami',
     'about.mission.desc': 'Kesejahteraan Pesakit: Memastikan setiap pesakit menerima penjagaan berkualiti tinggi dan diperibadikan. Kecemerlangan & Inovasi: Meningkatkan perkhidmatan perubatan kami secara berterusan. Kebolehcapaian Global & Tempatan: Menyediakan perkhidmatan penjagaan kesihatan yang mudah diakses. Pertumbuhan Berterusan: Mengekalkan hasil klinikal global tertinggi.',
-    'about.mission.wellbeing': 'Kesejahteraan Pesakit: Memastikan setiap pesakit—tempatan dan antarabangsa—menerima penjagaan berkualiti tinggi dan diperibadikan dalam persekitaran yang selamat, menyokong, dan inklusif secara budaya.',
-    'about.mission.innovation': 'Kecemerlangan & Inovasi: Meningkatkan perkhidmatan dan kemudahan perubatan kami secara berterusan untuk memenuhi piawaian penjagaan kesihatan antarabangsa melalui teknologi canggih dan tenaga kerja profesional bertaraf dunia.',
-    'about.mission.accessibility': 'Kebolehcapaian Global & Tempatan: Menyediakan perkhidmatan penjagaan kesihatan yang mudah diakses, saksama, dan lancar kepada komuniti di Kelantan sambil meletakkan KBMC sebagai destinasi pelancongan perubatan pilihan.',
-    'about.mission.growth': 'Pertumbuhan Berterusan: Mengekalkan hasil klinikal global tertinggi dan kepuasan pesakit melalui komitmen yang teguh terhadap kecemerlangan, empati, dan inovasi.',
+    'about.mission.wellbeing.title': 'Kesejahteraan Pesakit',
+    'about.mission.wellbeing.desc': 'Memastikan setiap pesakit—tempatan dan antarabangsa—menerima penjagaan berkualiti tinggi dan diperibadikan dalam persekitaran yang selamat, menyokong, dan inklusif secara budaya.',
+    'about.mission.innovation.title': 'Kecemerlangan & Inovasi',
+    'about.mission.innovation.desc': 'Meningkatkan perkhidmatan dan kemudahan perubatan kami secara berterusan untuk memenuhi piawaian penjagaan kesihatan antarabangsa melalui teknologi canggih dan tenaga kerja profesional bertaraf dunia.',
+    'about.mission.accessibility.title': 'Kebolehcapaian Global & Tempatan',
+    'about.mission.accessibility.desc': 'Menyediakan perkhidmatan penjagaan kesihatan yang mudah diakses, saksama, dan lancar kepada komuniti di Kelantan sambil meletakkan KBMC sebagai destinasi pelancongan perubatan pilihan.',
+    'about.mission.growth.title': 'Pertumbuhan Berterusan',
+    'about.mission.growth.desc': 'Mengekalkan hasil klinikal global tertinggi dan kepuasan pesakit melalui komitmen yang teguh terhadap kecemerlangan, empati, dan inovasi.',
     'about.legacy.title': 'Warisan dan Tarikh Penting',
-    'about.legacy.subtitle': 'PERJALANAN KAMI SEPANJANG TAHUN',
+    'about.legacy.subtitle': 'Perjalanan KBMC bermula pada akhir 1990-an, ditandai dengan dua peristiwa bersejarah yang penting:',
     'about.milestone.1.title': 'Permulaan Rasmi',
     'about.milestone.1.desc': '14 Disember 1997: Permulaan rasmi operasi berikutan pelancaran lembut oleh Pengerusi.',
     'about.milestone.2.title': 'Perasmian Besar',

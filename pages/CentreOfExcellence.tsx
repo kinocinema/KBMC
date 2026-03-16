@@ -33,7 +33,7 @@ const CentreOfExcellence: React.FC = () => {
       icon: <Activity className="w-8 h-8" />,
       title: t('coe.cancer.title'),
       desc: 'Holistic oncology services including chemotherapy, specialized diagnostics, and supportive care in a healing environment.',
-      image: 'https://images.unsplash.com/photo-1579154235602-3c2c2446026b?auto=format&fit=crop&q=80'
+      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80'
     },
     {
       id: 'eye',

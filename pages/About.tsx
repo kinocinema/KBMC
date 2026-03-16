@@ -131,41 +131,40 @@ const About: React.FC = () => {
 
       {/* Vision & Mission */}
       <div id="vision-mission" className="max-w-7xl mx-auto py-32 px-4 md:px-8 space-y-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className={`bg-white p-12 rounded-[4rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform group ${isVisible ? 'animate-reveal-left stagger-1' : 'opacity-0'}`}>
-               <div className="w-20 h-20 bg-[#EDF6F9] rounded-[2rem] flex items-center justify-center text-[#006D77] mb-8 group-hover:bg-[#006D77] group-hover:text-white transition-all">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div className={`lg:col-span-5 bg-white p-12 rounded-[4rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform group flex flex-col justify-start ${isVisible ? 'animate-reveal-left stagger-1' : 'opacity-0'}`}>
+               <div className="w-20 h-20 bg-[#EDF6F9] rounded-[2rem] flex items-center justify-center text-[#006D77] mb-10 group-hover:bg-[#006D77] group-hover:text-white transition-all">
                  <Target className="w-10 h-10" />
                </div>
-               <h2 className="text-4xl font-black text-[#006D77] mb-6">{t('about.vision.title')}</h2>
-               <p className="text-xl text-gray-500 font-medium leading-relaxed">
+               <h2 className="text-5xl font-black text-[#006D77] mb-8">{t('about.vision.title')}</h2>
+               <p className="text-2xl text-gray-500 font-medium leading-relaxed">
                  {t('about.vision.desc')}
                </p>
             </div>
-            <div className={`bg-[#006D77] p-12 rounded-[4rem] shadow-2xl text-white hover:-translate-y-2 transition-transform group ${isVisible ? 'animate-reveal-right stagger-2' : 'opacity-0'}`}>
+            <div className={`lg:col-span-7 bg-[#006D77] p-12 rounded-[4rem] shadow-2xl text-white hover:-translate-y-2 transition-transform group flex flex-col justify-start ${isVisible ? 'animate-reveal-right stagger-2' : 'opacity-0'}`}>
                <div className="w-20 h-20 bg-white/10 rounded-[2rem] flex items-center justify-center text-[#83C5BE] mb-8 group-hover:bg-[#83C5BE] group-hover:text-white transition-all">
                  <HeartPulse className="w-10 h-10" />
                </div>
-               <h2 className="text-4xl font-black mb-6">{t('about.mission.title')}</h2>
-               <div className="space-y-6 text-white/80 font-medium leading-relaxed">
-                 <p>{t('about.mission.wellbeing')}</p>
-                 <p>{t('about.mission.innovation')}</p>
-                 <p>{t('about.mission.accessibility')}</p>
-                 <p>{t('about.mission.growth')}</p>
+               <h2 className="text-4xl font-black mb-8">{t('about.mission.title')}</h2>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                 <div>
+                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.wellbeing.title')}</h3>
+                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.wellbeing.desc')}</p>
+                 </div>
+                 <div>
+                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.innovation.title')}</h3>
+                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.innovation.desc')}</p>
+                 </div>
+                 <div>
+                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.accessibility.title')}</h3>
+                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.accessibility.desc')}</p>
+                 </div>
+                 <div>
+                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.growth.title')}</h3>
+                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.growth.desc')}</p>
+                 </div>
                </div>
             </div>
-          </div>
-          <div className="lg:col-span-1">
-            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl aspect-[3/4]">
-              <img 
-                src="https://storage.googleapis.com/igc-health/Care%202.png" 
-                alt="KBMC Care" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/40 to-transparent"></div>
-            </div>
-          </div>
         </div>
 
         {/* Core Values */}
@@ -205,7 +204,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto space-y-24">
           <div className="text-center space-y-4">
             <h2 className="text-5xl font-black text-[#006D77]">{t('about.legacy.title')}</h2>
-            <p className="text-gray-400 font-bold uppercase tracking-widest text-sm">{t('about.legacy.subtitle')}</p>
+            <p className="text-gray-500 font-medium text-xl max-w-3xl mx-auto">{t('about.legacy.subtitle')}</p>
           </div>
           
           <div className="relative">

@@ -370,12 +370,6 @@ const DoctorProfile: React.FC = () => {
                   alt={doctor.name} 
                   className="w-full h-full" 
                 />
-                
-                {/* Badges */}
-                <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-xl px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.15em] text-[#006D77] flex items-center gap-2 z-20 shadow-xl border border-white/50">
-                  <Star className="w-3.5 h-3.5 fill-[#E29578] text-[#E29578]" />
-                  {t('doctor.profile.specialized')}
-                </div>
 
                 {doctor.isFemale && (
                   <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md py-3 rounded-2xl shadow-xl flex items-center justify-center gap-3 pointer-events-none z-20 border border-white/40">
@@ -395,16 +389,22 @@ const DoctorProfile: React.FC = () => {
 
             {/* Right Column: Details */}
             <div className="flex-1 space-y-12 py-4">
-              <div className="flex items-start justify-between gap-6">
-                <h1 className="text-5xl md:text-6xl font-black text-[#006D77] leading-[1.1]">
-                  {doctor.name}
-                </h1>
-                <span className="px-6 py-2 bg-[#EDF6F9] text-[#006D77] rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-sm border border-[#83C5BE]/20">
-                  {doctor.status === 'Resident' ? t('profile.status.resident') : 
-                   doctor.status === 'Sessional' ? t('profile.status.sessional') : 
-                   doctor.status === 'Visiting' ? t('profile.status.visiting') : 
-                   (doctor.status || t('profile.status.resident'))}
-                </span>
+              <div className="space-y-6">
+                <div className="inline-flex bg-white/95 backdrop-blur-xl px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.15em] text-[#006D77] items-center gap-2 shadow-sm border border-gray-100">
+                  <Star className="w-3.5 h-3.5 fill-[#E29578] text-[#E29578]" />
+                  {t('doctor.profile.specialized')}
+                </div>
+                <div className="flex items-start justify-between gap-6">
+                  <h1 className="text-5xl md:text-6xl font-black text-[#006D77] leading-[1.1]">
+                    {doctor.name}
+                  </h1>
+                  <span className="px-6 py-2 bg-[#EDF6F9] text-[#006D77] rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-sm border border-[#83C5BE]/20">
+                    {doctor.status === 'Resident' ? t('profile.status.resident') : 
+                     doctor.status === 'Sessional' ? t('profile.status.sessional') : 
+                     doctor.status === 'Visiting' ? t('profile.status.visiting') : 
+                     (doctor.status || t('profile.status.resident'))}
+                  </span>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 gap-10">

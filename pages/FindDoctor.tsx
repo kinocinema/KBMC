@@ -117,16 +117,16 @@ const FindDoctor: React.FC = () => {
               className={`bg-white p-8 rounded-[3.5rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.15)] transition-all duration-700 group flex flex-col items-center text-center border border-white/50 relative overflow-hidden h-full ${isVisible ? `animate-fade-in-up stagger-${(idx % 5) + 1}` : 'opacity-0'}`}
             >
               <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden mb-8 bg-[#2C3E50] shadow-xl flex-shrink-0">
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.15em] text-[#006D77] flex items-center gap-1.5 z-20 shadow-lg border border-white/50">
-                  <Star className="w-3 h-3 fill-[#E29578] text-[#E29578]" />
-                  {t('doctor.profile.specialized')}
-                </div>
                 <DoctorImage 
                   src={doc.imageUrl} 
                   alt={doc.name} 
                   className="w-full h-full" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.15em] text-[#006D77] flex items-center gap-1.5 z-20 shadow-lg border border-white/50 whitespace-nowrap">
+                  <Star className="w-3 h-3 fill-[#E29578] text-[#E29578]" />
+                  {t('doctor.profile.specialized')}
+                </div>
               </div>
 
               <div className="space-y-6 w-full flex-1 flex flex-col">
