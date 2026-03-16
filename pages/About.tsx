@@ -83,9 +83,23 @@ const About: React.FC = () => {
               </div>
               <div className="relative">
                 <Quote className="absolute -top-10 -left-12 w-24 h-24 text-[#006D77]/5" />
-                <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                  {t('about.ceo.message')}
-                </p>
+                <div className="space-y-6">
+                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                    {t('about.ceo.p1')}
+                  </p>
+                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                    {t('about.ceo.p2')}
+                  </p>
+                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                    {t('about.ceo.p3')}
+                  </p>
+                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                    {t('about.ceo.p4')}
+                  </p>
+                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                    {t('about.ceo.p5')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
