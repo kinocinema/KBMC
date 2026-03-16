@@ -13,6 +13,10 @@ import DoctorProfile from './pages/DoctorProfile';
 import RoomRates from './pages/RoomRates';
 import InsurancePanels from './pages/InsurancePanels';
 import ContactUs from './pages/ContactUs';
+import MedicalTourism from './pages/MedicalTourism';
+import FAQ from './pages/FAQ';
+import NewsGallery from './pages/NewsGallery';
+import CentreOfExcellence from './pages/CentreOfExcellence';
 import AIChatbot from './components/AIChatbot';
 
 const App: React.FC = () => {
@@ -32,6 +36,10 @@ const App: React.FC = () => {
               <Route path="/room-rates" element={<RoomRates />} />
               <Route path="/insurance-panels" element={<InsurancePanels />} />
               <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/medical-tourism" element={<MedicalTourism />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/news-gallery" element={<NewsGallery />} />
+              <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
             </Routes>
           </main>
           
@@ -48,7 +56,7 @@ const App: React.FC = () => {
                       className="h-14 brightness-0 invert"
                     />
                     <div className="flex flex-col leading-tight">
-                      <span className="text-white font-serif text-3xl font-bold tracking-tight">KBMC</span>
+                      <span className="text-white text-3xl font-bold tracking-tight">KBMC</span>
                       <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Kota Bharu Medical Centre</span>
                     </div>
                   </div>
@@ -62,22 +70,22 @@ const App: React.FC = () => {
                   <div className="pt-4">
                     <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-4">Follow Us</h4>
                     <div className="flex gap-3">
-                      <a href="https://www.facebook.com/kbmofficial?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
-                        <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                      <a href="https://www.facebook.com/kbmofficial?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
+                        <Facebook className="w-3.5 h-3.5 text-gray-400 group-hover:text-white" />
                       </a>
-                      <a href="https://www.instagram.com/kbmc_official?igsh=MW14OWZubG9vYmpycQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
-                        <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                      <a href="https://www.instagram.com/kbmc_official?igsh=MW14OWZubG9vYmpycQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
+                        <Instagram className="w-3.5 h-3.5 text-gray-400 group-hover:text-white" />
                       </a>
-                      <a href="https://www.tiktok.com/@kbmc_official?_t=8p32vlGZMpO&_r=1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
+                      <a href="https://www.tiktok.com/@kbmc_official?_t=8p32vlGZMpO&_r=1" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
                         <img 
                           src="https://storage.googleapis.com/igc-health/logoinsurance/tik-tok%20line%202.png" 
                           alt="TikTok" 
-                          className="w-5 h-5 brightness-0 invert opacity-40 group-hover:opacity-100 transition-opacity"
+                          className="w-3.5 h-3.5 brightness-0 invert opacity-40 group-hover:opacity-100 transition-opacity"
                           referrerPolicy="no-referrer"
                         />
                       </a>
-                      <a href="https://www.youtube.com/@kotabharumedicalcentre" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
-                        <Youtube className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                      <a href="https://www.youtube.com/@kotabharumedicalcentre" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
+                        <Youtube className="w-3.5 h-3.5 text-gray-400 group-hover:text-white" />
                       </a>
                     </div>
                   </div>

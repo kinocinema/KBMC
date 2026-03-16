@@ -74,7 +74,7 @@ const InsurancePanels: React.FC = () => {
           <span className="text-[#006D77] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs">{t('insurance.hero.badge')}</span>
           <h1 className="text-6xl md:text-9xl font-black leading-tight">
             <span className="text-[#006D77]">{t('insurance.hero.title')}</span>{' '}
-            <span className="text-[#E29578] italic font-serif">{t('insurance.hero.title2')}</span>
+            <span className="text-[#E29578]">{t('insurance.hero.title2')}</span>
           </h1>
           <p className="text-base md:text-lg text-[#2C3E50] leading-relaxed font-bold max-w-2xl mx-auto">
             {t('insurance.hero.desc')}
@@ -90,7 +90,7 @@ const InsurancePanels: React.FC = () => {
                   <div className="w-12 h-12 rounded-2xl bg-[#006D77] flex items-center justify-center text-white shadow-lg">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
-                  <h2 className="text-3xl font-black text-[#006D77] tracking-tight font-serif">{group.category}</h2>
+                  <h2 className="text-3xl font-black text-[#006D77] tracking-tight">{group.category}</h2>
                </div>
                
                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -103,7 +103,7 @@ const InsurancePanels: React.FC = () => {
                           <img 
                             src={p.logoUrl || `https://logo.clearbit.com/${p.domain}`} 
                             alt={p.name}
-                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-125"
+                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-90"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${p.name}&background=EDF6F9&color=006D77&bold=true&size=128`;
                             }}
@@ -127,7 +127,7 @@ const InsurancePanels: React.FC = () => {
              <Globe className="w-10 h-10 md:w-12 md:h-12 text-[#83C5BE]" />
           </div>
           <div className="space-y-4 relative z-10 flex-grow text-center md:text-left">
-             <h3 className="text-3xl font-black font-serif">{t('insurance.note.title')}</h3>
+             <h3 className="text-3xl font-black">{t('insurance.note.title')}</h3>
              <p className="text-sm md:text-base text-gray-400 font-medium leading-relaxed max-w-3xl">
                {t('insurance.note.desc')}
              </p>

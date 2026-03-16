@@ -83,7 +83,7 @@ const VirtualTour: React.FC = () => {
       </div>
       
       <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-[#2C3E50]/70 italic text-sm">
+        <p className="text-[#2C3E50]/70 text-sm">
           * Use your mouse to drag and explore. Click info icons for more details.
         </p>
         <div className="flex items-center gap-2 bg-[#83C5BE]/20 px-4 py-2 rounded-full border border-[#83C5BE]/30">

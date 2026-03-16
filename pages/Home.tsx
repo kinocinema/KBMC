@@ -114,7 +114,7 @@ const FacilityCarousel = () => {
                     
                     <div className="relative">
                       <Quote className="absolute -top-6 -left-10 w-20 h-20 text-white/10" />
-                      <p className="text-3xl md:text-5xl font-bold text-white leading-tight italic">
+                      <p className="text-3xl md:text-5xl font-bold text-white leading-tight">
                         "{slide.testimonial}"
                       </p>
                     </div>
@@ -163,98 +163,109 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center px-4 md:px-8 bg-[#EDF6F9] overflow-hidden py-24">
-        {/* Concentric Circles Background Pattern */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-[0.05]">
-          <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] border border-[#006D77] rounded-full"></div>
-          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] border border-[#006D77] rounded-full"></div>
-          <div className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] border border-[#006D77] rounded-full"></div>
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] border border-[#006D77] rounded-full"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+      <section className="relative min-h-[90vh] flex items-center px-4 md:px-8 bg-[#F4F9FA] overflow-hidden py-24">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E9F3F5] rounded-l-[10rem] -z-10 hidden lg:block"></div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
           <div className="space-y-10">
-            <div className={`space-y-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <span className="inline-block text-[#006D77] font-black uppercase tracking-[0.3em] text-xs">
-                {t('hero.badge')}
-              </span>
-              <h1 className="text-6xl md:text-8xl font-black leading-[0.95] text-[#006D77] font-serif uppercase tracking-tighter">
-                {t('hero.title')} <br/>{t('hero.title2')} <br/><span className="text-[#83C5BE]">{t('hero.italic')}</span>
+            <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-[#83C5BE]/20">
+                <Sparkles className="w-4 h-4 text-[#83C5BE]" />
+                <span className="text-[#006D77] font-bold uppercase tracking-wider text-[10px]">
+                  {t('hero.badge')}
+                </span>
+              </div>
+              
+              <h1 className="text-6xl md:text-8xl font-black leading-[1.1] text-[#006D77]">
+                {t('hero.title')} <br/>
+                <span className="text-[#E29578]">{t('hero.title2')}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-[#2C3E50]/70 font-medium leading-relaxed max-w-xl">
+              
+              <p className="text-lg md:text-xl text-[#2C3E50]/70 font-medium leading-relaxed max-w-xl">
                 {t('hero.desc')}
               </p>
             </div>
             
-            <div className={`flex flex-wrap gap-6 ${isVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
-              <Link to="/find-doctor" className="bg-[#006D77] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#E29578] transition-all shadow-2xl shadow-[#006D77]/20 active:scale-95">
+            <div className={`flex flex-wrap gap-6 items-center ${isVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
+              <Link to="/find-doctor" className="bg-[#006D77] text-white px-8 py-4 rounded-full font-black text-sm flex items-center gap-3 hover:bg-[#005a63] transition-all shadow-xl shadow-[#006D77]/20 active:scale-95">
                 {t('hero.cta.find')}
+                <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link to="/about" className="bg-white text-[#006D77] px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#EDF6F9] transition-all border-2 border-[#006D77]/10 active:scale-95">
-                {t('hero.cta.about')}
+              <Link to="/find-doctor" className="bg-transparent text-[#006D77] px-8 py-4 rounded-full font-black text-sm border-2 border-[#006D77] hover:bg-[#006D77] hover:text-white transition-all active:scale-95">
+                {t('hero.cta.book')}
               </Link>
+            </div>
+
+            {/* Stats Section */}
+            <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-gray-200 ${isVisible ? 'animate-fade-in-up stagger-2' : 'opacity-0'}`}>
+              {[
+                { label: t('hero.stat.years'), value: '27+' },
+                { label: t('hero.stat.specialists'), value: '30+' },
+                { label: t('hero.stat.emergency'), value: '24/7' },
+                { label: t('hero.stat.facility'), value: '32k+' }
+              ].map((stat, idx) => (
+                <div key={idx} className="space-y-1">
+                  <p className="text-3xl font-black text-[#006D77]">{stat.value}</p>
+                  <p className="text-[10px] font-black text-[#83C5BE] uppercase tracking-widest leading-tight">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className={`relative ${isVisible ? 'animate-scale-in stagger-1' : 'opacity-0'}`}>
-            <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-[12px] border-white aspect-[4/5] group">
+            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl aspect-[4/5] group">
               <HeroImage 
-                src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+                src="https://storage.googleapis.com/igc-health/Welcoming.png" 
                 alt="KBMC Medical Excellence" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/40 to-transparent opacity-60"></div>
-              <div className="absolute bottom-10 left-10 right-10 bg-white/95 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-2xl border border-white/50">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-[#EDF6F9] rounded-2xl flex items-center justify-center text-[#006D77]">
-                    <ShieldCheck className="w-8 h-8" />
+              
+              {/* Ibadah Friendly Card */}
+              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/50 transform transition-transform group-hover:translate-y-[-10px]">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-[#006D77]/10 rounded-xl flex items-center justify-center text-[#006D77] flex-shrink-0">
+                    <ShieldCheck className="w-6 h-6" />
                   </div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#83C5BE] mb-1">{t('hero.accreditation.title')}</p>
-                    <p className="text-lg font-black text-[#006D77] leading-tight">{t('hero.accreditation.desc')}</p>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#006D77]" />
+                      <p className="text-xs font-black uppercase tracking-widest text-[#006D77]">{t('hero.ibadah.title')}</p>
+                    </div>
+                    <p className="text-[11px] font-medium text-gray-600 leading-relaxed">
+                      {t('hero.ibadah.desc')}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+            
+            {/* Decorative dots or shapes could go here if needed */}
           </div>
         </div>
       </section>
 
       {/* Legacy Section */}
-      <section className="py-40 px-4 md:px-8 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center">
-          <div className="lg:w-1/2 space-y-12 relative">
-             <div className="absolute -top-32 -left-20 text-[25rem] font-serif opacity-[0.02] pointer-events-none select-none leading-none">KB</div>
-             <div className={`space-y-8 ${isVisible ? 'animate-reveal-left stagger-2' : ''}`}>
-                <div className="space-y-4">
-                  <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-xs">{t('legacy.badge')}</span>
-                  <h2 className="text-6xl md:text-7xl font-black text-[#006D77] leading-[1] font-serif uppercase tracking-tight">
-                    {t('legacy.title')} <br/><span className="text-[#83C5BE]">{t('legacy.accent')}</span>
-                  </h2>
-                </div>
-                <p className="text-2xl text-[#2C3E50]/70 leading-relaxed font-medium max-w-xl">{t('legacy.desc')}</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-16">
-                  {[t('legacy.feat.1'), t('legacy.feat.2'), t('legacy.feat.3'), t('legacy.feat.4')].map((item) => (
-                    <div key={item} className={`flex items-center gap-5 group p-2 transition-all cursor-default`}>
-                      <div className="w-10 h-10 rounded-2xl bg-[#EDF6F9] flex items-center justify-center text-[#006D77] group-hover:bg-[#006D77] group-hover:text-white transition-all shadow-sm">
-                        <CheckCircle2 className="w-5 h-5" />
-                      </div>
-                      <span className="font-black text-[#2C3E50] text-sm uppercase tracking-widest">{item}</span>
-                    </div>
-                  ))}
-                </div>
-             </div>
+      <section className="py-32 px-4 md:px-8 bg-[#F4F9FA] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+          <div className="lg:w-1/2 space-y-8">
+            <h2 className="text-5xl md:text-6xl font-black text-[#006D77] leading-tight">
+              {t('legacy.title')}
+            </h2>
+            <p className="text-lg text-gray-500 leading-relaxed font-medium">
+              {t('legacy.desc')}
+            </p>
+            <Link to="/about" className="inline-block bg-[#6B9095] text-white px-8 py-3 rounded-lg font-bold text-sm hover:bg-[#5a7a7e] transition-all active:scale-95">
+              {t('legacy.cta')}
+            </Link>
           </div>
           <div className="lg:w-1/2 relative">
-             <div className="grid grid-cols-2 gap-8 relative z-10">
-                <div className="space-y-8">
-                  <img src="https://storage.googleapis.com/igc-health/Welcoming.png" className="rounded-[4rem] shadow-2xl hover:scale-105 transition-all duration-[2s] aspect-[3/4] object-cover border-8 border-[#EDF6F9]" alt="Lobby"/>
-                  <img src="https://storage.googleapis.com/igc-health/Surgical%202.png" className="rounded-[4rem] shadow-2xl hover:scale-105 transition-all duration-[2s] aspect-square object-cover border-8 border-[#EDF6F9]" alt="Surgical"/>
-                </div>
-                <div className="space-y-8 pt-20">
-                  <img src="https://storage.googleapis.com/igc-health/Care%202.png" className="rounded-[4rem] shadow-2xl hover:scale-105 transition-all duration-[2s] aspect-square object-cover border-8 border-[#EDF6F9]" alt="Care"/>
-                  <img src="https://storage.googleapis.com/igc-health/Meternati%202.png" className="rounded-[4rem] shadow-2xl hover:scale-105 transition-all duration-[2s] aspect-[3/4] object-cover border-8 border-[#EDF6F9]" alt="Maternity"/>
-                </div>
-             </div>
+            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white group">
+              <img 
+                src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+                alt="Kota Bharu Medical Centre" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -298,7 +309,7 @@ const Home: React.FC = () => {
           <div className="mt-24 text-center">
             <div className="inline-block relative">
               <Quote className="absolute -top-8 -left-12 w-20 h-20 text-white/10" />
-              <p className="text-2xl md:text-3xl font-bold text-white italic max-w-4xl mx-auto">
+              <p className="text-2xl md:text-3xl font-bold text-white max-w-4xl mx-auto">
                 "{t('home.expect.quote')}"
               </p>
             </div>
@@ -312,7 +323,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-end gap-12">
             <div className="space-y-6 max-w-2xl">
               <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-xs">{t('services.badge')}</span>
-              <h2 className="text-6xl md:text-7xl font-black text-[#006D77] font-serif uppercase leading-[1]">{t('services.title')}</h2>
+              <h2 className="text-6xl md:text-7xl font-black text-[#006D77] uppercase leading-[1]">{t('services.title')}</h2>
             </div>
             <Link to="/services" className="group flex items-center gap-4 bg-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-[#006D77] hover:bg-[#006D77] hover:text-white transition-all shadow-xl active:scale-95">
               {t('services.cta')}
@@ -330,7 +341,7 @@ const Home: React.FC = () => {
                   <div className="w-20 h-20 bg-[#EDF6F9] rounded-[2.5rem] flex items-center justify-center text-[#006D77] mb-10 group-hover:bg-[#006D77] group-hover:text-white transition-all duration-500 transform group-hover:rotate-[10deg] shadow-inner">
                     {service.icon}
                   </div>
-                  <h3 className="text-3xl font-black text-[#006D77] mb-6 leading-tight group-hover:text-[#E29578] transition-colors font-serif">{t(`services.item.${service.id}.title` as TranslationKeys) || service.title}</h3>
+                  <h3 className="text-3xl font-black text-[#006D77] mb-6 leading-tight group-hover:text-[#E29578] transition-colors">{t(`services.item.${service.id}.title` as TranslationKeys) || service.title}</h3>
                   <p className="text-lg text-gray-500 mb-12 font-medium leading-relaxed">{t(`services.item.${service.id}.desc` as TranslationKeys) || service.description}</p>
                   <Link 
                     to={`/services?dept=${service.id}`}

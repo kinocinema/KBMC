@@ -74,7 +74,7 @@ const Services: React.FC = () => {
             <div className="w-1.5 h-1.5 rounded-full bg-[#83C5BE] animate-pulse"></div>
             <span>{t('services.hero.badge')}</span>
           </div>
-          <h1 className={`text-6xl md:text-9xl font-black text-white font-serif uppercase tracking-tighter leading-[0.85] ${isVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
+          <h1 className={`text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-[0.85] ${isVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
             {t('services.hero.title')} <br/>
             <span className="text-[#83C5BE]">{t('services.hero.title_accent')}</span>
           </h1>
@@ -97,7 +97,7 @@ const Services: React.FC = () => {
                   {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-7 h-7" })}
                 </div>
                 
-                <h3 className="text-2xl font-black text-[#006D77] mb-3 leading-tight font-serif h-16 flex items-center">{t(`services.item.${service.id}.title`)}</h3>
+                <h3 className="text-2xl font-black text-[#006D77] mb-3 leading-tight h-16 flex items-center">{t(`services.item.${service.id}.title`)}</h3>
                 <p className="text-gray-400 mb-8 leading-relaxed font-medium text-[13px]">{t(`services.item.${service.id}.desc`)}</p>
                 
                 <div className="space-y-6 mb-10">
@@ -276,7 +276,7 @@ const Services: React.FC = () => {
             <div className={`space-y-12 ${isVisible ? 'animate-reveal-left' : ''}`}>
               <div className="space-y-6">
                  <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-xs">{t('services.infra.badge')}</span>
-                 <h2 className="text-5xl md:text-7xl font-black text-white leading-[1.1] font-serif">
+                 <h2 className="text-5xl md:text-7xl font-black text-white leading-[1.1]">
                    {t('services.infra.title')} <br/>
                    <span className="text-[#83C5BE]">{t('services.infra.title_italic')}</span>
                  </h2>

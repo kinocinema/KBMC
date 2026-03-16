@@ -88,7 +88,7 @@ const RoomRates: React.FC = () => {
           <span className="text-[#006D77] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs">{t('rooms.hero.badge')}</span>
           <h1 className="text-6xl md:text-9xl font-black leading-tight">
             <span className="text-[#006D77]">{t('rooms.hero.title')}</span>{' '}
-            <span className="text-[#E29578] italic font-serif">{t('rooms.hero.title2')}</span>
+            <span className="text-[#E29578]">{t('rooms.hero.title2')}</span>
           </h1>
           <p className="text-base md:text-lg text-[#2C3E50] leading-relaxed font-bold max-w-2xl mx-auto">
             {t('rooms.hero.desc')}
@@ -141,7 +141,7 @@ const RoomRates: React.FC = () => {
              <span className="text-[#006D77] font-black uppercase tracking-widest text-[10px] md:text-xs">{t('rooms.facilities.badge')}</span>
              <h2 className="text-5xl md:text-7xl font-black leading-tight">
                <span className="text-[#006D77]">{t('rooms.facilities.title')}</span>{' '}
-               <span className="text-[#E29578] italic font-serif">{t('rooms.facilities.title2')}</span>
+               <span className="text-[#E29578]">{t('rooms.facilities.title2')}</span>
              </h2>
              <p className="text-base md:text-lg text-[#2C3E50]/70 leading-relaxed font-medium max-w-xl">
                {t('rooms.facilities.desc')}

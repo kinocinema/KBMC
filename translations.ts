@@ -7,20 +7,28 @@ export const translations = {
     'nav.visitor': 'Patient & Visitor',
     'nav.hospital': 'Our Hospital',
     'nav.contact': 'Contact',
+    'nav.findDoctor': 'Find a Specialist',
+    'nav.services': 'Medical Services',
+    'nav.patientGuide': 'Patient Guide',
+    'nav.roomRates': 'Room Rates',
+    'nav.insurance': 'Insurance Panels',
     'nav.book': 'Book Appointment',
     'nav.emergency': 'Emergency Hotline',
     'nav.location': 'Lundang, Kota Bharu',
     
     // Home - Hero
-    'hero.badge': 'The Pioneer of Private Healthcare in Kelantan',
-    'hero.title': 'Medical',
-    'hero.title2': 'Excellence',
-    'hero.italic': 'With Heart.',
-    'hero.desc': 'Welcome to the KBMC Family! At Kota Bharu Medical Centre, your health and comfort are our top priorities. From the moment you arrive, our dedicated team of specialists and professional staff are here to ensure you receive the highest standard of care in a safe and supportive environment.',
+    'hero.badge': 'Pioneer Specialist Hospital in Kelantan',
+    'hero.title': 'World-Class',
+    'hero.title2': 'Healthcare.',
+    'hero.desc': 'Expert medical excellence meets heartfelt community care. Dedicated to your wellness since 1997.',
     'hero.cta.find': 'Find a Specialist',
-    'hero.cta.about': 'Our Heritage',
-    'hero.accreditation.title': 'Accreditation',
-    'hero.accreditation.desc': 'MSQH Certified Hospital',
+    'hero.cta.book': 'Book Appointment',
+    'hero.stat.years': 'YEARS SERVICE',
+    'hero.stat.specialists': 'SPECIALISTS',
+    'hero.stat.emergency': 'EMERGENCY',
+    'hero.stat.facility': 'FACILITY AREA',
+    'hero.ibadah.title': 'IBADAH-FRIENDLY',
+    'hero.ibadah.desc': 'A Shariah-compliant healing environment tailored for your spiritual and physical recovery.',
 
     // Home - Expect
     'home.expect.title': 'What to Expect During Your Visit',
@@ -46,14 +54,9 @@ export const translations = {
     'carousel.slide3.role': 'Health Screening Patient',
     
     // Home - Legacy
-    'legacy.badge': 'Our Legacy',
-    'legacy.title': 'Your Trusted Health',
-    'legacy.accent': 'Partner in Lundang.',
-    'legacy.desc': 'Kota Bharu Medical Centre (KBMC) holds the distinction of being the first Private Specialist Hospital in Kelantan. Established to provide accessible, high-quality specialist care, KBMC has been a cornerstone of the regional healthcare landscape for over 25 years.',
-    'legacy.feat.1': 'MSQH Accredited Excellence',
-    'legacy.feat.2': 'Female-led Maternity Teams',
-    'legacy.feat.3': 'Advanced Surgical Theaters',
-    'legacy.feat.4': 'Halal-Certified Care',
+    'legacy.title': 'Kota Bharu Medical Centre',
+    'legacy.desc': 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et',
+    'legacy.cta': 'Learn more about us',
 
     // Home - Services
     'services.badge': 'Our Specialties',
@@ -191,10 +194,50 @@ export const translations = {
     'ai.disclaimer': 'General info only • Not medical advice',
     'ai.placeholder': 'Ask me anything...',
 
-    // Generic
-    'back': 'Back',
-    'details': 'Details',
-    'confirm': 'Confirm',
+    // Sitemap / Nav Reorganization
+    'nav.specialists': 'Specialists & Services',
+    'nav.international': 'International Patients',
+    'nav.screening': 'Health Screening',
+    'nav.faq': 'FAQ',
+    'nav.news': 'News & Gallery',
+    'nav.coe': 'Centre of Excellence',
+
+    // Medical Tourism
+    'tourism.hero.badge': 'GLOBAL HEALTHCARE',
+    'tourism.hero.title': 'Medical',
+    'tourism.hero.title2': 'Tourism.',
+    'tourism.hero.desc': 'Experience world-class healthcare in the heart of Kelantan. KBMC provides a seamless journey for international patients, from visa assistance to luxury recovery suites.',
+    'tourism.why.title': 'Why Choose KBMC?',
+    'tourism.why.desc': 'We combine clinical excellence with the warm hospitality of the East Coast, offering affordable yet premium medical services.',
+    'tourism.ipc.title': 'International Patient Centre (IPC)',
+    'tourism.ipc.desc': 'Our dedicated IPC team is here to assist you with every aspect of your visit, ensuring a stress-free experience.',
+    'tourism.concierge.title': 'Concierge Services',
+    'tourism.concierge.desc': 'From airport transfers to nearby hotel arrangements, we take care of the details so you can focus on your health.',
+
+    // FAQ
+    'faq.hero.badge': 'SUPPORT CENTRE',
+    'faq.hero.title': 'Common',
+    'faq.hero.title2': 'Questions.',
+    'faq.hero.desc': 'Find quick answers to common inquiries about our services, billing, and facilities.',
+    'faq.tristar.title': 'KBMC Tristar',
+    'faq.tristar.desc': 'Learn about our upcoming expansion and the future of intelligent healthcare in Kelantan.',
+
+    // News & Gallery
+    'news.hero.badge': 'HOSPITAL UPDATES',
+    'news.hero.title': 'News &',
+    'news.hero.title2': 'Gallery.',
+    'news.hero.desc': 'Stay updated with the latest happenings, press releases, and events at Kota Bharu Medical Centre.',
+
+    // Centre of Excellence
+    'coe.hero.badge': 'SPECIALIZED CARE',
+    'coe.hero.title': 'Centres of',
+    'coe.hero.title2': 'Excellence.',
+    'coe.hero.desc': 'Our specialized centres provide focused, high-level care in key medical disciplines, powered by advanced technology and expert consultants.',
+    'coe.women.title': 'Women & Child Centre',
+    'coe.heart.title': 'Heart Centre',
+    'coe.cancer.title': 'Cancer Centre (Oncology)',
+    'coe.eye.title': 'Eyes Centre (Ophthalmology)',
+    'coe.digestive.title': 'Digestive Health (Gastroenterology)',
 
     // Patient Guide
     'guide.hero.badge': 'Patient Experience',
@@ -440,20 +483,28 @@ export const translations = {
     'nav.visitor': 'Pesakit & Pelawat',
     'nav.hospital': 'Hospital Kami',
     'nav.contact': 'Hubungi Kami',
+    'nav.findDoctor': 'Cari Pakar',
+    'nav.services': 'Perkhidmatan Perubatan',
+    'nav.patientGuide': 'Panduan Pesakit',
+    'nav.roomRates': 'Kadar Bilik',
+    'nav.insurance': 'Panel Insurans',
     'nav.book': 'Temujanji',
     'nav.emergency': 'Talian Kecemasan',
     'nav.location': 'Lundang, Kota Bharu',
 
     // Home - Hero
-    'hero.badge': 'Perintis Penjagaan Kesihatan Swasta di Kelantan',
-    'hero.title': 'Kecemerlangan',
-    'hero.title2': 'Perubatan',
-    'hero.italic': 'Dengan Hati.',
-    'hero.desc': 'Selamat datang ke Keluarga KBMC! Di Pusat Perubatan Kota Bharu, kesihatan dan keselesaan anda adalah keutamaan kami. Dari saat anda tiba, pasukan pakar dan kakitangan profesional kami yang berdedikasi berada di sini untuk memastikan anda menerima standard penjagaan tertinggi dalam persekitaran yang selamat dan menyokong.',
+    'hero.badge': 'Hospital Pakar Perintis di Kelantan',
+    'hero.title': 'Penjagaan Kesihatan',
+    'hero.title2': 'Bertaraf Dunia.',
+    'hero.desc': 'Kecemerlangan perubatan pakar bertemu dengan penjagaan komuniti yang tulus. Berdedikasi untuk kesejahteraan anda sejak 1997.',
     'hero.cta.find': 'Cari Pakar',
-    'hero.cta.about': 'Warisan Kami',
-    'hero.accreditation.title': 'Akreditasi',
-    'hero.accreditation.desc': 'Hospital Diiktiraf MSQH',
+    'hero.cta.book': 'Temujanji',
+    'hero.stat.years': 'TAHUN PERKHIDMATAN',
+    'hero.stat.specialists': 'PAKAR',
+    'hero.stat.emergency': 'KECEMASAN',
+    'hero.stat.facility': 'KAWASAN FASILITI',
+    'hero.ibadah.title': 'MESRA IBADAH',
+    'hero.ibadah.desc': 'Persekitaran penyembuhan patuh Syariah yang disesuaikan untuk pemulihan rohani dan fizikal anda.',
 
     // Home - Expect
     'home.expect.title': 'Apa yang Dijangkakan Semasa Lawatan Anda',
@@ -479,14 +530,9 @@ export const translations = {
     'carousel.slide3.role': 'Pesakit Saringan Kesihatan',
 
     // Home - Legacy
-    'legacy.badge': 'Warisan Kami',
-    'legacy.title': 'Rakan Kesihatan',
-    'legacy.accent': 'Dipercayai di Lundang.',
-    'legacy.desc': 'Pusat Perubatan Kota Bharu (KBMC) memegang gelaran sebagai Hospital Pakar Swasta pertama di Kelantan. Ditubuhkan untuk menyediakan penjagaan pakar yang mudah diakses dan berkualiti tinggi, KBMC telah menjadi tunjang landskap penjagaan kesihatan serantau selama lebih 25 tahun.',
-    'legacy.feat.1': 'Kecemerlangan Diiktiraf MSQH',
-    'legacy.feat.2': 'Pasukan Bersalin Terajui Wanita',
-    'legacy.feat.3': 'Dewan Bedah Canggih',
-    'legacy.feat.4': 'Penjagaan Berstatus Halal',
+    'legacy.title': 'Kota Bharu Medical Centre',
+    'legacy.desc': 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et',
+    'legacy.cta': 'Ketahui lebih lanjut tentang kami',
 
     // Home - Services
     'services.badge': 'Kepakaran Kami',
@@ -624,10 +670,50 @@ export const translations = {
     'ai.disclaimer': 'Maklumat am sahaja • Bukan nasihat perubatan',
     'ai.placeholder': 'Tanya saya apa sahaja...',
 
-    // Generic
-    'back': 'Kembali',
-    'details': 'Butiran',
-    'confirm': 'Sahkan',
+    // Sitemap / Nav Reorganization
+    'nav.specialists': 'Pakar & Perkhidmatan',
+    'nav.international': 'Pesakit Antarabangsa',
+    'nav.screening': 'Saringan Kesihatan',
+    'nav.faq': 'Soalan Lazim',
+    'nav.news': 'Berita & Galeri',
+    'nav.coe': 'Pusat Kecemerlangan',
+
+    // Medical Tourism
+    'tourism.hero.badge': 'PENJAGAAN KESIHATAN GLOBAL',
+    'tourism.hero.title': 'Pelancongan',
+    'tourism.hero.title2': 'Perubatan.',
+    'tourism.hero.desc': 'Alami penjagaan kesihatan bertaraf dunia di tengah-tengah Kelantan. KBMC menyediakan perjalanan yang lancar untuk pesakit antarabangsa, daripada bantuan visa hingga suite pemulihan mewah.',
+    'tourism.why.title': 'Mengapa Memilih KBMC?',
+    'tourism.why.desc': 'Kami menggabungkan kecemerlangan klinikal dengan hospitaliti mesra Pantai Timur, menawarkan perkhidmatan perubatan yang berpatutan namun premium.',
+    'tourism.ipc.title': 'Pusat Pesakit Antarabangsa (IPC)',
+    'tourism.ipc.desc': 'Pasukan IPC kami yang berdedikasi sedia membantu anda dalam setiap aspek lawatan anda, memastikan pengalaman tanpa tekanan.',
+    'tourism.concierge.title': 'Perkhidmatan Concierge',
+    'tourism.concierge.desc': 'Daripada pemindahan lapangan terbang kepada pengaturan hotel berdekatan, kami menguruskan butiran supaya anda boleh fokus pada kesihatan anda.',
+
+    // FAQ
+    'faq.hero.badge': 'PUSAT SOKONGAN',
+    'faq.hero.title': 'Soalan',
+    'faq.hero.title2': 'Lazim.',
+    'faq.hero.desc': 'Cari jawapan pantas kepada pertanyaan biasa tentang perkhidmatan, bil, dan kemudahan kami.',
+    'faq.tristar.title': 'KBMC Tristar',
+    'faq.tristar.desc': 'Ketahui tentang pengembangan kami yang akan datang dan masa depan penjagaan kesihatan pintar di Kelantan.',
+
+    // News & Gallery
+    'news.hero.badge': 'KEMASKINI HOSPITAL',
+    'news.hero.title': 'Berita &',
+    'news.hero.title2': 'Galeri.',
+    'news.hero.desc': 'Ikuti perkembangan terkini, siaran akhbar, dan acara di Pusat Perubatan Kota Bharu.',
+
+    // Centre of Excellence
+    'coe.hero.badge': 'PENJAGAAN KHUSUS',
+    'coe.hero.title': 'Pusat',
+    'coe.hero.title2': 'Kecemerlangan.',
+    'coe.hero.desc': 'Pusat khusus kami menyediakan penjagaan peringkat tinggi yang fokus dalam disiplin perubatan utama, dikuasai oleh teknologi canggih dan perunding pakar.',
+    'coe.women.title': 'Pusat Wanita & Kanak-kanak',
+    'coe.heart.title': 'Pusat Jantung',
+    'coe.cancer.title': 'Pusat Kanser (Onkologi)',
+    'coe.eye.title': 'Pusat Mata (Oftalmologi)',
+    'coe.digestive.title': 'Kesihatan Pencernaan (Gastroenterologi)',
 
     // Patient Guide
     'guide.hero.badge': 'Pengalaman Pesakit',

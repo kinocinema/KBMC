@@ -30,7 +30,7 @@ const PatientGuide: React.FC = () => {
           <span className="text-[#006D77] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs">{t('guide.hero.badge')}</span>
           <h1 className="text-5xl md:text-8xl font-black leading-tight">
             <span className="text-[#006D77]">{t('guide.hero.title')}</span>{' '}
-            <span className="text-[#E29578] italic font-serif">{t('guide.hero.title2')}</span>
+            <span className="text-[#E29578]">{t('guide.hero.title2')}</span>
           </h1>
           <p className="text-base md:text-lg text-[#2C3E50] leading-relaxed font-bold max-w-2xl mx-auto">
             {t('guide.hero.desc')}
@@ -49,7 +49,7 @@ const PatientGuide: React.FC = () => {
               <div className="w-12 h-12 rounded-full bg-[#006D77] flex items-center justify-center text-white shadow-lg">
                 <Luggage className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl font-black text-[#006D77] font-serif">{t('guide.registry.title')}</h2>
+              <h2 className="text-3xl font-black text-[#006D77]">{t('guide.registry.title')}</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,7 +92,7 @@ const PatientGuide: React.FC = () => {
                 <Wallet className="w-10 h-10 text-[#83C5BE]" />
               </div>
               <div className="space-y-2 text-center md:text-left">
-                <h3 className="text-2xl font-black font-serif">{t('guide.financial.title')}</h3>
+                <h3 className="text-2xl font-black">{t('guide.financial.title')}</h3>
                 <p className="text-sm opacity-90 font-medium leading-relaxed">
                   {t('guide.financial.desc')}
                 </p>
@@ -106,7 +106,7 @@ const PatientGuide: React.FC = () => {
               <div className="w-12 h-12 rounded-full bg-[#E29578] flex items-center justify-center text-white shadow-lg">
                 <Users className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl font-black text-[#006D77] font-serif">{t('guide.visitor.title')}</h2>
+              <h2 className="text-3xl font-black text-[#006D77]">{t('guide.visitor.title')}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -118,7 +118,7 @@ const PatientGuide: React.FC = () => {
                    <div key={idx} className={`flex items-center gap-6 p-8 bg-white border border-gray-50 rounded-[2rem] shadow-sm ${isVisible ? `animate-fade-in-up stagger-${idx+1}` : 'opacity-0'}`}>
                       <div className="p-4 bg-[#F8FAFB] rounded-2xl shrink-0">{item.icon}</div>
                       <div className="space-y-1">
-                        <h4 className="text-lg font-black text-[#006D77] font-serif">{item.title}</h4>
+                        <h4 className="text-lg font-black text-[#006D77]">{item.title}</h4>
                         {item.times.map((t, tidx) => (
                           <p key={tidx} className="text-[10px] font-black uppercase tracking-widest text-gray-400 leading-tight">{t}</p>
                         ))}
@@ -129,7 +129,7 @@ const PatientGuide: React.FC = () => {
               
               {/* Patient Safety Card */}
               <div className={`md:col-span-7 bg-[#E29578]/5 border-l-4 border-[#E29578] p-10 rounded-3xl space-y-4 flex flex-col justify-center ${isVisible ? 'animate-fade-in-up stagger-3' : 'opacity-0'}`}>
-                 <h4 className="text-lg font-black text-[#006D77] flex items-center gap-3 font-serif">
+                 <h4 className="text-lg font-black text-[#006D77] flex items-center gap-3">
                    <AlertCircle className="w-5 h-5 text-[#E29578]" />
                    {t('guide.visitor.safety.title')}
                  </h4>
@@ -146,7 +146,7 @@ const PatientGuide: React.FC = () => {
            {/* Expert Assistance Card */}
            <div className={`bg-[#2C3E50] text-white p-10 rounded-[3rem] space-y-8 shadow-2xl border border-white/5 ${isVisible ? 'animate-reveal-right stagger-3' : 'opacity-0'}`}>
               <div className="space-y-3">
-                <h3 className="text-3xl font-black leading-tight font-serif">{t('guide.sidebar.title')}</h3>
+                <h3 className="text-3xl font-black leading-tight">{t('guide.sidebar.title')}</h3>
                 <p className="text-gray-400 font-medium text-sm leading-relaxed">{t('guide.sidebar.desc')}</p>
               </div>
               <div className="space-y-3">
@@ -170,7 +170,7 @@ const PatientGuide: React.FC = () => {
                 <CheckCircle2 className="w-8 h-8 text-[#006D77]" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-xl font-black text-[#006D77] font-serif">{t('guide.sidebar.shariah.title')}</h4>
+                <h4 className="text-xl font-black text-[#006D77]">{t('guide.sidebar.shariah.title')}</h4>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">{t('guide.sidebar.shariah.desc')}</p>
               </div>
            </div>

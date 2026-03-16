@@ -221,7 +221,7 @@ const About: React.FC = () => {
               </div>
               <div className="relative">
                 <Quote className="absolute -top-10 -left-12 w-24 h-24 text-white/10" />
-                <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed italic">
+                <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed">
                   {t('about.ceo.message')}
                 </p>
               </div>

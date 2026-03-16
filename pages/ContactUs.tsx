@@ -42,7 +42,7 @@ const ContactUs: React.FC = () => {
         <div className={`max-w-7xl mx-auto text-center space-y-4 relative z-10 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-xs">{t('contact.hero.badge')}</span>
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight">
-            {t('contact.hero.title')} <span className="text-[#E29578] italic">{t('contact.hero.title2')}</span>
+            {t('contact.hero.title')} <span className="text-[#E29578]">{t('contact.hero.title2')}</span>
           </h1>
         </div>
       </div>
