@@ -19,35 +19,35 @@ const CentreOfExcellence: React.FC = () => {
       icon: <Baby className="w-8 h-8" />,
       title: t('coe.women.title'),
       desc: 'Comprehensive care for mothers and children, featuring female-led maternity teams and advanced neonatal support.',
-      image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80'
+      image: 'https://storage.googleapis.com/igc-health/NICU%203.jpeg'
     },
     {
       id: 'heart',
       icon: <Heart className="w-8 h-8" />,
       title: t('coe.heart.title'),
       desc: 'Expert cardiovascular care focusing on prevention, diagnosis, and advanced treatment of heart conditions.',
-      image: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&q=80'
+      image: 'https://storage.googleapis.com/igc-health/Cardiology.png'
     },
     {
       id: 'cancer',
       icon: <Activity className="w-8 h-8" />,
       title: t('coe.cancer.title'),
       desc: 'Holistic oncology services including chemotherapy, specialized diagnostics, and supportive care in a healing environment.',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80'
+      image: 'https://storage.googleapis.com/igc-health/Chemoteraphy.png'
     },
     {
       id: 'eye',
       icon: <Eye className="w-8 h-8" />,
       title: t('coe.eye.title'),
       desc: 'Advanced ophthalmology services for vision preservation, cataract surgery, and comprehensive eye health management.',
-      image: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80'
+      image: 'https://storage.googleapis.com/igc-health/Eye%20Examination.png'
     },
     {
       id: 'digestive',
       icon: <ShieldCheck className="w-8 h-8" />,
       title: t('coe.digestive.title'),
       desc: 'Specialized gastroenterology care for digestive disorders, featuring advanced endoscopy and minimally invasive procedures.',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80'
+      image: 'https://storage.googleapis.com/igc-health/Gastroenterology%202.png'
     }
   ];
 
