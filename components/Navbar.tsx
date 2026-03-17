@@ -72,6 +72,12 @@ const Navbar: React.FC = () => {
                >
                  BM
                </button>
+               <button 
+                onClick={() => setLanguage('th')}
+                className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${language === 'th' ? 'bg-white text-[#006D77] shadow-sm' : 'text-white/60 hover:text-white'}`}
+               >
+                 TH
+               </button>
             </div>
             <div className="h-4 w-px bg-white/20"></div>
             <a href="tel:+6097477000" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#83C5BE] transition-colors">
