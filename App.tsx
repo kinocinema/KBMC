@@ -16,6 +16,7 @@ import ContactUs from './pages/ContactUs';
 import MedicalTourism from './pages/MedicalTourism';
 import FAQ from './pages/FAQ';
 import NewsGallery from './pages/NewsGallery';
+import NewsArticle from './pages/NewsArticle';
 import CentreOfExcellence from './pages/CentreOfExcellence';
 import AIChatbot from './components/AIChatbot';
 
@@ -39,6 +40,7 @@ const App: React.FC = () => {
               <Route path="/medical-tourism" element={<MedicalTourism />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/news-gallery" element={<NewsGallery />} />
+              <Route path="/news-gallery/:id" element={<NewsArticle />} />
               <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
             </Routes>
           </main>

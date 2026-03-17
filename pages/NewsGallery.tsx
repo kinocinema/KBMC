@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, Play, Image as ImageIcon, FileText, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
@@ -15,6 +16,7 @@ const NewsGallery: React.FC = () => {
 
   const items = [
     {
+      id: 'kbmc-tristar',
       type: 'news',
       title: 'KBMC Tristar: Redefining Healthcare in the East Coast',
       date: 'March 10, 2026',
@@ -22,24 +24,27 @@ const NewsGallery: React.FC = () => {
       desc: 'Our major expansion project is nearing completion, featuring state-of-the-art intelligent medical systems.'
     },
     {
+      id: 'world-heart-day',
       type: 'events',
       title: 'World Heart Day Wellness Campaign',
       date: 'February 28, 2026',
-      image: 'https://images.unsplash.com/photo-1505751172107-573967a4dd2b?auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80',
       desc: 'Join us for free health screenings and expert talks on cardiovascular health at our Main Lobby.'
     },
     {
+      id: 'healthcare-asia',
       type: 'media',
       title: 'KBMC Featured in Healthcare Asia Magazine',
       date: 'January 15, 2026',
-      image: 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80',
       desc: 'Recognition of our commitment to clinical excellence and patient-centered care in the region.'
     },
     {
+      id: 'new-mri',
       type: 'news',
       title: 'New MRI 3.0T System Now Operational',
       date: 'December 20, 2025',
-      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
       desc: 'Enhanced diagnostic precision with our latest generation imaging technology.'
     }
   ];
@@ -49,7 +54,14 @@ const NewsGallery: React.FC = () => {
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Hero Section */}
-      <div className="bg-[#006D77] py-24 px-4 md:px-8 relative overflow-hidden">
+      <div className="relative py-32 px-4 md:px-8 overflow-hidden bg-[#006D77]">
+        <img 
+          src="https://storage.googleapis.com/igc-health/News%20Gallery%202.png" 
+          alt="News & Gallery Banner" 
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/70 to-[#006D77]"></div>
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
         <div className={`max-w-7xl mx-auto text-center space-y-6 relative z-10 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[#83C5BE] text-[10px] font-black uppercase tracking-[0.3em] border border-white/10">
@@ -83,7 +95,7 @@ const NewsGallery: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {filteredItems.map((item, idx) => (
-            <div key={idx} className="group cursor-pointer">
+            <Link to={`/news-gallery/${item.id}`} key={idx} className="group cursor-pointer block">
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
                 <img 
                   src={item.image} 
@@ -117,7 +129,7 @@ const NewsGallery: React.FC = () => {
                   Read More <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

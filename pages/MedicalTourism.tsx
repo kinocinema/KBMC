@@ -41,12 +41,12 @@ const MedicalTourism: React.FC = () => {
       <div className="relative h-[60vh] flex items-center overflow-hidden bg-[#006D77]">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&q=80" 
+            src="https://storage.googleapis.com/igc-health/Medical%20Tourism.jpeg" 
             alt="Medical Tourism" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-50"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#006D77] via-[#006D77]/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#006D77] via-[#006D77]/70 to-transparent"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 w-full">
@@ -100,8 +100,8 @@ const MedicalTourism: React.FC = () => {
           <div className="relative">
             <div className="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&q=80" 
-                alt="Concierge" 
+                src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+                alt="KBMC Hospital" 
                 className="w-full h-[600px] object-cover"
                 referrerPolicy="no-referrer"
               />

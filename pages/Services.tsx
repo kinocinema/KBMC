@@ -97,18 +97,18 @@ const Services: React.FC = () => {
                   {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-7 h-7" })}
                 </div>
                 
-                <h3 className="text-2xl font-black text-[#006D77] mb-3 leading-tight h-16 flex items-center">{t(`services.item.${service.id}.title`)}</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed font-medium text-[13px]">{t(`services.item.${service.id}.desc`)}</p>
+                <h3 className="text-3xl font-black text-[#006D77] mb-3 leading-tight h-20 flex items-center">{t(`services.item.${service.id}.title`)}</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed font-medium text-sm">{t(`services.item.${service.id}.desc`)}</p>
                 
                 <div className="space-y-6 mb-10">
                   <div className="flex items-center gap-3">
                     <div className="h-px bg-gray-100 flex-grow"></div>
-                    <p className="text-[7px] font-black uppercase tracking-[0.4em] text-[#83C5BE] whitespace-nowrap">{t('services.focus')}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#83C5BE] whitespace-nowrap">{t('services.focus')}</p>
                     <div className="h-px bg-gray-100 flex-grow"></div>
                   </div>
                   <ul className="space-y-3.5">
                     {service.features.slice(0, 3).map((_, fidx) => (
-                      <li key={fidx} className="flex items-center gap-3 text-[11px] text-[#2C3E50] font-bold">
+                      <li key={fidx} className="flex items-center gap-3 text-sm text-[#2C3E50] font-bold">
                         <div className="w-1.5 h-1.5 rounded-sm bg-[#E29578]"></div>
                         {t(`services.item.${service.id}.feature${fidx + 1}`)}
                       </li>
@@ -119,17 +119,17 @@ const Services: React.FC = () => {
                 <div className="mt-auto pt-8 flex flex-col gap-3">
                   <button 
                     onClick={() => setSelectedService(service)}
-                    className="w-full py-3.5 rounded-full bg-[#006D77] text-white font-black text-[9px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#005a63] transition-all active:scale-95 shadow-lg shadow-[#006D77]/20"
+                    className="w-full py-4 rounded-full bg-[#006D77] text-white font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#005a63] transition-all active:scale-95 shadow-lg shadow-[#006D77]/20"
                   >
                     {t('services.btn.details')}
-                    <Info className="w-3 h-3" />
+                    <Info className="w-4 h-4" />
                   </button>
                   <Link 
                     to="/find-doctor" 
-                    className="w-full py-3.5 rounded-full border border-gray-200 text-[#006D77] font-black text-[9px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#EDF6F9] hover:border-[#006D77]/20 transition-all active:scale-95"
+                    className="w-full py-4 rounded-full border border-gray-200 text-[#006D77] font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#EDF6F9] hover:border-[#006D77]/20 transition-all active:scale-95"
                   >
                     {t('services.btn.consult')}
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

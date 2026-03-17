@@ -73,7 +73,14 @@ const FAQ: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFB] pb-24">
       {/* Hero Section */}
-      <div className="bg-[#006D77] py-24 px-4 md:px-8 relative overflow-hidden">
+      <div className="relative py-32 px-4 md:px-8 overflow-hidden bg-[#006D77]">
+        <img 
+          src="https://storage.googleapis.com/igc-health/FAQ.jpeg" 
+          alt="FAQ Banner" 
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/70 to-[#006D77]"></div>
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
         <div className={`max-w-4xl mx-auto text-center space-y-6 relative z-10 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[#83C5BE] text-[10px] font-black uppercase tracking-[0.3em] border border-white/10">
