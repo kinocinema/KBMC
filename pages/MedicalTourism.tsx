@@ -25,13 +25,13 @@ const MedicalTourism: React.FC = () => {
     },
     {
       icon: <ShieldCheck className="w-6 h-6" />,
-      title: 'Visa & Travel Support',
-      desc: 'Assistance with medical visa arrangements and travel documentation for a smooth entry into Malaysia.'
+      title: t('tourism.visa.title'),
+      desc: t('tourism.visa.desc')
     },
     {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Personalized Care',
-      desc: 'Dedicated patient coordinators to guide you through every step of your clinical journey.'
+      title: t('tourism.care.title'),
+      desc: t('tourism.care.desc')
     }
   ];
 
@@ -62,10 +62,10 @@ const MedicalTourism: React.FC = () => {
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <button className="bg-[#E29578] text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white hover:text-[#006D77] transition-all transform hover:scale-105 shadow-xl active:scale-95">
-                Begin Your Journey
+                {t('tourism.cta.begin')}
               </button>
               <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/20 transition-all">
-                Download Welcome Pack
+                {t('tourism.cta.download')}
               </button>
             </div>
           </div>
@@ -111,9 +111,9 @@ const MedicalTourism: React.FC = () => {
                 <div className="w-12 h-12 bg-[#006D77] rounded-full flex items-center justify-center text-white">
                   <Sparkles className="w-6 h-6" />
                 </div>
-                <span className="font-black text-[#006D77] text-sm uppercase tracking-widest">Premium Concierge</span>
+                <span className="font-black text-[#006D77] text-sm uppercase tracking-widest">{t('tourism.premium.title')}</span>
               </div>
-              <p className="text-sm text-gray-500 font-medium">Beyond borders, we provide a healing experience that feels like home.</p>
+              <p className="text-sm text-gray-500 font-medium">{t('tourism.premium.desc')}</p>
             </div>
           </div>
         </div>
@@ -123,16 +123,16 @@ const MedicalTourism: React.FC = () => {
       <div className="bg-[#EDF6F9] py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl font-black text-[#006D77] tracking-tight">International Patient Journey</h2>
-            <p className="text-gray-500 font-medium">A seamless 5-step process for your medical travel.</p>
+            <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('tourism.process.title')}</h2>
+            <p className="text-gray-500 font-medium">{t('tourism.process.desc')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             {[
-              { step: '01', title: 'Inquiry', desc: 'Contact our IPC team with your medical records.' },
-              { step: '02', title: 'Consultation', desc: 'Virtual evaluation with our specialists.' },
-              { step: '03', title: 'Planning', desc: 'Travel and treatment itinerary finalized.' },
-              { step: '04', title: 'Arrival', desc: 'Airport pick-up and concierge check-in.' },
-              { step: '05', title: 'Recovery', desc: 'Post-treatment care and travel support.' }
+              { step: '01', title: t('tourism.step1.title'), desc: t('tourism.step1.desc') },
+              { step: '02', title: t('tourism.step2.title'), desc: t('tourism.step2.desc') },
+              { step: '03', title: t('tourism.step3.title'), desc: t('tourism.step3.desc') },
+              { step: '04', title: t('tourism.step4.title'), desc: t('tourism.step4.desc') },
+              { step: '05', title: t('tourism.step5.title'), desc: t('tourism.step5.desc') }
             ].map((item, idx) => (
               <div key={idx} className="relative text-center space-y-4">
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto shadow-lg text-[#006D77] font-black text-xl border-4 border-[#83C5BE]">
@@ -154,17 +154,17 @@ const MedicalTourism: React.FC = () => {
         <div className="bg-[#006D77] rounded-[4rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight relative z-10">
-            Ready to Begin Your <span className="text-[#E29578]">Healing Journey?</span>
+            {t('tourism.footer.title1')} <span className="text-[#E29578]">{t('tourism.footer.title2')}</span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto relative z-10">
-            Contact our International Patient Centre today for a complimentary evaluation and travel estimate.
+            {t('tourism.footer.desc')}
           </p>
           <div className="flex flex-wrap justify-center gap-6 relative z-10">
             <a href="mailto:ipc@kbmc.com.my" className="bg-white text-[#006D77] px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#E29578] hover:text-white transition-all shadow-2xl">
-              Email Our IPC Team
+              {t('tourism.footer.email')}
             </a>
             <a href="tel:+6097458000" className="bg-transparent border-2 border-white/20 text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all">
-              Call Concierge
+              {t('tourism.footer.call')}
             </a>
           </div>
         </div>

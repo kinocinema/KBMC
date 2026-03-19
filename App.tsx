@@ -55,7 +55,7 @@ const App: React.FC = () => {
                     <img 
                       src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" 
                       alt="KBMC Logo" 
-                      className="h-14 brightness-0 invert"
+                      className="h-14 w-auto object-contain brightness-0 invert"
                     />
                     <div className="flex flex-col leading-tight">
                       <span className="text-white text-3xl font-bold tracking-tight">KBMC</span>

@@ -95,9 +95,13 @@ const Navbar: React.FC = () => {
         <nav className={`mx-auto transition-all duration-500 ${scrolled ? 'max-w-6xl rounded-full glass-nav shadow-2xl border border-white/20' : 'max-w-full bg-white border-b border-gray-100'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-20' : 'h-32'}`}>
-              <div className="flex items-center gap-3">
-                 <Link to="/" className="flex items-center gap-3">
-                   <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className={`transition-all duration-500 ${scrolled ? 'h-14' : 'h-24'} w-auto`} />
+              <div className="flex items-center gap-3 flex-shrink-0">
+                 <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+                   <img 
+                     src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" 
+                     alt="KBMC Logo" 
+                     className={`transition-all duration-500 ${scrolled ? 'h-10 md:h-14' : 'h-16 md:h-24'} w-auto object-contain`} 
+                   />
                  </Link>
               </div>
 
@@ -174,7 +178,7 @@ const Navbar: React.FC = () => {
             <div className={`absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
               <div className="flex flex-col h-full">
                 <div className="p-6 flex items-center justify-between border-b border-gray-100">
-                  <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-20 w-auto" />
+                  <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-16 md:h-20 w-auto object-contain" />
                   <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-[#006D77] transition-colors">
                     <X className="w-6 h-6" />
                   </button>
