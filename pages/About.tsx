@@ -24,12 +24,6 @@ const About: React.FC = () => {
     { key: 'C', title: t('about.values.c.title'), desc: t('about.values.c'), icon: <CheckCircle2 className="w-6 h-6" /> },
   ];
 
-  const management = [
-    { name: t('about.management.ceo.name'), title: t('about.management.ceo') },
-    { name: t('about.management.md.name'), title: t('about.management.md') },
-    { name: t('about.management.don.name'), title: t('about.management.don') },
-    { name: t('about.management.coo.name'), title: t('about.management.coo') },
-  ];
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -106,28 +100,6 @@ const About: React.FC = () => {
         </div>
       </div>
 
-      {/* Leadership Section */}
-      <div id="management" className="py-32 px-4 md:px-8 bg-[#F8FAFB]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
-            <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-sm">{t('about.management.badge')}</span>
-            <h2 className="text-5xl font-black text-[#006D77]">{t('about.management.title')}</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {management.map((person, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all text-center space-y-4">
-                <div className="w-24 h-24 bg-[#EDF6F9] rounded-full mx-auto flex items-center justify-center text-[#006D77]">
-                  <Users className="w-10 h-10" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-black text-[#006D77]">{person.name}</h3>
-                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest mt-1">{person.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Vision & Mission */}
       <div id="vision-mission" className="max-w-7xl mx-auto py-32 px-4 md:px-8 space-y-24">
