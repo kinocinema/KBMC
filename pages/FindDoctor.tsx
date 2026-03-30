@@ -123,10 +123,6 @@ const FindDoctor: React.FC = () => {
                   className="w-full h-full" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.15em] text-[#006D77] flex items-center gap-1.5 z-20 shadow-lg border border-white/50 whitespace-nowrap">
-                  <Star className="w-3 h-3 fill-[#E29578] text-[#E29578]" />
-                  {t('doctor.profile.specialized')}
-                </div>
               </div>
 
               <div className="space-y-6 w-full flex-1 flex flex-col">
