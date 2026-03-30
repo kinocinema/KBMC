@@ -90,12 +90,12 @@ const Navbar: React.FC = () => {
                 {/* Top Row */}
                 <div className="flex items-center space-x-3 xl:space-x-6 2xl:space-x-8">
                   {menuData.filter(m => ["HEALTH SCREENING PACKAGES AND CORPORATE WELLNESS PROGRAM", "MEDICAL TOURISM AND INTERNATIONAL PATIENT SERVICES", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
-                    <div key={menu.title} className="relative group flex items-center hover:z-50">
+                    <div key={menu.title} className="relative group flex items-center hover:z-50 after:content-[''] after:absolute after:left-0 after:right-0 after:top-full after:h-2">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[11px] xl:text-[13px] 2xl:text-sm font-bold uppercase tracking-wide px-3 xl:px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap ${menu.title === 'MYHEALTH360 FAQ' ? 'bg-[#F0F8FA]' : ''}`}>
                         {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
-                      <div className={`absolute top-full pt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 right-0`}>
-                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto pointer-events-auto">
+                      <div className={`absolute top-full mt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 right-0`}>
+                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
                           {menu.links.map((link) => (
                             <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
                               <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
@@ -110,12 +110,12 @@ const Navbar: React.FC = () => {
                 {/* Bottom Row */}
                 <div className="flex items-center space-x-3 xl:space-x-6 2xl:space-x-8">
                   {menuData.filter(m => ["HOME", "OUR SPECIALISTS & SERVICES", "PATIENT & VISITOR INFO", "CENTRE OF EXCELLENCE", "NEWS AND GALLERY"].includes(m.title)).map((menu, index) => (
-                    <div key={menu.title} className="relative group flex items-center hover:z-50">
+                    <div key={menu.title} className="relative group flex items-center hover:z-50 after:content-[''] after:absolute after:left-0 after:right-0 after:top-full after:h-2">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[11px] xl:text-[13px] 2xl:text-sm font-bold uppercase tracking-wide px-3 xl:px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
                         {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
-                      <div className={`absolute top-full pt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 2 ? 'right-0' : 'left-0'}`}>
-                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto pointer-events-auto">
+                      <div className={`absolute top-full mt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 2 ? 'right-0' : 'left-0'}`}>
+                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
                           {menu.links.map((link) => (
                             <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
                               <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
