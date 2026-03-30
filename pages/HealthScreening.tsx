@@ -1,58 +1,61 @@
 import React from 'react';
 import { Check, Info, Calendar, PhoneCall, FileText, ArrowRight } from 'lucide-react';
-
-const packages = [
-  {
-    name: 'Basic Wellness',
-    price: 'RM 250',
-    description: 'Essential health screening for individuals under 30.',
-    popular: false,
-    features: [
-      'Physical Examination by Medical Officer',
-      'Body Mass Index (BMI) & Vital Signs',
-      'Chest X-Ray',
-      'ECG (Resting)',
-      'Basic Blood Profile (24 tests)',
-      'Urine FEME',
-      'Medical Report & Consultation'
-    ]
-  },
-  {
-    name: 'Comprehensive Care',
-    price: 'RM 450',
-    description: 'Thorough screening recommended for adults aged 30-40.',
-    popular: true,
-    features: [
-      'Physical Examination by Medical Officer',
-      'Body Mass Index (BMI) & Vital Signs',
-      'Chest X-Ray & Ultrasound Abdomen',
-      'ECG (Resting)',
-      'Comprehensive Blood Profile (45 tests)',
-      'Urine FEME',
-      'Medical Report & Consultation',
-      'Dietary Counseling'
-    ]
-  },
-  {
-    name: 'Premium Executive',
-    price: 'RM 850',
-    description: 'Advanced screening for adults over 40 with specialized tests.',
-    popular: false,
-    features: [
-      'Physical Examination by Specialist',
-      'Body Mass Index (BMI) & Vital Signs',
-      'Chest X-Ray & Ultrasound Abdomen/Pelvis',
-      'ECG (Resting) & Stress Test (Treadmill)',
-      'Premium Blood Profile (60+ tests)',
-      'Cancer Markers (AFP, CEA, PSA/CA125)',
-      'Urine FEME & Stool Occult Blood',
-      'Medical Report & Specialist Consultation',
-      'Dietary Counseling'
-    ]
-  }
-];
+import { useLanguage } from '../LanguageContext';
 
 const HealthScreening: React.FC = () => {
+  const { t } = useLanguage();
+
+  const packages = [
+    {
+      name: t('hs.pkg.basic.name'),
+      price: 'RM 250',
+      description: t('hs.pkg.basic.desc'),
+      popular: false,
+      features: [
+        t('hs.pkg.basic.f1'),
+        t('hs.pkg.basic.f2'),
+        t('hs.pkg.basic.f3'),
+        t('hs.pkg.basic.f4'),
+        t('hs.pkg.basic.f5'),
+        t('hs.pkg.basic.f6'),
+        t('hs.pkg.basic.f7')
+      ]
+    },
+    {
+      name: t('hs.pkg.comp.name'),
+      price: 'RM 450',
+      description: t('hs.pkg.comp.desc'),
+      popular: true,
+      features: [
+        t('hs.pkg.comp.f1'),
+        t('hs.pkg.comp.f2'),
+        t('hs.pkg.comp.f3'),
+        t('hs.pkg.comp.f4'),
+        t('hs.pkg.comp.f5'),
+        t('hs.pkg.comp.f6'),
+        t('hs.pkg.comp.f7'),
+        t('hs.pkg.comp.f8')
+      ]
+    },
+    {
+      name: t('hs.pkg.prem.name'),
+      price: 'RM 850',
+      description: t('hs.pkg.prem.desc'),
+      popular: false,
+      features: [
+        t('hs.pkg.prem.f1'),
+        t('hs.pkg.prem.f2'),
+        t('hs.pkg.prem.f3'),
+        t('hs.pkg.prem.f4'),
+        t('hs.pkg.prem.f5'),
+        t('hs.pkg.prem.f6'),
+        t('hs.pkg.prem.f7'),
+        t('hs.pkg.prem.f8'),
+        t('hs.pkg.prem.f9')
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
       {/* Hero Section */}
@@ -60,18 +63,18 @@ const HealthScreening: React.FC = () => {
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Health Screening Packages 2026</h1>
+            <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">{t('hs.hero.title')}</h1>
             <p className="text-lg text-white/80 leading-relaxed mb-8">
-              Early detection is the best prevention. Take charge of your health today with our comprehensive and affordable health screening packages tailored for every stage of life.
+              {t('hs.hero.desc')}
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="bg-[#E29578] text-white px-8 py-3 rounded-full font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-[#E29578] transition-all shadow-lg flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                Book an Appointment
+                {t('hs.hero.book')}
               </button>
               <button className="bg-white/10 text-white border border-white/20 px-8 py-3 rounded-full font-bold tracking-widest uppercase text-sm hover:bg-white/20 transition-all flex items-center gap-2">
                 <PhoneCall className="w-4 h-4" />
-                Contact Wellness Center
+                {t('hs.hero.contact')}
               </button>
             </div>
           </div>
@@ -90,7 +93,7 @@ const HealthScreening: React.FC = () => {
             >
               {pkg.popular && (
                 <div className="bg-[#E29578] text-white text-[10px] font-black uppercase tracking-widest py-1.5 text-center absolute top-0 w-full">
-                  Most Popular
+                  {t('hs.pkg.popular')}
                 </div>
               )}
               <div className={`p-8 ${pkg.popular ? 'pt-12' : ''}`}>
@@ -116,7 +119,7 @@ const HealthScreening: React.FC = () => {
                     ? 'bg-[#006D77] text-white hover:bg-[#2C3E50] shadow-lg shadow-[#006D77]/20' 
                     : 'bg-[#EDF6F9] text-[#006D77] hover:bg-[#83C5BE] hover:text-white'
                 }`}>
-                  Select Package
+                  {t('hs.pkg.select')}
                 </button>
               </div>
             </div>
@@ -132,38 +135,38 @@ const HealthScreening: React.FC = () => {
               <div className="bg-[#EDF6F9] w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                 <Info className="w-8 h-8 text-[#006D77]" />
               </div>
-              <h2 className="text-3xl font-black text-[#2C3E50] mb-4 tracking-tight">Preparation Guidelines</h2>
+              <h2 className="text-3xl font-black text-[#2C3E50] mb-4 tracking-tight">{t('hs.prep.title')}</h2>
               <p className="text-gray-600 leading-relaxed">
-                To ensure the most accurate results for your health screening, please follow these important preparation steps before your appointment.
+                {t('hs.prep.desc')}
               </p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex gap-4">
                 <div className="text-[#E29578] font-black text-xl">01</div>
                 <div>
-                  <h4 className="font-bold text-[#2C3E50] mb-2">Fasting Requirement</h4>
-                  <p className="text-sm text-gray-600">Please fast for at least 8-10 hours prior to your blood test. Plain water is permitted.</p>
+                  <h4 className="font-bold text-[#2C3E50] mb-2">{t('hs.prep.1.title')}</h4>
+                  <p className="text-sm text-gray-600">{t('hs.prep.1.desc')}</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="text-[#E29578] font-black text-xl">02</div>
                 <div>
-                  <h4 className="font-bold text-[#2C3E50] mb-2">Medications</h4>
-                  <p className="text-sm text-gray-600">Continue your routine medications unless advised otherwise by your doctor. Bring them along.</p>
+                  <h4 className="font-bold text-[#2C3E50] mb-2">{t('hs.prep.2.title')}</h4>
+                  <p className="text-sm text-gray-600">{t('hs.prep.2.desc')}</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="text-[#E29578] font-black text-xl">03</div>
                 <div>
-                  <h4 className="font-bold text-[#2C3E50] mb-2">Treadmill Stress Test</h4>
-                  <p className="text-sm text-gray-600">Bring comfortable sports attire and running shoes if your package includes a stress test.</p>
+                  <h4 className="font-bold text-[#2C3E50] mb-2">{t('hs.prep.3.title')}</h4>
+                  <p className="text-sm text-gray-600">{t('hs.prep.3.desc')}</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="text-[#E29578] font-black text-xl">04</div>
                 <div>
-                  <h4 className="font-bold text-[#2C3E50] mb-2">Previous Reports</h4>
-                  <p className="text-sm text-gray-600">Bring along any previous medical reports, x-rays, or relevant health records for comparison.</p>
+                  <h4 className="font-bold text-[#2C3E50] mb-2">{t('hs.prep.4.title')}</h4>
+                  <p className="text-sm text-gray-600">{t('hs.prep.4.desc')}</p>
                 </div>
               </div>
             </div>
@@ -174,17 +177,17 @@ const HealthScreening: React.FC = () => {
       {/* Add-on Tests */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 mt-12">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-black text-[#2C3E50] tracking-tight">Optional Add-On Tests</h2>
+          <h2 className="text-2xl font-black text-[#2C3E50] tracking-tight">{t('hs.addon.title')}</h2>
           <button className="text-[#006D77] font-bold text-sm flex items-center gap-2 hover:underline">
-            View All Add-ons <ArrowRight className="w-4 h-4" />
+            {t('hs.addon.view')} <ArrowRight className="w-4 h-4" />
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { name: 'HbA1c (Diabetes)', price: 'RM 45' },
-            { name: 'Thyroid Profile', price: 'RM 120' },
-            { name: 'Hepatitis A & B Screening', price: 'RM 150' },
-            { name: 'Vitamin D Test', price: 'RM 180' }
+            { name: t('hs.addon.1'), price: 'RM 45' },
+            { name: t('hs.addon.2'), price: 'RM 120' },
+            { name: t('hs.addon.3'), price: 'RM 150' },
+            { name: t('hs.addon.4'), price: 'RM 180' }
           ].map((addon, idx) => (
             <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex justify-between items-center hover:border-[#83C5BE] transition-colors cursor-pointer">
               <span className="font-bold text-[#2C3E50] text-sm">{addon.name}</span>

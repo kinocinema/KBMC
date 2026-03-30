@@ -1,16 +1,30 @@
 
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap, Users, Clock, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     setIsVisible(true);
-    window.scrollTo(0, 0);
-  }, []);
+    
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   const milestones = [
     { year: '1997', title: t('about.milestone.1.title'), desc: t('about.milestone.1.desc') },
@@ -140,35 +154,60 @@ const About: React.FC = () => {
         </div>
 
         {/* Core Values */}
-        <div id="core-values" className="space-y-12">
-          <div className="text-center">
-            <h2 className="text-5xl font-black text-[#006D77]">{t('about.values.title')}</h2>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {coreValues.map((val) => (
-                <div key={val.key} className="bg-[#EDF6F9] p-8 rounded-[3rem] border border-[#83C5BE]/20 hover:bg-[#006D77] hover:text-white transition-all group">
-                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-[#006D77] mb-6 group-hover:scale-110 transition-transform">
-                    {val.icon}
+        <motion.div 
+          id="core-values" 
+          className="max-w-4xl mx-auto py-24 px-4"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="relative bg-gradient-to-br from-[#EDF6F9] via-white to-[#EDF6F9]/50 p-12 md:p-24 rounded-[4rem] shadow-[0_30px_100px_rgba(0,109,119,0.08)] border border-white overflow-hidden group">
+            {/* Decorative Background Text */}
+            <div className="absolute -right-12 -bottom-12 text-[20rem] font-black text-[#006D77]/[0.02] select-none pointer-events-none leading-none">
+              KBMC
+            </div>
+            
+            <motion.h2 
+              className="text-6xl md:text-8xl font-black text-[#006D77] mb-16 tracking-tighter relative z-10"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              {t('about.values.title')}
+            </motion.h2>
+            
+            <div className="space-y-10 relative z-10">
+              {coreValues.map((val, idx) => (
+                <motion.div 
+                  key={val.key} 
+                  className="flex items-start gap-6 text-2xl md:text-4xl group/item p-4 -ml-4 rounded-3xl hover:bg-white/60 hover:shadow-xl hover:shadow-[#006D77]/5 transition-all duration-500"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + (idx * 0.1), duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-[#006D77] to-[#83C5BE] font-black min-w-[2.5rem] group-hover/item:scale-110 transition-transform duration-500">
+                      {val.key}
+                    </span>
+                    <div className="h-px w-8 bg-gray-200 group-hover/item:w-12 group-hover/item:bg-[#E29578] transition-all duration-500 mt-1"></div>
                   </div>
-                  <h3 className="text-2xl font-black mb-4">{val.key} - {val.title}</h3>
-                  <p className="opacity-80 font-medium">{val.desc}</p>
-                </div>
+                  
+                  <div className="space-y-2">
+                    <p className="text-[#2C3E50] font-black leading-tight group-hover/item:text-[#006D77] transition-colors duration-500">
+                      {val.title}
+                    </p>
+                    <p className="text-[#546E7A] text-lg md:text-xl font-medium leading-relaxed opacity-70 group-hover/item:opacity-100 transition-opacity duration-500">
+                      {val.desc}
+                    </p>
+                  </div>
+                </motion.div>
               ))}
             </div>
-            <div className="lg:col-span-2">
-              <div className="relative rounded-[4rem] overflow-hidden shadow-2xl aspect-square">
-                <img 
-                  src="https://storage.googleapis.com/igc-health/Surgical%202.png" 
-                  alt="KBMC Excellence" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#006D77]/40 to-transparent"></div>
-              </div>
-            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Timeline */}
@@ -335,13 +374,13 @@ const About: React.FC = () => {
                 </div>
               </div>
               <div className="pt-6">
-                <a 
-                  href="/careers" 
+                <Link 
+                  to="/careers" 
                   className="inline-flex items-center gap-4 bg-[#006D77] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#E29578] transition-all group shadow-xl hover:shadow-2xl"
                 >
                   {t('careers.opp.available')}
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="relative">
@@ -351,6 +390,9 @@ const About: React.FC = () => {
                   alt="KBMC Careers" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
+                  }}
                 />
               </div>
               <div className="absolute -top-10 -left-10 bg-white p-10 rounded-[3rem] shadow-2xl border border-gray-100 hidden md:block">

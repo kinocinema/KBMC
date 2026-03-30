@@ -3,21 +3,21 @@ export const menuData = [
     title: "HOME",
     links: [
       { name: "ABOUT US", path: "/about", content: "Welcome to KBMC. We are dedicated to providing world-class healthcare services with compassion and excellence. Our legacy is built on trust, innovation, and patient-centric care." },
-      { name: "CEO MESSAGE", path: "/ceo-message", content: "A message from our CEO: Our commitment is to your health and well-being. We strive to continuously improve our facilities and medical expertise to serve you better." },
-      { name: "MISSION & VISION", path: "/mission-vision", content: "Our mission is to deliver exceptional and accessible healthcare. Our vision is to be the leading healthcare provider in the region, recognized for clinical excellence." },
-      { name: "OUR CORE VALUES", path: "/core-values", content: "Integrity, Compassion, Excellence, Respect, and Teamwork form the foundation of everything we do at KBMC." },
+      { name: "CEO MESSAGE", path: "/about#ceo-message", content: "A message from our CEO: Our commitment is to your health and well-being. We strive to continuously improve our facilities and medical expertise to serve you better." },
+      { name: "MISSION & VISION", path: "/about#vision-mission", content: "Our mission is to deliver exceptional and accessible healthcare. Our vision is to be the leading healthcare provider in the region, recognized for clinical excellence." },
+      { name: "OUR CORE VALUES (THE KBMC WAY)", path: "/about#core-values", content: "Integrity, Compassion, Excellence, Respect, and Teamwork form the foundation of everything we do at KBMC." },
       { name: "CAREERS", path: "/careers", content: "Join our team of dedicated healthcare professionals. We offer a dynamic work environment where your skills and passion can make a real difference." },
       { name: "CURRENT OPPORTUNITIES", path: "/current-opportunities", content: "Explore our latest job openings across various clinical and administrative departments." },
       { name: "WHY WORK WITH US?", path: "/why-work-with-us", content: "Discover the benefits, inclusive culture, and continuous growth opportunities at our hospital." },
       { name: "HOW TO APPLY?", path: "/how-to-apply", content: "Learn about our recruitment process and how you can submit your application to join our team." },
       { name: "CONTACT US", path: "/contact-us", content: "Get in touch with us for inquiries, feedback, or support. Our customer service team is ready to assist you." },
-      { name: "LOCATION & DIRECTION", path: "/location-direction", content: "Find your way to our hospital with detailed maps, public transit options, and driving directions." },
-      { name: "PARKING INFO", path: "/parking-info", content: "Information on parking rates, valet services, and convenient parking locations for patients and visitors." },
-      { name: "OPERATING HOURS", path: "/operating-hours", content: "Check our clinic operating hours, visiting hours, and 24/7 emergency department availability." }
+      { name: "LOCATION & DIRECTION", path: "/about#future", content: "Find your way to our hospital with detailed maps, public transit options, and driving directions." },
+      { name: "PARKING INFO", path: "/about#directory", content: "Information on parking rates, valet services, and convenient parking locations for patients and visitors." },
+      { name: "OPERATING HOURS", path: "/about#directory", content: "Check our clinic operating hours, visiting hours, and 24/7 emergency department availability." }
     ]
   },
   {
-    title: "OUR SPECIALISTS & SERVICES",
+    title: "SPECIALISTS & SERVICES",
     links: [
       { name: "DIRECTORY OF SPECIALIST DOCTORS", path: "/find-doctor", content: "Find the right specialist for your healthcare needs from our comprehensive directory of highly qualified doctors." },
       { name: "CLINICAL SERVICES", path: "/services", content: "Explore the wide range of comprehensive medical and surgical services offered at our state-of-the-art facility." },
@@ -25,7 +25,7 @@ export const menuData = [
     ]
   },
   {
-    title: "PATIENT & VISITOR INFO",
+    title: "PATIENT INFO",
     links: [
       { name: "ADMISSION & DISCHARGE PROCESS", path: "/patient-guide", content: "A step-by-step guide on what to expect during your admission, your stay, and how to prepare for a smooth discharge." },
       { name: "INSURANCE AND BILLING", path: "/insurance-billing", content: "Detailed information on accepted insurances, payment options, financial counseling, and billing inquiries." },
@@ -37,7 +37,7 @@ export const menuData = [
     ]
   },
   {
-    title: "CENTRE OF EXCELLENCE",
+    title: "CENTRES OF EXCELLENCE",
     links: [
       { name: "WOMEN & CHILD CENTRE", path: "/women-child-centre", content: "Specialized, compassionate care for maternity, gynecology, and pediatrics in a family-friendly environment." },
       { name: "HEART CENTRE", path: "/heart-centre", content: "Advanced cardiovascular care, comprehensive diagnostics, and innovative treatments for heart conditions." },
@@ -47,7 +47,7 @@ export const menuData = [
     ]
   },
   {
-    title: "NEWS AND GALLERY",
+    title: "NEWS & GALLERY",
     links: [
       { name: "OFFICIAL PRESS RELEASE", path: "/news-gallery", content: "Read the latest news, official announcements, and press releases from KBMC." },
       { name: "MEDIA", path: "/media", content: "Explore our media coverage, health articles, and multimedia resources." },
@@ -55,7 +55,7 @@ export const menuData = [
     ]
   },
   {
-    title: "HEALTH SCREENING PACKAGES AND CORPORATE WELLNESS PROGRAM",
+    title: "HEALTH SCREENING",
     links: [
       { name: "HEALTH SCREENING PACKAGES 2026", path: "/health-screening-2026", content: "Comprehensive health screening packages tailored for your well-being. Early detection is the key to prevention." },
       { name: "SPECIALIZED SCREENING PROMOTIONS (LIMITED TIME)", path: "/specialized-screening-promotions", content: "Take advantage of our limited-time offers on specialized health checks and diagnostic screenings." },
@@ -63,7 +63,7 @@ export const menuData = [
     ]
   },
   {
-    title: "MEDICAL TOURISM AND INTERNATIONAL PATIENT SERVICES",
+    title: "MEDICAL TOURISM",
     links: [
       { name: "WHY CHOOSE KBMC FOR MEDICAL TOURISM?", path: "/medical-tourism", content: "Experience world-class healthcare, internationally trained specialists, and a seamless patient journey at KBMC." },
       { name: "PREMIUM AMENITIES & CONCIERGE SERVICES", path: "/premium-amenities-concierge", content: "Exclusive services and luxurious amenities designed specifically for the comfort of our international patients." },

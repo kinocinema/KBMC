@@ -122,9 +122,7 @@ const ContactUs: React.FC = () => {
                 <MapPin className="text-[#E29578] w-6 h-6" />
               </div>
               <p className="text-lg font-bold text-[#2C3E50] leading-relaxed">
-                Lot 179-184, Jalan Sultan Yahya Petra,<br />
-                Lundang, 15200 Kota Bharu,<br />
-                Kelantan, Malaysia.
+                {t('contact.directory.location.value')}
               </p>
             </div>
           </div>
@@ -156,8 +154,8 @@ const ContactUs: React.FC = () => {
             <div className="flex justify-center lg:justify-end">
               <div className="bg-white/50 backdrop-blur-sm p-4 rounded-[2.5rem] border border-white/20">
                 <div className="bg-[#006D77] text-white px-10 py-6 rounded-[2rem] text-center space-y-1">
-                  <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Parking Status</p>
-                  <p className="text-2xl font-black">FREE PARKING</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-70">{t('contact.parking.status.label')}</p>
+                  <p className="text-2xl font-black">{t('contact.parking.status.value')}</p>
                 </div>
               </div>
             </div>
@@ -169,7 +167,7 @@ const ContactUs: React.FC = () => {
           <div className="space-y-10">
             <div className="space-y-4">
               <span className="text-[#E29578] font-black uppercase tracking-[0.3em] text-[10px]">{t('contact.hours.title')}</span>
-              <h2 className="text-4xl font-black text-[#006D77] tracking-tight">OPERATING HOURS</h2>
+              <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.hours.title')}</h2>
             </div>
             <div className="space-y-6">
               <div className="p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50 space-y-4">
@@ -177,29 +175,29 @@ const ContactUs: React.FC = () => {
                   <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
                     <Clock className="text-red-600 w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-black text-[#2C3E50]">{t('contact.hours.ae')}</h3>
+                  <h3 className="text-lg font-black text-[#2C3E50]">{t('contact.hours.ae.label')}</h3>
                 </div>
-                <p className="text-2xl font-black text-red-600">24 Hours / 7 Days</p>
+                <p className="text-2xl font-black text-red-600">{t('contact.hours.ae.value')}</p>
               </div>
               <div className="p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50 space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-[#006D77]/10 rounded-xl flex items-center justify-center">
                     <Clock className="text-[#006D77] w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-black text-[#2C3E50]">Specialist Clinics</h3>
+                  <h3 className="text-lg font-black text-[#2C3E50]">{t('contact.hours.clinics.label')}</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-gray-200 pb-4">
-                    <span className="font-bold text-gray-500">Sun – Thurs</span>
-                    <span className="font-black text-[#006D77]">8:30 AM – 5:00 PM</span>
+                    <span className="font-bold text-gray-500">{t('contact.hours.clinics.sun_thu')}</span>
+                    <span className="font-black text-[#006D77]">{t('contact.hours.clinics.sun_thu_time')}</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-200 pb-4">
-                    <span className="font-bold text-gray-500">Friday</span>
-                    <span className="font-black text-red-500">Closed / Emergency Only</span>
+                    <span className="font-bold text-gray-500">{t('contact.hours.clinics.fri')}</span>
+                    <span className="font-black text-red-500">{t('contact.hours.clinics.fri_time')}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-gray-500">Saturday</span>
-                    <span className="font-black text-[#006D77]">8:30 AM – 12:30 PM</span>
+                    <span className="font-bold text-gray-500">{t('contact.hours.clinics.sat')}</span>
+                    <span className="font-black text-[#006D77]">{t('contact.hours.clinics.sat_time')}</span>
                   </div>
                 </div>
               </div>
@@ -260,26 +258,6 @@ const ContactUs: React.FC = () => {
               )}
            </div>
         </div>
-      </div>
-
-      {/* 4. Instant Messaging Bar - Floating WhatsApp Icon */}
-      <div className="fixed bottom-8 right-8 z-[100] group flex items-center gap-4">
-        <div className="bg-white px-6 py-3 rounded-2xl shadow-2xl border border-gray-100 opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0 pointer-events-none">
-          <p className="text-[10px] font-black text-[#006D77] uppercase tracking-widest whitespace-nowrap">
-            {t('contact.whatsapp.chat')}
-          </p>
-        </div>
-        <a 
-          href="https://wa.me/601110663399" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all relative"
-        >
-          <MessageCircle className="text-white w-8 h-8" />
-          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
-          </div>
-        </a>
       </div>
     </div>
   );

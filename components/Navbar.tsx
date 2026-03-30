@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
       <div className={`transition-all duration-500 ${scrolled ? 'px-2 md:px-4 mt-4' : 'px-0'}`}>
         <nav className={`mx-auto transition-all duration-500 ${scrolled ? 'w-[98%] max-w-[1920px] rounded-full glass-nav shadow-2xl border border-white/20' : 'w-full bg-white border-b border-gray-100'}`}>
           <div className="w-full mx-auto px-2 sm:px-4 lg:px-4 xl:px-6 2xl:px-8">
-            <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-20' : 'h-32'}`}>
+            <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-24' : 'h-32'}`}>
               <div className="flex items-center gap-3 flex-shrink-0">
                  <Link to="/" className="flex items-center gap-3 flex-shrink-0">
                    <img 
@@ -88,47 +88,51 @@ const Navbar: React.FC = () => {
 
               <div className="hidden lg:flex flex-col justify-center items-end h-full gap-2 xl:gap-3 py-2">
                 {/* Top Row */}
-                <div className="flex items-center space-x-3 xl:space-x-6 2xl:space-x-8">
-                  {menuData.filter(m => ["HEALTH SCREENING PACKAGES AND CORPORATE WELLNESS PROGRAM", "MEDICAL TOURISM AND INTERNATIONAL PATIENT SERVICES", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
-                    <div key={menu.title} className="relative group flex items-center hover:z-50 after:content-[''] after:absolute after:left-0 after:right-0 after:top-full after:h-2">
-                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[11px] xl:text-[13px] 2xl:text-sm font-bold uppercase tracking-wide px-3 xl:px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap ${menu.title === 'MYHEALTH360 FAQ' ? 'bg-[#F0F8FA]' : ''}`}>
-                        {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
+                  {menuData.filter(m => ["NEWS & GALLERY", "HEALTH SCREENING", "MEDICAL TOURISM", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
+                    <div key={menu.title} className="relative group flex items-center h-full">
+                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap ${menu.title === 'MYHEALTH360 FAQ' ? 'bg-[#F0F8FA]' : ''}`}>
+                        {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
-                      <div className={`absolute top-full mt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 right-0`}>
+                      {/* Invisible bridge to connect button and dropdown */}
+                      <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
+                      <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 1 ? 'right-0' : 'left-0'}`}>
                         <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
                           {menu.links.map((link) => (
-                            <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                              <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
+                            <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
+                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{t(`menu.${link.name}`)}</span>
                             </Link>
                           ))}
                         </div>
                       </div>
                     </div>
                   ))}
+
+                  <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 xl:px-8 py-2 rounded-full text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wider flex items-center gap-1.5 xl:gap-2 hover:bg-[#E29578] transition-all shadow-lg active:scale-95 ml-4 xl:ml-8 whitespace-nowrap">
+                    {t('nav.book')}
+                  </Link>
                 </div>
 
                 {/* Bottom Row */}
-                <div className="flex items-center space-x-3 xl:space-x-6 2xl:space-x-8">
-                  {menuData.filter(m => ["HOME", "OUR SPECIALISTS & SERVICES", "PATIENT & VISITOR INFO", "CENTRE OF EXCELLENCE", "NEWS AND GALLERY"].includes(m.title)).map((menu, index) => (
-                    <div key={menu.title} className="relative group flex items-center hover:z-50 after:content-[''] after:absolute after:left-0 after:right-0 after:top-full after:h-2">
-                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[11px] xl:text-[13px] 2xl:text-sm font-bold uppercase tracking-wide px-3 xl:px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
-                        {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
+                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE"].includes(m.title)).map((menu, index) => (
+                    <div key={menu.title} className="relative group flex items-center h-full">
+                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
+                        {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
-                      <div className={`absolute top-full mt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 2 ? 'right-0' : 'left-0'}`}>
+                      {/* Invisible bridge to connect button and dropdown */}
+                      <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
+                      <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 2 ? 'right-0' : 'left-0'}`}>
                         <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
                           {menu.links.map((link) => (
-                            <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                              <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
+                            <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
+                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{t(`menu.${link.name}`)}</span>
                             </Link>
                           ))}
                         </div>
                       </div>
                     </div>
                   ))}
-
-                  <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 xl:px-8 py-2.5 rounded-full text-[11px] xl:text-[13px] 2xl:text-sm font-bold uppercase tracking-wider flex items-center gap-1.5 xl:gap-2 hover:bg-[#E29578] transition-all transform hover:scale-105 shadow-lg active:scale-95 ml-4 xl:ml-8 whitespace-nowrap">
-                    {t('nav.book')}
-                  </Link>
                 </div>
               </div>
 
@@ -155,11 +159,11 @@ const Navbar: React.FC = () => {
                 <div className="flex-1 overflow-y-auto p-6 space-y-8">
                   {menuData.map((menu) => (
                     <div key={menu.title} className="space-y-4">
-                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{menu.title}</h3>
+                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t(`menu.${menu.title}`)}</h3>
                       <div className="grid grid-cols-1 gap-2">
                         {menu.links.map((link) => (
-                          <Link key={link.path} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                            <span>{link.name}</span>
+                          <Link key={link.name} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
+                            <span>{t(`menu.${link.name}`)}</span>
                           </Link>
                         ))}
                       </div>

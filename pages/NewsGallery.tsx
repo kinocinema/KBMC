@@ -18,34 +18,34 @@ const NewsGallery: React.FC = () => {
     {
       id: 'kbmc-tristar',
       type: 'news',
-      title: 'KBMC Tristar: Redefining Healthcare in the East Coast',
+      title: t('news.item.kbmc-tristar.title'),
       date: 'March 10, 2026',
       image: 'https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg',
-      desc: 'Our major expansion project is nearing completion, featuring state-of-the-art intelligent medical systems.'
+      desc: t('news.item.kbmc-tristar.desc')
     },
     {
       id: 'world-heart-day',
       type: 'events',
-      title: 'World Heart Day Wellness Campaign',
+      title: t('news.item.world-heart-day.title'),
       date: 'February 28, 2026',
       image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80',
-      desc: 'Join us for free health screenings and expert talks on cardiovascular health at our Main Lobby.'
+      desc: t('news.item.world-heart-day.desc')
     },
     {
       id: 'healthcare-asia',
       type: 'media',
-      title: 'KBMC Featured in Healthcare Asia Magazine',
+      title: t('news.item.healthcare-asia.title'),
       date: 'January 15, 2026',
       image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80',
-      desc: 'Recognition of our commitment to clinical excellence and patient-centered care in the region.'
+      desc: t('news.item.healthcare-asia.desc')
     },
     {
       id: 'new-mri',
       type: 'news',
-      title: 'New MRI 3.0T System Now Operational',
+      title: t('news.item.new-mri.title'),
       date: 'December 20, 2025',
       image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
-      desc: 'Enhanced diagnostic precision with our latest generation imaging technology.'
+      desc: t('news.item.new-mri.desc')
     }
   ];
 
@@ -85,7 +85,7 @@ const NewsGallery: React.FC = () => {
               onClick={() => setActiveTab(tab)}
               className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === tab ? 'bg-[#006D77] text-white shadow-lg' : 'text-gray-400 hover:text-[#006D77] hover:bg-[#EDF6F9]'}`}
             >
-              {tab}
+              {t(`news.filter.${tab}`)}
             </button>
           ))}
         </div>
@@ -105,7 +105,7 @@ const NewsGallery: React.FC = () => {
                 />
                 <div className="absolute top-6 left-6">
                   <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[#006D77] text-[10px] font-black uppercase tracking-widest shadow-lg">
-                    {item.type}
+                    {t(`news.filter.${item.type}`)}
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
@@ -126,7 +126,7 @@ const NewsGallery: React.FC = () => {
                   {item.desc}
                 </p>
                 <div className="pt-4 flex items-center gap-2 text-[10px] font-black text-[#006D77] uppercase tracking-widest group-hover:gap-4 transition-all">
-                  Read More <ArrowRight className="w-4 h-4" />
+                  {t('news.read_more')} <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </Link>
@@ -137,19 +137,19 @@ const NewsGallery: React.FC = () => {
         <div className="mt-32 space-y-12">
           <div className="flex items-center justify-between border-b border-gray-100 pb-8">
             <div className="space-y-2">
-              <h2 className="text-3xl font-black text-[#006D77] tracking-tight">Official Press Releases</h2>
-              <p className="text-gray-500 font-medium">Download our latest corporate announcements.</p>
+              <h2 className="text-3xl font-black text-[#006D77] tracking-tight">{t('news.press.title')}</h2>
+              <p className="text-gray-500 font-medium">{t('news.press.desc')}</p>
             </div>
             <button className="hidden md:flex items-center gap-2 text-[10px] font-black text-[#006D77] uppercase tracking-widest hover:gap-4 transition-all">
-              View Archive <ArrowRight className="w-4 h-4" />
+              {t('news.press.view_archive')} <ArrowRight className="w-4 h-4" />
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              'KBMC Tristar Expansion Phase 1 Completion',
-              'Strategic Partnership with International Health Group',
-              'New Oncology Wing Launch Announcement',
-              'Annual Health & Wellness Community Report'
+              t('news.press.item1'),
+              t('news.press.item2'),
+              t('news.press.item3'),
+              t('news.press.item4')
             ].map((title, idx) => (
               <div key={idx} className="flex items-center justify-between p-8 bg-[#F8FAFB] rounded-3xl border border-gray-100 hover:bg-white hover:shadow-xl transition-all group">
                 <div className="flex items-center gap-6">
@@ -158,7 +158,7 @@ const NewsGallery: React.FC = () => {
                   </div>
                   <div className="space-y-1">
                     <h4 className="font-black text-[#2C3E50] group-hover:text-[#006D77] transition-colors">{title}</h4>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">PDF • 2.4 MB</p>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{t('news.press.pdf')} • 2.4 MB</p>
                   </div>
                 </div>
                 <ExternalLink className="w-5 h-5 text-gray-300 group-hover:text-[#E29578] transition-colors" />

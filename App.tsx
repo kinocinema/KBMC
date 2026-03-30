@@ -20,8 +20,8 @@ import NewsArticle from './pages/NewsArticle';
 import CentreOfExcellence from './pages/CentreOfExcellence';
 import CentreTemplate from './pages/CentreTemplate';
 import Careers from './pages/Careers';
+import CurrentOpportunities from './pages/CurrentOpportunities';
 import HealthScreening from './pages/HealthScreening';
-import AIChatbot from './components/AIChatbot';
 import Page from './pages/Page';
 import { menuData } from './data/menuData';
 import { Heart, Activity, Stethoscope, Baby, Eye } from 'lucide-react';
@@ -40,6 +40,7 @@ const App: React.FC = () => {
               <Route path="/patient-guide" element={<PatientGuide />} />
               <Route path="/about" element={<About />} />
               <Route path="/careers" element={<Careers />} />
+              <Route path="/current-opportunities" element={<CurrentOpportunities />} />
               <Route path="/services" element={<Services />} />
               <Route path="/room-rates" element={<RoomRates />} />
               <Route path="/insurance-panels" element={<InsurancePanels />} />
@@ -49,27 +50,27 @@ const App: React.FC = () => {
               <Route path="/news-gallery" element={<NewsGallery />} />
               <Route path="/news-gallery/:id" element={<NewsArticle />} />
               <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
-              <Route path="/heart-centre" element={<CentreTemplate title="Heart Centre" description="Advanced cardiovascular care, comprehensive diagnostics, and innovative treatments for heart conditions." features={['Echocardiography', 'Treadmill Stress Test', 'Holter Monitoring', 'Cardiac Catheterization', 'Coronary Angiography', 'Pacemaker Implantation']} icon={<Heart className="w-12 h-12 text-white" />} />} />
-              <Route path="/cancer-centre" element={<CentreTemplate title="Cancer Centre (Oncology)" description="Holistic and comprehensive cancer care, from early screening to advanced therapies and survivorship support." features={['Chemotherapy', 'Targeted Therapy', 'Immunotherapy', 'Oncology Screening', 'Palliative Care', 'Patient Support Groups']} icon={<Activity className="w-12 h-12 text-white" />} />} />
-              <Route path="/women-child-centre" element={<CentreTemplate title="Women & Child Centre" description="Specialized, compassionate care for maternity, gynecology, and pediatrics in a family-friendly environment." features={['Maternity Packages', 'Antenatal Care', 'Pediatric Services', 'Neonatal Intensive Care (NICU)', 'Gynecological Surgeries', 'Child Vaccination']} icon={<Baby className="w-12 h-12 text-white" />} />} />
-              <Route path="/eyes-centre" element={<CentreTemplate title="Eyes Centre (Ophthalmology)" description="Expert eye care, advanced surgeries, and vision correction services by leading ophthalmologists." features={['Cataract Surgery', 'Glaucoma Treatment', 'Diabetic Retinopathy', 'Corneal Transplants', 'Pediatric Ophthalmology', 'Comprehensive Eye Exams']} icon={<Eye className="w-12 h-12 text-white" />} />} />
-              <Route path="/digestive-health" element={<CentreTemplate title="Digestive Health (Gastroenterology)" description="Specialized diagnostics and treatments for a wide range of digestive and gastrointestinal disorders." features={['Endoscopy', 'Colonoscopy', 'Liver Disease Management', 'Gastrointestinal Surgeries', 'Nutritional Counseling', 'Hepatitis Treatment']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
+              <Route path="/heart-centre" element={<CentreTemplate title="centre.heart.title" description="centre.heart.desc" features={['centre.heart.f1', 'centre.heart.f2', 'centre.heart.f3', 'centre.heart.f4', 'centre.heart.f5', 'centre.heart.f6']} icon={<Heart className="w-12 h-12 text-white" />} />} />
+              <Route path="/cancer-centre" element={<CentreTemplate title="centre.cancer.title" description="centre.cancer.desc" features={['centre.cancer.f1', 'centre.cancer.f2', 'centre.cancer.f3', 'centre.cancer.f4', 'centre.cancer.f5', 'centre.cancer.f6']} icon={<Activity className="w-12 h-12 text-white" />} />} />
+              <Route path="/women-child-centre" element={<CentreTemplate title="centre.women.title" description="centre.women.desc" features={['centre.women.f1', 'centre.women.f2', 'centre.women.f3', 'centre.women.f4', 'centre.women.f5', 'centre.women.f6']} icon={<Baby className="w-12 h-12 text-white" />} />} />
+              <Route path="/eyes-centre" element={<CentreTemplate title="centre.eyes.title" description="centre.eyes.desc" features={['centre.eyes.f1', 'centre.eyes.f2', 'centre.eyes.f3', 'centre.eyes.f4', 'centre.eyes.f5', 'centre.eyes.f6']} icon={<Eye className="w-12 h-12 text-white" />} />} />
+              <Route path="/digestive-health" element={<CentreTemplate title="centre.digestive.title" description="centre.digestive.desc" features={['centre.digestive.f1', 'centre.digestive.f2', 'centre.digestive.f3', 'centre.digestive.f4', 'centre.digestive.f5', 'centre.digestive.f6']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
               <Route path="/health-screening-2026" element={<HealthScreening />} />
               {/* Dynamic routes from menuData */}
               {menuData.flatMap((menu) =>
-                menu.links.map((link) => (
-                  <React.Fragment key={link.path}>
-                    <Route
-                      path={link.path}
-                      element={<Page title={link.name} content={link.content} />}
-                    />
-                  </React.Fragment>
-                ))
+                menu.links
+                  .filter(link => !link.path.includes('#'))
+                  .map((link) => (
+                    <React.Fragment key={link.name}>
+                      <Route
+                        path={link.path}
+                        element={<Page title={link.name} content={link.content} />}
+                      />
+                    </React.Fragment>
+                  ))
               )}
             </Routes>
           </main>
-          
-          <AIChatbot />
 
           <footer className="bg-[#2C3E50] text-white py-20 px-4 md:px-8 border-t border-[#006D77]/20">
             <div className="max-w-7xl mx-auto">
@@ -89,10 +90,6 @@ const App: React.FC = () => {
                   <p className="text-sm text-gray-400 leading-relaxed">
                     Established in 1997, KBMC is the pioneer private specialist hospital in Kelantan, delivering world-class care with heart.
                   </p>
-                  <div className="flex gap-4">
-                    <div className="bg-[#006D77] p-2 rounded-lg text-xs font-bold">MSQH Accredited</div>
-                    <div className="bg-[#83C5BE]/20 p-2 rounded-lg text-xs font-bold text-[#83C5BE]">Ibadah Friendly</div>
-                  </div>
                   <div className="pt-4">
                     <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-4">Follow Us</h4>
                     <div className="flex gap-3">

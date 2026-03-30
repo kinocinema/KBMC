@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Briefcase, GraduationCap, Heart, Users, ArrowRight, Mail, Phone, ExternalLink, Zap, HeartPulse } from 'lucide-react';
+import { Briefcase, GraduationCap, Heart, Users, ArrowRight, Mail, Phone, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const Careers: React.FC = () => {
@@ -26,8 +26,11 @@ const Careers: React.FC = () => {
           <img 
             src="https://storage.googleapis.com/igc-health/Career%20Growth%203.jpeg" 
             alt="KBMC Careers Hero" 
-            className="w-full h-full object-cover opacity-100"
+            className="w-full h-full object-cover opacity-30"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>
@@ -49,7 +52,7 @@ const Careers: React.FC = () => {
             <div className="relative z-10 space-y-8">
               <div className="flex items-center gap-4 text-[#006D77]">
                 <div className="w-12 h-1 w-12 bg-[#006D77] rounded-full"></div>
-                <span className="font-black uppercase tracking-[0.3em] text-sm">Our Philosophy</span>
+                <span className="font-black uppercase tracking-[0.3em] text-sm">{t('careers.philosophy.label')}</span>
               </div>
               <p className="text-2xl md:text-3xl text-[#2C3E50] font-bold leading-relaxed italic">
                 "{t('careers.philosophy')}"
@@ -147,7 +150,7 @@ const Careers: React.FC = () => {
               className="flex items-center justify-center gap-4 bg-[#EDF6F9] p-8 rounded-[3rem] border border-[#83C5BE]/20 hover:bg-[#006D77] hover:text-white transition-all group"
             >
               <Mail className="w-6 h-6" />
-              <span className="font-black">Email HR Department</span>
+              <span className="font-black">{t('careers.apply.email')}</span>
             </a>
             <a 
               href="https://www.jobstreet.com.my/en/job-search/kota-bharu-medical-centre-jobs/" 
@@ -156,7 +159,7 @@ const Careers: React.FC = () => {
               className="flex items-center justify-center gap-4 bg-[#EDF6F9] p-8 rounded-[3rem] border border-[#83C5BE]/20 hover:bg-[#E29578] hover:text-white transition-all group"
             >
               <ExternalLink className="w-6 h-6" />
-              <span className="font-black">View on JobStreet</span>
+              <span className="font-black">{t('careers.apply.jobstreet')}</span>
             </a>
           </div>
         </div>
@@ -166,3 +169,5 @@ const Careers: React.FC = () => {
 };
 
 export default Careers;
+
+import { HeartPulse, Zap } from 'lucide-react';

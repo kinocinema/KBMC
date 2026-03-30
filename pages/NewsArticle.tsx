@@ -80,14 +80,24 @@ const NewsArticle: React.FC = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const article = id ? newsData[id as keyof typeof newsData] : null;
+  const getArticleData = (id: string) => {
+    const data = newsData[id as keyof typeof newsData];
+    if (!data) return null;
+    return {
+      ...data,
+      title: t(`news.item.${id}.title`),
+      content: t(`news.item.${id}.content`)
+    };
+  };
+
+  const article = id ? getArticleData(id) : null;
 
   if (!article) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center bg-[#EDF6F9]">
-        <h2 className="text-3xl font-black text-[#2C3E50] mb-4">Article Not Found</h2>
+        <h2 className="text-3xl font-black text-[#2C3E50] mb-4">{t('news.article.notfound')}</h2>
         <Link to="/news-gallery" className="text-[#006D77] font-bold hover:underline flex items-center gap-2">
-          <ArrowLeft className="w-4 h-4" /> Back to News & Gallery
+          <ArrowLeft className="w-4 h-4" /> {t('news.article.back')}
         </Link>
       </div>
     );
@@ -107,7 +117,7 @@ const NewsArticle: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-16">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block px-4 py-1.5 bg-[#006D77] rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
-              {article.type}
+              {t(`news.filter.${article.type}`)}
             </span>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
               {article.title}
@@ -123,7 +133,7 @@ const NewsArticle: React.FC = () => {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-16">
         <Link to="/news-gallery" className="inline-flex items-center gap-2 text-[#006D77] font-bold hover:gap-3 transition-all mb-12 uppercase tracking-widest text-xs">
-          <ArrowLeft className="w-4 h-4" /> Back to Gallery
+          <ArrowLeft className="w-4 h-4" /> {t('news.article.back_gallery')}
         </Link>
 
         <div className="flex flex-col md:flex-row gap-12">
@@ -135,7 +145,7 @@ const NewsArticle: React.FC = () => {
           <div className="md:w-1/4 space-y-8">
             <div className="bg-[#F8FAFB] p-6 rounded-3xl border border-gray-100">
               <h4 className="text-sm font-black text-[#2C3E50] uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Share2 className="w-4 h-4" /> Share
+                <Share2 className="w-4 h-4" /> {t('news.article.share')}
               </h4>
               <div className="flex gap-4">
                 <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#006D77] hover:bg-[#006D77] hover:text-white transition-colors shadow-sm">

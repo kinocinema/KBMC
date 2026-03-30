@@ -16,45 +16,45 @@ const FAQ: React.FC = () => {
 
   const faqData = [
     {
-      category: 'General Information',
+      category: t('faq.cat.general'),
       questions: [
         {
-          q: 'What are the visiting hours at KBMC?',
-          a: 'General ward visiting hours are from 12:30 PM to 2:00 PM and 4:30 PM to 7:00 PM daily. For ICU/HDU, visiting is restricted to immediate family members only, with a maximum of 2 visitors at a time.'
+          q: t('faq.q1.q'),
+          a: t('faq.q1.a')
         },
         {
-          q: 'Is parking available at the hospital?',
-          a: 'Yes, free parking is available for all patients and visitors in our dedicated multi-story car park located in the Specialist Complex (Block B).'
+          q: t('faq.q2.q'),
+          a: t('faq.q2.a')
         },
         {
-          q: 'Does KBMC provide 24-hour emergency services?',
-          a: 'Yes, our Accident & Emergency (A&E) department is open 24 hours a day, 7 days a week, including public holidays.'
+          q: t('faq.q3.q'),
+          a: t('faq.q3.a')
         }
       ]
     },
     {
-      category: 'Billing & Insurance',
+      category: t('faq.cat.billing'),
       questions: [
         {
-          q: 'Which insurance panels are accepted at KBMC?',
-          a: 'We are paneled with most major insurance providers in Malaysia, including AIA, Prudential, Great Eastern, Allianz, and more. We also work with various Third Party Administrators (TPA).'
+          q: t('faq.q4.q'),
+          a: t('faq.q4.a')
         },
         {
-          q: 'How do I use my Guarantee Letter (GL) for admission?',
-          a: 'Please present your valid GL at the Admission Registry desk during registration. Our team will verify the coverage with your provider.'
+          q: t('faq.q5.q'),
+          a: t('faq.q5.a')
         }
       ]
     },
     {
-      category: 'KBMC Tristar (Expansion)',
+      category: t('faq.cat.tristar'),
       questions: [
         {
-          q: 'What is KBMC Tristar?',
-          a: 'KBMC Tristar is our major expansion project featuring a new 12-storey intelligent medical block and an 11-storey specialist complex, designed to redefine healthcare standards in the East Coast.'
+          q: t('faq.q6.q'),
+          a: t('faq.q6.a')
         },
         {
-          q: 'When will the new facilities be fully operational?',
-          a: 'The expansion is currently in its final stages of commissioning. We expect to launch various departments progressively throughout 2026.'
+          q: t('faq.q7.q'),
+          a: t('faq.q7.a')
         }
       ]
     }
@@ -99,7 +99,7 @@ const FAQ: React.FC = () => {
               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#006D77] transition-colors" />
               <input 
                 type="text" 
-                placeholder="Search for answers..."
+                placeholder={t('faq.search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white rounded-full px-16 py-6 font-bold text-[#2C3E50] shadow-2xl outline-none focus:ring-4 focus:ring-[#83C5BE]/20 transition-all"
@@ -113,7 +113,7 @@ const FAQ: React.FC = () => {
         <div className="space-y-4">
           {searchQuery ? (
             <div className="space-y-4">
-              <p className="text-sm font-black text-[#006D77] uppercase tracking-widest mb-6">Search Results ({filteredQuestions.length})</p>
+              <p className="text-sm font-black text-[#006D77] uppercase tracking-widest mb-6">{t('faq.search.results')} ({filteredQuestions.length})</p>
               {filteredQuestions.map((item, idx) => (
                 <div key={idx} className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all">
                   <button 
@@ -167,17 +167,17 @@ const FAQ: React.FC = () => {
             <HelpCircle className="w-10 h-10 text-[#006D77]" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-3xl font-black text-[#2C3E50]">Still have questions?</h3>
-            <p className="text-gray-500 font-medium">Our patient relations team is here to help you 24/7.</p>
+            <h3 className="text-3xl font-black text-[#2C3E50]">{t('faq.support.title')}</h3>
+            <p className="text-gray-500 font-medium">{t('faq.support.desc')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="tel:+6097458000" className="flex items-center gap-3 bg-[#006D77] text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#E29578] transition-all">
               <PhoneCall className="w-4 h-4" />
-              Call Support
+              {t('faq.support.call')}
             </a>
             <a href="mailto:kbmc@kbmc.com.my" className="flex items-center gap-3 bg-[#F8FAFB] text-[#2C3E50] px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest border border-gray-100 hover:bg-gray-100 transition-all">
               <Mail className="w-4 h-4" />
-              Email Us
+              {t('faq.support.email')}
             </a>
           </div>
         </div>
