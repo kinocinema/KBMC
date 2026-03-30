@@ -351,9 +351,6 @@ const About: React.FC = () => {
                   alt="KBMC Careers" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
-                  }}
                 />
               </div>
               <div className="absolute -top-10 -left-10 bg-white p-10 rounded-[3rem] shadow-2xl border border-gray-100 hidden md:block">

@@ -19,7 +19,10 @@ import NewsGallery from './pages/NewsGallery';
 import NewsArticle from './pages/NewsArticle';
 import CentreOfExcellence from './pages/CentreOfExcellence';
 import Careers from './pages/Careers';
+import HealthScreening from './pages/HealthScreening';
 import AIChatbot from './components/AIChatbot';
+import Page from './pages/Page';
+import { menuData } from './data/menuData';
 
 const App: React.FC = () => {
   return (
@@ -44,6 +47,17 @@ const App: React.FC = () => {
               <Route path="/news-gallery" element={<NewsGallery />} />
               <Route path="/news-gallery/:id" element={<NewsArticle />} />
               <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
+              <Route path="/health-screening-2026" element={<HealthScreening />} />
+              {/* Dynamic routes from menuData */}
+              {menuData.flatMap((menu) =>
+                menu.links.map((link) => (
+                  <Route
+                    key={link.path}
+                    path={link.path}
+                    element={<Page title={link.name} content={link.content} />}
+                  />
+                ))
+              )}
             </Routes>
           </main>
           
@@ -98,17 +112,17 @@ const App: React.FC = () => {
                 <div>
                   <h4 className="font-bold mb-6 text-lg">Quick Links</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
-                    <li><Link to="/about" className="hover:text-[#83C5BE] transition-colors">About KBMC</Link></li>
-                    <li><Link to="/find-doctor" className="hover:text-[#83C5BE] transition-colors">Our Specialists</Link></li>
-                    <li><Link to="/room-rates" className="hover:text-[#83C5BE] transition-colors">Room Rates</Link></li>
+                    <li><Link to="/about-us" className="hover:text-[#83C5BE] transition-colors">About KBMC</Link></li>
+                    <li><Link to="/directory-specialist-doctors" className="hover:text-[#83C5BE] transition-colors">Our Specialists</Link></li>
+                    <li><Link to="/room-rates-facilities" className="hover:text-[#83C5BE] transition-colors">Room Rates</Link></li>
                   </ul>
                 </div>
 
                 <div>
                   <h4 className="font-bold mb-6 text-lg">Patient Support</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
-                    <li><Link to="/patient-guide" className="hover:text-[#83C5BE] transition-colors">Admission Guide</Link></li>
-                    <li><Link to="/insurance-panels" className="hover:text-[#83C5BE] transition-colors">Insurance Panels</Link></li>
+                    <li><Link to="/admission-discharge" className="hover:text-[#83C5BE] transition-colors">Admission Guide</Link></li>
+                    <li><Link to="/insurance-panel-partners" className="hover:text-[#83C5BE] transition-colors">Insurance Panels</Link></li>
                     <li><Link to="/contact-us" className="hover:text-[#83C5BE] transition-colors">Contact Us</Link></li>
                   </ul>
                 </div>

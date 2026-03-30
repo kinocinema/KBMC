@@ -162,6 +162,80 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center px-4 md:px-8 bg-white overflow-hidden pt-20">
+        {/* Animated background element */}
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#83C5BE]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="space-y-10">
+            <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <div className="inline-flex items-center gap-2 bg-[#006D77]/5 px-4 py-2 rounded-full text-[#006D77] font-bold text-sm tracking-wide border border-[#006D77]/10">
+                <Sparkles className="w-4 h-4" />
+                <span>{t('hero.badge')}</span>
+              </div>
+              <h1 className="text-6xl md:text-8xl font-bold leading-[1.1] text-[#006D77]">
+                {t('hero.title')} <br />
+                <span className="text-[#E29578] italic">{t('hero.title2')}</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-[#2C3E50]/70 font-medium max-w-xl leading-relaxed">
+                {t('hero.desc')}
+              </p>
+            </div>
+            
+            <div className={`flex flex-wrap gap-5 ${isVisible ? 'animate-fade-in-up stagger-1' : 'opacity-0'}`}>
+              <Link
+                to="/find-doctor"
+                className="group bg-[#006D77] text-white px-10 py-5 rounded-full font-bold flex items-center gap-3 hover:bg-[#005a63] transition-all shadow-xl shadow-[#006D77]/20 hover:scale-105"
+              >
+                {t('hero.cta.find')}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/patient-guide"
+                className="bg-white text-[#006D77] border-2 border-[#006D77] px-10 py-5 rounded-full font-bold hover:bg-[#EDF6F9] transition-all hover:scale-105"
+              >
+                {t('hero.cta.book')}
+              </Link>
+            </div>
+
+            <div className={`grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-[#006D77]/10 ${isVisible ? 'animate-fade-in-up stagger-2' : 'opacity-0'}`}>
+              {[
+                { label: t('hero.stat.years'), value: '27+' },
+                { label: t('hero.stat.specialists'), value: '30+' },
+                { label: t('hero.stat.emergency'), value: '24/7' },
+                { label: t('hero.stat.facility'), value: '32k+' },
+              ].map((stat) => (
+                <div key={stat.label} className="space-y-1">
+                  <p className="text-4xl font-black text-[#006D77] tracking-tighter">{stat.value}</p>
+                  <p className="text-xs uppercase font-bold text-gray-400 tracking-widest">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={`relative ${isVisible ? 'animate-scale-in stagger-1' : 'opacity-0'}`}>
+            <div className="absolute -inset-10 bg-[#83C5BE]/10 rounded-full blur-[80px]"></div>
+            <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-8 border-white group h-[600px]">
+              <HeroImage 
+                src="https://storage.googleapis.com/igc-health/KBMC%20Team%201.png" 
+                alt="KBMC Specialist Team" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/40 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-10 left-10 right-10 p-8 bg-white/90 backdrop-blur-md rounded-[2.5rem] shadow-2xl animate-fade-in-up stagger-3">
+                <div className="flex items-center gap-3 mb-3">
+                  <ShieldCheck className="text-green-500 w-8 h-8" />
+                  <span className="font-black text-[#006D77] uppercase tracking-widest text-sm">{t('hero.ibadah.title')}</span>
+                </div>
+                <p className="text-sm text-gray-600 font-medium">
+                  {t('hero.ibadah.desc')}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Legacy Section */}
       <section className="py-32 px-4 md:px-8 bg-[#F4F9FA] relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">

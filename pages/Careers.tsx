@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Briefcase, GraduationCap, Heart, Users, ArrowRight, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Briefcase, GraduationCap, Heart, Users, ArrowRight, Mail, Phone, ExternalLink, Zap, HeartPulse } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const Careers: React.FC = () => {
@@ -26,11 +26,8 @@ const Careers: React.FC = () => {
           <img 
             src="https://storage.googleapis.com/igc-health/Career%20Growth%203.jpeg" 
             alt="KBMC Careers Hero" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-100"
             referrerPolicy="no-referrer"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>
@@ -169,5 +166,3 @@ const Careers: React.FC = () => {
 };
 
 export default Careers;
-
-import { HeartPulse, Zap } from 'lucide-react';

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import PrayerWidget from './PrayerWidget';
+import { menuData } from '../data/menuData';
 
 const Navbar: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -30,24 +31,6 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
     setActiveDropdown(null);
   }, [location.pathname]);
-
-  const specialistsLinks = [
-    { name: t('nav.findDoctor'), path: '/find-doctor', icon: <Stethoscope className="w-4 h-4" /> },
-    { name: t('nav.coe'), path: '/centre-of-excellence', icon: <Sparkles className="w-4 h-4" /> },
-    { name: t('nav.services'), path: '/services', icon: <Activity className="w-4 h-4" /> },
-  ];
-
-  const patientGuideLinks = [
-    { name: t('nav.patientGuide'), path: '/patient-guide', icon: <Info className="w-4 h-4" /> },
-    { name: t('nav.roomRates'), path: '/room-rates', icon: <Bed className="w-4 h-4" /> },
-    { name: t('nav.insurance'), path: '/insurance-panels', icon: <ShieldCheck className="w-4 h-4" /> },
-    { name: t('nav.faq'), path: '/faq', icon: <FileText className="w-4 h-4" /> },
-  ];
-
-  const corporateLinks = [
-    { name: t('nav.hospital'), path: '/about', icon: <History className="w-4 h-4" /> },
-    { name: 'Careers', path: '/careers', icon: <Briefcase className="w-4 h-4" /> },
-  ];
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -88,8 +71,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* TIER 2: Master Branding - REMOVED per request */}
-
       {/* TIER 3: Clinical Navigation */}
       <div className={`transition-all duration-500 ${scrolled ? 'px-4 md:px-8 mt-4' : 'px-0'}`}>
         <nav className={`mx-auto transition-all duration-500 ${scrolled ? 'max-w-6xl rounded-full glass-nav shadow-2xl border border-white/20' : 'max-w-full bg-white border-b border-gray-100'}`}>
@@ -105,60 +86,25 @@ const Navbar: React.FC = () => {
                  </Link>
               </div>
 
-              <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-                <Link to="/" className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
-                  {t('nav.home')}
-                </Link>
-
-                <Link to="/about" className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/about') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
-                  {t('nav.hospital')}
-                </Link>
-
-                <div className="relative group h-full flex items-center">
-                  <button className={`flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/find-doctor') || isActive('/centre-of-excellence') || isActive('/services') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
-                    {t('nav.medical')} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
-                  </button>
-                  <div className="absolute top-full left-0 pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-                    <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden">
-                      {specialistsLinks.map((link) => (
-                        <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                          <div className="text-[#83C5BE] group-hover/item:text-[#006D77] transition-colors">{link.icon}</div>
-                          <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
-                        </Link>
-                      ))}
+              <div className="hidden lg:flex items-center space-x-1 flex-wrap justify-end">
+                {menuData.map((menu) => (
+                  <div key={menu.title} className="relative group h-full flex items-center">
+                    <button className={`flex items-center gap-1.5 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] px-2 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#2C3E50]`}>
+                      {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                    </button>
+                    <div className="absolute top-full left-0 pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
+                        {menu.links.map((link) => (
+                          <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
+                            <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
 
-                <div className="relative group h-full flex items-center">
-                  <button className={`flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/patient-guide') || isActive('/room-rates') || isActive('/insurance-panels') || isActive('/faq') || isActive('/medical-tourism') || isActive('/news-gallery') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
-                    {t('nav.visitor')} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
-                  </button>
-                  <div className="absolute top-full left-0 pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-                    <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden">
-                      {patientGuideLinks.map((link) => (
-                        <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                          <div className="text-[#83C5BE] group-hover/item:text-[#006D77] transition-colors">{link.icon}</div>
-                          <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>
-                        </Link>
-                      ))}
-                      <Link to="/medical-tourism" className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                        <div className="text-[#83C5BE] group-hover/item:text-[#006D77] transition-colors"><Globe className="w-4 h-4" /></div>
-                        <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{t('nav.international')}</span>
-                      </Link>
-                      <Link to="/news-gallery" className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                        <div className="text-[#83C5BE] group-hover/item:text-[#006D77] transition-colors"><FileText className="w-4 h-4" /></div>
-                        <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{t('nav.news')}</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                <Link to="/contact-us" className={`text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all hover:bg-[#EDF6F9] ${isActive('/contact-us') ? 'text-[#006D77] bg-[#EDF6F9]' : 'text-[#2C3E50]'}`}>
-                  {t('nav.contact')}
-                </Link>
-
-                <Link to="/find-doctor" className="bg-[#006D77] text-white px-8 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-[#E29578] transition-all transform hover:scale-105 shadow-lg active:scale-95 ml-2">
+                <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-[#E29578] transition-all transform hover:scale-105 shadow-lg active:scale-95 ml-2 whitespace-nowrap">
                   <Calendar className="w-3.5 h-3.5" />
                   {t('nav.book')}
                 </Link>
@@ -185,65 +131,18 @@ const Navbar: React.FC = () => {
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.home')}</h3>
-                    <Link to="/" className="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAFB] text-[#2C3E50] font-bold">
-                      <History className="w-5 h-5 text-[#83C5BE]" />
-                      <span>{t('nav.home')}</span>
-                    </Link>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.specialists')}</h3>
-                    <div className="grid grid-cols-1 gap-2">
-                      {specialistsLinks.map((link) => (
-                        <Link key={link.path} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                          <div className="text-[#83C5BE]">{link.icon}</div>
-                          <span>{link.name}</span>
-                        </Link>
-                      ))}
+                  {menuData.map((menu) => (
+                    <div key={menu.title} className="space-y-4">
+                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{menu.title}</h3>
+                      <div className="grid grid-cols-1 gap-2">
+                        {menu.links.map((link) => (
+                          <Link key={link.path} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
+                            <span>{link.name}</span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.patientGuide')}</h3>
-                    <div className="grid grid-cols-1 gap-2">
-                      {patientGuideLinks.map((link) => (
-                        <Link key={link.path} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                          <div className="text-[#83C5BE]">{link.icon}</div>
-                          <span>{link.name}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.international')}</h3>
-                    <Link to="/medical-tourism" className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                      <div className="text-[#83C5BE]"><Globe className="w-5 h-5" /></div>
-                      <span>{t('nav.international')}</span>
-                    </Link>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.news')}</h3>
-                    <Link to="/news-gallery" className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                      <div className="text-[#83C5BE]"><FileText className="w-5 h-5" /></div>
-                      <span>{t('nav.news')}</span>
-                    </Link>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t('nav.hospital')}</h3>
-                    <div className="grid grid-cols-1 gap-2">
-                      {corporateLinks.map((link) => (
-                        <Link key={link.path} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                          <div className="text-[#83C5BE]">{link.icon}</div>
-                          <span>{link.name}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="p-6 border-t border-gray-100 bg-gray-50">
