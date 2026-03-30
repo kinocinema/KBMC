@@ -18,6 +18,7 @@ import FAQ from './pages/FAQ';
 import NewsGallery from './pages/NewsGallery';
 import NewsArticle from './pages/NewsArticle';
 import CentreOfExcellence from './pages/CentreOfExcellence';
+import Careers from './pages/Careers';
 import AIChatbot from './components/AIChatbot';
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
               <Route path="/doctor/:id" element={<DoctorProfile />} />
               <Route path="/patient-guide" element={<PatientGuide />} />
               <Route path="/about" element={<About />} />
+              <Route path="/careers" element={<Careers />} />
               <Route path="/services" element={<Services />} />
               <Route path="/room-rates" element={<RoomRates />} />
               <Route path="/insurance-panels" element={<InsurancePanels />} />

@@ -306,6 +306,66 @@ const About: React.FC = () => {
         </div>
       </div>
 
+      {/* Careers Section */}
+      <div id="careers" className="py-32 px-4 md:px-8 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <div className="space-y-4">
+                <span className="text-[#E29578] font-black uppercase tracking-[0.4em] text-sm">{t('careers.hero.badge')}</span>
+                <h2 className="text-5xl md:text-7xl font-black text-[#006D77] leading-tight">{t('about.careers.title')}</h2>
+              </div>
+              <p className="text-xl text-gray-600 font-medium leading-relaxed">
+                {t('careers.hero.desc')}
+              </p>
+              <div className="bg-[#EDF6F9]/50 p-10 rounded-[3rem] border border-[#83C5BE]/20 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#006D77]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                <p className="text-lg text-[#2C3E50] font-bold leading-relaxed italic relative z-10">
+                  "{t('careers.philosophy')}"
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-[#EDF6F9] p-8 rounded-[2.5rem] border border-[#83C5BE]/20">
+                  <h3 className="text-xl font-black text-[#006D77] mb-2">{t('careers.hiring.title')}</h3>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed">{t('careers.hiring.medical')}</p>
+                </div>
+                <div className="bg-[#EDF6F9] p-8 rounded-[2.5rem] border border-[#83C5BE]/20">
+                  <h3 className="text-xl font-black text-[#006D77] mb-2">{t('careers.apply.how')}</h3>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed">{t('careers.apply.desc')}</p>
+                </div>
+              </div>
+              <div className="pt-6">
+                <a 
+                  href="/careers" 
+                  className="inline-flex items-center gap-4 bg-[#006D77] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#E29578] transition-all group shadow-xl hover:shadow-2xl"
+                >
+                  {t('careers.opp.available')}
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl bg-[#EDF6F9] flex items-center justify-center">
+                <img 
+                  src="https://storage.googleapis.com/igc-health/Career%20Growth%203.jpeg" 
+                  alt="KBMC Careers" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
+                  }}
+                />
+              </div>
+              <div className="absolute -top-10 -left-10 bg-white p-10 rounded-[3rem] shadow-2xl border border-gray-100 hidden md:block">
+                <Users className="w-12 h-12 text-[#006D77] mb-4" />
+                <p className="text-3xl font-black text-[#006D77] leading-none">{t('about.future.jobs.count')}</p>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">{t('about.future.jobs.label')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Careers & Contact Links */}
       <div className="py-32 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">

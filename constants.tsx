@@ -64,18 +64,6 @@ export const SERVICES = [
 
 export const DOCTORS = [
   {
-    id: '1',
-    name: 'Dr. Muspirah Zakaria',
-    designation: 'Consultant Orthopedic Surgeon',
-    department: 'Orthopedic Centre',
-    isFemale: true,
-    bio: 'Dr. Muspirah Zakaria is a highly skilled Orthopedic Surgeon dedicated to restoring function and mobility through advanced trauma and joint replacement techniques.',
-    focus: ['Trauma & Fracture Fixation', 'Total Knee & Hip Replacement', 'Arthroscopic Surgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MUSPIRAH%20ZAKARIA%20NEW.png',
-    status: 'Resident',
-    phone: '09-743 3399 / 019-967 0799'
-  },
-  {
     id: '25',
     name: "Dato' Dr. Hasim Mohamad, DPSK (Kelantan)",
     designation: 'Consultant Ear, Nose & Throat (ENT) Surgeon',
