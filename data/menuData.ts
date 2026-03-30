@@ -17,7 +17,7 @@ export const menuData = [
     ]
   },
   {
-    title: "SPECIALISTS & SERVICES",
+    title: "OUR SPECIALISTS & SERVICES",
     links: [
       { name: "DIRECTORY OF SPECIALIST DOCTORS", path: "/find-doctor", content: "Find the right specialist for your healthcare needs from our comprehensive directory of highly qualified doctors." },
       { name: "CLINICAL SERVICES", path: "/services", content: "Explore the wide range of comprehensive medical and surgical services offered at our state-of-the-art facility." },
@@ -25,7 +25,7 @@ export const menuData = [
     ]
   },
   {
-    title: "PATIENT INFO",
+    title: "PATIENT & VISITOR INFO",
     links: [
       { name: "ADMISSION & DISCHARGE PROCESS", path: "/patient-guide", content: "A step-by-step guide on what to expect during your admission, your stay, and how to prepare for a smooth discharge." },
       { name: "INSURANCE AND BILLING", path: "/insurance-billing", content: "Detailed information on accepted insurances, payment options, financial counseling, and billing inquiries." },
@@ -47,7 +47,7 @@ export const menuData = [
     ]
   },
   {
-    title: "NEWS & MEDIA",
+    title: "NEWS AND GALLERY",
     links: [
       { name: "OFFICIAL PRESS RELEASE", path: "/news-gallery", content: "Read the latest news, official announcements, and press releases from KBMC." },
       { name: "MEDIA", path: "/media", content: "Explore our media coverage, health articles, and multimedia resources." },
@@ -55,7 +55,7 @@ export const menuData = [
     ]
   },
   {
-    title: "HEALTH SCREENING",
+    title: "HEALTH SCREENING PACKAGES AND CORPORATE WELLNESS PROGRAM",
     links: [
       { name: "HEALTH SCREENING PACKAGES 2026", path: "/health-screening-2026", content: "Comprehensive health screening packages tailored for your well-being. Early detection is the key to prevention." },
       { name: "SPECIALIZED SCREENING PROMOTIONS (LIMITED TIME)", path: "/specialized-screening-promotions", content: "Take advantage of our limited-time offers on specialized health checks and diagnostic screenings." },
@@ -63,7 +63,7 @@ export const menuData = [
     ]
   },
   {
-    title: "MEDICAL TOURISM",
+    title: "MEDICAL TOURISM AND INTERNATIONAL PATIENT SERVICES",
     links: [
       { name: "WHY CHOOSE KBMC FOR MEDICAL TOURISM?", path: "/medical-tourism", content: "Experience world-class healthcare, internationally trained specialists, and a seamless patient journey at KBMC." },
       { name: "PREMIUM AMENITIES & CONCIERGE SERVICES", path: "/premium-amenities-concierge", content: "Exclusive services and luxurious amenities designed specifically for the comfort of our international patients." },
@@ -79,7 +79,7 @@ export const menuData = [
     ]
   },
   {
-    title: "FAQ",
+    title: "MYHEALTH360 FAQ",
     links: [
       { name: "EXISTING FAQ", path: "/faq", content: "Find answers to frequently asked questions about using our MyHealth360 app and patient portal." },
       { name: "UPCOMING TRISTAR", path: "/upcoming-tristar", content: "Learn more about our upcoming Tristar system integration and the new features it will bring to your healthcare experience." }
