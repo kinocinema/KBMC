@@ -86,14 +86,14 @@ const Navbar: React.FC = () => {
                  </Link>
               </div>
 
-              <div className="hidden lg:flex items-center space-x-1 flex-wrap justify-end">
-                {menuData.map((menu) => (
-                  <div key={menu.title} className="relative group h-full flex items-center">
+              <div className="hidden lg:flex items-center space-x-1 flex-wrap justify-end h-full">
+                {menuData.map((menu, index) => (
+                  <div key={menu.title} className="relative group h-full flex items-center hover:z-50">
                     <button className={`flex items-center gap-1.5 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] px-2 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#2C3E50]`}>
                       {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                     </button>
-                    <div className="absolute top-full left-0 pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-                      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
+                    <div className={`absolute top-full pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 4 ? 'right-0' : 'left-0'}`}>
+                      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto pointer-events-auto">
                         {menu.links.map((link) => (
                           <Link key={link.path} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
                             <span className="text-[11px] font-bold text-[#2C3E50] tracking-wide">{link.name}</span>

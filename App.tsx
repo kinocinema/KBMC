@@ -18,11 +18,13 @@ import FAQ from './pages/FAQ';
 import NewsGallery from './pages/NewsGallery';
 import NewsArticle from './pages/NewsArticle';
 import CentreOfExcellence from './pages/CentreOfExcellence';
+import CentreTemplate from './pages/CentreTemplate';
 import Careers from './pages/Careers';
 import HealthScreening from './pages/HealthScreening';
 import AIChatbot from './components/AIChatbot';
 import Page from './pages/Page';
 import { menuData } from './data/menuData';
+import { Heart, Activity, Stethoscope, Baby, Eye } from 'lucide-react';
 
 const App: React.FC = () => {
   return (
@@ -47,15 +49,21 @@ const App: React.FC = () => {
               <Route path="/news-gallery" element={<NewsGallery />} />
               <Route path="/news-gallery/:id" element={<NewsArticle />} />
               <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
+              <Route path="/heart-centre" element={<CentreTemplate title="Heart Centre" description="Advanced cardiovascular care, comprehensive diagnostics, and innovative treatments for heart conditions." features={['Echocardiography', 'Treadmill Stress Test', 'Holter Monitoring', 'Cardiac Catheterization', 'Coronary Angiography', 'Pacemaker Implantation']} icon={<Heart className="w-12 h-12 text-white" />} />} />
+              <Route path="/cancer-centre" element={<CentreTemplate title="Cancer Centre (Oncology)" description="Holistic and comprehensive cancer care, from early screening to advanced therapies and survivorship support." features={['Chemotherapy', 'Targeted Therapy', 'Immunotherapy', 'Oncology Screening', 'Palliative Care', 'Patient Support Groups']} icon={<Activity className="w-12 h-12 text-white" />} />} />
+              <Route path="/women-child-centre" element={<CentreTemplate title="Women & Child Centre" description="Specialized, compassionate care for maternity, gynecology, and pediatrics in a family-friendly environment." features={['Maternity Packages', 'Antenatal Care', 'Pediatric Services', 'Neonatal Intensive Care (NICU)', 'Gynecological Surgeries', 'Child Vaccination']} icon={<Baby className="w-12 h-12 text-white" />} />} />
+              <Route path="/eyes-centre" element={<CentreTemplate title="Eyes Centre (Ophthalmology)" description="Expert eye care, advanced surgeries, and vision correction services by leading ophthalmologists." features={['Cataract Surgery', 'Glaucoma Treatment', 'Diabetic Retinopathy', 'Corneal Transplants', 'Pediatric Ophthalmology', 'Comprehensive Eye Exams']} icon={<Eye className="w-12 h-12 text-white" />} />} />
+              <Route path="/digestive-health" element={<CentreTemplate title="Digestive Health (Gastroenterology)" description="Specialized diagnostics and treatments for a wide range of digestive and gastrointestinal disorders." features={['Endoscopy', 'Colonoscopy', 'Liver Disease Management', 'Gastrointestinal Surgeries', 'Nutritional Counseling', 'Hepatitis Treatment']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
               <Route path="/health-screening-2026" element={<HealthScreening />} />
               {/* Dynamic routes from menuData */}
               {menuData.flatMap((menu) =>
                 menu.links.map((link) => (
-                  <Route
-                    key={link.path}
-                    path={link.path}
-                    element={<Page title={link.name} content={link.content} />}
-                  />
+                  <React.Fragment key={link.path}>
+                    <Route
+                      path={link.path}
+                      element={<Page title={link.name} content={link.content} />}
+                    />
+                  </React.Fragment>
                 ))
               )}
             </Routes>
