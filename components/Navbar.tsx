@@ -37,8 +37,8 @@ const Navbar: React.FC = () => {
   return (
     <header className="fixed top-0 z-[100] w-full">
       {/* TIER 1: Utility Bar */}
-      <div className={`bg-[#006D77] text-white transition-all duration-500 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-auto py-2 px-4 md:px-8 opacity-100'}`}>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2">
+      <div className={`bg-[#006D77] text-white transition-all duration-500 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-auto py-2 px-2 sm:px-4 lg:px-4 xl:px-6 2xl:px-8 opacity-100'}`}>
+        <div className="w-full mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2">
           <PrayerWidget />
           <div className="flex items-center gap-6">
             {/* Language Switcher */}
@@ -72,24 +72,24 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* TIER 3: Clinical Navigation */}
-      <div className={`transition-all duration-500 ${scrolled ? 'px-4 md:px-8 mt-4' : 'px-0'}`}>
-        <nav className={`mx-auto transition-all duration-500 ${scrolled ? 'max-w-6xl rounded-full glass-nav shadow-2xl border border-white/20' : 'max-w-full bg-white border-b border-gray-100'}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={`transition-all duration-500 ${scrolled ? 'px-2 md:px-4 mt-4' : 'px-0'}`}>
+        <nav className={`mx-auto transition-all duration-500 ${scrolled ? 'w-[98%] max-w-[1920px] rounded-full glass-nav shadow-2xl border border-white/20' : 'w-full bg-white border-b border-gray-100'}`}>
+          <div className="w-full mx-auto px-2 sm:px-4 lg:px-4 xl:px-6 2xl:px-8">
             <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-20' : 'h-32'}`}>
               <div className="flex items-center gap-3 flex-shrink-0">
                  <Link to="/" className="flex items-center gap-3 flex-shrink-0">
                    <img 
                      src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" 
                      alt="KBMC Logo" 
-                     className={`transition-all duration-500 ${scrolled ? 'h-10 md:h-14' : 'h-16 md:h-24'} w-auto object-contain`} 
+                     className={`transition-all duration-500 ${scrolled ? 'h-10 md:h-12 xl:h-14' : 'h-12 md:h-16 xl:h-20'} w-auto object-contain`} 
                    />
                  </Link>
               </div>
 
-              <div className="hidden lg:flex items-center space-x-1 flex-wrap justify-end h-full">
+              <div className="hidden lg:flex items-center space-x-0 xl:space-x-2 justify-end h-full">
                 {menuData.map((menu, index) => (
                   <div key={menu.title} className="relative group h-full flex items-center hover:z-50">
-                    <button className={`flex items-center gap-1.5 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] px-2 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#2C3E50]`}>
+                    <button className={`flex items-center gap-1 xl:gap-1.5 text-[9px] xl:text-[11px] font-black uppercase tracking-wider xl:tracking-[0.1em] px-2 xl:px-3 py-2 rounded-full transition-all hover:bg-[#EDF6F9] text-[#2C3E50] whitespace-nowrap`}>
                       {menu.title} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                     </button>
                     <div className={`absolute top-full pt-4 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 4 ? 'right-0' : 'left-0'}`}>
@@ -104,8 +104,8 @@ const Navbar: React.FC = () => {
                   </div>
                 ))}
 
-                <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-[#E29578] transition-all transform hover:scale-105 shadow-lg active:scale-95 ml-2 whitespace-nowrap">
-                  <Calendar className="w-3.5 h-3.5" />
+                <Link to="/find-doctor" className="bg-[#006D77] text-white px-5 xl:px-7 py-2.5 xl:py-3 rounded-full text-[10px] xl:text-[11px] font-black uppercase tracking-wider xl:tracking-widest flex items-center gap-1.5 xl:gap-2 hover:bg-[#E29578] transition-all transform hover:scale-105 shadow-lg active:scale-95 ml-2 xl:ml-4 whitespace-nowrap">
+                  <Calendar className="w-4 h-4" />
                   {t('nav.book')}
                 </Link>
               </div>
