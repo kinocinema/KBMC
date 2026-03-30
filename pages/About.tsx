@@ -375,8 +375,8 @@ const About: React.FC = () => {
               </div>
               <div className="pt-6">
                 <Link 
-                  to="/careers" 
-                  className="inline-flex items-center gap-4 bg-[#006D77] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#E29578] transition-all group shadow-xl hover:shadow-2xl"
+                  to="/careers#current-opportunities" 
+                  className="inline-flex items-center gap-4 bg-[#E29578] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#006D77] transition-all group shadow-xl hover:shadow-2xl"
                 >
                   {t('careers.opp.available')}
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
