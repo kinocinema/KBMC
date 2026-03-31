@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
                 <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
                   {menuData.filter(m => ["NEWS & GALLERY", "HEALTH SCREENING", "MEDICAL TOURISM", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
                     <div key={menu.title} className="relative group flex items-center h-full">
-                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap ${menu.title === 'MYHEALTH360 FAQ' ? 'bg-[#F0F8FA]' : ''}`}>
+                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
                         {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
                       {/* Invisible bridge to connect button and dropdown */}
