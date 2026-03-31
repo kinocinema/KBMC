@@ -38,7 +38,7 @@ const MedicalTourism: React.FC = () => {
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Hero Section */}
-      <div className="relative h-[60vh] flex items-center overflow-hidden bg-[#006D77]">
+      <div className="relative min-h-[600px] md:h-[70vh] flex items-center overflow-hidden bg-[#006D77] py-20 md:py-0">
         <div className="absolute inset-0">
           <img 
             src="https://storage.googleapis.com/igc-health/Medical%20Tourism.jpeg" 
@@ -54,7 +54,7 @@ const MedicalTourism: React.FC = () => {
             <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[#83C5BE] text-[10px] font-black uppercase tracking-[0.3em] border border-white/10">
               {t('tourism.hero.badge')}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter">
               {t('tourism.hero.title')} <span className="text-[#E29578]">{t('tourism.hero.title2')}</span>
             </h1>
             <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-2xl">

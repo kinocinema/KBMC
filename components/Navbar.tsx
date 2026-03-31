@@ -6,8 +6,10 @@ import {
   Stethoscope, Bed, Activity, ShieldCheck, 
   Info, Briefcase, FileText, PhoneCall, 
   HeartPulse, Sparkles, GraduationCap, MapPin,
-  ClipboardList, Heart, Users, History, Globe
+  ClipboardList, Heart, Users, History, Globe,
+  ChevronRight
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import PrayerWidget from './PrayerWidget';
 import { menuData } from '../data/menuData';
@@ -17,6 +19,7 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
+    setMobileAccordion(null);
   }, [location.pathname, location.hash]);
 
   const isActive = (path: string) => location.pathname === path;
@@ -137,51 +141,95 @@ const Navbar: React.FC = () => {
               </div>
 
               <div className="lg:hidden flex items-center justify-between w-full">
-                <button onClick={() => setIsOpen(!isOpen)} className="text-[#2C3E50] hover:text-[#006D77] focus:outline-none ml-auto">
-                  {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+                <button onClick={() => setIsOpen(!isOpen)} className="text-[#2C3E50] hover:text-[#006D77] focus:outline-none ml-auto p-2">
+                  {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
                 </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Menu Drawer */}
-          <div className={`lg:hidden fixed inset-0 z-[150] transition-all duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            <div className="absolute inset-0 bg-[#2C3E50]/60 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-            <div className={`absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-              <div className="flex flex-col h-full">
-                <div className="p-6 flex items-center justify-between border-b border-gray-100">
-                  <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-16 md:h-20 w-auto object-contain" />
-                  <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-[#006D77] transition-colors">
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                  {menuData.map((menu) => (
-                    <div key={menu.title} className="space-y-4">
-                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] pl-2">{t(`menu.${menu.title}`)}</h3>
-                      <div className="grid grid-cols-1 gap-2">
-                        {menu.links.map((link) => (
-                          <Link key={link.name} to={link.path} className="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold transition-all">
-                            <span>{t(`menu.${link.name}`)}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="p-6 border-t border-gray-100 bg-gray-50">
-                  <Link to="/find-doctor" className="w-full bg-[#006D77] text-white py-5 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl shadow-[#006D77]/20">
-                    <Calendar className="w-5 h-5" />
-                    {t('nav.book')}
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
         </nav>
       </div>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <div className="lg:hidden fixed inset-0 z-[150]">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-[#2C3E50]/60 backdrop-blur-sm" 
+              onClick={() => setIsOpen(false)} 
+            />
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl flex flex-col"
+            >
+              <div className="p-6 flex items-center justify-between border-b border-gray-100">
+                <img src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png" alt="KBMC Logo" className="h-12 w-auto object-contain" />
+                <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-[#006D77] transition-colors">
+                  <X className="w-7 h-7" />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto py-4">
+                <div className="px-6 space-y-2">
+                  {menuData.map((menu) => (
+                    <div key={menu.title} className="border-b border-gray-50 last:border-0">
+                      <button 
+                        onClick={() => setMobileAccordion(mobileAccordion === menu.title ? null : menu.title)}
+                        className="w-full flex items-center justify-between py-4 text-[#2C3E50] font-black text-sm uppercase tracking-widest"
+                      >
+                        <span>{t(`menu.${menu.title}`)}</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileAccordion === menu.title ? 'rotate-180' : 'rotate-0'}`} />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {mobileAccordion === menu.title && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="grid grid-cols-1 gap-1 pb-4 pl-4">
+                              {menu.links.map((link) => (
+                                <Link 
+                                  key={link.name} 
+                                  to={link.path} 
+                                  className="flex items-center justify-between p-3 rounded-xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold text-xs transition-all group"
+                                >
+                                  <span>{t(`menu.${link.name}`)}</span>
+                                  <ChevronRight className="w-3 h-3 text-gray-300 group-hover:text-[#006D77] transition-colors" />
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-6 border-t border-gray-100 bg-gray-50 space-y-4">
+                <Link to="/find-doctor" className="w-full bg-[#006D77] text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl shadow-[#006D77]/20 active:scale-95 transition-transform">
+                  <Calendar className="w-5 h-5" />
+                  {t('nav.book')}
+                </Link>
+                <div className="flex items-center justify-center gap-4">
+                  <button onClick={() => setLanguage('en')} className={`text-xs font-black px-3 py-1 rounded-full ${language === 'en' ? 'bg-[#006D77] text-white' : 'text-gray-400'}`}>EN</button>
+                  <button onClick={() => setLanguage('bm')} className={`text-xs font-black px-3 py-1 rounded-full ${language === 'bm' ? 'bg-[#006D77] text-white' : 'text-gray-400'}`}>BM</button>
+                  <button onClick={() => setLanguage('th')} className={`text-xs font-black px-3 py-1 rounded-full ${language === 'th' ? 'bg-[#006D77] text-white' : 'text-gray-400'}`}>TH</button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

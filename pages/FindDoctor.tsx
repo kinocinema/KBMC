@@ -127,10 +127,10 @@ const FindDoctor: React.FC = () => {
 
               <div className="space-y-6 w-full flex-1 flex flex-col">
                 <div className="space-y-2 flex-grow-0">
-                  <h3 className="text-2xl font-black text-[#006D77] leading-tight group-hover:text-[#E29578] transition-colors min-h-[3rem] flex items-center justify-center">
+                  <h3 className="text-2xl font-black text-[#006D77] leading-tight min-h-[3rem] flex items-center justify-center">
                     {doc.name}
                   </h3>
-                  <p className="text-[#83C5BE] font-black text-[10px] uppercase tracking-[0.2em] min-h-[2.5rem] flex items-center justify-center">
+                  <p className="text-black font-black text-[10px] uppercase tracking-[0.2em] min-h-[2.5rem] flex items-center justify-center">
                     {doc.designation}
                   </p>
                 </div>

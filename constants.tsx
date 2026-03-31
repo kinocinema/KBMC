@@ -303,7 +303,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: "Dato' Dr. Mohammad Anwar Hau Bin Abdullah is a Visiting Orthopedic Surgeon with subspecialty expertise in Orthopedic Oncology. He is experienced in treating complex musculoskeletal conditions, including bone and soft tissue tumors, fractures, joint disorders, and degenerative bone diseases. With advanced training and fellowship experience, he is dedicated to providing comprehensive surgical and non-surgical care that prioritizes function, mobility, and patient quality of life.",
     focus: ['Orthopedic Oncology', 'Bone & Soft Tissue Tumors', 'Complex Fractures', 'Joint Disorders', 'Degenerative Bone Diseases'],
-    imageUrl: "https://storage.googleapis.com/igc-health/DATO%E2%80%99%20DR.%20MOHAMMAD%20ANWAR%20HAU%20BIN%20ABDULLAH.png",
+    imageUrl: "https://storage.googleapis.com/igc-health/DATO%E2%80%99%20DR.%20MOHAMMAD%20ANWAR%20HAU.png",
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -351,7 +351,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Dr. Norzila Zakaria is a Visiting Psychiatrist with expertise in diagnosing and managing a wide range of mental health conditions. She provides compassionate care for individuals experiencing anxiety, depression, stress-related disorders, and other psychiatric concerns. With a patient-centered approach, she emphasizes holistic treatment that may include therapy, counseling, and medication management to support overall mental well-being.',
     focus: ['Psychiatry', 'Anxiety', 'Depression', 'Stress-related Disorders', 'Mental Well-being'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20NORZILA%20ZAKARIA.png',
+    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20NORZILA%20ZAKARIA%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -516,7 +516,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Shamsul Kamalrujan Hassan is a Visiting Anaesthetist with extensive expertise in perioperative care, critical care medicine, and pain management. He plays a vital role in ensuring patient safety and comfort before, during, and after surgery. With a focus on advanced anaesthetic techniques and patient-centered care, he is committed to delivering high standards of medical practice.',
     focus: ['Perioperative Care', 'Critical Care Medicine', 'Pain Management', 'Advanced Anaesthetic Techniques'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20SHAMSUL%20KAMALRUJAN%20HASSAN.png',
+    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20SHAMSUL%20KAMALRUJAN%20HASSAN%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]

@@ -232,8 +232,8 @@ const Services: React.FC = () => {
                           />
                         </div>
                         <div className="space-y-1">
-                          <h4 className="text-2xl font-bold text-[#006D77] leading-tight group-hover:text-[#E29578] transition-colors">{doc.name}</h4>
-                          <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.2em] mt-2">{doc.designation}</p>
+                          <h4 className="text-2xl font-bold text-[#006D77] leading-tight">{doc.name}</h4>
+                          <p className="text-black font-black text-[10px] uppercase tracking-[0.2em] mt-2">{doc.designation}</p>
                         </div>
                       </div>
                       <div className="mt-8 pt-6 border-t border-gray-50 flex items-center justify-between">
