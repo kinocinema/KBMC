@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap, Users, Clock, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap, Users, Clock, ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 
@@ -243,7 +243,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Future Growth & Location */}
-      <div id="future" className="py-32 px-4 md:px-8 bg-white">
+      <div id="location-direction" className="py-32 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-12">
             <div className="space-y-6">
@@ -263,6 +263,15 @@ const About: React.FC = () => {
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
                 {t('about.location.desc')}
               </p>
+              <div className="pt-4">
+                <Link 
+                  to="/contact-us#location-direction" 
+                  className="inline-flex items-center gap-3 bg-[#006D77] text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-[#E29578] transition-all group shadow-lg"
+                >
+                  {t('nav.contact')}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
           <div className="relative">
@@ -395,8 +404,17 @@ const About: React.FC = () => {
               <MapPin className="w-8 h-8" />
             </div>
             <h2 className="text-4xl font-black text-[#006D77]">{t('contact.facility.title')}</h2>
-            <div className="space-y-4 text-gray-500 font-medium">
-              <p><strong className="text-[#006D77]">{t('about.facility.parking.label')}:</strong> {t('contact.parking.desc')}</p>
+            <div className="space-y-6 text-gray-500 font-medium">
+              <div className="space-y-4">
+                <p><strong className="text-[#006D77]">{t('about.facility.parking.label')}:</strong> {t('contact.parking.desc')}</p>
+                <Link 
+                  to="/contact-us#parking-info" 
+                  className="inline-flex items-center gap-2 text-[#006D77] font-black uppercase tracking-widest text-[10px] hover:text-[#E29578] transition-colors group"
+                >
+                  {t('menu.PARKING INFO')}
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
               <p><strong className="text-[#006D77]">{t('about.facility.blockA.label')}:</strong> {t('contact.facility.a.desc')}</p>
               <p><strong className="text-[#006D77]">{t('about.facility.blockB.label')}:</strong> {t('contact.facility.b.desc')}</p>
               <p><strong className="text-[#006D77]">{t('about.facility.blockC.label')}:</strong> {t('contact.facility.c.desc')}</p>

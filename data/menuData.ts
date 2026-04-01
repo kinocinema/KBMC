@@ -11,9 +11,9 @@ export const menuData = [
       { name: "WHY WORK WITH US?", path: "/careers#why-work-with-us", content: "Discover the benefits, inclusive culture, and continuous growth opportunities at our hospital." },
       { name: "HOW TO APPLY?", path: "/careers#how-to-apply", content: "Learn about our recruitment process and how you can submit your application to join our team." },
       { name: "CONTACT US", path: "/contact-us", content: "Get in touch with us for inquiries, feedback, or support. Our customer service team is ready to assist you." },
-      { name: "LOCATION & DIRECTION", path: "/about#future", content: "Find your way to our hospital with detailed maps, public transit options, and driving directions." },
-      { name: "PARKING INFO", path: "/about#directory", content: "Information on parking rates, valet services, and convenient parking locations for patients and visitors." },
-      { name: "OPERATING HOURS", path: "/about#directory", content: "Check our clinic operating hours, visiting hours, and 24/7 emergency department availability." }
+      { name: "LOCATION & DIRECTION", path: "/about#location-direction", content: "Find your way to our hospital with detailed maps, public transit options, and driving directions." },
+      { name: "PARKING INFO", path: "/contact-us#parking-info", content: "Information on parking rates, valet services, and convenient parking locations for patients and visitors." },
+      { name: "OPERATING HOURS", path: "/contact-us#operating-hours", content: "Check our clinic operating hours, visiting hours, and 24/7 emergency department availability." }
     ]
   },
   {

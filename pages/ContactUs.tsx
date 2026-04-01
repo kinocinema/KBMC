@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle, Navigation, Car } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle, Navigation, Car, ArrowRight, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const ContactUs: React.FC = () => {
@@ -111,7 +111,7 @@ const ContactUs: React.FC = () => {
       {/* Sub-page Sections */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 space-y-24 pb-24">
         {/* LOCATION & DIRECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div id="location-direction" className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
               <span className="text-[#E29578] font-black uppercase tracking-[0.3em] text-[10px]">{t('contact.directory.location')}</span>
@@ -137,33 +137,49 @@ const ContactUs: React.FC = () => {
         </div>
 
         {/* PARKING INFO */}
-        <div className="bg-[#EDF6F9] p-12 md:p-16 rounded-[4rem] relative overflow-hidden">
+        <div id="parking-info" className="bg-[#EDF6F9] p-12 md:p-16 rounded-[4rem] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#006D77]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                  <Car className="text-[#006D77] w-6 h-6" />
+              <div className="flex items-center gap-6">
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm">
+                  <Car className="text-[#006D77] w-7 h-7" />
                 </div>
-                <h2 className="text-3xl font-black text-[#006D77] tracking-tight">{t('contact.parking.title')}</h2>
+                <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.parking.title')}</h2>
               </div>
-              <p className="text-xl font-bold text-[#2C3E50] leading-relaxed">
+              <p className="text-xl font-bold text-[#2C3E50] leading-relaxed max-w-xl">
                 {t('contact.parking.desc')}
               </p>
+              <div className="pt-4">
+                <a 
+                  href="https://www.google.com/maps/dir/?api=1&destination=Kota+Bharu+Medical+Centre" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#006D77] text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-[#E29578] transition-all group shadow-lg"
+                >
+                  {t('contact.maps.nav')}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div className="bg-white/50 backdrop-blur-sm p-4 rounded-[2.5rem] border border-white/20">
-                <div className="bg-[#006D77] text-white px-10 py-6 rounded-[2rem] text-center space-y-1">
-                  <p className="text-[10px] font-black uppercase tracking-widest opacity-70">{t('contact.parking.status.label')}</p>
-                  <p className="text-2xl font-black">{t('contact.parking.status.value')}</p>
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=Kota+Bharu+Medical+Centre" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white p-6 rounded-[3rem] shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 active:scale-95 group"
+              >
+                <div className="bg-[#006D77] text-white px-12 py-8 rounded-[2.5rem] text-center space-y-1 min-w-[280px] group-hover:bg-[#E29578] transition-colors">
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] opacity-80">{t('contact.parking.status.label')}</p>
+                  <p className="text-4xl font-black tracking-tight">{t('contact.parking.status.value')}</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
 
         {/* OPERATING HOURS */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div id="operating-hours" className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="space-y-10">
             <div className="space-y-4">
               <span className="text-[#E29578] font-black uppercase tracking-[0.3em] text-[10px]">{t('contact.hours.title')}</span>

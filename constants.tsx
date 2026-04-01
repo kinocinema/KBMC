@@ -150,7 +150,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mat Ariffin Saman is a dedicated Anaesthetist with expertise in pain management, perioperative care, and patient safety during surgical procedures. He plays a vital role in ensuring patients receive safe, effective, and compassionate anaesthesia care throughout their treatment journey at KBMC.',
     focus: ['Pain Management', 'Perioperative Care', 'Patient Safety', 'Anaesthesia Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MAT%20ARIFFIN%20SAMAN.png',
+    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MAT%20ARIFFIN%20SAMAN%202.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -531,7 +531,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Wan Azman Wan Sulaiman is a Visiting Plastic Surgeon with extensive expertise in reconstructive and aesthetic surgery. His areas of specialization include body contouring, breast surgery, cleft lip and palate repair, microsurgery, and advanced wound management. He is committed to delivering safe, effective, and patient-centered surgical solutions that enhance both function and appearance.',
     focus: ['Reconstructive Surgery', 'Aesthetic Surgery', 'Body Contouring', 'Breast Surgery', 'Cleft Lip & Palate Repair', 'Microsurgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20WAN%20AZMAN%20WAN%20SULAIMAN.png',
+    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20WAN%20AZMAN%20WAN%20SULAIMAN%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]

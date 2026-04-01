@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
               <div className="hidden lg:flex flex-col justify-center items-end h-full gap-2 xl:gap-3 py-2">
                 {/* Top Row */}
                 <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => ["NEWS & GALLERY", "HEALTH SCREENING", "MEDICAL TOURISM", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
+                  {menuData.filter(m => ["HEALTH SCREENING", "MEDICAL TOURISM", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
                         {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
 
                 {/* Bottom Row */}
                 <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE"].includes(m.title)).map((menu, index) => (
+                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
                         {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />

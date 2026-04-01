@@ -105,11 +105,11 @@ const Careers: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6">
-              <img src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%201.png" className="rounded-[3rem] shadow-xl w-full aspect-square object-cover" referrerPolicy="no-referrer" />
-              <img src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%202.png" className="rounded-[3rem] shadow-xl w-full aspect-[3/4] object-cover" referrerPolicy="no-referrer" />
+              <img src="https://storage.googleapis.com/igc-health/Stockphoto/Why%20Join%20Us%20-%20Round%20Table.jpeg" className="rounded-[3rem] shadow-xl w-full aspect-square object-cover" referrerPolicy="no-referrer" />
+              <img src="https://storage.googleapis.com/igc-health/Stockphoto/KBMC_Pusat%20onkologi.png" className="rounded-[3rem] shadow-xl w-full aspect-[3/4] object-cover" referrerPolicy="no-referrer" />
             </div>
             <div className="space-y-6 pt-12">
-              <img src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%203.png" className="rounded-[3rem] shadow-xl w-full aspect-[3/4] object-cover" referrerPolicy="no-referrer" />
+              <img src="https://storage.googleapis.com/igc-health/Stockphoto/Why%20Join%20Us%20-%20Impact.jpeg" className="rounded-[3rem] shadow-xl w-full aspect-[3/4] object-cover" referrerPolicy="no-referrer" />
               <img src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png" className="rounded-[3rem] shadow-xl w-full aspect-square object-cover" referrerPolicy="no-referrer" />
             </div>
           </div>
