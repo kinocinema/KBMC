@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, ArrowLeft, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Calendar, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Loader2 } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const newsData = {
   'kbmc-tristar': {
@@ -75,9 +78,29 @@ const newsData = {
 const NewsArticle: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { t } = useLanguage();
+  const [article, setArticle] = React.useState<any>(null);
+  const [loading, setLoading] = React.useState(true);
   
   useEffect(() => {
     window.scrollTo(0, 0);
+    const fetchArticle = async () => {
+      if (!id) return;
+      try {
+        const docRef = doc(db, 'news', id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setArticle({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setArticle(getArticleData(id));
+        }
+      } catch (error) {
+        handleFirestoreError(error, OperationType.GET, `news/${id}`);
+        setArticle(getArticleData(id));
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticle();
   }, [id]);
 
   const getArticleData = (id: string) => {
@@ -90,7 +113,9 @@ const NewsArticle: React.FC = () => {
     };
   };
 
-  const article = id ? getArticleData(id) : null;
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-[#006D77]" /></div>;
+  }
 
   if (!article) {
     return (

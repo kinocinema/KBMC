@@ -11,11 +11,12 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
+import { useMenu } from '../MenuContext';
 import PrayerWidget from './PrayerWidget';
-import { menuData } from '../data/menuData';
 
 const Navbar: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { menuData } = useMenu();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -67,9 +68,9 @@ const Navbar: React.FC = () => {
                </button>
             </div>
             <div className="h-4 w-px bg-white/20"></div>
-            <a href="tel:+6097477000" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#83C5BE] transition-colors">
+            <a href="tel:+6097439999" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#83C5BE] transition-colors">
               <Phone className="w-3.5 h-3.5" />
-              <span>{t('nav.emergency')}: +609 747 7000</span>
+              <span>{t('nav.emergency')}: +60 9-743 9999 / +60 19-943 3599</span>
             </a>
           </div>
         </div>
@@ -93,24 +94,30 @@ const Navbar: React.FC = () => {
               <div className="hidden lg:flex flex-col justify-center items-end h-full gap-2 xl:gap-3 py-2">
                 {/* Top Row */}
                 <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => ["HEALTH SCREENING", "MEDICAL TOURISM", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => (
+                  {menuData.filter(m => !["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => {
+                    const translatedTitle = t(`menu.${menu.title}` as any);
+                    const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+                    return (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
-                        {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                        {displayTitle} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
                       {/* Invisible bridge to connect button and dropdown */}
                       <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
                       <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 1 ? 'right-0' : 'left-0'}`}>
                         <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
-                          {menu.links.map((link) => (
+                          {menu.links.map((link: any) => {
+                            const translatedLinkName = t(`menu.${link.name}` as any);
+                            const displayLinkName = translatedLinkName.startsWith('menu.') ? link.name : translatedLinkName;
+                            return (
                             <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{t(`menu.${link.name}`)}</span>
+                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{displayLinkName}</span>
                             </Link>
-                          ))}
+                          )})}
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )})}
 
                   <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 xl:px-8 py-2 rounded-full text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wider flex items-center gap-1.5 xl:gap-2 hover:bg-[#E29578] transition-all shadow-lg active:scale-95 ml-4 xl:ml-8 whitespace-nowrap">
                     {t('nav.book')}
@@ -119,24 +126,30 @@ const Navbar: React.FC = () => {
 
                 {/* Bottom Row */}
                 <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => (
+                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => {
+                    const translatedTitle = t(`menu.${menu.title}` as any);
+                    const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+                    return (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
-                        {t(`menu.${menu.title}`)} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                        {displayTitle} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
                       {/* Invisible bridge to connect button and dropdown */}
                       <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
                       <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 2 ? 'right-0' : 'left-0'}`}>
                         <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
-                          {menu.links.map((link) => (
+                          {menu.links.map((link: any) => {
+                            const translatedLinkName = t(`menu.${link.name}` as any);
+                            const displayLinkName = translatedLinkName.startsWith('menu.') ? link.name : translatedLinkName;
+                            return (
                             <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{t(`menu.${link.name}`)}</span>
+                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{displayLinkName}</span>
                             </Link>
-                          ))}
+                          )})}
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )})}
                 </div>
               </div>
 
@@ -177,13 +190,16 @@ const Navbar: React.FC = () => {
 
               <div className="flex-1 overflow-y-auto py-4">
                 <div className="px-6 space-y-2">
-                  {menuData.map((menu) => (
+                  {menuData.map((menu) => {
+                    const translatedTitle = t(`menu.${menu.title}` as any);
+                    const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+                    return (
                     <div key={menu.title} className="border-b border-gray-50 last:border-0">
                       <button 
                         onClick={() => setMobileAccordion(mobileAccordion === menu.title ? null : menu.title)}
                         className="w-full flex items-center justify-between py-4 text-[#2C3E50] font-black text-sm uppercase tracking-widest"
                       >
-                        <span>{t(`menu.${menu.title}`)}</span>
+                        <span>{displayTitle}</span>
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileAccordion === menu.title ? 'rotate-180' : 'rotate-0'}`} />
                       </button>
                       
@@ -196,22 +212,25 @@ const Navbar: React.FC = () => {
                             className="overflow-hidden"
                           >
                             <div className="grid grid-cols-1 gap-1 pb-4 pl-4">
-                              {menu.links.map((link) => (
+                              {menu.links.map((link: any) => {
+                                const translatedLinkName = t(`menu.${link.name}` as any);
+                                const displayLinkName = translatedLinkName.startsWith('menu.') ? link.name : translatedLinkName;
+                                return (
                                 <Link 
                                   key={link.name} 
                                   to={link.path} 
                                   className="flex items-center justify-between p-3 rounded-xl hover:bg-[#EDF6F9] text-[#2C3E50] font-bold text-xs transition-all group"
                                 >
-                                  <span>{t(`menu.${link.name}`)}</span>
+                                  <span>{displayLinkName}</span>
                                   <ChevronRight className="w-3 h-3 text-gray-300 group-hover:text-[#006D77] transition-colors" />
                                 </Link>
-                              ))}
+                              )})}
                             </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
-                  ))}
+                  )})}
                 </div>
               </div>
 

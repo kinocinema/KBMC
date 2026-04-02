@@ -118,7 +118,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Wed', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
   },
@@ -136,7 +136,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Wed', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
   },
@@ -171,7 +171,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Wed', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
   },
@@ -189,7 +189,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Wed', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
   },
@@ -241,7 +241,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Tue', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Tue', time: '9:00 AM - 5:00 PM' },
       { day: 'Wednesday', time: 'By appointment only' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
@@ -260,7 +260,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sun - Wed', time: '9:00 AM - 4:30 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
       { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
     ]
   },
@@ -307,7 +307,7 @@ export const DOCTORS = [
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
-      { day: 'Sunday - Wednesday', time: '9:00am – 4:30pm' },
+      { day: 'Saturday - Wednesday', time: '9:00 AM - 5:00 PM' },
       { day: 'Mon, Tue & Thu', time: 'By Appointment Only' },
     ]
   },

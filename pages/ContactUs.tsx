@@ -2,15 +2,32 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle, Navigation, Car, ArrowRight, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const ContactUs: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [settings, setSettings] = useState<any>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
     window.scrollTo(0, 0);
+    
+    const fetchSettings = async () => {
+      try {
+        const docRef = doc(db, 'settings', 'global');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setSettings(docSnap.data());
+        }
+      } catch (error) {
+        handleFirestoreError(error, OperationType.GET, 'settings/global');
+      }
+    };
+    fetchSettings();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,16 +40,25 @@ const ContactUs: React.FC = () => {
     <div className="min-h-screen bg-white pb-32 overflow-hidden relative">
       {/* 1. Emergency Header - Red Box */}
       <div className="bg-red-600 py-4 px-4 md:px-8 text-center relative z-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 text-white">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-              <Phone className="w-4 h-4 animate-pulse" />
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-2 text-white">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Phone className="w-4 h-4 animate-pulse" />
+              </div>
+              <span className="font-black uppercase tracking-widest text-sm">{t('contact.directory.ae')}</span>
             </div>
-            <span className="font-black uppercase tracking-widest text-sm">{t('contact.directory.ae')}</span>
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <a href={`tel:${settings?.emergencyPhone?.replace(/\s+/g, '') || '+6097439999'}`} className="text-2xl md:text-3xl font-black tracking-tighter hover:scale-105 transition-transform">
+                {settings?.emergencyPhone || '+60 9-743 9999'}
+              </a>
+              <span className="text-2xl md:text-3xl font-black tracking-tighter hidden md:inline">/</span>
+              <a href="tel:+60199433599" className="text-2xl md:text-3xl font-black tracking-tighter hover:scale-105 transition-transform">
+                +60 19-943 3599
+              </a>
+            </div>
           </div>
-          <a href="tel:+6097458000" className="text-2xl md:text-3xl font-black tracking-tighter hover:scale-105 transition-transform">
-            +60 9-745 8000
-          </a>
+          <p className="text-sm md:text-base font-medium opacity-90">Our trauma team is standing by to provide immediate care.</p>
         </div>
       </div>
 
@@ -52,7 +78,7 @@ const ContactUs: React.FC = () => {
         <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100">
           <div className="h-[400px] md:h-[500px] relative">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.112444586048!2d102.25368337583626!3d6.115500027770185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b6af9999999999%3A0x6666666666666666!2sKota%20Bharu%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1710534567890!5m2!1sen!2smy" 
+              src="https://maps.google.com/maps?q=Kota%20Bharu%20Medical%20Centre&t=&z=15&ie=UTF8&iwloc=&output=embed" 
               className="w-full h-full border-0 grayscale-[0.2] contrast-[1.1]"
               allowFullScreen={true} 
               loading="lazy" 

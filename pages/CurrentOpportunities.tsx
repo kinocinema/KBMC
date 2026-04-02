@@ -128,7 +128,7 @@ const CurrentOpportunities: React.FC = () => {
                   <PhoneCall className="w-5 h-5" />
                   <div className="flex flex-col">
                     <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">HR Department</span>
-                    <span className="font-bold">+609-745 8000</span>
+                    <span className="font-bold">+60 9-743 3399</span>
                   </div>
                 </div>
               </div>

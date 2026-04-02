@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle2, PhoneCall, Calendar } from 'lucide-react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 interface PageProps {
-  title: string;
-  content: string;
+  slug: string;
+  defaultTitle: string;
+  defaultContent: string;
 }
 
-const Page: React.FC<PageProps> = ({ title, content }) => {
+const Page: React.FC<PageProps> = ({ slug, defaultTitle, defaultContent }) => {
+  const [pageData, setPageData] = useState<{ title: string; content: string } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPage = async () => {
+      setLoading(true);
+      try {
+        const docRef = doc(db, 'pages', slug);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setPageData(docSnap.data() as any);
+        } else {
+          setPageData(null);
+        }
+      } catch (error) {
+        console.error("Error fetching page:", error);
+      }
+      setLoading(false);
+    };
+
+    fetchPage();
+  }, [slug]);
+
+  const title = pageData?.title || defaultTitle;
+  const content = pageData?.content || defaultContent;
+
   return (
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
       {/* Hero Section */}
@@ -15,9 +44,6 @@ const Page: React.FC<PageProps> = ({ title, content }) => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight uppercase">{title}</h1>
-            <p className="text-lg text-white/80 leading-relaxed mb-8">
-              {content}
-            </p>
           </div>
         </div>
       </div>
@@ -27,30 +53,15 @@ const Page: React.FC<PageProps> = ({ title, content }) => {
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="md:col-span-2 prose prose-slate max-w-none">
-              <h2 className="text-2xl font-bold text-[#2C3E50] mb-4">Overview</h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Welcome to the {title} page. We are committed to providing you with the most up-to-date and comprehensive information regarding our services and facilities. 
-                Our dedicated team ensures that every aspect of your experience with Kota Bharu Medical Centre meets the highest standards of quality and care.
-              </p>
-              
-              <h3 className="text-xl font-bold text-[#2C3E50] mb-4 mt-8">Key Information</h3>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Comprehensive and patient-centric approach',
-                  'State-of-the-art facilities and equipment',
-                  'Experienced and dedicated healthcare professionals',
-                  'Commitment to continuous improvement and excellence'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#83C5BE] shrink-0 mt-0.5" />
-                    <span className="text-gray-600">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <p className="text-gray-600 leading-relaxed">
-                For more specific details or personalized assistance, please do not hesitate to reach out to our support staff. We are here to help you navigate your healthcare journey with ease and confidence.
-              </p>
+              {loading ? (
+                <div className="animate-pulse space-y-4">
+                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                </div>
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              )}
             </div>
             
             {/* Sidebar */}

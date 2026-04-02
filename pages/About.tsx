@@ -359,23 +359,19 @@ const About: React.FC = () => {
             <div className="w-16 h-16 bg-[#EDF6F9] rounded-2xl flex items-center justify-center text-[#006D77]">
               <Building2 className="w-8 h-8" />
             </div>
-            <h2 className="text-4xl font-black text-[#006D77]">{t('contact.directory.title')}</h2>
+            <h2 className="text-4xl font-black text-[#006D77]">General Enquiries</h2>
             <div className="space-y-4">
               <div className="flex justify-between border-b border-gray-50 pb-2">
-                <span className="text-gray-500 font-bold">{t('contact.directory.registry')}</span>
-                <span className="text-[#006D77] font-black">+609 745 8000</span>
+                <span className="text-gray-500 font-bold">Main Line</span>
+                <span className="text-[#006D77] font-black">+60 9-743 3399</span>
               </div>
               <div className="flex justify-between border-b border-gray-50 pb-2">
-                <span className="text-gray-500 font-bold">{t('contact.directory.ae')}</span>
-                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8111</span>
+                <span className="text-gray-500 font-bold">WhatsApp</span>
+                <a href="https://wa.me/60199670799" target="_blank" rel="noopener noreferrer" className="text-[#006D77] font-black hover:underline">+60 19-967 0799</a>
               </div>
               <div className="flex justify-between border-b border-gray-50 pb-2">
-                <span className="text-gray-500 font-bold">{t('about.directory.admission')}</span>
-                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8022</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-50 pb-2">
-                <span className="text-gray-500 font-bold">{t('about.directory.pharmacy')}</span>
-                <span className="text-[#006D77] font-black">{t('about.directory.ext')} 8033</span>
+                <span className="text-gray-500 font-bold">Email</span>
+                <a href="mailto:customerservice@kbmc.com.my" className="text-[#006D77] font-black hover:underline text-right max-w-[150px] truncate" title="customerservice@kbmc.com.my">customerservice@...</a>
               </div>
             </div>
           </div>

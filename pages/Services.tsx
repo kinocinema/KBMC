@@ -1,12 +1,21 @@
 
 import React, { useState, useEffect } from 'react';
-import { SERVICES, DOCTORS } from '../constants';
-import { ChevronRight, ArrowRight, X, User, Calendar, CheckCircle2, Info, Hospital } from 'lucide-react';
+import { DOCTORS } from '../constants';
+import { ChevronRight, ArrowRight, X, User, Calendar, CheckCircle2, Info, Hospital, Heart, Activity, Brain, Baby, Eye, Bone, Shield, Clock, Award, Users } from 'lucide-react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+
+// Map string icon names to Lucide components
+const iconMap: Record<string, React.ElementType> = {
+  Heart, Activity, Brain, Baby, Eye, Bone, Shield, Clock, Award, Users, Hospital
+};
 
 const Services: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<typeof SERVICES[0] | null>(null);
+  const [services, setServices] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedService, setSelectedService] = useState<any | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -15,14 +24,31 @@ const Services: React.FC = () => {
   useEffect(() => {
     setIsVisible(true);
     
-    // Check for department query parameter to auto-open modal
-    const deptId = searchParams.get('dept');
-    if (deptId) {
-      const service = SERVICES.find(s => s.id === deptId);
-      if (service) {
-        setSelectedService(service);
+    const fetchServices = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'services'));
+        const fetchedServices = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setServices(fetchedServices);
+
+        // Check for department query parameter to auto-open modal
+        const deptId = searchParams.get('dept');
+        if (deptId) {
+          const service = fetchedServices.find(s => s.id === deptId);
+          if (service) {
+            setSelectedService(service);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      } finally {
+        setLoading(false);
       }
-    }
+    };
+
+    fetchServices();
   }, [searchParams]);
 
   const handleCloseModal = () => {
@@ -86,56 +112,65 @@ const Services: React.FC = () => {
 
       {/* Services Grid */}
       <div className="max-w-7xl mx-auto py-40 px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {SERVICES.map((service, idx) => (
-            <div 
-              key={service.id} 
-              className={`group relative bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.12)] transition-all duration-700 flex flex-col h-full overflow-hidden border border-gray-100/50 ${isVisible ? `animate-fade-in-up stagger-${(idx % 5) + 1}` : 'opacity-0'}`}
-            >
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="w-16 h-16 bg-[#EDF6F9] rounded-full flex items-center justify-center text-[#006D77] mb-8 group-hover:bg-[#006D77] group-hover:text-white transition-all duration-500 shadow-inner">
-                  {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-7 h-7" })}
-                </div>
-                
-                <h3 className="text-3xl font-black text-[#006D77] mb-3 leading-tight h-20 flex items-center">{t(`services.item.${service.id}.title`)}</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed font-medium text-sm">{t(`services.item.${service.id}.desc`)}</p>
-                
-                <div className="space-y-6 mb-10">
-                  <div className="flex items-center gap-3">
-                    <div className="h-px bg-gray-100 flex-grow"></div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#83C5BE] whitespace-nowrap">{t('services.focus')}</p>
-                    <div className="h-px bg-gray-100 flex-grow"></div>
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#006D77]"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {services.map((service, idx) => {
+              const IconComponent = iconMap[service.icon] || Activity;
+              return (
+                <div 
+                  key={service.id} 
+                  className={`group relative bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.12)] transition-all duration-700 flex flex-col h-full overflow-hidden border border-gray-100/50 ${isVisible ? `animate-fade-in-up stagger-${(idx % 5) + 1}` : 'opacity-0'}`}
+                >
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="w-16 h-16 bg-[#EDF6F9] rounded-full flex items-center justify-center text-[#006D77] mb-8 group-hover:bg-[#006D77] group-hover:text-white transition-all duration-500 shadow-inner">
+                      <IconComponent className="w-7 h-7" />
+                    </div>
+                    
+                    <h3 className="text-3xl font-black text-[#006D77] mb-3 leading-tight h-20 flex items-center">{service.title}</h3>
+                    <p className="text-gray-500 mb-8 leading-relaxed font-medium text-sm">{service.description}</p>
+                    
+                    <div className="space-y-6 mb-10">
+                      <div className="flex items-center gap-3">
+                        <div className="h-px bg-gray-100 flex-grow"></div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#83C5BE] whitespace-nowrap">{t('services.focus')}</p>
+                        <div className="h-px bg-gray-100 flex-grow"></div>
+                      </div>
+                      <ul className="space-y-3.5">
+                        {service.features?.slice(0, 3).map((feature: string, fidx: number) => (
+                          <li key={fidx} className="flex items-center gap-3 text-sm text-[#2C3E50] font-bold">
+                            <div className="w-1.5 h-1.5 rounded-sm bg-[#E29578]"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mt-auto pt-8 flex flex-col gap-3">
+                      <button 
+                        onClick={() => setSelectedService(service)}
+                        className="w-full py-4 rounded-full bg-[#006D77] text-white font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#005a63] transition-all active:scale-95 shadow-lg shadow-[#006D77]/20"
+                      >
+                        {t('services.btn.details')}
+                        <Info className="w-4 h-4" />
+                      </button>
+                      <Link 
+                        to="/find-doctor" 
+                        className="w-full py-4 rounded-full border border-gray-200 text-[#006D77] font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#EDF6F9] hover:border-[#006D77]/20 transition-all active:scale-95"
+                      >
+                        {t('services.btn.consult')}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
-                  <ul className="space-y-3.5">
-                    {service.features.slice(0, 3).map((_, fidx) => (
-                      <li key={fidx} className="flex items-center gap-3 text-sm text-[#2C3E50] font-bold">
-                        <div className="w-1.5 h-1.5 rounded-sm bg-[#E29578]"></div>
-                        {t(`services.item.${service.id}.feature${fidx + 1}`)}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-                
-                <div className="mt-auto pt-8 flex flex-col gap-3">
-                  <button 
-                    onClick={() => setSelectedService(service)}
-                    className="w-full py-4 rounded-full bg-[#006D77] text-white font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#005a63] transition-all active:scale-95 shadow-lg shadow-[#006D77]/20"
-                  >
-                    {t('services.btn.details')}
-                    <Info className="w-4 h-4" />
-                  </button>
-                  <Link 
-                    to="/find-doctor" 
-                    className="w-full py-4 rounded-full border border-gray-200 text-[#006D77] font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#EDF6F9] hover:border-[#006D77]/20 transition-all active:scale-95"
-                  >
-                    {t('services.btn.consult')}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Service Detail Modal with Refined Motion */}
@@ -159,10 +194,10 @@ const Services: React.FC = () => {
               <div className="lg:col-span-3 p-10 md:p-20 space-y-16 border-r border-gray-50">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
                   <div className="w-28 h-28 bg-[#EDF6F9] rounded-[3rem] flex items-center justify-center text-[#006D77] shadow-inner">
-                    {React.cloneElement(selectedService.icon as React.ReactElement<any>, { className: "w-14 h-14" })}
+                    {React.createElement(iconMap[selectedService.icon] || Activity, { className: "w-14 h-14" })}
                   </div>
                   <div className="space-y-3">
-                    <h2 className="text-5xl md:text-6xl font-black text-[#006D77] leading-[1.1]">{t(`services.item.${selectedService.id}.title`)}</h2>
+                    <h2 className="text-5xl md:text-6xl font-black text-[#006D77] leading-[1.1]">{selectedService.title}</h2>
                     <p className="text-[#E29578] font-black tracking-[0.4em] uppercase text-sm">{t('services.hero.badge')}</p>
                   </div>
                 </div>
@@ -170,19 +205,19 @@ const Services: React.FC = () => {
                 <div className="space-y-8">
                   <h3 className="text-2xl font-black text-[#2C3E50] tracking-tight">{t('services.modal.scope')}</h3>
                   <p className="text-gray-500 text-xl leading-relaxed font-medium">
-                    {t('services.modal.desc_prefix')} {t(`services.item.${selectedService.id}.title`)} {t('services.modal.desc_suffix')}
+                    {t('services.modal.desc_prefix')} {selectedService.title} {t('services.modal.desc_suffix')}
                   </p>
                 </div>
 
                 <div className="space-y-8">
                   <h3 className="text-2xl font-black text-[#2C3E50] tracking-tight">{t('services.modal.focus')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {selectedService.features.map((_, fidx) => (
+                    {selectedService.features?.map((feature: string, fidx: number) => (
                       <div key={fidx} className="flex items-center gap-5 p-6 bg-[#EDF6F9] rounded-[2.5rem] hover:bg-[#83C5BE]/10 transition-colors cursor-default border border-transparent hover:border-[#83C5BE]/20">
                         <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-[#83C5BE] shadow-sm">
                           <CheckCircle2 className="w-6 h-6" />
                         </div>
-                        <span className="font-bold text-[#006D77] text-lg">{t(`services.item.${selectedService.id}.feature${fidx + 1}`)}</span>
+                        <span className="font-bold text-[#006D77] text-lg">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -259,7 +294,7 @@ const Services: React.FC = () => {
                   <h4 className="font-black text-xs text-gray-300 uppercase tracking-[0.3em]">{t('services.modal.registry')}</h4>
                   <div className="flex items-center gap-4 text-[#006D77]">
                     <div className="w-3 h-3 rounded-full bg-[#E29578] animate-pulse shadow-[0_0_10px_#E29578]"></div>
-                    <span className="text-2xl font-black tracking-tighter">+609 747 7000</span>
+                    <span className="text-2xl font-black tracking-tighter">+60 9-743 3399</span>
                   </div>
                 </div>
               </div>

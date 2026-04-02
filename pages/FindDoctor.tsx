@@ -4,6 +4,9 @@ import { Search, UserRound, Filter, Star, Calendar, ChevronRight, UserCircle2, A
 import { Link, useNavigate } from 'react-router-dom';
 import { DOCTORS } from '../constants';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const DoctorImage = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
   const [hasError, setHasError] = useState(false);
@@ -32,13 +35,26 @@ const FindDoctor: React.FC = () => {
   const [filterFemale, setFilterFemale] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const [doctorsList, setDoctorsList] = useState(DOCTORS);
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
+    const fetchDoctors = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'doctors'));
+        if (!querySnapshot.empty) {
+          const fetchedDoctors = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
+          setDoctorsList(fetchedDoctors);
+        }
+      } catch (error) {
+        handleFirestoreError(error, OperationType.LIST, 'doctors');
+      }
+    };
+    fetchDoctors();
   }, []);
 
-  const filteredDoctors = DOCTORS.filter((doc) => {
+  const filteredDoctors = doctorsList.filter((doc) => {
     const matchesGender = filterFemale ? doc.isFemale : true;
     const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           doc.department.toLowerCase().includes(searchQuery.toLowerCase());

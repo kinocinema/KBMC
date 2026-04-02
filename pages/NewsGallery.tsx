@@ -3,18 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, Play, Image as ImageIcon, FileText, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const NewsGallery: React.FC = () => {
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'news' | 'events' | 'media'>('all');
+  const [newsItems, setNewsItems] = useState<any[]>([]);
 
-  useEffect(() => {
-    setIsVisible(true);
-    window.scrollTo(0, 0);
-  }, []);
-
-  const items = [
+  const defaultItems = [
     {
       id: 'kbmc-tristar',
       type: 'news',
@@ -49,7 +48,35 @@ const NewsGallery: React.FC = () => {
     }
   ];
 
-  const filteredItems = activeTab === 'all' ? items : items.filter(item => item.type === activeTab);
+  useEffect(() => {
+    setIsVisible(true);
+    window.scrollTo(0, 0);
+    
+    const fetchNews = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'news'));
+        if (!querySnapshot.empty) {
+          const fetchedNews = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            type: doc.data().category?.toLowerCase() || 'news',
+            title: doc.data().title,
+            date: doc.data().date,
+            image: doc.data().imageUrl || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
+            desc: doc.data().content.substring(0, 100) + '...'
+          }));
+          setNewsItems(fetchedNews);
+        } else {
+          setNewsItems(defaultItems);
+        }
+      } catch (error) {
+        handleFirestoreError(error, OperationType.LIST, 'news');
+        setNewsItems(defaultItems);
+      }
+    };
+    fetchNews();
+  }, [t]);
+
+  const filteredItems = activeTab === 'all' ? newsItems : newsItems.filter(item => item.type === activeTab);
 
   return (
     <div className="min-h-screen bg-white pb-24">

@@ -23,6 +23,9 @@ import {
 } from 'lucide-react';
 import { DOCTORS } from '../constants';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const DoctorImage = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
   const [hasError, setHasError] = useState(false);
@@ -273,9 +276,30 @@ const DoctorProfile: React.FC = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [doctor, setDoctor] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const { t } = useLanguage();
 
-  const doctor = DOCTORS.find(doc => doc.id === id);
+  useEffect(() => {
+    const fetchDoctor = async () => {
+      if (!id) return;
+      try {
+        const docRef = doc(db, 'doctors', id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setDoctor({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setDoctor(DOCTORS.find(doc => doc.id === id));
+        }
+      } catch (error) {
+        handleFirestoreError(error, OperationType.GET, `doctors/${id}`);
+        setDoctor(DOCTORS.find(doc => doc.id === id));
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDoctor();
+  }, [id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -285,12 +309,15 @@ const DoctorProfile: React.FC = () => {
   const displayHours = useMemo(() => {
     if (doctor?.operationHours) return doctor.operationHours;
     return [
-      { day: 'Mon - Wed', time: '9:00 AM - 5:00 PM' },
-      { day: 'Thursday', time: '9:00 AM - 1:00 PM' },
-      { day: 'Friday', time: 'Closed (Clinic)' },
-      { day: 'Saturday', time: '9:00 AM - 1:00 PM' },
+      { day: 'Sat - Wed', time: '9:00 AM - 5:00 PM' },
+      { day: 'Thursday', time: '9:00 AM - 12:30 PM' },
+      { day: 'Friday', time: 'Closed' },
     ];
   }, [doctor]);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-[#006D77]" /></div>;
+  }
 
   if (!doctor) {
     return (

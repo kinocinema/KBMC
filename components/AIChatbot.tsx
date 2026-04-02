@@ -48,7 +48,7 @@ const AIChatbot: React.FC = () => {
       const response = await chat;
       setMessages(prev => [...prev, { role: 'model', text: response.text || '' }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: "Error connecting. Please call +609 747 7000." }]);
+      setMessages(prev => [...prev, { role: 'model', text: "Error connecting. Please call +60 9-743 9999." }]);
     } finally {
       setIsLoading(false);
     }
