@@ -93,45 +93,13 @@ const Navbar: React.FC = () => {
 
               <div className="hidden lg:flex flex-col justify-center items-end h-full gap-2 xl:gap-3 py-2">
                 {/* Top Row */}
-                <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => !["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => {
+                <div className="flex items-center space-x-2 xl:space-x-4 2xl:space-x-6">
+                  {menuData.filter(m => ["HOME", "OUR SPECIALISTS & SERVICES", "PATIENT & VISITOR INFO", "CENTRE OF EXCELLENCE", "NEWS AND GALLERY", "CAREERS"].includes(m.title)).map((menu, index) => {
                     const translatedTitle = t(`menu.${menu.title}` as any);
                     const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
                     return (
                     <div key={menu.title} className="relative group flex items-center h-full">
-                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
-                        {displayTitle} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
-                      </button>
-                      {/* Invisible bridge to connect button and dropdown */}
-                      <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
-                      <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 ${index > 1 ? 'right-0' : 'left-0'}`}>
-                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
-                          {menu.links.map((link: any) => {
-                            const translatedLinkName = t(`menu.${link.name}` as any);
-                            const displayLinkName = translatedLinkName.startsWith('menu.') ? link.name : translatedLinkName;
-                            return (
-                            <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
-                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{displayLinkName}</span>
-                            </Link>
-                          )})}
-                        </div>
-                      </div>
-                    </div>
-                  )})}
-
-                  <Link to="/find-doctor" className="bg-[#006D77] text-white px-6 xl:px-8 py-2 rounded-full text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wider flex items-center gap-1.5 xl:gap-2 hover:bg-[#E29578] transition-all shadow-lg active:scale-95 ml-4 xl:ml-8 whitespace-nowrap">
-                    {t('nav.book')}
-                  </Link>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center space-x-4 xl:space-x-8 2xl:space-x-10">
-                  {menuData.filter(m => ["HOME", "SPECIALISTS & SERVICES", "PATIENT INFO", "CENTRES OF EXCELLENCE", "NEWS & GALLERY"].includes(m.title)).map((menu, index) => {
-                    const translatedTitle = t(`menu.${menu.title}` as any);
-                    const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
-                    return (
-                    <div key={menu.title} className="relative group flex items-center h-full">
-                      <button className={`flex items-center gap-1.5 xl:gap-2 text-[12px] xl:text-[14px] 2xl:text-[15px] font-bold uppercase tracking-wide px-3 xl:px-4 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
+                      <button className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
                         {displayTitle} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
                       </button>
                       {/* Invisible bridge to connect button and dropdown */}
@@ -150,6 +118,38 @@ const Navbar: React.FC = () => {
                       </div>
                     </div>
                   )})}
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center space-x-2 xl:space-x-4 2xl:space-x-6">
+                  {menuData.filter(m => ["WELLNESS PROGRAM", "INTERNATIONAL PATIENT", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => {
+                    const translatedTitle = t(`menu.${menu.title}` as any);
+                    const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+                    return (
+                    <div key={menu.title} className="relative group flex items-center h-full">
+                      <button className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
+                        {displayTitle} <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform" />
+                      </button>
+                      {/* Invisible bridge to connect button and dropdown */}
+                      <div className="absolute top-full left-0 right-0 h-4 bg-transparent hidden group-hover:block"></div>
+                      <div className={`absolute top-[calc(100%+16px)] w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 right-0`}>
+                        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-3 flex flex-col gap-1 overflow-hidden max-h-[70vh] overflow-y-auto">
+                          {menu.links.map((link: any) => {
+                            const translatedLinkName = t(`menu.${link.name}` as any);
+                            const displayLinkName = translatedLinkName.startsWith('menu.') ? link.name : translatedLinkName;
+                            return (
+                            <Link key={link.name} to={link.path} className="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-[#EDF6F9] transition-all group/item">
+                              <span className="text-[12px] font-bold text-[#2C3E50] tracking-wide">{displayLinkName}</span>
+                            </Link>
+                          )})}
+                        </div>
+                      </div>
+                    </div>
+                  )})}
+
+                  <Link to="/find-doctor" className="bg-[#458B8B] text-white px-6 xl:px-8 py-2 rounded-full text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 xl:gap-2 hover:bg-[#3A7575] transition-all shadow-lg active:scale-95 ml-2 xl:ml-4 whitespace-nowrap">
+                    {t('nav.book')}
+                  </Link>
                 </div>
               </div>
 
