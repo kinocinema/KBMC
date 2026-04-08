@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
-import { LayoutDashboard, Users, FileText, Settings, LogOut, Plus, Trash2, Edit, X, Briefcase, Activity, MessageSquare, Menu } from 'lucide-react';
+import { LayoutDashboard, Users, FileText, Settings, LogOut, Plus, Trash2, Edit, X, Briefcase, Activity, MessageSquare, Menu, RotateCcw } from 'lucide-react';
 import { handleFirestoreError, OperationType } from '../firebaseErrors';
 import { compressImage } from '../utils/imageUpload';
 import { menuData as defaultMenuData } from '../data/menuData';
@@ -1267,6 +1267,11 @@ const MenuTab = () => {
     setMenuItems(newItems);
   };
 
+  const handleReset = () => {
+    if (!window.confirm('Are you sure you want to reset the menu to the default structure? This will overwrite your current changes.')) return;
+    setMenuItems(defaultMenuData);
+  };
+
   if (loading) return <div className="p-8 text-center">Loading menu...</div>;
 
   return (
@@ -1277,6 +1282,9 @@ const MenuTab = () => {
           <p className="text-gray-500">Manage the website's main navigation menu and dropdowns.</p>
         </div>
         <div className="flex gap-3">
+          <button onClick={handleReset} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-xl font-bold hover:bg-gray-300 flex items-center gap-2">
+            <RotateCcw className="w-4 h-4" /> Reset to Default
+          </button>
           <button onClick={addCategory} className="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-xl font-bold hover:bg-gray-50 flex items-center gap-2">
             <Plus className="w-4 h-4" /> Add Category
           </button>
