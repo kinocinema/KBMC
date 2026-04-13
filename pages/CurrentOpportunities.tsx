@@ -12,22 +12,22 @@ const CurrentOpportunities: React.FC = () => {
 
   const opportunities = [
     {
-      category: t('opportunities.medical'),
+      category: "Medical Professionals",
       icon: <HeartPulse className="w-8 h-8 text-[#006D77]" />,
       roles: ["Consultant Specialists (all fields)", "Medical Officers", "Resident Doctors"]
     },
     {
-      category: t('opportunities.nursing'),
+      category: "Nursing & Clinical Support",
       icon: <Users className="w-8 h-8 text-[#006D77]" />,
       roles: ["Staff Nurses (General, ICU, Midwifery)", "Clinic Assistants", "Medical Assistants"]
     },
     {
-      category: t('opportunities.allied'),
+      category: "Allied Health",
       icon: <ShieldCheck className="w-8 h-8 text-[#006D77]" />,
       roles: ["Radiographers", "Pharmacists", "Laboratory Technicians", "Dietitians"]
     },
     {
-      category: t('opportunities.admin'),
+      category: "Administrative & Operational",
       icon: <Briefcase className="w-8 h-8 text-[#006D77]" />,
       roles: ["Human Resource Executives", "Customer Service", "Billing Assistants", "IT & Multimedia", "Facility Technicians"]
     }
@@ -40,9 +40,9 @@ const CurrentOpportunities: React.FC = () => {
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight uppercase">{t('opportunities.title')}</h1>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight uppercase">Current Opportunities</h1>
             <p className="text-xl text-white/80 leading-relaxed">
-              {t('opportunities.desc')}
+              Explore our open positions and find the perfect role to advance your career at KBMC.
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ const CurrentOpportunities: React.FC = () => {
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
               <h2 className="text-3xl font-black text-[#2C3E50] mb-8 flex items-center gap-3">
                 <div className="w-10 h-2 bg-[#006D77] rounded-full"></div>
-                {t('opportunities.open')}
+                Open Positions
               </h2>
               
               <div className="grid grid-cols-1 gap-8">
@@ -83,24 +83,29 @@ const CurrentOpportunities: React.FC = () => {
             </div>
 
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
-              <h2 className="text-2xl font-black text-[#2C3E50] mb-6">{t('opportunities.why')}</h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {t('opportunities.why.desc')}
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  t('opportunities.benefit1'),
-                  t('opportunities.benefit2'),
-                  t('opportunities.benefit3'),
-                  t('opportunities.benefit4'),
-                  t('opportunities.benefit5'),
-                  t('opportunities.benefit6')
-                ].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-[#EDF6F9] p-4 rounded-xl">
-                    <CheckCircle2 className="w-5 h-5 text-[#006D77]" />
-                    <span className="text-sm font-bold text-[#2C3E50]">{benefit}</span>
+              <h2 className="text-2xl font-black text-[#2C3E50] mb-6">Why Work With Us?</h2>
+              <div className="grid grid-cols-1 gap-6">
+                <div className="flex items-start gap-4 bg-[#EDF6F9] p-6 rounded-xl">
+                  <CheckCircle2 className="w-6 h-6 text-[#006D77] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-[#2C3E50] mb-1">Career Progression</h4>
+                    <p className="text-sm text-gray-600">Opportunities for promotion and professional development in a large-scale hospital environment.</p>
                   </div>
-                ))}
+                </div>
+                <div className="flex items-start gap-4 bg-[#EDF6F9] p-6 rounded-xl">
+                  <CheckCircle2 className="w-6 h-6 text-[#006D77] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-[#2C3E50] mb-1">Modern Workspace</h4>
+                    <p className="text-sm text-gray-600">Be part of the most advanced private healthcare facility in the East Coast.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 bg-[#EDF6F9] p-6 rounded-xl">
+                  <CheckCircle2 className="w-6 h-6 text-[#006D77] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-[#2C3E50] mb-1">Comprehensive Benefits</h4>
+                    <p className="text-sm text-gray-600">Competitive salary packages, healthcare insurance, and supportive team culture.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -109,26 +114,36 @@ const CurrentOpportunities: React.FC = () => {
           <div className="space-y-6">
             <div className="bg-[#006D77] p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-              <h3 className="text-xl font-black uppercase tracking-wider mb-4 relative z-10">{t('opportunities.apply')}</h3>
+              <h3 className="text-xl font-black uppercase tracking-wider mb-4 relative z-10">How to Apply?</h3>
               <p className="text-white/80 text-sm leading-relaxed mb-8 relative z-10">
-                {t('opportunities.apply.desc')}
+                You may contact us directly via phone or email for consultant positions. For all other positions, please send your resume to our HR department.
               </p>
               <div className="space-y-4 relative z-10">
                 <a 
-                  href="mailto:hr@kbmc.com" 
+                  href="mailto:doctorsrecruitment@icghealthcare.com.my" 
                   className="flex items-center gap-3 bg-white/10 p-4 rounded-2xl hover:bg-white/20 transition-all border border-white/10"
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5 shrink-0" />
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">Email Resume</span>
-                    <span className="font-bold">hr@kbmc.com</span>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">Consultants Email</span>
+                    <span className="font-bold text-sm break-all">doctorsrecruitment@icghealthcare.com.my</span>
+                  </div>
+                </a>
+                <a 
+                  href="mailto:hr_department@kbmc.com.my" 
+                  className="flex items-center gap-3 bg-white/10 p-4 rounded-2xl hover:bg-white/20 transition-all border border-white/10"
+                >
+                  <Mail className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">General Staff Email</span>
+                    <span className="font-bold text-sm break-all">hr_department@kbmc.com.my</span>
                   </div>
                 </a>
                 <div className="flex items-center gap-3 bg-white/10 p-4 rounded-2xl border border-white/10">
-                  <PhoneCall className="w-5 h-5" />
+                  <PhoneCall className="w-5 h-5 shrink-0" />
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">HR Department</span>
-                    <span className="font-bold">+60 9-743 3399</span>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">Phone</span>
+                    <span className="font-bold">016-305 0928</span>
                   </div>
                 </div>
               </div>

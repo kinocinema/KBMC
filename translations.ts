@@ -9,6 +9,7 @@ export const translations = {
     'menu.NEWS AND GALLERY': 'News and Gallery',
     'menu.CAREERS': 'Careers',
     'menu.WELLNESS PROGRAM': 'Wellness Program',
+    'menu.PROMOTIONS': 'Promotions',
     'menu.INTERNATIONAL PATIENT': 'International Patient',
     'menu.MYHEALTH360 FAQ': 'MyHealth360 FAQ',
 
@@ -54,6 +55,7 @@ export const translations = {
     'menu.WHY PARTNER WITH KBMC?': 'Why Partner With KBMC?',
     'menu.NEXT STEPS': 'Next Steps',
 
+    'menu.CURRENT PROMOTIONS': 'Current Promotions',
     'menu.WHY CHOOSE KBMC FOR MEDICAL TOURISM?': 'Why Choose KBMC for Medical Tourism?',
     'menu.PREMIUM AMENITIES & CONCIERGE SERVICES': 'Premium Amenities & Concierge Services',
     'menu.HOW TO BEGIN YOUR JOURNEY (INTERNATIONAL PATIENT GUIDELINES)': 'How to Begin Your Journey (International Patient Guidelines)',
@@ -88,6 +90,21 @@ export const translations = {
     'opportunities.benefit4': 'State-of-the-art medical facilities',
     'opportunities.benefit5': 'Career progression opportunities',
     'opportunities.benefit6': 'Comprehensive health benefits',
+
+    // Promotions
+    'promotions.hero.badge': 'Special Offers',
+    'promotions.hero.title': 'Current Promotions',
+    'promotions.hero.desc': 'Take advantage of our limited-time offers on specialized health checks and diagnostic screenings.',
+    'promotions.section.title': 'Specialized Screening Promotions',
+    'promotions.section.badge': 'Limited Time Only',
+    'promotions.promo1.title': 'Pelvic Ultrasound',
+    'promotions.promo1.desc': 'Promotional rates as low as RM30 for early detection of reproductive health issues.',
+    'promotions.promo1.price': 'From RM 30',
+    'promotions.promo2.title': 'Women\'s Wellness',
+    'promotions.promo2.desc': 'Specialized Mammogram and Breast Ultrasound packages often available during awareness months.',
+    'promotions.promo3.title': 'Senior Citizen Package',
+    'promotions.promo3.desc': 'Deep-dive consultation and full examination by a specialist for individuals aged 60 and above.',
+    'promotions.learnMore': 'Learn More',
 
     'nav.home': 'Home',
     'nav.medical': 'Medical Services',
@@ -813,6 +830,7 @@ export const translations = {
     'menu.NEWS AND GALLERY': 'BERITA DAN GALERI',
     'menu.CAREERS': 'KERJAYA',
     'menu.WELLNESS PROGRAM': 'PROGRAM KESEJAHTERAAN',
+    'menu.PROMOTIONS': 'PROMOSI',
     'menu.INTERNATIONAL PATIENT': 'PESAKIT ANTARABANGSA',
     'menu.MYHEALTH360 FAQ': 'SOALAN LAZIM MYHEALTH360',
 
@@ -857,7 +875,7 @@ export const translations = {
     'menu.OUR CORPORATE BENEFITS': 'FAEDAH KORPORAT KAMI',
     'menu.WHY PARTNER WITH KBMC?': 'MENGAPA BEKERJASAMA DENGAN KBMC?',
     'menu.NEXT STEPS': 'LANGKAH SETERUSNYA',
-
+    'menu.CURRENT PROMOTIONS': 'PROMOSI SEMASA',
     'menu.WHY CHOOSE KBMC FOR MEDICAL TOURISM?': 'MENGAPA MEMILIH KBMC UNTUK PELANCONGAN PERUBATAN?',
     'menu.PREMIUM AMENITIES & CONCIERGE SERVICES': 'KEMUDAHAN PREMIUM & PERKHIDMATAN KONSIERJ',
     'menu.HOW TO BEGIN YOUR JOURNEY (INTERNATIONAL PATIENT GUIDELINES)': 'CARA MEMULAKAN PERJALANAN ANDA (GARIS PANDUAN PESAKIT ANTARABANGSA)',
@@ -892,6 +910,21 @@ export const translations = {
     'opportunities.benefit4': 'Kemudahan perubatan yang canggih',
     'opportunities.benefit5': 'Peluang kemajuan kerjaya',
     'opportunities.benefit6': 'Faedah kesihatan yang komprehensif',
+
+    // Promotions
+    'promotions.hero.badge': 'Tawaran Istimewa',
+    'promotions.hero.title': 'Promosi Semasa',
+    'promotions.hero.desc': 'Rebut peluang tawaran masa terhad kami untuk pemeriksaan kesihatan khusus dan saringan diagnostik.',
+    'promotions.section.title': 'Promosi Saringan Khusus',
+    'promotions.section.badge': 'Masa Terhad Sahaja',
+    'promotions.promo1.title': 'Ultrasound Pelvis',
+    'promotions.promo1.desc': 'Kadar promosi serendah RM30 untuk pengesanan awal isu kesihatan reproduktif.',
+    'promotions.promo1.price': 'Dari RM 30',
+    'promotions.promo2.title': 'Kesejahteraan Wanita',
+    'promotions.promo2.desc': 'Pakej Mamogram dan Ultrasound Payudara khusus sering tersedia semasa bulan kesedaran.',
+    'promotions.promo3.title': 'Pakej Warga Emas',
+    'promotions.promo3.desc': 'Konsultasi mendalam dan pemeriksaan penuh oleh pakar untuk individu berumur 60 tahun ke atas.',
+    'promotions.learnMore': 'Ketahui Lebih Lanjut',
 
     'nav.home': 'Laman Utama',
     'nav.medical': 'Perkhidmatan Perubatan',
@@ -1617,6 +1650,7 @@ export const translations = {
     'menu.NEWS AND GALLERY': 'ข่าวสารและแกลเลอรี่',
     'menu.CAREERS': 'ร่วมงานกับเรา',
     'menu.WELLNESS PROGRAM': 'โปรแกรมสุขภาพ',
+    'menu.PROMOTIONS': 'โปรโมชั่น',
     'menu.INTERNATIONAL PATIENT': 'ผู้ป่วยต่างชาติ',
     'menu.MYHEALTH360 FAQ': 'คำถามที่พบบ่อย MYHEALTH360',
 
@@ -1661,7 +1695,7 @@ export const translations = {
     'menu.OUR CORPORATE BENEFITS': 'สิทธิประโยชน์องค์กรของเรา',
     'menu.WHY PARTNER WITH KBMC?': 'ทำไมต้องร่วมมือกับ KBMC?',
     'menu.NEXT STEPS': 'ขั้นตอนต่อไป',
-
+    'menu.CURRENT PROMOTIONS': 'โปรโมชั่นปัจจุบัน',
     'menu.WHY CHOOSE KBMC FOR MEDICAL TOURISM?': 'ทำไมถึงเลือก KBMC สำหรับการท่องเที่ยวเชิงการแพทย์?',
     'menu.PREMIUM AMENITIES & CONCIERGE SERVICES': 'สิ่งอำนวยความสะดวกระดับพรีเมียมและบริการผู้ช่วยส่วนตัว',
     'menu.HOW TO BEGIN YOUR JOURNEY (INTERNATIONAL PATIENT GUIDELINES)': 'วิธีการเริ่มต้นการเดินทางของคุณ (คำแนะนำสำหรับผู้ป่วยต่างชาติ)',
@@ -1696,6 +1730,21 @@ export const translations = {
     'opportunities.benefit4': 'สิ่งอำนวยความสะดวกทางการแพทย์ที่ทันสมัย',
     'opportunities.benefit5': 'โอกาสความก้าวหน้าในอาชีพ',
     'opportunities.benefit6': 'สวัสดิการด้านสุขภาพที่ครอบคลุม',
+
+    // Promotions
+    'promotions.hero.badge': 'ข้อเสนอพิเศษ',
+    'promotions.hero.title': 'โปรโมชั่นปัจจุบัน',
+    'promotions.hero.desc': 'ใช้ประโยชน์จากข้อเสนอเวลาจำกัดของเราสำหรับการตรวจสุขภาพเฉพาะทางและการตรวจวินิจฉัย',
+    'promotions.section.title': 'โปรโมชั่นตรวจสุขภาพเฉพาะทาง',
+    'promotions.section.badge': 'เวลาจำกัดเท่านั้น',
+    'promotions.promo1.title': 'อัลตราซาวนด์อุ้งเชิงกราน',
+    'promotions.promo1.desc': 'อัตราโปรโมชั่นเริ่มต้นเพียง RM30 สำหรับการตรวจพบปัญหาสุขภาพการเจริญพันธุ์ในระยะเริ่มต้น',
+    'promotions.promo1.price': 'เริ่มต้น RM 30',
+    'promotions.promo2.title': 'สุขภาพสตรี',
+    'promotions.promo2.desc': 'แพ็คเกจแมมโมแกรมและอัลตราซาวนด์เต้านมเฉพาะทางมักมีให้บริการในช่วงเดือนแห่งการรณรงค์',
+    'promotions.promo3.title': 'แพ็คเกจผู้สูงอายุ',
+    'promotions.promo3.desc': 'การให้คำปรึกษาเชิงลึกและการตรวจร่างกายอย่างเต็มรูปแบบโดยผู้เชี่ยวชาญสำหรับบุคคลที่มีอายุ 60 ปีขึ้นไป',
+    'promotions.learnMore': 'เรียนรู้เพิ่มเติม',
 
     "nav.home": "บ้าน",
     "nav.medical": "บริการทางการแพทย์",

@@ -71,6 +71,12 @@ export const menuData = [
     ]
   },
   {
+    title: "PROMOTIONS",
+    links: [
+      { name: "CURRENT PROMOTIONS", path: "/promotions", content: "View our latest healthcare promotions and special offers." }
+    ]
+  },
+  {
     title: "INTERNATIONAL PATIENT",
     links: [
       { name: "WHY CHOOSE KBMC FOR MEDICAL TOURISM?", path: "/medical-tourism", content: "Experience world-class healthcare, internationally trained specialists, and a seamless patient journey at KBMC." },

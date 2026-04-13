@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
 
                 {/* Bottom Row */}
                 <div className="flex items-center space-x-2 xl:space-x-4 2xl:space-x-6">
-                  {menuData.filter(m => ["WELLNESS PROGRAM", "INTERNATIONAL PATIENT", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => {
+                  {menuData.filter(m => ["WELLNESS PROGRAM", "PROMOTIONS", "INTERNATIONAL PATIENT", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => {
                     const translatedTitle = t(`menu.${menu.title}` as any);
                     const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
                     return (

@@ -22,7 +22,8 @@ import CentreOfExcellence from './pages/CentreOfExcellence';
 import CentreTemplate from './pages/CentreTemplate';
 import Careers from './pages/Careers';
 import CurrentOpportunities from './pages/CurrentOpportunities';
-import HealthScreening from './pages/HealthScreening';
+import WellnessProgram from './pages/WellnessProgram';
+import Promotions from './pages/Promotions';
 import Page from './pages/Page';
 import Admin from './pages/Admin';
 import { Heart, Activity, Stethoscope, Baby, Eye } from 'lucide-react';
@@ -57,7 +58,14 @@ const AppContent: React.FC = () => {
             <Route path="/women-child-centre" element={<CentreTemplate title="centre.women.title" description="centre.women.desc" features={['centre.women.f1', 'centre.women.f2', 'centre.women.f3', 'centre.women.f4', 'centre.women.f5', 'centre.women.f6']} icon={<Baby className="w-12 h-12 text-white" />} />} />
             <Route path="/eyes-centre" element={<CentreTemplate title="centre.eyes.title" description="centre.eyes.desc" features={['centre.eyes.f1', 'centre.eyes.f2', 'centre.eyes.f3', 'centre.eyes.f4', 'centre.eyes.f5', 'centre.eyes.f6']} icon={<Eye className="w-12 h-12 text-white" />} />} />
             <Route path="/digestive-health" element={<CentreTemplate title="centre.digestive.title" description="centre.digestive.desc" features={['centre.digestive.f1', 'centre.digestive.f2', 'centre.digestive.f3', 'centre.digestive.f4', 'centre.digestive.f5', 'centre.digestive.f6']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
-            <Route path="/health-screening-2026" element={<HealthScreening />} />
+            <Route path="/health-screening-2026" element={<WellnessProgram />} />
+            <Route path="/specialized-screening-promotions" element={<WellnessProgram />} />
+            <Route path="/other-packages" element={<WellnessProgram />} />
+            <Route path="/corporate-wellness" element={<WellnessProgram />} />
+            <Route path="/corporate-benefits" element={<WellnessProgram />} />
+            <Route path="/why-partner" element={<WellnessProgram />} />
+            <Route path="/next-steps" element={<WellnessProgram />} />
+            <Route path="/promotions" element={<Promotions />} />
             <Route path="/admin" element={<Admin />} />
             {/* Dynamic routes from menuData */}
             {menuData.flatMap((menu) =>
