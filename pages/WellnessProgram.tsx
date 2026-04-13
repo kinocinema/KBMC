@@ -89,7 +89,19 @@ const WellnessProgram: React.FC = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">Our comprehensive package is designed to provide a full overview of your vital functions.</p>
         </div>
         <div className="flex justify-center">
-          <img src="https://storage.googleapis.com/igc-health/Stockphoto/Wellness%20Program%20-%20Health%20Screening%20Packages.jpeg" alt="Health Screening Packages" className="w-full max-w-4xl rounded-3xl shadow-xl" referrerPolicy="no-referrer" />
+          <div className="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center">
+            <div className="w-24 h-24 bg-[#EDF6F9] rounded-full flex items-center justify-center mx-auto mb-6">
+              <Activity className="w-12 h-12 text-[#006D77]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#2C3E50] mb-4">Comprehensive Packages Coming Soon</h3>
+            <p className="text-gray-600 max-w-lg mx-auto mb-8">
+              We are currently curating our 2026 Executive Health Screening packages to bring you the best in preventive care. Please check back soon for detailed information on our offerings.
+            </p>
+            <button className="bg-[#006D77] text-white px-8 py-3 rounded-full font-bold tracking-widest uppercase text-sm hover:bg-[#2C3E50] transition-colors inline-flex items-center gap-2">
+              <PhoneCall className="w-4 h-4" />
+              Contact Us for Inquiries
+            </button>
+          </div>
         </div>
       </div>
 

@@ -52,7 +52,7 @@ const Page: React.FC<PageProps> = ({ slug, defaultTitle, defaultContent }) => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 -mt-10 relative z-20">
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="md:col-span-2 prose prose-slate max-w-none">
+            <div className="md:col-span-2">
               {loading ? (
                 <div className="animate-pulse space-y-4">
                   <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -60,7 +60,47 @@ const Page: React.FC<PageProps> = ({ slug, defaultTitle, defaultContent }) => {
                   <div className="h-4 bg-gray-200 rounded w-5/6"></div>
                 </div>
               ) : (
-                <div dangerouslySetInnerHTML={{ __html: content }} />
+                <>
+                  {/* Check if content is likely just the short default text (no HTML tags and short) */}
+                  {!content.includes('<') && content.length < 300 ? (
+                    <div className="space-y-10">
+                      <p className="text-2xl font-light text-gray-600 leading-relaxed">
+                        {content}
+                      </p>
+                      
+                      <div className="aspect-video rounded-3xl overflow-hidden shadow-lg relative bg-gray-100">
+                        <img 
+                          src={`https://picsum.photos/seed/${slug}/800/450?blur=2`} 
+                          alt={title} 
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+                          <h3 className="text-white text-2xl font-bold">Discover {title}</h3>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="bg-[#EDF6F9] p-6 rounded-2xl">
+                          <CheckCircle2 className="w-8 h-8 text-[#006D77] mb-4" />
+                          <h4 className="font-bold text-[#2C3E50] mb-2">Expert Care</h4>
+                          <p className="text-sm text-gray-600">Our team of dedicated professionals is committed to providing the highest standard of care.</p>
+                        </div>
+                        <div className="bg-[#EDF6F9] p-6 rounded-2xl">
+                          <Calendar className="w-8 h-8 text-[#006D77] mb-4" />
+                          <h4 className="font-bold text-[#2C3E50] mb-2">Easy Scheduling</h4>
+                          <p className="text-sm text-gray-600">Book your appointments conveniently through our online portal or by contacting our support team.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center">
+                        <p className="text-gray-500 font-medium">Detailed information for this section is currently being curated and will be available soon.</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="prose prose-slate max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
+                  )}
+                </>
               )}
             </div>
             
