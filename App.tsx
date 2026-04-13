@@ -96,10 +96,6 @@ const AppContent: React.FC = () => {
                     alt="KBMC Logo" 
                     className="h-14 w-auto object-contain brightness-0 invert"
                   />
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-white text-3xl font-bold tracking-tight">KBMC</span>
-                    <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Kota Bharu Medical Centre</span>
-                  </div>
                 </div>
                 <p className="text-sm text-gray-400 leading-relaxed">
                   Established in 1997, KBMC is the pioneer private specialist hospital in Kelantan, delivering world-class care with heart.
