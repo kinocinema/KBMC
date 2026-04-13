@@ -93,8 +93,16 @@ const Page: React.FC<PageProps> = ({ slug, defaultTitle, defaultContent }) => {
                         </div>
                       </div>
                       
-                      <div className="bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center">
-                        <p className="text-gray-500 font-medium">Detailed information for this section is currently being curated and will be available soon.</p>
+                      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6 text-gray-600 leading-relaxed">
+                        <p>
+                          At KBMC, our approach to <strong className="text-[#006D77]">{title}</strong> is rooted in our core values of compassion, excellence, and patient-centric care. We understand that navigating healthcare can sometimes be overwhelming, which is why we are dedicated to providing you with clear guidance, state-of-the-art resources, and unwavering support every step of the way.
+                        </p>
+                        <p>
+                          Our facilities are designed with your comfort and well-being in mind, integrating advanced technology with a healing environment. Whether you are a local resident or an international visitor, our multidisciplinary team works collaboratively to ensure that your experience is seamless, safe, and tailored to your unique needs.
+                        </p>
+                        <p>
+                          We are continuously expanding our services and refining our processes to serve you better. If you have specific questions, require personalized assistance, or wish to learn more about how we can support your healthcare journey, our dedicated customer service and medical teams are always ready to help. Your health and peace of mind remain our highest priority.
+                        </p>
                       </div>
                     </div>
                   ) : (
