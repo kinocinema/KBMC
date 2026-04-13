@@ -69,8 +69,8 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
             <div className="lg:col-span-2">
-              <div className="relative">
-                <div className="aspect-[3/4] rounded-[4rem] overflow-hidden border-8 border-[#EDF6F9] shadow-2xl">
+              <div className="relative flex flex-col items-center">
+                <div className="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl w-full">
                   <img 
                     src="https://storage.googleapis.com/igc-health/CEO.png" 
                     alt="CEO Mohd Nazri Yaacob" 
@@ -78,9 +78,16 @@ const About: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="absolute -bottom-6 -right-6 bg-[#006D77] p-8 rounded-[2.5rem] shadow-2xl">
-                  <p className="text-white font-black text-xl">{t('about.ceo.name')}</p>
-                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest mt-1">{t('about.ceo.title')}</p>
+                <div className="absolute -bottom-8 bg-[#2A6B77] px-8 py-5 rounded-[2rem] shadow-2xl w-[90%] text-center">
+                  <p className="text-white font-black text-2xl mb-1">{t('about.ceo.name')}</p>
+                  <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest leading-relaxed max-w-[250px] mx-auto">
+                    {t('about.ceo.title').split('\n').map((part, i, arr) => (
+                      <React.Fragment key={i}>
+                        {part.trim()}
+                        {i < arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </p>
                 </div>
               </div>
             </div>
