@@ -80,10 +80,13 @@ const Services: React.FC = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img 
-            src="https://storage.googleapis.com/igc-health/Medicine%203.png" 
+            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
             alt="Medical Excellence" 
             className="w-full h-full object-cover scale-105 animate-slow-zoom"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+            }}
           />
           <div className="absolute inset-0 bg-[#006D77]/50 backdrop-blur-[1px]"></div>
         </div>
@@ -334,9 +337,12 @@ const Services: React.FC = () => {
             <div className={`relative ${isVisible ? 'animate-reveal-right' : ''}`}>
               <div className="absolute -inset-10 bg-[#006D77]/30 rounded-full blur-[80px]"></div>
               <img 
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2070" 
+                src="https://storage.googleapis.com/igc-health/kbmc-mri.jpg" 
                 alt="Medical Equipment" 
                 className="rounded-[4rem] shadow-2xl relative z-10 hover:grayscale-0 transition-all duration-1000 grayscale-[0.5]"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+                }}
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-white/5 rounded-full pointer-events-none slow-spin"></div>
             </div>

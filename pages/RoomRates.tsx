@@ -76,10 +76,13 @@ const RoomRates: React.FC = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://storage.googleapis.com/igc-health/Luxury%20Suite%202.png" 
+            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
             alt="Luxury Suite Background" 
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40"></div>
         </div>
@@ -166,10 +169,13 @@ const RoomRates: React.FC = () => {
         <div className={`relative ${isVisible ? 'animate-reveal-right' : ''}`}>
            <div className="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl group">
              <img 
-              src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png" 
+              src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
               className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
               alt="Hospital Interior"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+              }}
              />
              <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/20 to-transparent"></div>
            </div>

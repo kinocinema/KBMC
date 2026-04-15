@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, CheckCircle2, ShieldCheck, HeartPulse, 
-  Clock, Sparkles, ChevronLeft, ChevronRight, Quote, Hospital
+  Clock, Sparkles, ChevronLeft, ChevronRight, Quote, Hospital,
+  Activity, Users, Zap, Building2
 } from 'lucide-react';
 import VirtualTour from '../components/VirtualTour';
 import { SERVICES } from '../constants';
@@ -14,7 +16,7 @@ const HeroImage = ({ src, alt }: { src: string, alt: string }) => {
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fallbackSrc = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
+  const fallbackSrc = "https://storage.googleapis.com/igc-health/kbmc-building.jpg";
 
   return (
     <div className="relative w-full h-full bg-[#EDF6F9] flex items-center justify-center overflow-hidden">
@@ -99,6 +101,9 @@ const FacilityCarousel = () => {
                   src={slide.image} 
                   alt={slide.title} 
                   className="w-full h-full object-cover grayscale-[0.3] opacity-50" 
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#006D77]/80 via-[#006D77]/40 to-transparent"></div>
                 <div className="absolute inset-0 flex items-center px-10 md:px-24">
@@ -144,53 +149,165 @@ const FacilityCarousel = () => {
 
 const Home: React.FC = () => {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -50]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
     <div className="flex flex-col w-full overflow-hidden">
+      {/* Pioneer Hero Section */}
+      <section className="relative min-h-screen flex items-center px-4 md:px-8 bg-[#F8FBFC] overflow-hidden pt-20">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
+              x: [0, 50, 0],
+              y: [0, 30, 0]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] bg-gradient-to-br from-[#83C5BE]/20 to-transparent rounded-full blur-[120px]"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.1, 1],
+              x: [0, -30, 0],
+              y: [0, 50, 0]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] bg-gradient-to-tr from-[#E29578]/10 to-transparent rounded-full blur-[100px]"
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          {/* Left Content */}
+          <div className="flex flex-col space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
+            >
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#006D77]/10 px-4 py-2 rounded-full shadow-sm"
+              >
+                <Building2 className="w-4 h-4 text-[#E29578]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#006D77]">
+                  {t('legacy.established')}
+                </span>
+              </motion.div>
 
-
-      {/* Legacy Section */}
-      <section className="py-32 px-4 md:px-8 bg-[#F4F9FA] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-          <div className="lg:w-1/2 space-y-8">
-            <h2 className="text-5xl md:text-6xl font-black text-[#006D77] leading-tight">
-              {t('legacy.title')}
-            </h2>
-            <p className="text-lg text-gray-500 leading-relaxed font-medium">
-              {t('legacy.desc')}
-            </p>
-            <Link to="/about" className="inline-block bg-[#6B9095] text-white px-8 py-3 rounded-lg font-bold text-sm hover:bg-[#5a7a7e] transition-all active:scale-95">
-              {t('legacy.cta')}
-            </Link>
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-7xl font-black leading-[1] text-[#006D77] tracking-tighter">
+                  <motion.span 
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="block"
+                  >
+                    {t('legacy.title')}
+                  </motion.span>
+                </h1>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                  className="text-lg md:text-xl text-[#2C3E50]/60 font-medium max-w-xl leading-relaxed"
+                >
+                  {t('legacy.desc')}
+                </motion.p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Link to="/about" className="group relative bg-[#006D77] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-[#006D77]/20">
+                <span className="relative z-10 flex items-center gap-3">
+                  {t('legacy.cta')}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <motion.div 
+                  className="absolute inset-0 bg-white/20"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.5 }}
+                />
+              </Link>
+              <Link to="/find-doctor" className="group bg-white text-[#006D77] border-2 border-[#006D77]/10 px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:border-[#006D77] transition-all hover:scale-105 active:scale-95 shadow-lg">
+                {t('hero.cta.find')}
+              </Link>
+            </motion.div>
           </div>
-          <div className="lg:w-1/2 relative">
-            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white group">
-              <img 
-                src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
-                alt="Kota Bharu Medical Centre" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+
+          {/* Right Content - Visuals */}
+          <div className="relative lg:h-[800px] flex items-center justify-center">
+            <motion.div 
+              style={{ y: y2 }}
+              className="relative w-full max-w-[600px]"
+            >
+              {/* Main Image Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.2, ease: "circOut" }}
+                className="relative z-20 rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-[12px] border-white aspect-video lg:aspect-[4/3] group"
+              >
+                <img 
+                  src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+                  alt="KBMC Medical Center" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+              </motion.div>
+
+              {/* Floating Badge */}
+              <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="absolute -bottom-10 -right-4 lg:-right-10 z-30 p-8 bg-white/90 backdrop-blur-xl rounded-[3rem] shadow-2xl border border-white/50 max-w-xs hidden md:block"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-[#E29578] rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="block font-black text-[#006D77] uppercase tracking-widest text-[10px] mb-0.5">{t('hero.ibadah.title')}</span>
+                    <div className="flex gap-1">
+                      {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-1 rounded-full bg-[#006D77]" />)}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-600 font-bold leading-relaxed">{t('hero.ibadah.desc')}</p>
+              </motion.div>
+
+              {/* Decorative Elements */}
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-20 -left-20 w-60 h-60 border-2 border-dashed border-[#006D77]/10 rounded-full pointer-events-none"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
+
+
 
       {/* What to Expect Section */}
       <section className="py-32 px-4 md:px-8 bg-[#006D77] relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20 space-y-4">
-            <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-sm">PATIENT JOURNEY</span>
+            <span className="text-[#83C5BE] font-black uppercase tracking-[0.3em] text-sm">{t('home.journey.badge')}</span>
             <h2 className="text-5xl md:text-6xl font-bold text-white">{t('home.expect.title')}</h2>
           </div>
 
@@ -249,9 +366,13 @@ const Home: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {SERVICES.map((service, idx) => (
-              <div 
+              <motion.div 
                 key={service.id} 
-                className={`bg-white p-12 rounded-[4rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.15)] transition-all duration-700 group relative overflow-hidden border border-white/50 flex flex-col ${isVisible ? `animate-fade-in-up stagger-${idx+1}` : 'opacity-0'}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-white p-12 rounded-[4rem] shadow-[0_20px_50px_rgba(0,109,119,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,109,119,0.15)] transition-all duration-700 group relative overflow-hidden border border-white/50 flex flex-col"
               >
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="w-20 h-20 bg-[#EDF6F9] rounded-[2.5rem] flex items-center justify-center text-[#006D77] mb-10 group-hover:bg-[#006D77] group-hover:text-white transition-all duration-500 transform group-hover:rotate-[10deg] shadow-inner">
@@ -269,7 +390,7 @@ const Home: React.FC = () => {
                      </div>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

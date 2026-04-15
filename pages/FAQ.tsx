@@ -75,10 +75,13 @@ const FAQ: React.FC = () => {
       {/* Hero Section */}
       <div className="relative py-32 px-4 md:px-8 overflow-hidden bg-[#006D77]">
         <img 
-          src="https://storage.googleapis.com/igc-health/FAQ.jpeg" 
+          src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
           alt="FAQ Banner" 
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/70 to-[#006D77]"></div>
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>

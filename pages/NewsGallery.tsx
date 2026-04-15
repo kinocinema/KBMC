@@ -27,7 +27,7 @@ const NewsGallery: React.FC = () => {
       type: 'events',
       title: t('news.item.world-heart-day.title'),
       date: 'February 28, 2026',
-      image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80',
+      image: 'https://storage.googleapis.com/igc-health/kbmc-event1.jpg',
       desc: t('news.item.world-heart-day.desc')
     },
     {
@@ -35,7 +35,7 @@ const NewsGallery: React.FC = () => {
       type: 'media',
       title: t('news.item.healthcare-asia.title'),
       date: 'January 15, 2026',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80',
+      image: 'https://storage.googleapis.com/igc-health/kbmc-event2.jpg',
       desc: t('news.item.healthcare-asia.desc')
     },
     {
@@ -43,7 +43,7 @@ const NewsGallery: React.FC = () => {
       type: 'news',
       title: t('news.item.new-mri.title'),
       date: 'December 20, 2025',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
+      image: 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
       desc: t('news.item.new-mri.desc')
     }
   ];
@@ -61,7 +61,7 @@ const NewsGallery: React.FC = () => {
             type: doc.data().category?.toLowerCase() || 'news',
             title: doc.data().title,
             date: doc.data().date,
-            image: doc.data().imageUrl || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
+            image: doc.data().imageUrl || 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
             desc: doc.data().content.substring(0, 100) + '...'
           }));
           setNewsItems(fetchedNews);
@@ -83,10 +83,13 @@ const NewsGallery: React.FC = () => {
       {/* Hero Section */}
       <div className="relative py-32 px-4 md:px-8 overflow-hidden bg-[#006D77]">
         <img 
-          src="https://storage.googleapis.com/igc-health/News%20Gallery%202.png" 
+          src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
           alt="News & Gallery Banner" 
           className="absolute inset-0 w-full h-full object-cover opacity-50"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/70 to-[#006D77]"></div>
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
@@ -129,6 +132,9 @@ const NewsGallery: React.FC = () => {
                   alt={item.title} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+                  }}
                 />
                 <div className="absolute top-6 left-6">
                   <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[#006D77] text-[10px] font-black uppercase tracking-widest shadow-lg">

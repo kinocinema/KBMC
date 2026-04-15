@@ -58,7 +58,7 @@ const ContactUs: React.FC = () => {
               </a>
             </div>
           </div>
-          <p className="text-sm md:text-base font-medium opacity-90">Our trauma team is standing by to provide immediate care.</p>
+          <p className="text-sm md:text-base font-medium opacity-90">{t('contact.emergency.desc')}</p>
         </div>
       </div>
 

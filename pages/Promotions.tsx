@@ -17,10 +17,13 @@ const Promotions: React.FC = () => {
       <div className="bg-[#006D77] py-24 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://storage.googleapis.com/igc-health/Stockphoto/Wellness%20Program%20-%20Diagnostic%20Capabilities.jpeg" 
+            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
             alt="Promotions" 
             className="w-full h-full object-cover opacity-20"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>

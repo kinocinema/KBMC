@@ -50,6 +50,9 @@ const About: React.FC = () => {
             alt="KBMC New Hospital Building" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>
@@ -76,6 +79,9 @@ const About: React.FC = () => {
                     alt="CEO Mohd Nazri Yaacob" 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+                    }}
                   />
                 </div>
                 <div className="absolute -bottom-8 bg-[#2A6B77] px-8 py-5 rounded-[2rem] shadow-2xl w-[90%] text-center">
@@ -283,10 +289,13 @@ const About: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png" 
+              src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
               alt="KBMC Expansion" 
               className="rounded-[4rem] shadow-2xl w-full aspect-[4/5] object-cover"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+              }}
             />
             <div className="absolute -bottom-10 -right-10 bg-[#E29578] p-12 rounded-[3rem] text-white shadow-2xl hidden md:block">
               <p className="text-4xl font-black leading-none">{t('about.future.jobs.count')}</p>
@@ -339,12 +348,12 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl bg-[#EDF6F9] flex items-center justify-center">
                 <img 
-                  src="https://storage.googleapis.com/igc-health/Career%20Growth%203.jpeg" 
+                  src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
                   alt="KBMC Careers" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&q=80&w=2070";
+                    (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
                   }}
                 />
               </div>

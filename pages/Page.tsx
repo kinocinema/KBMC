@@ -70,7 +70,7 @@ const Page: React.FC<PageProps> = ({ slug, defaultTitle, defaultContent }) => {
                       
                       <div className="aspect-video rounded-3xl overflow-hidden shadow-lg relative bg-gray-100">
                         <img 
-                          src={`https://picsum.photos/seed/${slug}/800/450?blur=2`} 
+                          src={`https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg`} 
                           alt={title} 
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"

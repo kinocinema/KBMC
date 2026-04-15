@@ -210,7 +210,7 @@ const DashboardTab = () => {
           type: 'events',
           title: 'World Heart Day Wellness Campaign',
           date: 'February 28, 2026',
-          image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80',
+          image: 'https://storage.googleapis.com/igc-health/kbmc-event1.jpg',
           content: `<p>In conjunction with World Heart Day, KBMC is hosting a comprehensive Wellness Campaign aimed at raising awareness about cardiovascular health and promoting preventive care.</p><p>Join us at our Main Lobby for a series of engaging activities and educational sessions led by our esteemed cardiologists and healthcare professionals.</p><h3>Event Highlights:</h3><ul><li>Free basic health screenings (Blood Pressure, BMI, Glucose)</li><li>Expert talks on heart-healthy diets and lifestyle modifications</li><li>Interactive CPR and First Aid demonstrations</li><li>Special discounts on comprehensive cardiac screening packages</li></ul><p>Your heart health is our priority. Don't miss this opportunity to take charge of your cardiovascular well-being. The event is open to the public, and no prior registration is required.</p>`
         },
         {
@@ -218,7 +218,7 @@ const DashboardTab = () => {
           type: 'media',
           title: 'KBMC Featured in Healthcare Asia Magazine',
           date: 'January 15, 2026',
-          image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80',
+          image: 'https://storage.googleapis.com/igc-health/kbmc-event2.jpg',
           content: `<p>We are honored to be featured in the latest issue of Healthcare Asia Magazine, a leading publication covering the healthcare industry across the Asia Pacific region.</p><p>The extensive feature highlights KBMC's remarkable journey, our commitment to clinical excellence, and our innovative approach to patient-centered care. It also delves into our recent technological advancements and our role as a pioneer private specialist hospital in Kelantan.</p><p>"This recognition is a testament to the hard work and dedication of our entire team," said the CEO of KBMC. "We remain steadfast in our mission to deliver world-class healthcare with heart to our community and beyond."</p><p>Read the full article in the January 2026 edition of Healthcare Asia Magazine or visit their official website for the digital version.</p>`
         },
         {
@@ -226,7 +226,7 @@ const DashboardTab = () => {
           type: 'news',
           title: 'New MRI 3.0T System Now Operational',
           date: 'December 20, 2025',
-          image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80',
+          image: 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
           content: `<p>KBMC is thrilled to announce the successful installation and operationalization of our new 3.0 Tesla Magnetic Resonance Imaging (MRI) system. This latest generation imaging technology significantly enhances our diagnostic capabilities.</p><p>The 3.0T MRI provides exceptional image quality and detail, allowing our radiologists and specialists to detect and diagnose conditions with unprecedented precision. This is particularly beneficial for neurological, musculoskeletal, and cardiovascular imaging.</p><h3>Benefits for Patients:</h3><ul><li>Faster scan times, reducing discomfort and anxiety</li><li>Wider bore design for a more spacious and less claustrophobic experience</li><li>Quieter operation compared to older models</li><li>Higher resolution images for more accurate diagnoses</li></ul><p>The addition of the 3.0T MRI system underscores our ongoing investment in cutting-edge medical technology to ensure our patients receive the best possible care.</p>`
         }
       ];

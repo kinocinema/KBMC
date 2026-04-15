@@ -97,6 +97,19 @@ const Navbar: React.FC = () => {
                   {menuData.filter(m => ["HOME", "OUR SPECIALISTS & SERVICES", "PATIENT & VISITOR INFO", "CENTRE OF EXCELLENCE", "NEWS AND GALLERY", "CAREERS"].includes(m.title)).map((menu, index) => {
                     const translatedTitle = t(`menu.${menu.title}` as any);
                     const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+
+                    if (menu.links.length === 1) {
+                      return (
+                        <Link 
+                          key={menu.title} 
+                          to={menu.links[0].path}
+                          className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}
+                        >
+                          {displayTitle}
+                        </Link>
+                      );
+                    }
+
                     return (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
@@ -125,6 +138,19 @@ const Navbar: React.FC = () => {
                   {menuData.filter(m => ["WELLNESS PROGRAM", "PROMOTIONS", "INTERNATIONAL PATIENT", "MYHEALTH360 FAQ"].includes(m.title)).map((menu, index) => {
                     const translatedTitle = t(`menu.${menu.title}` as any);
                     const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+
+                    if (menu.links.length === 1) {
+                      return (
+                        <Link 
+                          key={menu.title} 
+                          to={menu.links[0].path}
+                          className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}
+                        >
+                          {displayTitle}
+                        </Link>
+                      );
+                    }
+
                     return (
                     <div key={menu.title} className="relative group flex items-center h-full">
                       <button className={`flex items-center gap-1 xl:gap-1.5 text-[10px] xl:text-[11px] 2xl:text-[12px] font-bold uppercase tracking-wide px-2 xl:px-3 py-1.5 rounded-full transition-all hover:bg-[#EDF6F9] text-[#1A2530] whitespace-nowrap`}>
@@ -193,6 +219,21 @@ const Navbar: React.FC = () => {
                   {menuData.map((menu) => {
                     const translatedTitle = t(`menu.${menu.title}` as any);
                     const displayTitle = translatedTitle.startsWith('menu.') ? menu.title : translatedTitle;
+
+                    if (menu.links.length === 1) {
+                      return (
+                        <Link 
+                          key={menu.title} 
+                          to={menu.links[0].path}
+                          onClick={() => setIsOpen(false)}
+                          className="w-full flex items-center justify-between py-4 text-[#2C3E50] font-black text-sm uppercase tracking-widest border-b border-gray-50 last:border-0"
+                        >
+                          <span>{displayTitle}</span>
+                          <ChevronRight className="w-4 h-4 text-gray-300" />
+                        </Link>
+                      );
+                    }
+
                     return (
                     <div key={menu.title} className="border-b border-gray-50 last:border-0">
                       <button 

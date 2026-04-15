@@ -14,7 +14,7 @@ import DoctorProfile from './pages/DoctorProfile';
 import RoomRates from './pages/RoomRates';
 import InsurancePanels from './pages/InsurancePanels';
 import ContactUs from './pages/ContactUs';
-import MedicalTourism from './pages/MedicalTourism';
+import InternationalPatient from './pages/InternationalPatient';
 import FAQ from './pages/FAQ';
 import NewsGallery from './pages/NewsGallery';
 import NewsArticle from './pages/NewsArticle';
@@ -48,7 +48,8 @@ const AppContent: React.FC = () => {
             <Route path="/room-rates" element={<RoomRates />} />
             <Route path="/insurance-panels" element={<InsurancePanels />} />
             <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/medical-tourism" element={<MedicalTourism />} />
+            <Route path="/wellness-program" element={<WellnessProgram />} />
+            <Route path="/international-patient" element={<InternationalPatient />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/news-gallery" element={<NewsGallery />} />
             <Route path="/news-gallery/:id" element={<NewsArticle />} />
@@ -115,6 +116,9 @@ const AppContent: React.FC = () => {
                         alt="TikTok" 
                         className="w-3.5 h-3.5 brightness-0 invert opacity-40 group-hover:opacity-100 transition-opacity"
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC_Logo_Hi-Res_2022_CS6-01-scaled.png";
+                        }}
                       />
                     </a>
                     <a href="https://www.youtube.com/@kotabharumedicalcentre" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
@@ -157,7 +161,7 @@ const AppContent: React.FC = () => {
             </div>
 
             <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-medium">
-              <p>© 2026 Kota Bharu Medical Centre. All rights reserved. PDPA 2010 Compliant.</p>
+              <p>© 2026 Kota Bharu Medical Centre. All rights reserved.</p>
               <div className="flex gap-6">
                 <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

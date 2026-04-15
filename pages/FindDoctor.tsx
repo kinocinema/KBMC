@@ -68,10 +68,13 @@ const FindDoctor: React.FC = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://storage.googleapis.com/igc-health/Specialist.png" 
+            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
             alt="Elite Specialists" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+            }}
           />
           <div className="absolute inset-0 bg-[#006D77]/50 backdrop-blur-[1px]"></div>
         </div>

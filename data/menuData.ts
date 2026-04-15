@@ -61,13 +61,7 @@ export const menuData = [
   {
     title: "WELLNESS PROGRAM",
     links: [
-      { name: "HEALTH SCREENING PACKAGES 2026", path: "/health-screening-2026", content: "Comprehensive health screening packages tailored for your well-being. Early detection is the key to prevention." },
-      { name: "SPECIALIZED SCREENING PROMOTIONS (LIMITED TIME)", path: "/specialized-screening-promotions", content: "Take advantage of our limited-time offers on specialized health checks and diagnostic screenings." },
-      { name: "OTHER PACKAGES", path: "/other-packages", content: "Explore our diverse range of specific health screening and corporate wellness packages designed for various needs." },
-      { name: "CORPORATE WELLNESS PROGRAM", path: "/corporate-wellness", content: "Tailored wellness programs for corporate partners." },
-      { name: "OUR CORPORATE BENEFITS", path: "/corporate-benefits", content: "Benefits for our corporate partners." },
-      { name: "WHY PARTNER WITH KBMC?", path: "/why-partner", content: "Reasons to partner with KBMC." },
-      { name: "NEXT STEPS", path: "/next-steps", content: "Next steps for corporate partnership." }
+      { name: "WELLNESS PROGRAM", path: "/wellness-program", content: "Comprehensive health screening and wellness programs tailored for your well-being. From executive screenings to corporate wellness, we care for your health." }
     ]
   },
   {
@@ -79,18 +73,7 @@ export const menuData = [
   {
     title: "INTERNATIONAL PATIENT",
     links: [
-      { name: "WHY CHOOSE KBMC FOR MEDICAL TOURISM?", path: "/medical-tourism", content: "Experience world-class healthcare, internationally trained specialists, and a seamless patient journey at KBMC." },
-      { name: "PREMIUM AMENITIES & CONCIERGE SERVICES", path: "/premium-amenities-concierge", content: "Exclusive services and luxurious amenities designed specifically for the comfort of our international patients." },
-      { name: "HOW TO BEGIN YOUR JOURNEY (INTERNATIONAL PATIENT GUIDELINES)", path: "/how-to-begin-journey", content: "A comprehensive step-by-step guide to planning your medical travel and treatment with us." },
-      { name: "INTERNATIONAL PATIENT SERVICES (IPC)", path: "/international-patient-services-ipc", content: "Meet our dedicated support team, committed to assisting our overseas patients every step of the way." },
-      { name: "VISA ARRANGEMENT & MEDICAL TRAVEL SUPPORT", path: "/visa-arrangement-medical-travel", content: "Get assistance with medical visa applications, travel logistics, and airport transfers." },
-      { name: "INTERNATIONAL PATIENT JOURNEY (PROCESS FLOW)", path: "/international-patient-journey", content: "Understand your complete care pathway, from initial inquiry and arrival to treatment and departure." },
-      { name: "INTERNATIONAL PATIENT CARE AND ACCOMMODATION", path: "/international-patient-care-accommodation", content: "Comfortable and convenient stay options for patients and their accompanying family members." },
-      { name: "CORPORATE PARTNER & NEARBY ACCOMMODATIONS", path: "/corporate-partner-nearby-accommodations", content: "View our recommended hotels and partner accommodations located near the hospital." },
-      { name: "INTERNATIONAL PATIENT ARRIVAL CHECKLIST", path: "/international-patient-arrival-checklist", content: "A handy checklist of important documents and items to bring for your medical trip." },
-      { name: "KBMC INTERNATIONAL PATIENT WELCOME PACK", path: "/kbmc-international-patient-welcome-pack", content: "Essential information, local guides, and resources provided to you upon your arrival." },
-      { name: "INTERNATIONAL PATIENT CONCIERGE: BEYOND BORDERS", path: "/international-patient-concierge-beyond-borders", content: "Our concierge team goes the extra mile to ensure a stress-free and comfortable medical journey for you." },
-      { name: "PREMIER ACCOMMODATIONS & FACILITIES", path: "/premier-accommodations-facilities", content: "Premier accommodations and facilities for international patients." }
+      { name: "INTERNATIONAL PATIENT SERVICES (IPC)", path: "/international-patient", content: "Experience world-class healthcare, internationally trained specialists, and a seamless patient journey at KBMC. Our dedicated IPC team is here to assist you." }
     ]
   },
   {

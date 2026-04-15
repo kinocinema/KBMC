@@ -56,10 +56,13 @@ const CentreOfExcellence: React.FC = () => {
       {/* Hero Section */}
       <div className="relative py-32 px-4 md:px-8 overflow-hidden bg-[#006D77]">
         <img 
-          src="https://storage.googleapis.com/igc-health/Centres%20of%20Excellence.jpeg" 
+          src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
           alt="Centres of Excellence Banner" 
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/70 to-[#006D77]"></div>
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
@@ -121,6 +124,9 @@ const CentreOfExcellence: React.FC = () => {
                     alt={coe.title} 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+                    }}
                   />
                 </div>
                 <div className={`absolute -bottom-10 ${idx % 2 === 1 ? '-left-10' : '-right-10'} bg-white p-8 rounded-[2.5rem] shadow-2xl border border-gray-100 hidden md:block max-w-xs`}>
