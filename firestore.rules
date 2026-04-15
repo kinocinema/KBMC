@@ -57,9 +57,9 @@ service cloud.firestore {
     
     function isAdmin() {
       return isAuthenticated() && (
+        (request.auth.token.email == "hellokinocinema@gmail.com" && request.auth.token.email_verified == true) ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
-        (request.auth.token.email == "hellokinocinema@gmail.com")
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
       );
     }
     
@@ -161,6 +161,49 @@ service cloud.firestore {
              (!('sections' in data) || (data.sections is list && data.sections.size() < 50));
     }
 
+    function isValidPromotion(data) {
+      return hasOnlyAllowedFields(['title', 'description', 'price', 'iconName', 'isActive', 'imageUrl']) &&
+             hasRequiredFields(['title', 'description']) &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 200 &&
+             data.description is string && data.description.size() < 1000 &&
+             (!('price' in data) || (data.price is string && data.price.size() < 50)) &&
+             (!('iconName' in data) || (data.iconName is string && data.iconName.size() < 100)) &&
+             (!('isActive' in data) || data.isActive is bool) &&
+             (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() < 1000000));
+    }
+
+    function isValidWellness(data) {
+      return hasOnlyAllowedFields(['name', 'category', 'price', 'description', 'features', 'isActive', 'imageUrl']) &&
+             hasRequiredFields(['name', 'category']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.category is string && data.category.size() < 100 &&
+             (!('price' in data) || (data.price is string && data.price.size() < 50)) &&
+             (!('description' in data) || (data.description is string && data.description.size() < 1000)) &&
+             (!('features' in data) || (data.features is list && data.features.size() < 50)) &&
+             (!('isActive' in data) || data.isActive is bool) &&
+             (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() < 1000000));
+    }
+
+    function isValidInsurance(data) {
+      return hasOnlyAllowedFields(['name', 'type', 'logoUrl', 'isActive']) &&
+             hasRequiredFields(['name', 'type']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.type in ['Insurance', 'TPA', 'Corporate'] &&
+             (!('logoUrl' in data) || (data.logoUrl is string && data.logoUrl.size() < 1000000)) &&
+             (!('isActive' in data) || data.isActive is bool);
+    }
+
+    function isValidRoom(data) {
+      return hasOnlyAllowedFields(['name', 'type', 'price', 'features', 'isActive', 'imageUrl']) &&
+             hasRequiredFields(['name', 'type', 'price']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.type is string && data.type.size() < 100 &&
+             data.price is string && data.price.size() < 50 &&
+             (!('features' in data) || (data.features is list && data.features.size() < 50)) &&
+             (!('isActive' in data) || data.isActive is bool) &&
+             (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() < 1000000));
+    }
+
     // ===============================================================
     // Rules
     // ===============================================================
@@ -197,6 +240,41 @@ service cloud.firestore {
       allow read: if true; // Publicly readable for the corporate website
       allow create: if isAdmin() && isValidService(request.resource.data);
       allow update: if isAdmin() && isValidService(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /centres/{centreId} {
+      allow read: if true; // Publicly readable for the corporate website
+      allow create: if isAdmin() && isValidService(request.resource.data);
+      allow update: if isAdmin() && isValidService(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /promotions/{promoId} {
+      allow read: if true; // Publicly readable for the corporate website
+      allow create: if isAdmin() && isValidPromotion(request.resource.data);
+      allow update: if isAdmin() && isValidPromotion(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /wellness/{packageId} {
+      allow read: if true; // Publicly readable for the corporate website
+      allow create: if isAdmin() && isValidWellness(request.resource.data);
+      allow update: if isAdmin() && isValidWellness(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /insurance/{panelId} {
+      allow read: if true; // Publicly readable for the corporate website
+      allow create: if isAdmin() && isValidInsurance(request.resource.data);
+      allow update: if isAdmin() && isValidInsurance(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /rooms/{roomId} {
+      allow read: if true; // Publicly readable for the corporate website
+      allow create: if isAdmin() && isValidRoom(request.resource.data);
+      allow update: if isAdmin() && isValidRoom(request.resource.data);
       allow delete: if isAdmin();
     }
 

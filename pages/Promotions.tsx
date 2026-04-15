@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const Promotions: React.FC = () => {
   const location = useLocation();
@@ -17,6 +18,8 @@ const Promotions: React.FC = () => {
     const unsub = onSnapshot(q, (snapshot) => {
       setPromotions(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'promotions');
     });
     return () => unsub();
   }, [location]);

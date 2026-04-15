@@ -3,6 +3,7 @@ import { ShieldCheck, Info, Globe } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const InsurancePanels: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +27,8 @@ const InsurancePanels: React.FC = () => {
       ];
       setPanels(grouped);
       setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'insurance');
     });
     return () => unsub();
   }, [t]);

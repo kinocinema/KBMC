@@ -29,6 +29,7 @@ import Admin from './pages/Admin';
 import { Heart, Activity, Stethoscope, Baby, Eye, ShieldCheck, Clock, Activity as ActivityIcon } from 'lucide-react';
 import { onSnapshot, collection } from 'firebase/firestore';
 import { db } from './firebase';
+import { handleFirestoreError, OperationType } from './firebaseErrors';
 
 const AppContent: React.FC = () => {
   const { menuData } = useMenu();
@@ -37,6 +38,8 @@ const AppContent: React.FC = () => {
   React.useEffect(() => {
     const unsub = onSnapshot(collection(db, 'centres'), (snapshot) => {
       setCentres(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'centres');
     });
     return () => unsub();
   }, []);

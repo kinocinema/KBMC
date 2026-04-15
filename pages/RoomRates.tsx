@@ -3,6 +3,7 @@ import { Bed, Check, Info, Sparkles, Coffee, Tv, ShieldCheck } from 'lucide-reac
 import { useLanguage } from '../LanguageContext';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const RoomRates: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,6 +19,8 @@ const RoomRates: React.FC = () => {
     const unsub = onSnapshot(q, (snapshot) => {
       setRooms(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'rooms');
     });
     return () => unsub();
   }, []);

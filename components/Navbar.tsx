@@ -16,6 +16,7 @@ import PrayerWidget from './PrayerWidget';
 
 import { onSnapshot, doc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const Navbar: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -40,6 +41,8 @@ const Navbar: React.FC = () => {
       if (docSnap.exists()) {
         setSettings(docSnap.data());
       }
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'settings/global');
     });
     return () => unsub();
   }, []);

@@ -188,6 +188,26 @@
     "/pages/{pageId}": {
       "schema": "Page",
       "description": "Page content."
+    },
+    "/centres/{centreId}": {
+      "schema": "Service",
+      "description": "Centres of Excellence."
+    },
+    "/promotions/{promoId}": {
+      "schema": "object",
+      "description": "Promotional packages."
+    },
+    "/wellness/{packageId}": {
+      "schema": "object",
+      "description": "Wellness packages."
+    },
+    "/insurance/{panelId}": {
+      "schema": "object",
+      "description": "Insurance panels."
+    },
+    "/rooms/{roomId}": {
+      "schema": "object",
+      "description": "Room rates."
     }
   }
 }

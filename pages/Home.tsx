@@ -13,6 +13,7 @@ import { useLanguage } from '../LanguageContext';
 import { TranslationKeys } from '../translations';
 import { db } from '../firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
+import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const HeroImage = ({ src, alt }: { src: string, alt: string }) => {
   const [hasError, setHasError] = useState(false);
@@ -165,6 +166,8 @@ const Home: React.FC = () => {
       if (docSnap.exists()) {
         setHomeData(docSnap.data());
       }
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'settings/home');
     });
     return () => unsub();
   }, []);
