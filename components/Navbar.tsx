@@ -14,6 +14,9 @@ import { useLanguage } from '../LanguageContext';
 import { useMenu } from '../MenuContext';
 import PrayerWidget from './PrayerWidget';
 
+import { onSnapshot, doc } from 'firebase/firestore';
+import { db } from '../firebase';
+
 const Navbar: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
   const { menuData } = useMenu();
@@ -21,6 +24,7 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
+  const [settings, setSettings] = useState<any>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -32,12 +36,25 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'global'), (docSnap) => {
+      if (docSnap.exists()) {
+        setSettings(docSnap.data());
+      }
+    });
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
     setMobileAccordion(null);
   }, [location.pathname, location.hash]);
 
   const isActive = (path: string) => location.pathname === path;
+
+  const emergencyText = settings?.emergencyPhone 
+    ? `${t('nav.emergency')}: ${settings.emergencyPhone}`
+    : `${t('nav.emergency')}: +60 9-743 9999 / +60 19-943 3599`;
 
   return (
     <header className="fixed top-0 z-[100] w-full">
@@ -68,9 +85,9 @@ const Navbar: React.FC = () => {
                </button>
             </div>
             <div className="h-4 w-px bg-white/20"></div>
-            <a href="tel:+6097439999" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#83C5BE] transition-colors">
+            <a href={`tel:${settings?.emergencyPhone?.split('/')[0]?.trim() || '+6097439999'}`} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#83C5BE] transition-colors">
               <Phone className="w-3.5 h-3.5" />
-              <span>{t('nav.emergency')}: +60 9-743 9999 / +60 19-943 3599</span>
+              <span>{emergencyText}</span>
             </a>
           </div>
         </div>

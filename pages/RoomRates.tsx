@@ -1,73 +1,26 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bed, Check, Info, Sparkles, Coffee, Tv, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const RoomRates: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { t } = useLanguage();
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setIsVisible(true);
     window.scrollTo(0, 0);
-  }, []);
 
-  const rooms = [
-    {
-      name: t('rooms.executive.title'),
-      price: 'RM 450.00',
-      description: t('rooms.executive.desc'),
-      features: [
-        t('rooms.feature.lounge'), 
-        t('rooms.feature.minibar'), 
-        t('rooms.feature.prayer'), 
-        t('rooms.feature.nurse'), 
-        t('rooms.feature.tv'), 
-        t('rooms.feature.companion')
-      ],
-      popular: true,
-      color: '#006D77'
-    },
-    {
-      name: t('rooms.single.title'),
-      price: 'RM 250.00',
-      description: t('rooms.single.desc'),
-      features: [
-        t('rooms.feature.bathroom'), 
-        t('rooms.feature.tv'), 
-        t('rooms.feature.fridge'), 
-        t('rooms.feature.guest')
-      ],
-      popular: false,
-      color: '#E29578'
-    },
-    {
-      name: t('rooms.double.title'),
-      price: 'RM 150.00',
-      description: t('rooms.double.desc'),
-      features: [
-        t('rooms.feature.partition'), 
-        t('rooms.feature.tv'), 
-        t('rooms.feature.bathroom'), 
-        t('rooms.feature.table')
-      ],
-      popular: false,
-      color: '#83C5BE'
-    },
-    {
-      name: t('rooms.quad.title'),
-      price: 'RM 100.00',
-      description: t('rooms.quad.desc'),
-      features: [
-        t('rooms.feature.aircon'), 
-        t('rooms.feature.care'), 
-        t('rooms.feature.bathroom'), 
-        t('rooms.feature.support')
-      ],
-      popular: false,
-      color: '#2C3E50'
-    }
-  ];
+    const q = query(collection(db, 'rooms'), where('isActive', '==', true));
+    const unsub = onSnapshot(q, (snapshot) => {
+      setRooms(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white overflow-hidden pb-32">
@@ -80,9 +33,6 @@ const RoomRates: React.FC = () => {
             alt="Luxury Suite Background" 
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40"></div>
         </div>
@@ -101,40 +51,47 @@ const RoomRates: React.FC = () => {
 
       {/* Pricing Cards */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 -mt-24 md:-mt-32 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {rooms.map((room, idx) => (
-            <div 
-              key={room.name} 
-              className={`bg-white rounded-[2.5rem] p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-50 flex flex-col hover:translate-y-[-8px] transition-all duration-500 relative ${isVisible ? `animate-fade-in-up stagger-${idx+1}` : 'opacity-0'}`}
-            >
-              {room.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#006D77] text-white px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-2 z-30 shadow-lg">
-                  <Sparkles className="w-3 h-3" />
-                  {t('rooms.preferred')}
-                </div>
-              )}
-              <div className="mb-6">
-                <h3 className="text-xl font-black text-[#2C3E50] mb-2">{room.name}</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-black" style={{ color: room.color }}>{room.price}</span>
-                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">/ {t('rooms.day')}</span>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 leading-relaxed mb-8 flex-grow font-medium">{room.description}</p>
-              <div className="space-y-3 mb-10">
-                {room.features.map(f => (
-                  <div key={f} className="flex items-center gap-3 text-[11px] font-bold text-[#006D77]">
-                    <Check className="w-3.5 h-3.5 shrink-0 text-[#E29578]" />
-                    <span>{f}</span>
+        {loading ? (
+          <div className="text-center py-20 text-gray-500 font-bold">Loading room rates...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {rooms.map((room, idx) => (
+              <div 
+                key={room.id} 
+                className={`bg-white rounded-[2.5rem] p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-50 flex flex-col hover:translate-y-[-8px] transition-all duration-500 relative ${isVisible ? `animate-fade-in-up stagger-${idx+1}` : 'opacity-0'}`}
+              >
+                {room.popular && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#006D77] text-white px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-2 z-30 shadow-lg">
+                    <Sparkles className="w-3 h-3" />
+                    {t('rooms.preferred')}
                   </div>
-                ))}
+                )}
+                <div className="mb-6">
+                  <h3 className="text-xl font-black text-[#2C3E50] mb-2">{room.type}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-black text-[#006D77]">{room.price}</span>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">/ {t('rooms.day')}</span>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 leading-relaxed mb-8 flex-grow font-medium">{room.description}</p>
+                <div className="space-y-3 mb-10">
+                  {(room.features || []).map((f: string) => (
+                    <div key={f} className="flex items-center gap-3 text-[11px] font-bold text-[#006D77]">
+                      <Check className="w-3.5 h-3.5 shrink-0 text-[#E29578]" />
+                      <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <button className="w-full py-4 rounded-2xl bg-[#EDF6F9] text-[#006D77] font-black text-[10px] uppercase tracking-widest hover:bg-[#006D77] hover:text-white transition-all shadow-sm">
+                  {t('rooms.availability')}
+                </button>
               </div>
-              <button className="w-full py-4 rounded-2xl bg-[#EDF6F9] text-[#006D77] font-black text-[10px] uppercase tracking-widest hover:bg-[#006D77] hover:text-white transition-all shadow-sm">
-                {t('rooms.availability')}
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+            {rooms.length === 0 && (
+              <div className="col-span-full text-center py-10 text-gray-500">No room rates available.</div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Refined Healing Spaces Section */}
@@ -173,9 +130,6 @@ const RoomRates: React.FC = () => {
               className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
               alt="Hospital Interior"
               referrerPolicy="no-referrer"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-              }}
              />
              <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/20 to-transparent"></div>
            </div>

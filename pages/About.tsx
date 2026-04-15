@@ -4,15 +4,24 @@ import { Link, useLocation } from 'react-router-dom';
 import { ShieldCheck, Award, History, Target, CheckCircle2, HeartPulse, Quote, MapPin, Building2, Zap, Users, Clock, ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
+import { db } from '../firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [aboutData, setAboutData] = useState<any>(null);
   const { t } = useLanguage();
   const location = useLocation();
 
   useEffect(() => {
     setIsVisible(true);
     
+    const unsub = onSnapshot(doc(db, 'settings', 'about'), (docSnap) => {
+      if (docSnap.exists()) {
+        setAboutData(docSnap.data());
+      }
+    });
+
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
@@ -24,6 +33,8 @@ const About: React.FC = () => {
     } else {
       window.scrollTo(0, 0);
     }
+
+    return () => unsub();
   }, [location]);
 
   const milestones = [
@@ -38,6 +49,23 @@ const About: React.FC = () => {
     { key: 'C', title: t('about.values.c.title'), desc: t('about.values.c'), icon: <CheckCircle2 className="w-6 h-6" /> },
   ];
 
+  const heroTitle = aboutData?.hero?.title || t('about.hero.title');
+  const heroDesc = aboutData?.hero?.description || t('about.hero.desc');
+  const heroImage = aboutData?.hero?.imageUrl || "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
+
+  const ceoName = aboutData?.ceo?.name || t('about.ceo.name');
+  const ceoTitle = aboutData?.ceo?.title || t('about.ceo.title');
+  const ceoImage = aboutData?.ceo?.imageUrl || "https://storage.googleapis.com/igc-health/CEO.png";
+  const ceoMessage = aboutData?.ceo?.message || [t('about.ceo.p1'), t('about.ceo.p2'), t('about.ceo.p3'), t('about.ceo.p4'), t('about.ceo.p5')];
+
+  const visionDesc = aboutData?.vision || t('about.vision.desc');
+  const missionTitle = aboutData?.mission?.title || t('about.mission.title');
+  const missionItems = aboutData?.mission?.items || [
+    { title: t('about.mission.wellbeing.title'), desc: t('about.mission.wellbeing.desc') },
+    { title: t('about.mission.innovation.title'), desc: t('about.mission.innovation.desc') },
+    { title: t('about.mission.accessibility.title'), desc: t('about.mission.accessibility.desc') },
+    { title: t('about.mission.growth.title'), desc: t('about.mission.growth.desc') }
+  ];
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -46,13 +74,10 @@ const About: React.FC = () => {
         {/* Background Image - New Hospital Building */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+            src={heroImage} 
             alt="KBMC New Hospital Building" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>
@@ -60,9 +85,9 @@ const About: React.FC = () => {
         <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-white/5 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 slow-spin"></div>
         <div className={`max-w-5xl mx-auto text-center space-y-8 relative z-10 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <span className="text-[#83C5BE] font-black uppercase tracking-[0.4em] text-sm">{t('about.heritage')}</span>
-          <h1 className="text-6xl md:text-8xl font-black text-white leading-[1.1]">{t('about.hero.title')}</h1>
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-[1.1]">{heroTitle}</h1>
           <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-medium max-w-3xl mx-auto">
-            {t('about.hero.desc')}
+            {heroDesc}
           </p>
         </div>
       </div>
@@ -75,19 +100,16 @@ const About: React.FC = () => {
               <div className="relative flex flex-col items-center">
                 <div className="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl w-full">
                   <img 
-                    src="https://storage.googleapis.com/igc-health/CEO.png" 
-                    alt="CEO Mohd Nazri Yaacob" 
+                    src={ceoImage} 
+                    alt={ceoName} 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-                    }}
                   />
                 </div>
                 <div className="absolute -bottom-8 bg-[#2A6B77] px-8 py-5 rounded-[2rem] shadow-2xl w-[90%] text-center">
-                  <p className="text-white font-black text-2xl mb-1">{t('about.ceo.name')}</p>
+                  <p className="text-white font-black text-2xl mb-1">{ceoName}</p>
                   <p className="text-[#83C5BE] font-bold text-xs uppercase tracking-widest leading-relaxed max-w-[250px] mx-auto">
-                    {t('about.ceo.title').split('\n').map((part, i, arr) => (
+                    {ceoTitle.split('\n').map((part: string, i: number, arr: string[]) => (
                       <React.Fragment key={i}>
                         {part.trim()}
                         {i < arr.length - 1 && <br />}
@@ -105,21 +127,11 @@ const About: React.FC = () => {
               <div className="relative">
                 <Quote className="absolute -top-10 -left-12 w-24 h-24 text-[#006D77]/5" />
                 <div className="space-y-6">
-                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                    {t('about.ceo.p1')}
-                  </p>
-                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                    {t('about.ceo.p2')}
-                  </p>
-                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                    {t('about.ceo.p3')}
-                  </p>
-                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                    {t('about.ceo.p4')}
-                  </p>
-                  <p className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
-                    {t('about.ceo.p5')}
-                  </p>
+                  {ceoMessage.map((p: string, i: number) => (
+                    <p key={i} className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed italic">
+                      {p}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>
@@ -137,31 +149,21 @@ const About: React.FC = () => {
                </div>
                <h2 className="text-5xl font-black text-[#006D77] mb-8">{t('about.vision.title')}</h2>
                <p className="text-2xl text-gray-500 font-medium leading-relaxed">
-                 {t('about.vision.desc')}
+                 {visionDesc}
                </p>
             </div>
             <div className={`lg:col-span-7 bg-[#006D77] p-12 rounded-[4rem] shadow-2xl text-white hover:-translate-y-2 transition-transform group flex flex-col justify-start ${isVisible ? 'animate-reveal-right stagger-2' : 'opacity-0'}`}>
                <div className="w-20 h-20 bg-white/10 rounded-[2rem] flex items-center justify-center text-[#83C5BE] mb-8 group-hover:bg-[#83C5BE] group-hover:text-white transition-all">
                  <HeartPulse className="w-10 h-10" />
                </div>
-               <h2 className="text-4xl font-black mb-8">{t('about.mission.title')}</h2>
+               <h2 className="text-4xl font-black mb-8">{missionTitle}</h2>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                 <div>
-                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.wellbeing.title')}</h3>
-                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.wellbeing.desc')}</p>
-                 </div>
-                 <div>
-                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.innovation.title')}</h3>
-                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.innovation.desc')}</p>
-                 </div>
-                 <div>
-                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.accessibility.title')}</h3>
-                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.accessibility.desc')}</p>
-                 </div>
-                 <div>
-                   <h3 className="text-xl font-bold text-white mb-2">{t('about.mission.growth.title')}</h3>
-                   <p className="text-white/80 font-medium leading-relaxed">{t('about.mission.growth.desc')}</p>
-                 </div>
+                 {missionItems.map((item: any, i: number) => (
+                   <div key={i}>
+                     <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                     <p className="text-white/80 font-medium leading-relaxed">{item.desc}</p>
+                   </div>
+                 ))}
                </div>
             </div>
         </div>

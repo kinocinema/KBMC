@@ -1,15 +1,50 @@
-import React, { useEffect } from 'react';
-import { Activity, Heart, Users, ArrowRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Activity, Heart, Users, ArrowRight, Tag } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Promotions: React.FC = () => {
   const location = useLocation();
   const { t } = useLanguage();
+  const [promotions, setPromotions] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const q = query(collection(db, 'promotions'), where('isActive', '==', true));
+    const unsub = onSnapshot(q, (snapshot) => {
+      setPromotions(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setLoading(false);
+    });
+    return () => unsub();
   }, [location]);
+
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Activity': return <Activity className="w-8 h-8" />;
+      case 'Heart': return <Heart className="w-8 h-8" />;
+      case 'Users': return <Users className="w-8 h-8" />;
+      default: return <Tag className="w-8 h-8" />;
+    }
+  };
+
+  const getBgColor = (index: number) => {
+    const colors = [
+      'from-purple-50 to-purple-100 border-purple-200',
+      'from-pink-50 to-pink-100 border-pink-200',
+      'from-blue-50 to-blue-100 border-blue-200',
+      'from-teal-50 to-teal-100 border-teal-200',
+      'from-orange-50 to-orange-100 border-orange-200'
+    ];
+    return colors[index % colors.length];
+  };
+
+  const getIconColor = (index: number) => {
+    const colors = ['bg-purple-500', 'bg-pink-500', 'bg-blue-500', 'bg-teal-500', 'bg-orange-500'];
+    return colors[index % colors.length];
+  };
 
   return (
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
@@ -21,9 +56,6 @@ const Promotions: React.FC = () => {
             alt="Promotions" 
             className="w-full h-full object-cover opacity-20"
             referrerPolicy="no-referrer"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#006D77]/80 via-[#006D77]/60 to-[#006D77]/80"></div>
         </div>
@@ -44,49 +76,32 @@ const Promotions: React.FC = () => {
             <p className="text-[#E29578] font-bold tracking-widest uppercase mb-4">{t('promotions.section.badge')}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Promo 1 */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 border border-purple-200 shadow-sm flex flex-col gap-6">
-              <div className="bg-purple-500 text-white p-4 rounded-2xl w-max">
-                <Activity className="w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-[#2C3E50] mb-2">{t('promotions.promo1.title')}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{t('promotions.promo1.desc')}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="text-xl font-black text-purple-600">{t('promotions.promo1.price')}</span>
+          {loading ? (
+            <div className="text-center py-20 text-gray-500 font-bold">Loading promotions...</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {promotions.map((promo, index) => (
+                <div key={promo.id} className={`bg-gradient-to-br ${getBgColor(index)} rounded-3xl p-8 border shadow-sm flex flex-col gap-6`}>
+                  <div className={`${getIconColor(index)} text-white p-4 rounded-2xl w-max`}>
+                    {getIcon(promo.iconName)}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black text-[#2C3E50] mb-2">{promo.title}</h3>
+                    <p className="text-gray-600 mb-4 text-sm">{promo.description}</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <span className="text-xl font-black text-[#006D77]">{promo.price}</span>
+                      <button className="text-sm font-bold text-[#E29578] hover:text-[#d17a5a] flex items-center gap-1">
+                        {t('promotions.learnMore')} <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
+              {promotions.length === 0 && (
+                <div className="col-span-full text-center py-10 text-gray-500">No active promotions at the moment.</div>
+              )}
             </div>
-
-            {/* Promo 2 */}
-            <div className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-3xl p-8 border border-pink-200 shadow-sm flex flex-col gap-6">
-              <div className="bg-pink-500 text-white p-4 rounded-2xl w-max">
-                <Heart className="w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-[#2C3E50] mb-2">{t('promotions.promo2.title')}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{t('promotions.promo2.desc')}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <button className="text-sm font-bold text-pink-600 hover:text-pink-800 flex items-center gap-1">{t('promotions.learnMore')} <ArrowRight className="w-4 h-4" /></button>
-                </div>
-              </div>
-            </div>
-
-            {/* Promo 3 */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 border border-blue-200 shadow-sm flex flex-col gap-6">
-              <div className="bg-blue-500 text-white p-4 rounded-2xl w-max">
-                <Users className="w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-[#2C3E50] mb-2">{t('promotions.promo3.title')}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{t('promotions.promo3.desc')}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <button className="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">{t('promotions.learnMore')} <ArrowRight className="w-4 h-4" /></button>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

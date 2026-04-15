@@ -26,10 +26,32 @@ import WellnessProgram from './pages/WellnessProgram';
 import Promotions from './pages/Promotions';
 import Page from './pages/Page';
 import Admin from './pages/Admin';
-import { Heart, Activity, Stethoscope, Baby, Eye } from 'lucide-react';
+import { Heart, Activity, Stethoscope, Baby, Eye, ShieldCheck, Clock, Activity as ActivityIcon } from 'lucide-react';
+import { onSnapshot, collection } from 'firebase/firestore';
+import { db } from './firebase';
 
 const AppContent: React.FC = () => {
   const { menuData } = useMenu();
+  const [centres, setCentres] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'centres'), (snapshot) => {
+      setCentres(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+    return () => unsub();
+  }, []);
+
+  const getIcon = (name: string) => {
+    switch (name) {
+      case 'Heart': return <Heart className="w-12 h-12 text-white" />;
+      case 'Activity': return <ActivityIcon className="w-12 h-12 text-white" />;
+      case 'Baby': return <Baby className="w-12 h-12 text-white" />;
+      case 'Eye': return <Eye className="w-12 h-12 text-white" />;
+      case 'Stethoscope': return <Stethoscope className="w-12 h-12 text-white" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-12 h-12 text-white" />;
+      default: return <ActivityIcon className="w-12 h-12 text-white" />;
+    }
+  };
 
   return (
     <Router>
@@ -54,11 +76,35 @@ const AppContent: React.FC = () => {
             <Route path="/news-gallery" element={<NewsGallery />} />
             <Route path="/news-gallery/:id" element={<NewsArticle />} />
             <Route path="/centre-of-excellence" element={<CentreOfExcellence />} />
-            <Route path="/heart-centre" element={<CentreTemplate title="centre.heart.title" description="centre.heart.desc" features={['centre.heart.f1', 'centre.heart.f2', 'centre.heart.f3', 'centre.heart.f4', 'centre.heart.f5', 'centre.heart.f6']} icon={<Heart className="w-12 h-12 text-white" />} />} />
-            <Route path="/cancer-centre" element={<CentreTemplate title="centre.cancer.title" description="centre.cancer.desc" features={['centre.cancer.f1', 'centre.cancer.f2', 'centre.cancer.f3', 'centre.cancer.f4', 'centre.cancer.f5', 'centre.cancer.f6']} icon={<Activity className="w-12 h-12 text-white" />} />} />
-            <Route path="/women-child-centre" element={<CentreTemplate title="centre.women.title" description="centre.women.desc" features={['centre.women.f1', 'centre.women.f2', 'centre.women.f3', 'centre.women.f4', 'centre.women.f5', 'centre.women.f6']} icon={<Baby className="w-12 h-12 text-white" />} />} />
-            <Route path="/eyes-centre" element={<CentreTemplate title="centre.eyes.title" description="centre.eyes.desc" features={['centre.eyes.f1', 'centre.eyes.f2', 'centre.eyes.f3', 'centre.eyes.f4', 'centre.eyes.f5', 'centre.eyes.f6']} icon={<Eye className="w-12 h-12 text-white" />} />} />
-            <Route path="/digestive-health" element={<CentreTemplate title="centre.digestive.title" description="centre.digestive.desc" features={['centre.digestive.f1', 'centre.digestive.f2', 'centre.digestive.f3', 'centre.digestive.f4', 'centre.digestive.f5', 'centre.digestive.f6']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
+            
+            {/* Dynamic Centres of Excellence */}
+            {centres.map(centre => (
+              <Route 
+                key={centre.id}
+                path={`/${centre.id}`} 
+                element={
+                  <CentreTemplate 
+                    title={centre.title} 
+                    description={centre.description} 
+                    features={centre.features || []} 
+                    icon={getIcon(centre.iconName)} 
+                    isDynamic={true}
+                  />
+                } 
+              />
+            ))}
+
+            {/* Fallback hardcoded centres if not in Firestore yet */}
+            {centres.length === 0 && (
+              <>
+                <Route path="/heart-centre" element={<CentreTemplate title="centre.heart.title" description="centre.heart.desc" features={['centre.heart.f1', 'centre.heart.f2', 'centre.heart.f3', 'centre.heart.f4', 'centre.heart.f5', 'centre.heart.f6']} icon={<Heart className="w-12 h-12 text-white" />} />} />
+                <Route path="/cancer-centre" element={<CentreTemplate title="centre.cancer.title" description="centre.cancer.desc" features={['centre.cancer.f1', 'centre.cancer.f2', 'centre.cancer.f3', 'centre.cancer.f4', 'centre.cancer.f5', 'centre.cancer.f6']} icon={<Activity className="w-12 h-12 text-white" />} />} />
+                <Route path="/women-child-centre" element={<CentreTemplate title="centre.women.title" description="centre.women.desc" features={['centre.women.f1', 'centre.women.f2', 'centre.women.f3', 'centre.women.f4', 'centre.women.f5', 'centre.women.f6']} icon={<Baby className="w-12 h-12 text-white" />} />} />
+                <Route path="/eyes-centre" element={<CentreTemplate title="centre.eyes.title" description="centre.eyes.desc" features={['centre.eyes.f1', 'centre.eyes.f2', 'centre.eyes.f3', 'centre.eyes.f4', 'centre.eyes.f5', 'centre.eyes.f6']} icon={<Eye className="w-12 h-12 text-white" />} />} />
+                <Route path="/digestive-health" element={<CentreTemplate title="centre.digestive.title" description="centre.digestive.desc" features={['centre.digestive.f1', 'centre.digestive.f2', 'centre.digestive.f3', 'centre.digestive.f4', 'centre.digestive.f5', 'centre.digestive.f6']} icon={<Stethoscope className="w-12 h-12 text-white" />} />} />
+              </>
+            )}
+
             <Route path="/health-screening-2026" element={<WellnessProgram />} />
             <Route path="/specialized-screening-promotions" element={<WellnessProgram />} />
             <Route path="/other-packages" element={<WellnessProgram />} />

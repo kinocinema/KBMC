@@ -11,6 +11,8 @@ import VirtualTour from '../components/VirtualTour';
 import { SERVICES } from '../constants';
 import { useLanguage } from '../LanguageContext';
 import { TranslationKeys } from '../translations';
+import { db } from '../firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
 
 const HeroImage = ({ src, alt }: { src: string, alt: string }) => {
   const [hasError, setHasError] = useState(false);
@@ -37,12 +39,12 @@ const HeroImage = ({ src, alt }: { src: string, alt: string }) => {
   );
 };
 
-const FacilityCarousel = () => {
+const FacilityCarousel = ({ data }: { data?: any[] }) => {
   const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const slides = [
+  const defaultSlides = [
     {
       image: "https://storage.googleapis.com/igc-health/Testimomial%20-%20ibadah%20friendly.png",
       title: t('carousel.slide1.title'),
@@ -65,6 +67,8 @@ const FacilityCarousel = () => {
       role: t('carousel.slide3.role')
     }
   ];
+
+  const slides = data && data.length > 0 ? data : defaultSlides;
 
   const handleNext = useCallback(() => {
     if (isAnimating) return;
@@ -154,6 +158,23 @@ const Home: React.FC = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -50]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
+  const [homeData, setHomeData] = useState<any>(null);
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'home'), (docSnap) => {
+      if (docSnap.exists()) {
+        setHomeData(docSnap.data());
+      }
+    });
+    return () => unsub();
+  }, []);
+
+  const hero = homeData?.hero || {
+    title: t('legacy.title'),
+    description: t('legacy.desc'),
+    imageUrl: "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg"
+  };
+
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Pioneer Hero Section */}
@@ -210,7 +231,7 @@ const Home: React.FC = () => {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="block"
                   >
-                    {t('legacy.title')}
+                    {hero.title}
                   </motion.span>
                 </h1>
                 <motion.p 
@@ -219,7 +240,7 @@ const Home: React.FC = () => {
                   transition={{ duration: 1, delay: 0.7 }}
                   className="text-lg md:text-xl text-[#2C3E50]/60 font-medium max-w-xl leading-relaxed"
                 >
-                  {t('legacy.desc')}
+                  {hero.description}
                 </motion.p>
               </div>
             </motion.div>
@@ -262,7 +283,7 @@ const Home: React.FC = () => {
                 className="relative z-20 rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-[12px] border-white aspect-video lg:aspect-[4/3] group"
               >
                 <img 
-                  src="https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg" 
+                  src={hero.imageUrl} 
                   alt="KBMC Medical Center" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -397,7 +418,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Facility Carousel */}
-      <FacilityCarousel />
+      <FacilityCarousel data={homeData?.carousel} />
 
       {/* VR360 Section */}
       <section className="py-32 px-4 md:px-8 bg-white overflow-hidden relative">

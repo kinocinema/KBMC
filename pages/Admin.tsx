@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
-import { LayoutDashboard, Users, FileText, Settings, LogOut, Plus, Trash2, Edit, X, Briefcase, Activity, MessageSquare, Menu, RotateCcw } from 'lucide-react';
+import { LayoutDashboard, Users, FileText, Settings, LogOut, Plus, Trash2, Edit, X, Briefcase, Activity, MessageSquare, Menu, RotateCcw, Tag, HeartPulse, Shield, Building2, Info, PhoneCall } from 'lucide-react';
 import { handleFirestoreError, OperationType } from '../firebaseErrors';
 import { compressImage } from '../utils/imageUpload';
 import { menuData as defaultMenuData } from '../data/menuData';
@@ -111,11 +111,35 @@ const Admin: React.FC = () => {
           <button onClick={() => setActiveTab('dashboard')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'dashboard' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
             <LayoutDashboard className="w-5 h-5" /> Dashboard
           </button>
+          <button onClick={() => setActiveTab('home')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'home' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <LayoutDashboard className="w-5 h-5" /> Home Page
+          </button>
+          <button onClick={() => setActiveTab('about')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'about' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <Info className="w-5 h-5" /> About Us
+          </button>
+          <button onClick={() => setActiveTab('contact')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'contact' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <PhoneCall className="w-5 h-5" /> Contact Info
+          </button>
           <button onClick={() => setActiveTab('doctors')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'doctors' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
             <Users className="w-5 h-5" /> Doctors
           </button>
           <button onClick={() => setActiveTab('services')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'services' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
             <Activity className="w-5 h-5" /> Services
+          </button>
+          <button onClick={() => setActiveTab('centres')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'centres' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <Building2 className="w-5 h-5" /> Centres of Excellence
+          </button>
+          <button onClick={() => setActiveTab('promotions')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'promotions' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <Tag className="w-5 h-5" /> Promotions
+          </button>
+          <button onClick={() => setActiveTab('wellness')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'wellness' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <HeartPulse className="w-5 h-5" /> Wellness
+          </button>
+          <button onClick={() => setActiveTab('insurance')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'insurance' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <Shield className="w-5 h-5" /> Insurance
+          </button>
+          <button onClick={() => setActiveTab('rooms')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'rooms' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
+            <Building2 className="w-5 h-5" /> Room Rates
           </button>
           <button onClick={() => setActiveTab('careers')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-colors ${activeTab === 'careers' ? 'bg-[#EDF6F9] text-[#006D77]' : 'text-gray-600 hover:bg-gray-50'}`}>
             <Briefcase className="w-5 h-5" /> Careers
@@ -151,8 +175,16 @@ const Admin: React.FC = () => {
       <div className="flex-1 overflow-auto">
         <div className="p-8">
           {activeTab === 'dashboard' && <DashboardTab />}
+          {activeTab === 'home' && <HomeTab />}
+          {activeTab === 'about' && <AboutTab />}
+          {activeTab === 'contact' && <ContactTab />}
           {activeTab === 'doctors' && <DoctorsTab />}
           {activeTab === 'services' && <ServicesTab />}
+          {activeTab === 'centres' && <CentresTab />}
+          {activeTab === 'promotions' && <PromotionsTab />}
+          {activeTab === 'wellness' && <WellnessTab />}
+          {activeTab === 'insurance' && <InsuranceTab />}
+          {activeTab === 'rooms' && <RoomRatesTab />}
           {activeTab === 'careers' && <CareersTab />}
           {activeTab === 'news' && <NewsTab />}
           {activeTab === 'inquiries' && <InquiriesTab />}
@@ -161,6 +193,870 @@ const Admin: React.FC = () => {
           {activeTab === 'settings' && <SettingsTab />}
         </div>
       </div>
+    </div>
+  );
+};
+
+// --- New Tabs Components ---
+
+const HomeTab = () => {
+  const [homeData, setHomeData] = useState<any>({
+    hero: { title: "", description: "", imageUrl: "" },
+    carousel: []
+  });
+  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'home'), (docSnap) => {
+      if (docSnap.exists()) {
+        setHomeData(docSnap.data());
+      }
+      setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'settings/home');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      await setDoc(doc(db, 'settings', 'home'), homeData);
+      alert("Home page content saved!");
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'settings/home');
+    }
+    setSaving(false);
+  };
+
+  const addCarouselSlide = () => {
+    const newCarousel = [...(homeData.carousel || []), { image: "", title: "", testimonial: "", author: "", role: "" }];
+    setHomeData({ ...homeData, carousel: newCarousel });
+  };
+
+  const removeCarouselSlide = (index: number) => {
+    const newCarousel = [...homeData.carousel];
+    newCarousel.splice(index, 1);
+    setHomeData({ ...homeData, carousel: newCarousel });
+  };
+
+  const updateCarouselSlide = (index: number, field: string, value: string) => {
+    const newCarousel = [...homeData.carousel];
+    newCarousel[index][field] = value;
+    setHomeData({ ...homeData, carousel: newCarousel });
+  };
+
+  if (loading) return <div className="p-8 text-center">Loading home content...</div>;
+
+  return (
+    <div className="space-y-8">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage Home Page</h2>
+        <button onClick={handleSave} disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+          {saving ? 'Saving...' : 'Save Changes'}
+        </button>
+      </div>
+
+      {/* Hero Section */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Hero Section</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Hero Title</label>
+            <input type="text" value={homeData.hero?.title || ''} onChange={e => setHomeData({...homeData, hero: {...homeData.hero, title: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Hero Description</label>
+            <textarea value={homeData.hero?.description || ''} onChange={e => setHomeData({...homeData, hero: {...homeData.hero, description: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Hero Image URL</label>
+            <input type="text" value={homeData.hero?.imageUrl || ''} onChange={e => setHomeData({...homeData, hero: {...homeData.hero, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel Section */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-bold text-[#006D77]">Facility Carousel</h3>
+          <button onClick={addCarouselSlide} className="text-sm bg-[#EDF6F9] text-[#006D77] px-3 py-1 rounded-lg font-bold hover:bg-[#d0eef5] flex items-center gap-1">
+            <Plus className="w-4 h-4" /> Add Slide
+          </button>
+        </div>
+        <div className="space-y-6">
+          {(homeData.carousel || []).map((slide: any, index: number) => (
+            <div key={index} className="p-4 border border-gray-200 rounded-xl relative group">
+              <button onClick={() => removeCarouselSlide(index)} className="absolute top-2 right-2 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Trash2 className="w-4 h-4" />
+              </button>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2">
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Image URL</label>
+                  <input type="text" value={slide.image} onChange={e => updateCarouselSlide(index, 'image', e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Title</label>
+                  <input type="text" value={slide.title} onChange={e => updateCarouselSlide(index, 'title', e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Author</label>
+                  <input type="text" value={slide.author} onChange={e => updateCarouselSlide(index, 'author', e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm" />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Testimonial</label>
+                  <textarea value={slide.testimonial} onChange={e => updateCarouselSlide(index, 'testimonial', e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm" rows={2}></textarea>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const AboutTab = () => {
+  const [aboutData, setAboutData] = useState<any>({
+    hero: { title: "", description: "", imageUrl: "" },
+    ceo: { name: "", title: "", imageUrl: "", message: [] },
+    vision: "",
+    mission: { title: "", items: [] },
+    values: []
+  });
+  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'about'), (docSnap) => {
+      if (docSnap.exists()) {
+        setAboutData(docSnap.data());
+      }
+      setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'settings/about');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      await setDoc(doc(db, 'settings', 'about'), aboutData);
+      alert("About page content saved!");
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'settings/about');
+    }
+    setSaving(false);
+  };
+
+  if (loading) return <div className="p-8 text-center">Loading about content...</div>;
+
+  return (
+    <div className="space-y-8">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage About Us</h2>
+        <button onClick={handleSave} disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+          {saving ? 'Saving...' : 'Save Changes'}
+        </button>
+      </div>
+
+      {/* Hero Section */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Hero Section</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Title</label>
+            <input type="text" value={aboutData.hero?.title || ''} onChange={e => setAboutData({...aboutData, hero: {...aboutData.hero, title: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
+            <textarea value={aboutData.hero?.description || ''} onChange={e => setAboutData({...aboutData, hero: {...aboutData.hero, description: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Image URL</label>
+            <input type="text" value={aboutData.hero?.imageUrl || ''} onChange={e => setAboutData({...aboutData, hero: {...aboutData.hero, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+        </div>
+      </div>
+
+      {/* CEO Message */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">CEO Message</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">CEO Name</label>
+            <input type="text" value={aboutData.ceo?.name || ''} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, name: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">CEO Title</label>
+            <input type="text" value={aboutData.ceo?.title || ''} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, title: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div className="col-span-2">
+            <label className="block text-sm font-bold text-gray-700 mb-1">CEO Image URL</label>
+            <input type="text" value={aboutData.ceo?.imageUrl || ''} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div className="col-span-2">
+            <label className="block text-sm font-bold text-gray-700 mb-1">Message Paragraphs (one per line)</label>
+            <textarea value={(aboutData.ceo?.message || []).join('\n')} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, message: e.target.value.split('\n').filter(Boolean)}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={6}></textarea>
+          </div>
+        </div>
+      </div>
+
+      {/* Vision & Mission */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Vision & Mission</h3>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">Vision Statement</label>
+          <textarea value={aboutData.vision || ''} onChange={e => setAboutData({...aboutData, vision: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+        </div>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">Mission Title</label>
+          <input type="text" value={aboutData.mission?.title || ''} onChange={e => setAboutData({...aboutData, mission: {...aboutData.mission, title: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CentresTab = () => {
+  const [centres, setCentres] = useState<any[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<any>({});
+  const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'centres'), (snapshot) => {
+      setCentres(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'centres');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleAdd = () => {
+    setFormData({
+      id: "",
+      title: "",
+      description: "",
+      features: [],
+      iconName: "Activity",
+      isActive: true
+    });
+    setIsEditing(true);
+  };
+
+  const handleEdit = (item: any) => {
+    setFormData(item);
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure?")) return;
+    try {
+      await deleteDoc(doc(db, 'centres', id));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `centres/${id}`);
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const docId = formData.id || doc(collection(db, 'centres')).id;
+      const dataToSave = { ...formData };
+      delete dataToSave.id;
+      await setDoc(doc(db, 'centres', docId), dataToSave);
+      setIsEditing(false);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'centres');
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="space-y-6 relative">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Centres of Excellence</h2>
+        <button onClick={handleAdd} className="bg-[#006D77] text-white px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-[#005a63]">
+          <Plus className="w-4 h-4" /> Add Centre
+        </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="p-4 font-bold text-gray-600">ID (Slug)</th>
+              <th className="p-4 font-bold text-gray-600">Title</th>
+              <th className="p-4 font-bold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {centres.map(item => (
+              <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50">
+                <td className="p-4 font-medium text-gray-800">{item.id}</td>
+                <td className="p-4 text-gray-600">{item.title}</td>
+                <td className="p-4 flex gap-2">
+                  <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
+              <h3 className="text-xl font-bold text-gray-800">{formData.id ? 'Edit Centre' : 'Add Centre'}</h3>
+              <button onClick={() => setIsEditing(false)} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleSave} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Centre ID (Slug)</label>
+                  <input required type="text" value={formData.id || ''} onChange={e => setFormData({...formData, id: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" placeholder="e.g. heart-centre" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Title</label>
+                  <input required type="text" value={formData.title || ''} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Icon Name (Lucide)</label>
+                  <input type="text" value={formData.iconName || 'Activity'} onChange={e => setFormData({...formData, iconName: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
+                <textarea required value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={4}></textarea>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Features (comma separated)</label>
+                <input type="text" value={(formData.features || []).join(', ')} onChange={e => setFormData({...formData, features: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-gray-300 rounded-lg px-4 py-2" placeholder="e.g. 24/7 Care, Advanced Tech" />
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
+                <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+                  {saving ? 'Saving...' : 'Save Centre'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const PromotionsTab = () => {
+  const [promotions, setPromotions] = useState<any[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<any>({});
+  const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'promotions'), (snapshot) => {
+      setPromotions(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'promotions');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleAdd = () => {
+    setFormData({
+      title: "",
+      description: "",
+      price: "",
+      imageUrl: "",
+      category: "general",
+      isActive: true,
+      iconName: "Tag"
+    });
+    setIsEditing(true);
+  };
+
+  const handleEdit = (item: any) => {
+    setFormData(item);
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this promotion?")) return;
+    try {
+      await deleteDoc(doc(db, 'promotions', id));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `promotions/${id}`);
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const docId = formData.id || doc(collection(db, 'promotions')).id;
+      const dataToSave = { ...formData };
+      delete dataToSave.id;
+      await setDoc(doc(db, 'promotions', docId), dataToSave);
+      setIsEditing(false);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'promotions');
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="space-y-6 relative">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage Promotions</h2>
+        <button onClick={handleAdd} className="bg-[#006D77] text-white px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-[#005a63]">
+          <Plus className="w-4 h-4" /> Add Promotion
+        </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="p-4 font-bold text-gray-600">Title</th>
+              <th className="p-4 font-bold text-gray-600">Price</th>
+              <th className="p-4 font-bold text-gray-600">Status</th>
+              <th className="p-4 font-bold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {promotions.map(item => (
+              <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50">
+                <td className="p-4 font-medium text-gray-800">{item.title}</td>
+                <td className="p-4 text-gray-600">{item.price}</td>
+                <td className="p-4">
+                  <span className={`px-2 py-1 rounded-full text-xs font-bold ${item.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>
+                    {item.isActive ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td className="p-4 flex gap-2">
+                  <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
+              <h3 className="text-xl font-bold text-gray-800">{formData.id ? 'Edit Promotion' : 'Add Promotion'}</h3>
+              <button onClick={() => setIsEditing(false)} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleSave} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Title</label>
+                <input required type="text" value={formData.title || ''} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
+                <textarea required value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Price (e.g. RM 99)</label>
+                  <input type="text" value={formData.price || ''} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Icon Name (Lucide)</label>
+                  <input type="text" value={formData.iconName || 'Tag'} onChange={e => setFormData({...formData, iconName: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="promoActive" checked={formData.isActive ?? true} onChange={e => setFormData({...formData, isActive: e.target.checked})} className="w-4 h-4 text-[#006D77] rounded" />
+                <label htmlFor="promoActive" className="text-sm font-bold text-gray-700">Active Promotion</label>
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
+                <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+                  {saving ? 'Saving...' : 'Save Promotion'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const WellnessTab = () => {
+  const [packages, setPackages] = useState<any[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<any>({});
+  const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'wellness'), (snapshot) => {
+      setPackages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'wellness');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleAdd = () => {
+    setFormData({
+      name: "",
+      price: "",
+      description: "",
+      features: [],
+      category: "General",
+      isActive: true
+    });
+    setIsEditing(true);
+  };
+
+  const handleEdit = (item: any) => {
+    setFormData(item);
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this wellness package?")) return;
+    try {
+      await deleteDoc(doc(db, 'wellness', id));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `wellness/${id}`);
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const docId = formData.id || doc(collection(db, 'wellness')).id;
+      const dataToSave = { ...formData };
+      delete dataToSave.id;
+      await setDoc(doc(db, 'wellness', docId), dataToSave);
+      setIsEditing(false);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'wellness');
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="space-y-6 relative">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage Wellness Packages</h2>
+        <button onClick={handleAdd} className="bg-[#006D77] text-white px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-[#005a63]">
+          <Plus className="w-4 h-4" /> Add Package
+        </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="p-4 font-bold text-gray-600">Package Name</th>
+              <th className="p-4 font-bold text-gray-600">Category</th>
+              <th className="p-4 font-bold text-gray-600">Price</th>
+              <th className="p-4 font-bold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {packages.map(item => (
+              <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50">
+                <td className="p-4 font-medium text-gray-800">{item.name}</td>
+                <td className="p-4 text-gray-600">{item.category}</td>
+                <td className="p-4 text-gray-600 font-bold">{item.price}</td>
+                <td className="p-4 flex gap-2">
+                  <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
+              <h3 className="text-xl font-bold text-gray-800">{formData.id ? 'Edit Package' : 'Add Package'}</h3>
+              <button onClick={() => setIsEditing(false)} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleSave} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Package Name</label>
+                  <input required type="text" value={formData.name || ''} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Category</label>
+                  <select value={formData.category || 'General'} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2">
+                    <option value="General">General</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Specialized">Specialized</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1">Price</label>
+                  <input type="text" value={formData.price || ''} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" placeholder="e.g. RM 150" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
+                <textarea value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Features (comma separated)</label>
+                <input type="text" value={(formData.features || []).join(', ')} onChange={e => setFormData({...formData, features: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-gray-300 rounded-lg px-4 py-2" placeholder="e.g. Blood Test, ECG, Consultation" />
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
+                <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+                  {saving ? 'Saving...' : 'Save Package'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const InsuranceTab = () => {
+  const [panels, setPanels] = useState<any[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<any>({});
+  const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'insurance'), (snapshot) => {
+      setPanels(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'insurance');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleAdd = () => {
+    setFormData({ name: "", type: "Insurance", logoUrl: "", isActive: true });
+    setIsEditing(true);
+  };
+
+  const handleEdit = (item: any) => {
+    setFormData(item);
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure?")) return;
+    try {
+      await deleteDoc(doc(db, 'insurance', id));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `insurance/${id}`);
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const docId = formData.id || doc(collection(db, 'insurance')).id;
+      const dataToSave = { ...formData };
+      delete dataToSave.id;
+      await setDoc(doc(db, 'insurance', docId), dataToSave);
+      setIsEditing(false);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'insurance');
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Insurance & Corporate Panels</h2>
+        <button onClick={handleAdd} className="bg-[#006D77] text-white px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-[#005a63]">
+          <Plus className="w-4 h-4" /> Add Panel
+        </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="p-4 font-bold text-gray-600">Name</th>
+              <th className="p-4 font-bold text-gray-600">Type</th>
+              <th className="p-4 font-bold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {panels.map(item => (
+              <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50">
+                <td className="p-4 font-medium text-gray-800">{item.name}</td>
+                <td className="p-4 text-gray-600">{item.type}</td>
+                <td className="p-4 flex gap-2">
+                  <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-gray-800">Panel Details</h3>
+              <button onClick={() => setIsEditing(false)} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleSave} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Panel Name</label>
+                <input required type="text" value={formData.name || ''} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Type</label>
+                <select value={formData.type || 'Insurance'} onChange={e => setFormData({...formData, type: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2">
+                  <option value="Insurance">Insurance</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="TPA">TPA (Third Party Administrator)</option>
+                </select>
+              </div>
+              <div className="flex justify-end gap-3 pt-4">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
+                <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+                  {saving ? 'Saving...' : 'Save Panel'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const RoomRatesTab = () => {
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<any>({});
+  const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'rooms'), (snapshot) => {
+      setRooms(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'rooms');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleAdd = () => {
+    setFormData({ type: "", price: "", description: "", features: [], isActive: true });
+    setIsEditing(true);
+  };
+
+  const handleEdit = (item: any) => {
+    setFormData(item);
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure?")) return;
+    try {
+      await deleteDoc(doc(db, 'rooms', id));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `rooms/${id}`);
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const docId = formData.id || doc(collection(db, 'rooms')).id;
+      const dataToSave = { ...formData };
+      delete dataToSave.id;
+      await setDoc(doc(db, 'rooms', docId), dataToSave);
+      setIsEditing(false);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'rooms');
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage Room Rates</h2>
+        <button onClick={handleAdd} className="bg-[#006D77] text-white px-4 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-[#005a63]">
+          <Plus className="w-4 h-4" /> Add Room Type
+        </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th className="p-4 font-bold text-gray-600">Room Type</th>
+              <th className="p-4 font-bold text-gray-600">Price</th>
+              <th className="p-4 font-bold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rooms.map(item => (
+              <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50">
+                <td className="p-4 font-medium text-gray-800">{item.type}</td>
+                <td className="p-4 text-gray-600 font-bold">{item.price}</td>
+                <td className="p-4 flex gap-2">
+                  <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md">
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-gray-800">Room Details</h3>
+              <button onClick={() => setIsEditing(false)} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleSave} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Room Type</label>
+                <input required type="text" value={formData.type || ''} onChange={e => setFormData({...formData, type: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Price per Night</label>
+                <input required type="text" value={formData.price || ''} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" placeholder="e.g. RM 250" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">Description/Features</label>
+                <textarea value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
+              </div>
+              <div className="flex justify-end gap-3 pt-4">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
+                <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+                  {saving ? 'Saving...' : 'Save Room'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -175,8 +1071,32 @@ const DashboardTab = () => {
 
   const handleSyncData = async () => {
     setSyncing(true);
-    setSyncStatus('Syncing doctors...');
+    setSyncStatus('Syncing contact content...');
     try {
+      await setDoc(doc(db, 'settings', 'contact'), {
+        mapUrl: "https://maps.google.com/maps?q=Kota%20Bharu%20Medical%20Centre&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        address: "Lot 179 & 184, Seksyen 25, Jalan Sultan Yahya Petra, Lundang, 15150 Kota Bharu, Kelantan",
+        parking: {
+          title: "Parking Information",
+          description: "Ample parking space is available for patients and visitors in front of Block A and Block B. We also provide designated parking for emergency cases near the A&E entrance.",
+          status: "FREE PARKING"
+        },
+        operatingHours: {
+          ae: "24 Hours, 7 Days a Week",
+          clinics: {
+            sun_thu: "8:30 AM - 5:00 PM",
+            fri: "CLOSED",
+            sat: "8:30 AM - 1:00 PM"
+          }
+        },
+        facilities: [
+          { id: 'a', title: 'Block A (Main)', desc: 'Main Reception, A&E, Specialist Clinics, Pharmacy, Imaging Centre, and Inpatient Wards.' },
+          { id: 'b', title: 'Block B', desc: 'Wellness Centre, Physiotherapy, Haemodialysis Unit, and Administrative Offices.' },
+          { id: 'c', title: 'Block C', desc: 'Additional Specialist Clinics and Support Services.' }
+        ]
+      });
+
+      setSyncStatus('Syncing doctors...');
       // Sync Doctors
       for (const doctor of DOCTORS) {
         await setDoc(doc(db, 'doctors', doctor.id), doctor);
@@ -241,6 +1161,91 @@ const DashboardTab = () => {
         });
       }
 
+      setSyncStatus('Syncing promotions...');
+      const defaultPromotions = [
+        { title: 'Executive Health Screening', description: 'Comprehensive health check for busy professionals.', price: 'RM 450', iconName: 'Activity', isActive: true },
+        { title: 'Maternity Package', description: 'Complete care for mother and child.', price: 'RM 3500', iconName: 'Heart', isActive: true },
+        { title: 'Senior Citizen Package', description: 'Specialized care for our elders.', price: 'RM 250', iconName: 'Users', isActive: true }
+      ];
+      for (const promo of defaultPromotions) {
+        await setDoc(doc(db, 'promotions', promo.title.toLowerCase().replace(/ /g, '-')), promo);
+      }
+
+      setSyncStatus('Syncing wellness...');
+      const defaultWellness = [
+        { name: 'Basic Wellness', category: 'General', price: 'RM 150', description: 'Essential health checkup.', features: ['Blood Test', 'Physical Exam'], isActive: true },
+        { name: 'Premier Wellness', category: 'General', price: 'RM 350', description: 'Advanced health checkup.', features: ['Blood Test', 'ECG', 'Chest X-Ray'], isActive: true }
+      ];
+      for (const pack of defaultWellness) {
+        await setDoc(doc(db, 'wellness', pack.name.toLowerCase().replace(/ /g, '-')), pack);
+      }
+
+      setSyncStatus('Syncing home content...');
+      await setDoc(doc(db, 'settings', 'home'), {
+        hero: {
+          title: "The Pioneer of Private Healthcare in Kelantan",
+          description: "Established in 1997, KBMC has been at the forefront of medical excellence, providing compassionate care and advanced treatments to our community for over 25 years.",
+          imageUrl: "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg"
+        },
+        carousel: [
+          {
+            image: "https://storage.googleapis.com/igc-health/Testimomial%20-%20ibadah%20friendly.png",
+            title: "Ibadah Friendly Hospital",
+            testimonial: "The Ibadah Friendly environment at KBMC made my stay so much more peaceful. The staff were very respectful of my religious needs.",
+            author: "Puan Siti Aminah",
+            role: "Patient"
+          },
+          {
+            image: "https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png",
+            title: "World Class Facilities",
+            testimonial: "I was impressed by the modern facilities and the cleanliness of the hospital. It felt like a world-class medical center.",
+            author: "Encik Ahmad Fauzi",
+            role: "Patient"
+          }
+        ]
+      });
+
+      setSyncStatus('Syncing about content...');
+      await setDoc(doc(db, 'settings', 'about'), {
+        hero: {
+          title: "Pioneering Private Healthcare with Heart",
+          description: "For over 25 years, KBMC has been the trusted healthcare partner for families in Kelantan, combining clinical excellence with compassionate service.",
+          imageUrl: "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg"
+        },
+        ceo: {
+          name: "Mohd Nazri Yaacob",
+          title: "Chief Executive Officer\nKota Bharu Medical Centre",
+          imageUrl: "https://storage.googleapis.com/igc-health/CEO.png",
+          message: [
+            "Welcome to Kota Bharu Medical Centre (KBMC). As the pioneer private specialist hospital in Kelantan, we take immense pride in our heritage of serving the community with dedication and heart.",
+            "Our commitment has always been to provide accessible, high-quality healthcare that meets the evolving needs of our patients. We continuously invest in advanced medical technology and attract top-tier specialists to ensure you receive the best possible care.",
+            "At KBMC, we believe in 'Healthcare with Heart'. This means treating every patient like family, with compassion, respect, and integrity.",
+            "As we look to the future, we are excited about our expansion plans and the introduction of new specialized services that will further enhance our ability to serve you.",
+            "Thank you for choosing KBMC as your healthcare partner. Your trust is our greatest motivation."
+          ]
+        },
+        vision: "To be the leading healthcare provider in the region, recognized for clinical excellence, compassionate care, and innovation.",
+        mission: {
+          title: "Our Mission",
+          items: [
+            { title: "Patient Well-being", desc: "To prioritize the health and safety of our patients above all else." },
+            { title: "Clinical Excellence", desc: "To maintain the highest standards of medical and surgical expertise." },
+            { title: "Innovation", desc: "To embrace new technologies and practices for better patient outcomes." },
+            { title: "Community Service", desc: "To be an active and responsible member of the Kelantan community." }
+          ]
+        }
+      });
+
+      setSyncStatus('Syncing centres...');
+      const defaultCentres = [
+        { id: 'heart-centre', title: 'Heart Centre', description: 'Advanced cardiovascular care, comprehensive diagnostics, and innovative treatments for heart conditions.', features: ['Cardiac Screening', 'Angiography', 'Angioplasty', 'Heart Surgery'], iconName: 'Heart', isActive: true },
+        { id: 'cancer-centre', title: 'Cancer Centre', description: 'Holistic and comprehensive cancer care, from early screening to advanced therapies and survivorship support.', features: ['Chemotherapy', 'Radiotherapy', 'Oncology Surgery', 'Palliative Care'], iconName: 'Activity', isActive: true },
+        { id: 'women-child-centre', title: 'Women & Child Centre', description: 'Specialized, compassionate care for maternity, gynecology, and pediatrics in a family-friendly environment.', features: ['Maternity Packages', 'Pediatric Care', 'Gynecology Surgery', 'Neonatal Care'], iconName: 'Baby', isActive: true }
+      ];
+      for (const centre of defaultCentres) {
+        await setDoc(doc(db, 'centres', centre.id), centre);
+      }
+
       setSyncStatus('Syncing settings...');
       // Sync Settings
       await setDoc(doc(db, 'settings', 'global'), {
@@ -278,6 +1283,104 @@ const DashboardTab = () => {
               {syncStatus}
             </p>
           )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ContactTab = () => {
+  const [contactData, setContactData] = useState<any>({
+    mapUrl: "",
+    address: "",
+    parking: { title: "", description: "", status: "" },
+    operatingHours: { ae: "", clinics: { sun_thu: "", fri: "", sat: "" } },
+    facilities: []
+  });
+  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'contact'), (docSnap) => {
+      if (docSnap.exists()) {
+        setContactData(docSnap.data());
+      }
+      setLoading(false);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'settings/contact');
+    });
+    return () => unsub();
+  }, []);
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      await setDoc(doc(db, 'settings', 'contact'), contactData);
+      alert("Contact page content saved!");
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'settings/contact');
+    }
+    setSaving(false);
+  };
+
+  if (loading) return <div className="p-8 text-center">Loading contact content...</div>;
+
+  return (
+    <div className="space-y-8">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-black text-gray-800">Manage Contact Info</h2>
+        <button onClick={handleSave} disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
+          {saving ? 'Saving...' : 'Save Changes'}
+        </button>
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Location & Map</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Google Maps Embed URL</label>
+            <input type="text" value={contactData.mapUrl || ''} onChange={e => setContactData({...contactData, mapUrl: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Full Address</label>
+            <textarea value={contactData.address || ''} onChange={e => setContactData({...contactData, address: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={2}></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Parking Info</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="col-span-2">
+            <label className="block text-sm font-bold text-gray-700 mb-1">Parking Description</label>
+            <textarea value={contactData.parking?.description || ''} onChange={e => setContactData({...contactData, parking: {...contactData.parking, description: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={2}></textarea>
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Parking Status Label</label>
+            <input type="text" value={contactData.parking?.status || ''} onChange={e => setContactData({...contactData, parking: {...contactData.parking, status: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+        <h3 className="text-xl font-bold text-[#006D77]">Operating Hours</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">A&E Hours</label>
+            <input type="text" value={contactData.operatingHours?.ae || ''} onChange={e => setContactData({...contactData, operatingHours: {...contactData.operatingHours, ae: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Sun - Thu Hours</label>
+            <input type="text" value={contactData.operatingHours?.clinics?.sun_thu || ''} onChange={e => setContactData({...contactData, operatingHours: {...contactData.operatingHours, clinics: {...contactData.operatingHours.clinics, sun_thu: e.target.value}}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Fri Hours</label>
+            <input type="text" value={contactData.operatingHours?.clinics?.fri || ''} onChange={e => setContactData({...contactData, operatingHours: {...contactData.operatingHours, clinics: {...contactData.operatingHours.clinics, fri: e.target.value}}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Sat Hours</label>
+            <input type="text" value={contactData.operatingHours?.clinics?.sat || ''} onChange={e => setContactData({...contactData, operatingHours: {...contactData.operatingHours, clinics: {...contactData.operatingHours.clinics, sat: e.target.value}}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+          </div>
         </div>
       </div>
     </div>

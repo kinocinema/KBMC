@@ -3,31 +3,36 @@ import React, { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageCircle, Navigation, Car, ArrowRight, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
 const ContactUs: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [settings, setSettings] = useState<any>(null);
+  const [contactData, setContactData] = useState<any>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
     window.scrollTo(0, 0);
     
-    const fetchSettings = async () => {
-      try {
-        const docRef = doc(db, 'settings', 'global');
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setSettings(docSnap.data());
-        }
-      } catch (error) {
-        handleFirestoreError(error, OperationType.GET, 'settings/global');
+    const unsubGlobal = onSnapshot(doc(db, 'settings', 'global'), (docSnap) => {
+      if (docSnap.exists()) {
+        setSettings(docSnap.data());
       }
+    });
+
+    const unsubContact = onSnapshot(doc(db, 'settings', 'contact'), (docSnap) => {
+      if (docSnap.exists()) {
+        setContactData(docSnap.data());
+      }
+    });
+
+    return () => {
+      unsubGlobal();
+      unsubContact();
     };
-    fetchSettings();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,6 +40,22 @@ const ContactUs: React.FC = () => {
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
+
+  const mapUrl = contactData?.mapUrl || "https://maps.google.com/maps?q=Kota%20Bharu%20Medical%20Centre&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  const address = contactData?.address || t('contact.directory.location.value');
+  const parkingDesc = contactData?.parking?.description || t('contact.parking.desc');
+  const parkingStatus = contactData?.parking?.status || t('contact.parking.status.value');
+  
+  const aeHours = contactData?.operatingHours?.ae || t('contact.hours.ae.value');
+  const sunThuHours = contactData?.operatingHours?.clinics?.sun_thu || t('contact.hours.clinics.sun_thu_time');
+  const friHours = contactData?.operatingHours?.clinics?.fri || t('contact.hours.clinics.fri_time');
+  const satHours = contactData?.operatingHours?.clinics?.sat || t('contact.hours.clinics.sat_time');
+
+  const facilities = contactData?.facilities || [
+    { id: 'a', title: t('contact.facility.a.title'), desc: t('contact.facility.a.desc') },
+    { id: 'b', title: t('contact.facility.b.title'), desc: t('contact.facility.b.desc') },
+    { id: 'c', title: t('contact.facility.c.title'), desc: t('contact.facility.c.desc') }
+  ];
 
   return (
     <div className="min-h-screen bg-white pb-32 overflow-hidden relative">
@@ -78,7 +99,7 @@ const ContactUs: React.FC = () => {
         <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100">
           <div className="h-[400px] md:h-[500px] relative">
             <iframe 
-              src="https://maps.google.com/maps?q=Kota%20Bharu%20Medical%20Centre&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              src={mapUrl} 
               className="w-full h-full border-0 grayscale-[0.2] contrast-[1.1]"
               allowFullScreen={true} 
               loading="lazy" 
@@ -107,30 +128,15 @@ const ContactUs: React.FC = () => {
           <div className="w-20 h-1.5 bg-[#E29578] mx-auto rounded-full"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Column A */}
-          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
-              <span className="text-2xl font-black text-[#006D77]">A</span>
+          {facilities.map((fac: any) => (
+            <div key={fac.id} className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-black text-[#006D77] uppercase">{fac.id}</span>
+              </div>
+              <h3 className="text-xl font-black text-[#2C3E50] mb-4">{fac.title}</h3>
+              <p className="text-gray-500 font-medium leading-relaxed">{fac.desc}</p>
             </div>
-            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.a.title')}</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.a.desc')}</p>
-          </div>
-          {/* Column B */}
-          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
-              <span className="text-2xl font-black text-[#006D77]">B</span>
-            </div>
-            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.b.title')}</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.b.desc')}</p>
-          </div>
-          {/* Column C */}
-          <div className="bg-[#F8FAFB] p-10 rounded-[3rem] border border-gray-100 hover:shadow-xl transition-all group">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 transition-transform">
-              <span className="text-2xl font-black text-[#006D77]">C</span>
-            </div>
-            <h3 className="text-xl font-black text-[#2C3E50] mb-4">{t('contact.facility.c.title')}</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">{t('contact.facility.c.desc')}</p>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -148,7 +154,7 @@ const ContactUs: React.FC = () => {
                 <MapPin className="text-[#E29578] w-6 h-6" />
               </div>
               <p className="text-lg font-bold text-[#2C3E50] leading-relaxed">
-                {t('contact.directory.location.value')}
+                {address}
               </p>
             </div>
           </div>
@@ -174,7 +180,7 @@ const ContactUs: React.FC = () => {
                 <h2 className="text-4xl font-black text-[#006D77] tracking-tight">{t('contact.parking.title')}</h2>
               </div>
               <p className="text-xl font-bold text-[#2C3E50] leading-relaxed max-w-xl">
-                {t('contact.parking.desc')}
+                {parkingDesc}
               </p>
               <div className="pt-4">
                 <a 
@@ -197,7 +203,7 @@ const ContactUs: React.FC = () => {
               >
                 <div className="bg-[#006D77] text-white px-12 py-8 rounded-[2.5rem] text-center space-y-1 min-w-[280px] group-hover:bg-[#E29578] transition-colors">
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] opacity-80">{t('contact.parking.status.label')}</p>
-                  <p className="text-4xl font-black tracking-tight">{t('contact.parking.status.value')}</p>
+                  <p className="text-4xl font-black tracking-tight">{parkingStatus}</p>
                 </div>
               </a>
             </div>
@@ -219,7 +225,7 @@ const ContactUs: React.FC = () => {
                   </div>
                   <h3 className="text-lg font-black text-[#2C3E50]">{t('contact.hours.ae.label')}</h3>
                 </div>
-                <p className="text-2xl font-black text-red-600">{t('contact.hours.ae.value')}</p>
+                <p className="text-2xl font-black text-red-600">{aeHours}</p>
               </div>
               <div className="p-8 bg-[#F8FAFB] rounded-[3rem] border border-gray-50 space-y-6">
                 <div className="flex items-center gap-4">
@@ -231,15 +237,15 @@ const ContactUs: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-gray-200 pb-4">
                     <span className="font-bold text-gray-500">{t('contact.hours.clinics.sun_thu')}</span>
-                    <span className="font-black text-[#006D77]">{t('contact.hours.clinics.sun_thu_time')}</span>
+                    <span className="font-black text-[#006D77]">{sunThuHours}</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-200 pb-4">
                     <span className="font-bold text-gray-500">{t('contact.hours.clinics.fri')}</span>
-                    <span className="font-black text-red-500">{t('contact.hours.clinics.fri_time')}</span>
+                    <span className="font-black text-red-500">{friHours}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-bold text-gray-500">{t('contact.hours.clinics.sat')}</span>
-                    <span className="font-black text-[#006D77]">{t('contact.hours.clinics.sat_time')}</span>
+                    <span className="font-black text-[#006D77]">{satHours}</span>
                   </div>
                 </div>
               </div>

@@ -7,10 +7,13 @@ interface CentreTemplateProps {
   description: string;
   features: string[];
   icon: React.ReactNode;
+  isDynamic?: boolean;
 }
 
-const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, features, icon }) => {
+const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, features, icon, isDynamic }) => {
   const { t } = useLanguage();
+
+  const renderText = (text: string) => isDynamic ? text : t(text);
 
   return (
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
@@ -25,9 +28,9 @@ const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, fea
             {icon}
           </div>
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight uppercase">{t(title)}</h1>
+            <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight uppercase">{renderText(title)}</h1>
             <p className="text-lg text-white/80 leading-relaxed">
-              {t(description)}
+              {renderText(description)}
             </p>
           </div>
         </div>
@@ -40,7 +43,7 @@ const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, fea
             <div className="md:col-span-2 prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#2C3E50] mb-4">{t('centre.about')}</h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                {t('centre.desc').replace('{title}', t(title))}
+                {t('centre.desc').replace('{title}', renderText(title))}
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
@@ -61,7 +64,7 @@ const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, fea
                 {features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                     <CheckCircle2 className="w-5 h-5 text-[#83C5BE] shrink-0 mt-0.5" />
-                    <span className="text-gray-700 font-medium text-sm">{t(feature)}</span>
+                    <span className="text-gray-700 font-medium text-sm">{renderText(feature)}</span>
                   </li>
                 ))}
               </ul>

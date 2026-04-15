@@ -1,11 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Check, Info, Calendar, PhoneCall, FileText, ArrowRight, Activity, Heart, Shield, Building2, Users, Microscope, Stethoscope } from 'lucide-react';
+import { Check, Calendar, PhoneCall, Activity, Heart, Microscope, Stethoscope, Shield, Building2, Users } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const WellnessProgram: React.FC = () => {
   const { t } = useLanguage();
   const location = useLocation();
+  const [packages, setPackages] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, 'wellness'), where('isActive', '==', true));
+    const unsub = onSnapshot(q, (snapshot) => {
+      setPackages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
 
   useEffect(() => {
     // Handle scrolling to sections based on pathname or hash
@@ -58,9 +71,6 @@ const WellnessProgram: React.FC = () => {
               alt="Advanced Diagnostics" 
               className="rounded-2xl shadow-md" 
               referrerPolicy="no-referrer" 
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-              }}
             />
           </div>
           <div className="md:w-1/2 space-y-6">
@@ -90,27 +100,52 @@ const WellnessProgram: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Health Screening Packages 2026 */}
+      {/* 2. Health Screening Packages */}
       <div id="health-screening" className="max-w-7xl mx-auto px-4 md:px-8 mb-20 pt-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-black text-[#2C3E50] mb-4">{t('wellness.hs.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">{t('wellness.hs.desc')}</p>
         </div>
-        <div className="flex justify-center">
-          <div className="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center">
-            <div className="w-24 h-24 bg-[#EDF6F9] rounded-full flex items-center justify-center mx-auto mb-6">
-              <Activity className="w-12 h-12 text-[#006D77]" />
-            </div>
-            <h3 className="text-2xl font-bold text-[#2C3E50] mb-4">{t('wellness.hs.coming_soon.title')}</h3>
-            <p className="text-gray-600 max-w-lg mx-auto mb-8">
-              {t('wellness.hs.coming_soon.desc')}
-            </p>
-            <button className="bg-[#006D77] text-white px-8 py-3 rounded-full font-bold tracking-widest uppercase text-sm hover:bg-[#2C3E50] transition-colors inline-flex items-center gap-2">
-              <PhoneCall className="w-4 h-4" />
-              {t('wellness.hs.contact')}
-            </button>
+
+        {loading ? (
+          <div className="text-center py-20 text-gray-500 font-bold">Loading packages...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {packages.map((pkg) => (
+              <div key={pkg.id} className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col">
+                <div className="bg-[#006D77] p-6 text-white">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="bg-white/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">{pkg.category}</span>
+                    <Activity className="w-6 h-6 opacity-50" />
+                  </div>
+                  <h3 className="text-2xl font-black mb-2">{pkg.name}</h3>
+                  <div className="text-3xl font-black text-[#83C5BE]">{pkg.price}</div>
+                </div>
+                <div className="p-8 flex-grow">
+                  <p className="text-gray-600 text-sm mb-6">{pkg.description}</p>
+                  <ul className="space-y-3">
+                    {(pkg.features || []).map((feature: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-gray-700">
+                        <Check className="w-4 h-4 text-[#006D77] mt-0.5 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-8 pt-0">
+                  <button className="w-full bg-[#EDF6F9] text-[#006D77] py-3 rounded-xl font-bold hover:bg-[#006D77] hover:text-white transition-all">
+                    {t('wellness.hs.contact')}
+                  </button>
+                </div>
+              </div>
+            ))}
+            {packages.length === 0 && (
+              <div className="col-span-full bg-white rounded-3xl p-12 text-center border border-dashed border-gray-300">
+                <p className="text-gray-500">No health screening packages available at the moment.</p>
+              </div>
+            )}
           </div>
-        </div>
+        )}
       </div>
 
       {/* 4 & 5. Corporate Wellness Program & Benefits */}
@@ -176,9 +211,6 @@ const WellnessProgram: React.FC = () => {
               alt="Corporate Wellness" 
               className="absolute inset-0 w-full h-full object-cover"
               referrerPolicy="no-referrer"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://kbmc.com.my/wp-content/uploads/2025/09/KBMC-PERSPECTIVE-OPD_15jan2024-add-on-kbmc-logo-scaled.jpg";
-              }}
             />
           </div>
         </div>
