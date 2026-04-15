@@ -15,31 +15,6 @@ import { db } from '../firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { handleFirestoreError, OperationType } from '../firebaseErrors';
 
-const HeroImage = ({ src, alt }: { src: string, alt: string }) => {
-  const [hasError, setHasError] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  const fallbackSrc = "https://storage.googleapis.com/igc-health/kbmc-building.jpg";
-
-  return (
-    <div className="relative w-full h-full bg-[#EDF6F9] flex items-center justify-center overflow-hidden">
-      {loading && !hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#EDF6F9] animate-pulse">
-          <Hospital className="w-12 h-12 text-[#83C5BE] opacity-20" />
-        </div>
-      )}
-      <img 
-        src={hasError ? fallbackSrc : src} 
-        alt={alt} 
-        onLoad={() => setLoading(false)}
-        onError={() => setHasError(true)}
-        className={`w-full h-full object-cover transition-all duration-[3s] ${loading ? 'scale-110 opacity-0' : 'scale-100 opacity-100'} group-hover:scale-105`}
-      />
-
-    </div>
-  );
-};
-
 const FacilityCarousel = ({ data }: { data?: any[] }) => {
   const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
@@ -181,9 +156,23 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Pioneer Hero Section */}
-      <section className="relative min-h-screen flex items-center px-4 md:px-8 bg-[#F8FBFC] overflow-hidden pt-20">
+      <section className="relative min-h-screen flex items-center px-4 md:px-8 bg-[#006D77] overflow-hidden pt-20">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <motion.img 
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.6 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            src={hero.imageUrl} 
+            alt="KBMC Medical Center" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#006D77] via-[#006D77]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/80 via-transparent to-transparent opacity-60" />
+        </div>
+
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
           <motion.div 
             animate={{ 
               scale: [1, 1.2, 1],
@@ -192,22 +181,12 @@ const Home: React.FC = () => {
               y: [0, 30, 0]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] bg-gradient-to-br from-[#83C5BE]/20 to-transparent rounded-full blur-[120px]"
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.1, 1],
-              x: [0, -30, 0],
-              y: [0, 50, 0]
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] bg-gradient-to-tr from-[#E29578]/10 to-transparent rounded-full blur-[100px]"
+            className="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] bg-gradient-to-br from-[#83C5BE]/40 to-transparent rounded-full blur-[120px]"
           />
         </div>
         
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-          {/* Left Content */}
-          <div className="flex flex-col space-y-12">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="max-w-3xl flex flex-col space-y-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -218,16 +197,16 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#006D77]/10 px-4 py-2 rounded-full shadow-sm"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full shadow-sm"
               >
-                <Building2 className="w-4 h-4 text-[#E29578]" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#006D77]">
+                <Building2 className="w-4 h-4 text-[#83C5BE]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">
                   {t('legacy.established')}
                 </span>
               </motion.div>
 
               <div className="space-y-6">
-                <h1 className="text-5xl md:text-7xl font-black leading-[1] text-[#006D77] tracking-tighter">
+                <h1 className="text-6xl md:text-8xl font-black leading-[0.9] text-white tracking-tighter">
                   <motion.span 
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -241,7 +220,7 @@ const Home: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 0.7 }}
-                  className="text-lg md:text-xl text-[#2C3E50]/60 font-medium max-w-xl leading-relaxed"
+                  className="text-xl md:text-2xl text-white/80 font-medium max-w-2xl leading-relaxed"
                 >
                   {hero.description}
                 </motion.p>
@@ -252,74 +231,23 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-6"
             >
-              <Link to="/about" className="group relative bg-[#006D77] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-[#006D77]/20">
+              <Link to="/about" className="group relative bg-[#83C5BE] text-[#006D77] px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-black/20">
                 <span className="relative z-10 flex items-center gap-3">
                   {t('legacy.cta')}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <motion.div 
-                  className="absolute inset-0 bg-white/20"
+                  className="absolute inset-0 bg-white/30"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.5 }}
                 />
               </Link>
-              <Link to="/find-doctor" className="group bg-white text-[#006D77] border-2 border-[#006D77]/10 px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:border-[#006D77] transition-all hover:scale-105 active:scale-95 shadow-lg">
+              <Link to="/find-doctor" className="group bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/20 transition-all hover:scale-105 active:scale-95">
                 {t('hero.cta.find')}
               </Link>
-            </motion.div>
-          </div>
-
-          {/* Right Content - Visuals */}
-          <div className="relative lg:h-[800px] flex items-center justify-center">
-            <motion.div 
-              style={{ y: y2 }}
-              className="relative w-full max-w-[600px]"
-            >
-              {/* Main Image Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 1.2, ease: "circOut" }}
-                className="relative z-20 rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,109,119,0.3)] border-[12px] border-white aspect-video lg:aspect-[4/3] group"
-              >
-                <img 
-                  src={hero.imageUrl} 
-                  alt="KBMC Medical Center" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#006D77]/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-              </motion.div>
-
-              {/* Floating Badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute -bottom-10 -right-4 lg:-right-10 z-30 p-8 bg-white/90 backdrop-blur-xl rounded-[3rem] shadow-2xl border border-white/50 max-w-xs hidden md:block"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-[#E29578] rounded-2xl flex items-center justify-center text-white shadow-lg">
-                    <ShieldCheck className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="block font-black text-[#006D77] uppercase tracking-widest text-[10px] mb-0.5">{t('hero.ibadah.title')}</span>
-                    <div className="flex gap-1">
-                      {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-1 rounded-full bg-[#006D77]" />)}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-600 font-bold leading-relaxed">{t('hero.ibadah.desc')}</p>
-              </motion.div>
-
-              {/* Decorative Elements */}
-              <motion.div 
-                animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-20 -left-20 w-60 h-60 border-2 border-dashed border-[#006D77]/10 rounded-full pointer-events-none"
-              />
             </motion.div>
           </div>
         </div>

@@ -131,8 +131,6 @@ export const translations = {
     'hero.stat.specialists': 'SPECIALISTS',
     'hero.stat.emergency': 'EMERGENCY',
     'hero.stat.facility': 'FACILITY AREA',
-    'hero.ibadah.title': 'IBADAH-FRIENDLY',
-    'hero.ibadah.desc': 'A Shariah-compliant healing environment tailored for your spiritual and physical recovery.',
 
     // Home - Expect
     'home.expect.title': 'What to Expect During Your Visit',
@@ -1027,8 +1025,6 @@ export const translations = {
     'hero.stat.specialists': 'DOKTOR PAKAR',
     'hero.stat.emergency': 'KECEMASAN',
     'hero.stat.facility': 'KELUASAN FASILITI',
-    'hero.ibadah.title': 'MESRA IBADAH',
-    'hero.ibadah.desc': 'Persekitaran penyembuhan patuh Syariah yang direka khas untuk pemulihan rohani dan fizikal anda.',
 
     // Home - Expect
     'home.expect.title': 'Apa Yang Anda Boleh Jangkakan',
@@ -1921,8 +1917,6 @@ export const translations = {
     "hero.stat.specialists": "ผู้เชี่ยวชาญ",
     "hero.stat.emergency": "ภาวะฉุกเฉิน",
     "hero.stat.facility": "พื้นที่สิ่งอำนวยความสะดวก",
-    "hero.ibadah.title": "อิบาดะห์เป็นมิตร",
-    "hero.ibadah.desc": "สภาพแวดล้อมการรักษาตามหลักชาริอะฮ์ที่ปรับแต่งมาเพื่อการฟื้นฟูทางจิตวิญญาณและร่างกายของคุณ",
     "home.expect.title": "สิ่งที่คาดหวังระหว่างการเยี่ยมชมของคุณ",
     "home.expect.hospitality.title": "การต้อนรับอันอบอุ่น",
     "home.expect.hospitality.desc": "เพลิดเพลินกับเครื่องดื่มต้อนรับฟรีเพื่อเป็นการแสดงความขอบคุณที่เลือกเรา",
