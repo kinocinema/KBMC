@@ -73,7 +73,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: "Dato' Dr. Hasim Mohamad is a distinguished Ear, Nose & Throat (ENT) specialist with decades of experience in managing complex ENT conditions. His expertise covers sinus diseases, hearing disorders, throat and voice problems, as well as head and neck conditions requiring surgical intervention. He is dedicated to delivering precise, compassionate, and comprehensive ENT care tailored to each patient's needs.",
     focus: ['Sinus Diseases', 'Hearing Disorders', 'Throat & Voice Problems', 'Head & Neck Surgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DATO%E2%80%99%20DR.%20HASIM%20MOHAMAD%2C%20DPSK%20(KELANTAN).png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DATO%E2%80%99%20DR.%20HASIM%20MOHAMAD%2C%20DPSK%20(KELANTAN).png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -88,7 +88,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Specializing in high-risk pregnancy management and personalized maternity care with an emphasis on Shariah-compliant patient dignity.',
     focus: ['Maternity Care', 'Gynaecological Health', 'High-Risk Obstetrics'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20NORHAIRA%20MOHAMED%20NOOR%203.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20NORHAIRA%20MOHAMED%20NOOR%203.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799'
   },
@@ -100,7 +100,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'A passionate advocate for child health and development, Dr. Rizal brings expert clinical care to our neonatal and paediatric units.',
     focus: ['General Paediatrics', 'Growth Monitoring', 'Neonatal Intensive Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MOHD%20RIZAL%20BIN%20MOHD%20ZAIN%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20MOHD%20RIZAL%20BIN%20MOHD%20ZAIN%202.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799'
   },
@@ -114,7 +114,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Rujhan Mohamed is a dedicated Paediatrician with extensive experience in managing the health and development of children and adolescents. He provides comprehensive care ranging from routine check-ups and vaccinations to the treatment of acute and chronic childhood illnesses, ensuring the best possible outcomes for young patients and their families.',
     focus: ['Child Health & Development', 'Routine Check-ups', 'Vaccinations', 'Acute & Chronic Childhood Illnesses'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20RUJHAN%20MOHAMED%20(2).png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20RUJHAN%20MOHAMED%20(2).png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -132,7 +132,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mohd Kamal Yatiban is an experienced General Surgeon with expertise in a wide range of surgical procedures. He manages conditions such as gastrointestinal disorders, thyroid diseases, colorectal issues, and other general surgical needs. With a patient-focused approach, he is committed to delivering safe and effective surgical care while ensuring comfort and confidence throughout the treatment journey.',
     focus: ['Gastrointestinal Disorders', 'Thyroid Diseases', 'Colorectal Issues', 'General Surgical Procedures'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MOHD%20KAMAL%20YATIBAN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20MOHD%20KAMAL%20YATIBAN.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -150,7 +150,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mat Ariffin Saman is a dedicated Anaesthetist with expertise in pain management, perioperative care, and patient safety during surgical procedures. He plays a vital role in ensuring patients receive safe, effective, and compassionate anaesthesia care throughout their treatment journey at KBMC.',
     focus: ['Pain Management', 'Perioperative Care', 'Patient Safety', 'Anaesthesia Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MAT%20ARIFFIN%20SAMAN%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20MAT%20ARIFFIN%20SAMAN%202.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -167,7 +167,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Eshamsol Kamar Omar is an experienced Ear, Nose & Throat (ENT) Surgeon specializing in the diagnosis and treatment of conditions affecting the ear, nose, throat, head, and neck. His expertise covers common ENT conditions such as sinus problems, hearing disorders, and voice issues, as well as more complex surgical interventions. He is dedicated to improving patients’ quality of life through precise, compassionate, and effective ENT care.',
     focus: ['Sinus Problems', 'Hearing Disorders', 'Voice Issues', 'ENT Surgery', 'Head & Neck Conditions'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20ESHAMSOL%20KAMAR%20OMAR.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20ESHAMSOL%20KAMAR%20OMAR.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -185,7 +185,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Madya Dr. Adil Hussein is a highly skilled Ophthalmologist and Eye Surgeon with extensive experience in diagnosing and treating a wide range of eye conditions. His expertise includes cataract surgery, glaucoma management, retinal disorders, and corneal diseases. With a strong commitment to patient-centered care, he combines advanced surgical techniques with a compassionate approach to help patients preserve and restore their vision.',
     focus: ['Cataract Surgery', 'Glaucoma Management', 'Retinal Disorders', 'Corneal Diseases', 'Eye Surgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20MADYA%20DR.%20ADIL%20HUSSEIN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/PROF.%20MADYA%20DR.%20ADIL%20HUSSEIN.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -203,7 +203,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Sahran Bin Yahaya is a Visiting Orthopaedic Oncologist and Joint Reconstruction Surgeon with specialized expertise in managing bone and soft tissue tumors, as well as complex joint reconstruction procedures. He is dedicated to providing advanced orthopaedic care, focusing on limb salvage and restoring function for patients with musculoskeletal oncology conditions and severe joint disorders.',
     focus: ['Orthopaedic Oncology', 'Joint Reconstruction', 'Bone & Soft Tissue Tumors', 'Limb Salvage Surgery', 'Complex Joint Replacement'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR%20SAHRAN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR%20SAHRAN.png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -220,7 +220,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Zulkifli Bin Mustapha is a Visiting Cardiologist with extensive expertise in diagnosing and managing a wide range of cardiovascular conditions. His clinical focus includes heart disease prevention, interventional cardiology, and the management of complex cardiac cases. He is committed to delivering high-quality heart care with a focus on patient safety and optimal clinical outcomes.',
     focus: ['Cardiology', 'Heart Disease Prevention', 'Interventional Cardiology', 'Cardiac Case Management'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR%20ZUL.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR%20ZUL.png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -237,7 +237,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Abang Kilat Abang Yak is an experienced Orthopaedic Surgeon with expertise in diagnosing, treating, and managing musculoskeletal conditions. He is committed to providing patient-centered care, helping individuals restore mobility, recover from injuries, and improve their overall quality of life.',
     focus: ['Musculoskeletal Conditions', 'Mobility Restoration', 'Injury Recovery', 'Joint & Bone Health'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20ABANG%20KILAT%20ABANG%20YAK.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20ABANG%20KILAT%20ABANG%20YAK.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -256,7 +256,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Dr. Hjh. Sudzilla Nordin is an experienced Physician with expertise in internal medicine and neuroendocrine disorders. She provides comprehensive care for adults, managing both acute and chronic medical conditions with a holistic and patient-centered approach. Her commitment to continuous learning and specialization ensures high-quality care tailored to each patient\'s needs.',
     focus: ['Internal Medicine', 'Neuroendocrine Disorders', 'Acute Medical Management', 'Chronic Disease Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20HJH%20SUDZILLA%20NORDIN%203.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20HJH%20SUDZILLA%20NORDIN%203.png',
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -274,7 +274,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Zuad Firdaus Bin Rapiah is a Visiting Physician specializing in Nephrology, focusing on the diagnosis and management of kidney-related conditions. His expertise includes treating chronic kidney disease, acute kidney injury, kidney stones, hypertension, and electrolyte imbalances. With a strong commitment to patient-centered care, he provides comprehensive management plans to improve kidney health and overall well-being.',
     focus: ['Nephrology', 'Chronic Kidney Disease', 'Acute Kidney Injury', 'Kidney Stones', 'Hypertension', 'Electrolyte Imbalances'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20ZUAD%20FIRDAUS%20BIN%20RAPIAH.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20ZUAD%20FIRDAUS%20BIN%20RAPIAH.png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -289,7 +289,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Dr. Sheng Kun Leng is a specialist in Obstetrics & Gynaecology with a subspecialty in Fertility. With advanced training in reproductive endocrinology, she is dedicated to helping couples and individuals manage fertility challenges, offering personalized treatment options that include assisted reproductive techniques, hormonal management, and minimally invasive procedures.',
     focus: ['Fertility', 'Reproductive Endocrinology', 'Assisted Reproductive Techniques', 'Hormonal Management', 'Minimically Invasive Procedures'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20SHENG%20KUN%20LENG.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20SHENG%20KUN%20LENG.png',
     status: 'Sessional',
     phone: '09-743 3399 / 019-967 0799'
   },
@@ -303,7 +303,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: "Dato' Dr. Mohammad Anwar Hau Bin Abdullah is a Visiting Orthopedic Surgeon with subspecialty expertise in Orthopedic Oncology. He is experienced in treating complex musculoskeletal conditions, including bone and soft tissue tumors, fractures, joint disorders, and degenerative bone diseases. With advanced training and fellowship experience, he is dedicated to providing comprehensive surgical and non-surgical care that prioritizes function, mobility, and patient quality of life.",
     focus: ['Orthopedic Oncology', 'Bone & Soft Tissue Tumors', 'Complex Fractures', 'Joint Disorders', 'Degenerative Bone Diseases'],
-    imageUrl: "https://storage.googleapis.com/igc-health/DATO%E2%80%99%20DR.%20MOHAMMAD%20ANWAR%20HAU.png",
+    imageUrl: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/DATO%E2%80%99%20DR.%20MOHAMMAD%20ANWAR%20HAU.png",
     status: 'Resident',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -321,7 +321,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: "Dr. Mat Zuki Bin Ja'eb is a Visiting Physician specializing in Respiratory Medicine. He is experienced in diagnosing and managing a wide range of respiratory conditions such as asthma, chronic obstructive pulmonary disease (COPD), pneumonia, and other lung-related disorders. With a patient-centered approach, he emphasizes accurate diagnosis, effective treatment plans, and long-term respiratory health management to improve patients' quality of life.",
     focus: ['Respiratory Medicine', 'Asthma', 'COPD', 'Pneumonia', 'Lung-related Disorders'],
-    imageUrl: "https://storage.googleapis.com/igc-health/DATO%20DR.%20MAT%20ZUKI%20BIN%20JA%E2%80%99EB.png",
+    imageUrl: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/DATO%20DR.%20MAT%20ZUKI%20BIN%20JA%E2%80%99EB.png",
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -336,7 +336,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Dr. Nor Asyikin Fadzil is a Visiting Psychiatrist dedicated to supporting patients with a wide spectrum of mental health concerns, including mood disorders, anxiety, stress-related conditions, and other psychiatric challenges. She provides individualized treatment plans that may include therapy, counseling, and medication management, with a strong focus on improving overall emotional well-being and quality of life.',
     focus: ['Mood Disorders', 'Anxiety', 'Stress-related Conditions', 'Therapy & Counseling', 'Medication Management'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20NOR%20ASYIKIN%20FADZIL%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20NOR%20ASYIKIN%20FADZIL%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -351,7 +351,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Dr. Norzila Zakaria is a Visiting Psychiatrist with expertise in diagnosing and managing a wide range of mental health conditions. She provides compassionate care for individuals experiencing anxiety, depression, stress-related disorders, and other psychiatric concerns. With a patient-centered approach, she emphasizes holistic treatment that may include therapy, counseling, and medication management to support overall mental well-being.',
     focus: ['Psychiatry', 'Anxiety', 'Depression', 'Stress-related Disorders', 'Mental Well-being'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20NORZILA%20ZAKARIA%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20NORZILA%20ZAKARIA%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -366,7 +366,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mohd Shahrulsalam Mohd Shah is a Visiting Paediatric Surgeon with expertise in diagnosing and treating surgical conditions in infants, children, and adolescents. His practice covers a wide spectrum of paediatric surgical care, including congenital anomalies, abdominal conditions, and minimally invasive procedures. Dedicated to ensuring safe and compassionate treatment, he works closely with families to provide the best surgical outcomes for young patients.',
     focus: ['Paediatric Surgery', 'Congenital Anomalies', 'Abdominal Conditions', 'Minimically Invasive Procedures'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MOHD%20SHAHRULSALAM%20MOHD%20SHAH.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20MOHD%20SHAHRULSALAM%20MOHD%20SHAH.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -381,7 +381,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Madya Dr. Nazri Mohamad @ Mustaffa is a Visiting Gastroenterologist and Physician with international training in Australia and expertise in managing digestive and liver-related conditions. His areas of focus include gastrointestinal disorders, liver disease, and complex internal medicine cases. With a strong academic background and a PhD from Sydney, he combines advanced medical knowledge with compassionate care to provide comprehensive treatment for patients with digestive and systemic health concerns.',
     focus: ['Gastrointestinal Disorders', 'Liver Disease', 'Complex Internal Medicine', 'Digestive Health', 'Systemic Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/PROF.%20MADYA%20DR.%20NAZRI%20MOHAMAD%20%40%20MUSTAFFA.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/PROF.%20MADYA%20DR.%20NAZRI%20MOHAMAD%20%40%20MUSTAFFA.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -396,7 +396,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Rosnelifaizur Ramely is a Visiting General Surgeon with sub-specialty expertise in vascular and endovascular surgery. He focuses on the diagnosis and treatment of conditions affecting blood vessels, including arterial blockages, aneurysms, and venous diseases. With advanced training in minimally invasive endovascular techniques, he is committed to providing safe, effective, and patient-centered surgical care to improve vascular health and overall outcomes.',
     focus: ['Vascular & Endovascular Surgery', 'Arterial Blockages', 'Aneurysms', 'Venous Diseases', 'Minimically Invasive Endovascular Techniques'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/DR.%20ROSNELIFAIZUR%20RAMELY.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/DR.%20ROSNELIFAIZUR%20RAMELY.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -411,7 +411,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Ngoo Qi Zhe is a Visiting Ophthalmologist with expertise in diagnosing and managing a wide range of eye conditions and vision disorders. His clinical focus includes comprehensive eye examinations, cataract management, glaucoma care, and retinal disease evaluation. With strong academic training and specialist experience, he is dedicated to preserving and enhancing patients\' vision through tailored and evidence-based care.',
     focus: ['Cataract Management', 'Glaucoma Care', 'Retinal Disease Evaluation', 'Comprehensive Eye Examinations'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/DR.%20NGOO%20QI%20ZHE.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/DR.%20NGOO%20QI%20ZHE.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -426,7 +426,7 @@ export const DOCTORS = [
     isFemale: true,
     bio: 'Prof. Madya Dr. Norsarwany Mohamad is a Visiting Paediatrician with extensive experience in child health and development. Trained internationally in Queensland, Australia, and further specialised in Malaysia, she provide comprehensive care for infants, children, and adolescents. Her clinical expertise includes preventive care, acute and chronic childhood illnesses, and developmental monitoring, ensuring holistic support for growing children and their families.',
     focus: ['Child Health & Development', 'Preventive Care', 'Acute & Chronic Childhood Illnesses', 'Developmental Monitoring'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20MADYA%20DR.%20NORSARWANY.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/PROF.%20MADYA%20DR.%20NORSARWANY.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -441,7 +441,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mohamad Ikram Ilias is a Visiting Paediatrician and Paediatric Nephrologist with specialised expertise in kidney-related conditions in children. His clinical focus includes the diagnosis and management of paediatric kidney diseases, urinary tract issues, and related developmental conditions. With dual training in general paediatrics and paediatric nephrology, he provides comprehensive care tailored to children’s unique health needs, ensuring early detection and effective treatment.',
     focus: ['Paediatric Nephrology', 'Kidney Diseases in Children', 'Urinary Tract Issues', 'General Paediatrics'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR.%20MOHAMAD%20IKRAM%20ILIAS.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR.%20MOHAMAD%20IKRAM%20ILIAS.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -456,7 +456,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Hoo Pek Sung is a Visiting Obstetrician & Gynaecologist with expertise in women’s health, reproductive care, and pregnancy management. He provides comprehensive care across all stages of a woman’s life, from routine check-ups and fertility issues to prenatal, antenatal, and postnatal care. With an MRCOG qualification, he brings international standards of excellence in obstetrics and gynaecology to his patients.',
     focus: ['Women’s Health', 'Reproductive Care', 'Pregnancy Management', 'Prenatal & Antenatal Care', 'Fertility Issues'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/DR.%20HOO%20PEK%20SUNG.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/DR.%20HOO%20PEK%20SUNG.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -471,7 +471,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Mohd Erham Bin Mat Hassan is a Visiting Anaesthetist with strong expertise in anaesthesia, perioperative care, and pain management. He is committed to ensuring patient safety and comfort throughout surgical and medical procedures, applying evidence-based techniques to deliver high-quality anaesthetic care. His role supports both surgical teams and patients requiring specialised anaesthetic services.',
     focus: ['Anaesthesia', 'Perioperative Care', 'Pain Management', 'Patient Safety'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/DR.%20MOHD%20ERHAM%20BIN%20MAT%20HASSAN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/DR.%20MOHD%20ERHAM%20BIN%20MAT%20HASSAN.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -486,7 +486,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Nik Abdullah Nik Mohamad is a Visiting Anaesthetist with extensive international training and certification in anaesthesiology and intensive care. His expertise covers advanced anaesthesia, perioperative medicine, and critical care management. With global qualifications from Belgium and Ghent, he brings a wealth of experience in providing safe, effective, and patient-focused anaesthetic care for complex surgical and critical cases.',
     focus: ['Advanced Anaesthesia', 'Perioperative Medicine', 'Critical Care Management', 'Intensive Care'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/PROF.%20DR.%20NIK%20ABDULLAH%20NIK%20MOHAMAD.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/PROF.%20DR.%20NIK%20ABDULLAH%20NIK%20MOHAMAD.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -501,7 +501,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Madya Dr. W Mohd Nazaruddin Wan Hassan is a Visiting Anaesthetist with expertise in anaesthesia, perioperative care, and pain management. He is dedicated to ensuring patient safety and comfort throughout surgical procedures, applying the latest anaesthetic techniques for optimal outcomes. His visiting role allows him to provide specialized input for complex cases, supporting the surgical and intensive care teams.',
     focus: ['Anaesthesia', 'Perioperative Care', 'Pain Management', 'Intensive Care Support'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/ansonbay/PROF.%20MADYA%20DR.%20W%20MOHD%20NAZARUDDIN%20WAN%20HASSAN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/ansonbay/PROF.%20MADYA%20DR.%20W%20MOHD%20NAZARUDDIN%20WAN%20HASSAN.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -516,7 +516,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Shamsul Kamalrujan Hassan is a Visiting Anaesthetist with extensive expertise in perioperative care, critical care medicine, and pain management. He plays a vital role in ensuring patient safety and comfort before, during, and after surgery. With a focus on advanced anaesthetic techniques and patient-centered care, he is committed to delivering high standards of medical practice.',
     focus: ['Perioperative Care', 'Critical Care Medicine', 'Pain Management', 'Advanced Anaesthetic Techniques'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20SHAMSUL%20KAMALRUJAN%20HASSAN%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/PROF.%20DR.%20SHAMSUL%20KAMALRUJAN%20HASSAN%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -531,7 +531,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Wan Azman Wan Sulaiman is a Visiting Plastic Surgeon with extensive expertise in reconstructive and aesthetic surgery. His areas of specialization include body contouring, breast surgery, cleft lip and palate repair, microsurgery, and advanced wound management. He is committed to delivering safe, effective, and patient-centered surgical solutions that enhance both function and appearance.',
     focus: ['Reconstructive Surgery', 'Aesthetic Surgery', 'Body Contouring', 'Breast Surgery', 'Cleft Lip & Palate Repair', 'Microsurgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DR.%20WAN%20AZMAN%20WAN%20SULAIMAN%202.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/PROF.%20DR.%20WAN%20AZMAN%20WAN%20SULAIMAN%202.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -546,7 +546,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dato’ Dr. AB Rahman Izaini Ghani @ AB. Ghani is a distinguished Visiting Neurologist with extensive expertise in the diagnosis and management of neurological and neurosurgical conditions. His clinical focus includes brain and spinal disorders, stroke care, and complex neurosurgical interventions. With training and experience gained internationally and locally, he is committed to providing advanced neurological care with precision and compassion.',
     focus: ['Neurological Disorders', 'Neurosurgical Conditions', 'Brain & Spinal Disorders', 'Stroke Care', 'Complex Neurosurgical Interventions'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/PROF.%20DATO%E2%80%99%20DR.%20AB%20RAHMAN%20IZAINI%20GHANI%20%40%20AB.%20GHANI.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/PROF.%20DATO%E2%80%99%20DR.%20AB%20RAHMAN%20IZAINI%20GHANI%20%40%20AB.%20GHANI.png',
     operationHours: [
       { day: 'All Sessions', time: 'By Appointment Only' },
     ]
@@ -561,7 +561,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Dr. Rosdi Ramli is a Visiting Ear, Nose & Throat Surgeon with specialized expertise in rhinology. He is trained in managing a wide range of ENT conditions, with a particular focus on nasal and sinus disorders. His international fellowship in Turkey has provided him with advanced skills in rhinology, allowing him to provide high-quality surgical care for complex ENT cases.',
     focus: ['Ear, Nose & Throat Surgery', 'Rhinology', 'Nasal Disorders', 'Sinus Surgery'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR%20ROSDI.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR%20ROSDI.png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [
@@ -578,7 +578,7 @@ export const DOCTORS = [
     isFemale: false,
     bio: 'Prof. Dr. Baharudin Abdullah is a highly experienced Visiting Ear, Nose & Throat Specialist with a sub-specialization in Rhinology and Endoscopic Sinus Surgery. Having completed a fellowship at the University of Graz, Austria, he brings advanced international expertise to the management of complex sinus and nasal conditions. He is dedicated to providing comprehensive ENT care using the latest surgical techniques.',
     focus: ['Ear, Nose & Throat', 'Rhinology', 'Endoscopic Sinus Surgery', 'Nasal Conditions'],
-    imageUrl: 'https://storage.googleapis.com/igc-health/DR%20BAHAR%20UDIN.png',
+    imageUrl: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/DR%20BAHAR%20UDIN.png',
     status: 'Visiting',
     phone: '09-743 3399 / 019-967 0799',
     operationHours: [

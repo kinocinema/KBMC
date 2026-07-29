@@ -19,7 +19,7 @@ const CentreTemplate: React.FC<CentreTemplateProps> = ({ title, description, fea
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
       {/* Hero Section */}
       <div className="bg-[#006D77] text-white py-24 px-4 md:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('https://storage.googleapis.com/kbmc-website.firebasestorage.app/textures/cubes.png')]"></div>
         <div className="absolute -right-20 -top-20 opacity-5">
           {icon}
         </div>

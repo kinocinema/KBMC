@@ -27,7 +27,7 @@ const NewsGallery: React.FC = () => {
       type: 'events',
       title: t('news.item.world-heart-day.title'),
       date: 'February 28, 2026',
-      image: 'https://storage.googleapis.com/igc-health/kbmc-event1.jpg',
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event1.jpg',
       desc: t('news.item.world-heart-day.desc')
     },
     {
@@ -35,7 +35,7 @@ const NewsGallery: React.FC = () => {
       type: 'media',
       title: t('news.item.healthcare-asia.title'),
       date: 'January 15, 2026',
-      image: 'https://storage.googleapis.com/igc-health/kbmc-event2.jpg',
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event2.jpg',
       desc: t('news.item.healthcare-asia.desc')
     },
     {
@@ -43,7 +43,7 @@ const NewsGallery: React.FC = () => {
       type: 'news',
       title: t('news.item.new-mri.title'),
       date: 'December 20, 2025',
-      image: 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event3.jpg',
       desc: t('news.item.new-mri.desc')
     }
   ];
@@ -61,7 +61,7 @@ const NewsGallery: React.FC = () => {
             type: doc.data().category?.toLowerCase() || 'news',
             title: doc.data().title,
             date: doc.data().date,
-            image: doc.data().imageUrl || 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
+            image: doc.data().imageUrl || 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event3.jpg',
             desc: doc.data().content.substring(0, 100) + '...'
           }));
           setNewsItems(fetchedNews);

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
-import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import { LayoutDashboard, Users, FileText, Settings, LogOut, Plus, Trash2, Edit, X, Briefcase, Activity, MessageSquare, Menu, RotateCcw, Tag, HeartPulse, Shield, Building2, Info, PhoneCall } from 'lucide-react';
 import { handleFirestoreError, OperationType } from '../firebaseErrors';
 import { compressImage } from '../utils/imageUpload';
+import { ImageUpload } from '../components/ImageUpload';
 import { menuData as defaultMenuData } from '../data/menuData';
 
 const Admin: React.FC = () => {
@@ -22,7 +23,7 @@ const Admin: React.FC = () => {
           const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
           if (userDoc.exists() && userDoc.data().role === 'admin') {
             setIsAdmin(true);
-          } else if (currentUser.email === 'hellokinocinema@gmail.com') {
+          } else if (currentUser.email === 'icghealthcareit@gmail.com') {
             // Bootstrap admin
             await setDoc(doc(db, 'users', currentUser.uid), {
               email: currentUser.email,
@@ -45,13 +46,28 @@ const Admin: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogin = async () => {
-    const provider = new GoogleAuthProvider();
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError('');
+    setLoginLoading(true);
     try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
+      await signInWithEmailAndPassword(auth, loginEmail.trim(), loginPassword);
+    } catch (error: any) {
       console.error("Login failed:", error);
+      if (error?.code === 'auth/invalid-credential' || error?.code === 'auth/wrong-password' || error?.code === 'auth/user-not-found') {
+        setLoginError('Email atau kata laluan salah. Sila cuba lagi.');
+      } else if (error?.code === 'auth/too-many-requests') {
+        setLoginError('Terlalu banyak percubaan. Sila tunggu sebentar dan cuba lagi.');
+      } else {
+        setLoginError('Log masuk gagal. Sila cuba lagi.');
+      }
     }
+    setLoginLoading(false);
   };
 
   const handleLogout = async () => {
@@ -72,12 +88,40 @@ const Admin: React.FC = () => {
         <div className="bg-white p-8 rounded-2xl shadow-xl text-center max-w-md w-full">
           <h1 className="text-3xl font-black text-[#006D77] mb-6">Admin Portal</h1>
           <p className="text-gray-600 mb-8">Please sign in to access the administration dashboard.</p>
-          <button 
-            onClick={handleLogin}
-            className="w-full bg-[#006D77] text-white font-bold py-3 px-4 rounded-xl hover:bg-[#005a63] transition-colors"
-          >
-            Sign in with Google
-          </button>
+          <form onSubmit={handleLogin} className="space-y-4 text-left">
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Email</label>
+              <input
+                type="email"
+                required
+                value={loginEmail}
+                onChange={e => setLoginEmail(e.target.value)}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                placeholder="admin@kbmc.com.my"
+                autoComplete="username"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Password</label>
+              <input
+                type="password"
+                required
+                value={loginPassword}
+                onChange={e => setLoginPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                placeholder="••••••••"
+                autoComplete="current-password"
+              />
+            </div>
+            {loginError && <p className="text-sm text-red-600 font-bold">{loginError}</p>}
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full bg-[#006D77] text-white font-bold py-3 px-4 rounded-xl hover:bg-[#005a63] transition-colors disabled:opacity-50"
+            >
+              {loginLoading ? 'Signing in...' : 'Sign In'}
+            </button>
+          </form>
         </div>
       </div>
     );
@@ -271,8 +315,7 @@ const HomeTab = () => {
             <textarea value={homeData.hero?.description || ''} onChange={e => setHomeData({...homeData, hero: {...homeData.hero, description: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">Hero Image URL</label>
-            <input type="text" value={homeData.hero?.imageUrl || ''} onChange={e => setHomeData({...homeData, hero: {...homeData.hero, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+            <ImageUpload label="Hero Image" folder="pages/home" value={homeData.hero?.imageUrl || ''} onChange={url => setHomeData({...homeData, hero: {...homeData.hero, imageUrl: url}})} />
           </div>
         </div>
       </div>
@@ -293,8 +336,7 @@ const HomeTab = () => {
               </button>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
-                  <label className="block text-xs font-bold text-gray-500 mb-1">Image URL</label>
-                  <input type="text" value={slide.image} onChange={e => updateCarouselSlide(index, 'image', e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm" />
+                  <ImageUpload label="Image" folder="pages/home/carousel" value={slide.image || ''} onChange={url => updateCarouselSlide(index, 'image', url)} previewClassName="w-full h-24" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-gray-500 mb-1">Title</label>
@@ -375,8 +417,7 @@ const AboutTab = () => {
             <textarea value={aboutData.hero?.description || ''} onChange={e => setAboutData({...aboutData, hero: {...aboutData.hero, description: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1">Image URL</label>
-            <input type="text" value={aboutData.hero?.imageUrl || ''} onChange={e => setAboutData({...aboutData, hero: {...aboutData.hero, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+            <ImageUpload label="Image" folder="pages/about" value={aboutData.hero?.imageUrl || ''} onChange={url => setAboutData({...aboutData, hero: {...aboutData.hero, imageUrl: url}})} />
           </div>
         </div>
       </div>
@@ -394,8 +435,7 @@ const AboutTab = () => {
             <input type="text" value={aboutData.ceo?.title || ''} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, title: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
           </div>
           <div className="col-span-2">
-            <label className="block text-sm font-bold text-gray-700 mb-1">CEO Image URL</label>
-            <input type="text" value={aboutData.ceo?.imageUrl || ''} onChange={e => setAboutData({...aboutData, ceo: {...aboutData.ceo, imageUrl: e.target.value}})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
+            <ImageUpload label="CEO Image" folder="pages/about" value={aboutData.ceo?.imageUrl || ''} onChange={url => setAboutData({...aboutData, ceo: {...aboutData.ceo, imageUrl: url}})} />
           </div>
           <div className="col-span-2">
             <label className="block text-sm font-bold text-gray-700 mb-1">Message Paragraphs (one per line)</label>
@@ -663,6 +703,7 @@ const PromotionsTab = () => {
                 <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
                 <textarea required value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" rows={3}></textarea>
               </div>
+              <ImageUpload label="Promotion Image" folder="promotions" value={formData.imageUrl || ''} onChange={url => setFormData({...formData, imageUrl: url})} />
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">Price (e.g. RM 99)</label>
@@ -932,6 +973,7 @@ const InsuranceTab = () => {
                   <option value="TPA">TPA (Third Party Administrator)</option>
                 </select>
               </div>
+              <ImageUpload label="Panel Logo" folder="insurance" value={formData.logoUrl || ''} onChange={url => setFormData({...formData, logoUrl: url})} previewClassName="h-20" />
               <div className="flex justify-end gap-3 pt-4">
                 <button type="button" onClick={() => setIsEditing(false)} className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-xl">Cancel</button>
                 <button type="submit" disabled={saving} className="bg-[#006D77] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#005a63] disabled:opacity-50">
@@ -1130,7 +1172,7 @@ const DashboardTab = () => {
           type: 'events',
           title: 'World Heart Day Wellness Campaign',
           date: 'February 28, 2026',
-          image: 'https://storage.googleapis.com/igc-health/kbmc-event1.jpg',
+          image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event1.jpg',
           content: `<p>In conjunction with World Heart Day, KBMC is hosting a comprehensive Wellness Campaign aimed at raising awareness about cardiovascular health and promoting preventive care.</p><p>Join us at our Main Lobby for a series of engaging activities and educational sessions led by our esteemed cardiologists and healthcare professionals.</p><h3>Event Highlights:</h3><ul><li>Free basic health screenings (Blood Pressure, BMI, Glucose)</li><li>Expert talks on heart-healthy diets and lifestyle modifications</li><li>Interactive CPR and First Aid demonstrations</li><li>Special discounts on comprehensive cardiac screening packages</li></ul><p>Your heart health is our priority. Don't miss this opportunity to take charge of your cardiovascular well-being. The event is open to the public, and no prior registration is required.</p>`
         },
         {
@@ -1138,7 +1180,7 @@ const DashboardTab = () => {
           type: 'media',
           title: 'KBMC Featured in Healthcare Asia Magazine',
           date: 'January 15, 2026',
-          image: 'https://storage.googleapis.com/igc-health/kbmc-event2.jpg',
+          image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event2.jpg',
           content: `<p>We are honored to be featured in the latest issue of Healthcare Asia Magazine, a leading publication covering the healthcare industry across the Asia Pacific region.</p><p>The extensive feature highlights KBMC's remarkable journey, our commitment to clinical excellence, and our innovative approach to patient-centered care. It also delves into our recent technological advancements and our role as a pioneer private specialist hospital in Kelantan.</p><p>"This recognition is a testament to the hard work and dedication of our entire team," said the CEO of KBMC. "We remain steadfast in our mission to deliver world-class healthcare with heart to our community and beyond."</p><p>Read the full article in the January 2026 edition of Healthcare Asia Magazine or visit their official website for the digital version.</p>`
         },
         {
@@ -1146,7 +1188,7 @@ const DashboardTab = () => {
           type: 'news',
           title: 'New MRI 3.0T System Now Operational',
           date: 'December 20, 2025',
-          image: 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
+          image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event3.jpg',
           content: `<p>KBMC is thrilled to announce the successful installation and operationalization of our new 3.0 Tesla Magnetic Resonance Imaging (MRI) system. This latest generation imaging technology significantly enhances our diagnostic capabilities.</p><p>The 3.0T MRI provides exceptional image quality and detail, allowing our radiologists and specialists to detect and diagnose conditions with unprecedented precision. This is particularly beneficial for neurological, musculoskeletal, and cardiovascular imaging.</p><h3>Benefits for Patients:</h3><ul><li>Faster scan times, reducing discomfort and anxiety</li><li>Wider bore design for a more spacious and less claustrophobic experience</li><li>Quieter operation compared to older models</li><li>Higher resolution images for more accurate diagnoses</li></ul><p>The addition of the 3.0T MRI system underscores our ongoing investment in cutting-edge medical technology to ensure our patients receive the best possible care.</p>`
         }
       ];
@@ -1189,14 +1231,14 @@ const DashboardTab = () => {
         },
         carousel: [
           {
-            image: "https://storage.googleapis.com/igc-health/Testimomial%20-%20ibadah%20friendly.png",
+            image: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/Testimomial%20-%20ibadah%20friendly.png",
             title: "Ibadah Friendly Hospital",
             testimonial: "The Ibadah Friendly environment at KBMC made my stay so much more peaceful. The staff were very respectful of my religious needs.",
             author: "Puan Siti Aminah",
             role: "Patient"
           },
           {
-            image: "https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png",
+            image: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/fasiliti%20World%20Class%204.png",
             title: "World Class Facilities",
             testimonial: "I was impressed by the modern facilities and the cleanliness of the hospital. It felt like a world-class medical center.",
             author: "Encik Ahmad Fauzi",
@@ -1215,7 +1257,7 @@ const DashboardTab = () => {
         ceo: {
           name: "Mohd Nazri Yaacob",
           title: "Chief Executive Officer\nKota Bharu Medical Centre",
-          imageUrl: "https://storage.googleapis.com/igc-health/CEO.png",
+          imageUrl: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/CEO.png",
           message: [
             "Welcome to Kota Bharu Medical Centre (KBMC). As the pioneer private specialist hospital in Kelantan, we take immense pride in our heritage of serving the community with dedication and heart.",
             "Our commitment has always been to provide accessible, high-quality healthcare that meets the evolving needs of our patients. We continuously invest in advanced medical technology and attract top-tier specialists to ensure you receive the best possible care.",
@@ -1533,24 +1575,7 @@ const DoctorsTab = () => {
                   <input type="text" value={formData.phone || ''} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2" />
                 </div>
                 <div className="col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Photo</label>
-                  <div className="flex items-center gap-4">
-                    {formData.imageUrl && (
-                      <img src={formData.imageUrl} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-gray-200" />
-                    )}
-                    <div className="flex-1">
-                      <input 
-                        type="file" 
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                        disabled={uploadingImage}
-                        className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#EDF6F9] file:text-[#006D77] hover:file:bg-[#e0f0f4]"
-                      />
-                      {uploadingImage && <p className="text-xs text-[#006D77] mt-1">Processing image...</p>}
-                    </div>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">Or provide an image URL directly:</p>
-                  <input type="text" value={formData.imageUrl || ''} onChange={e => setFormData({...formData, imageUrl: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1" placeholder="https://..." />
+                  <ImageUpload label="Photo" folder="doctors" value={formData.imageUrl || ''} onChange={url => setFormData({...formData, imageUrl: url})} previewClassName="w-24 h-24" />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">Status</label>
@@ -1719,24 +1744,7 @@ const NewsTab = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">Photo</label>
-                <div className="flex items-center gap-4">
-                  {formData.imageUrl && (
-                    <img src={formData.imageUrl} alt="Preview" className="w-24 h-16 object-cover rounded-lg border border-gray-200" />
-                  )}
-                  <div className="flex-1">
-                    <input 
-                      type="file" 
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      disabled={uploadingImage}
-                      className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#EDF6F9] file:text-[#006D77] hover:file:bg-[#e0f0f4]"
-                    />
-                    {uploadingImage && <p className="text-xs text-[#006D77] mt-1">Processing image...</p>}
-                  </div>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">Or provide an image URL directly:</p>
-                <input type="text" value={formData.imageUrl || ''} onChange={e => setFormData({...formData, imageUrl: e.target.value})} className="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1" placeholder="https://..." />
+                <ImageUpload label="Photo" folder="news" value={formData.imageUrl || ''} onChange={url => setFormData({...formData, imageUrl: url})} previewClassName="w-full h-32" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-1">Content (HTML allowed)</label>

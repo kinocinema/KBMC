@@ -29,7 +29,7 @@ const newsData = {
     type: 'events',
     title: 'World Heart Day Wellness Campaign',
     date: 'February 28, 2026',
-    image: 'https://storage.googleapis.com/igc-health/kbmc-event1.jpg',
+    image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event1.jpg',
     content: `
       <p>In conjunction with World Heart Day, KBMC is hosting a comprehensive Wellness Campaign aimed at raising awareness about cardiovascular health and promoting preventive care.</p>
       <p>Join us at our Main Lobby for a series of engaging activities and educational sessions led by our esteemed cardiologists and healthcare professionals.</p>
@@ -47,7 +47,7 @@ const newsData = {
     type: 'media',
     title: 'KBMC Featured in Healthcare Asia Magazine',
     date: 'January 15, 2026',
-    image: 'https://storage.googleapis.com/igc-health/kbmc-event2.jpg',
+    image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event2.jpg',
     content: `
       <p>We are honored to be featured in the latest issue of Healthcare Asia Magazine, a leading publication covering the healthcare industry across the Asia Pacific region.</p>
       <p>The extensive feature highlights KBMC's remarkable journey, our commitment to clinical excellence, and our innovative approach to patient-centered care. It also delves into our recent technological advancements and our role as a pioneer private specialist hospital in Kelantan.</p>
@@ -59,7 +59,7 @@ const newsData = {
     type: 'news',
     title: 'New MRI 3.0T System Now Operational',
     date: 'December 20, 2025',
-    image: 'https://storage.googleapis.com/igc-health/kbmc-event3.jpg',
+    image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-event3.jpg',
     content: `
       <p>KBMC is thrilled to announce the successful installation and operationalization of our new 3.0 Tesla Magnetic Resonance Imaging (MRI) system. This latest generation imaging technology significantly enhances our diagnostic capabilities.</p>
       <p>The 3.0T MRI provides exceptional image quality and detail, allowing our radiologists and specialists to detect and diagnose conditions with unprecedented precision. This is particularly beneficial for neurological, musculoskeletal, and cardiovascular imaging.</p>

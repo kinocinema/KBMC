@@ -55,7 +55,7 @@ const About: React.FC = () => {
 
   const ceoName = aboutData?.ceo?.name || t('about.ceo.name');
   const ceoTitle = aboutData?.ceo?.title || t('about.ceo.title');
-  const ceoImage = aboutData?.ceo?.imageUrl || "https://storage.googleapis.com/igc-health/CEO.png";
+  const ceoImage = aboutData?.ceo?.imageUrl || "https://storage.googleapis.com/kbmc-website.firebasestorage.app/CEO.png";
   const ceoMessage = aboutData?.ceo?.message || [t('about.ceo.p1'), t('about.ceo.p2'), t('about.ceo.p3'), t('about.ceo.p4'), t('about.ceo.p5')];
 
   const visionDesc = aboutData?.vision || t('about.vision.desc');

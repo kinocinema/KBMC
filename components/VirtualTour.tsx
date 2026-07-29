@@ -6,10 +6,10 @@ const VirtualTour: React.FC = () => {
   const [activeNode, setActiveNode] = useState('lobby');
 
   const nodes = [
-    { id: 'lobby', name: 'Main Lobby', img: 'https://storage.googleapis.com/igc-health/Welcoming.png' },
-    { id: 'maternity', name: 'Maternity Suite', img: 'https://storage.googleapis.com/imageskbmc/Gemini_Generated_Image_15nghg15nghg15ng.png' },
-    { id: 'diagnostics', name: 'Diagnostic Imaging', img: 'https://storage.googleapis.com/imageskbmc/Gemini_Generated_Image_mylbwomylbwomylb.png' },
-    { id: 'concierge', name: 'Patient Concierge', img: 'https://storage.googleapis.com/imageskbmc/Gemini_Generated_Image_2psi3c2psi3c2psi.png' },
+    { id: 'lobby', name: 'Main Lobby', img: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/Welcoming.png' },
+    { id: 'maternity', name: 'Maternity Suite', img: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/imageskbmc/Gemini_Generated_Image_15nghg15nghg15ng.png' },
+    { id: 'diagnostics', name: 'Diagnostic Imaging', img: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/imageskbmc/Gemini_Generated_Image_mylbwomylbwomylb.png' },
+    { id: 'concierge', name: 'Patient Concierge', img: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/imageskbmc/Gemini_Generated_Image_2psi3c2psi3c2psi.png' },
   ];
 
   return (

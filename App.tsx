@@ -161,7 +161,7 @@ const AppContent: React.FC = () => {
                     </a>
                     <a href="https://www.tiktok.com/@kbmc_official?_t=8p32vlGZMpO&_r=1" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#006D77] transition-all group">
                       <img 
-                        src="https://storage.googleapis.com/igc-health/logoinsurance/tik-tok%20line%202.png" 
+                        src="https://storage.googleapis.com/kbmc-website.firebasestorage.app/logoinsurance/tik-tok%20line%202.png" 
                         alt="TikTok" 
                         className="w-3.5 h-3.5 brightness-0 invert opacity-40 group-hover:opacity-100 transition-opacity"
                         referrerPolicy="no-referrer"

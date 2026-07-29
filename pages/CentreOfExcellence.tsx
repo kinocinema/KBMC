@@ -19,35 +19,35 @@ const CentreOfExcellence: React.FC = () => {
       icon: <Baby className="w-8 h-8" />,
       title: t('coe.women.title'),
       desc: 'Comprehensive care for mothers and children, featuring female-led maternity teams and advanced neonatal support.',
-      image: 'https://storage.googleapis.com/igc-health/NICU%203.jpeg'
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/NICU%203.jpeg'
     },
     {
       id: 'heart',
       icon: <Heart className="w-8 h-8" />,
       title: t('coe.heart.title'),
       desc: 'Expert cardiovascular care focusing on prevention, diagnosis, and advanced treatment of heart conditions.',
-      image: 'https://storage.googleapis.com/igc-health/Cardiology.png'
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/Cardiology.png'
     },
     {
       id: 'cancer',
       icon: <Activity className="w-8 h-8" />,
       title: t('coe.cancer.title'),
       desc: 'Holistic oncology services including chemotherapy, specialized diagnostics, and supportive care in a healing environment.',
-      image: 'https://storage.googleapis.com/igc-health/Chemoteraphy.png'
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/Chemoteraphy.png'
     },
     {
       id: 'eye',
       icon: <Eye className="w-8 h-8" />,
       title: t('coe.eye.title'),
       desc: 'Advanced ophthalmology services for vision preservation, cataract surgery, and comprehensive eye health management.',
-      image: 'https://storage.googleapis.com/igc-health/Eye%20Examination.png'
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/Eye%20Examination.png'
     },
     {
       id: 'digestive',
       icon: <ShieldCheck className="w-8 h-8" />,
       title: t('coe.digestive.title'),
       desc: 'Specialized gastroenterology care for digestive disorders, featuring advanced endoscopy and minimally invasive procedures.',
-      image: 'https://storage.googleapis.com/igc-health/Gastroenterology%202.png'
+      image: 'https://storage.googleapis.com/kbmc-website.firebasestorage.app/Gastroenterology%202.png'
     }
   ];
 

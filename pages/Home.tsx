@@ -22,21 +22,21 @@ const FacilityCarousel = ({ data }: { data?: any[] }) => {
 
   const defaultSlides = [
     {
-      image: "https://storage.googleapis.com/igc-health/Testimomial%20-%20ibadah%20friendly.png",
+      image: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/Testimomial%20-%20ibadah%20friendly.png",
       title: t('carousel.slide1.title'),
       testimonial: t('carousel.slide1.testimonial'),
       author: "Puan Siti Aminah",
       role: t('carousel.slide1.role')
     },
     {
-      image: "https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png",
+      image: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/fasiliti%20World%20Class%204.png",
       title: t('carousel.slide2.title'),
       testimonial: t('carousel.slide2.testimonial'),
       author: "Encik Ahmad Fauzi",
       role: t('carousel.slide2.role')
     },
     {
-      image: "https://storage.googleapis.com/igc-health/MRI%202.png",
+      image: "https://storage.googleapis.com/kbmc-website.firebasestorage.app/MRI%202.png",
       title: t('carousel.slide3.title'),
       testimonial: t('carousel.slide3.testimonial'),
       author: "Dato' Wong",

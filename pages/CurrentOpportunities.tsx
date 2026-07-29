@@ -37,7 +37,7 @@ const CurrentOpportunities: React.FC = () => {
     <div className="bg-[#EDF6F9] min-h-screen pb-20">
       {/* Hero Section */}
       <div className="bg-[#006D77] text-white py-24 px-4 md:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('https://storage.googleapis.com/kbmc-website.firebasestorage.app/textures/cubes.png')]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight uppercase">Current Opportunities</h1>

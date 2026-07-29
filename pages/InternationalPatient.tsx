@@ -128,7 +128,7 @@ const InternationalPatient: React.FC = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png" 
+                src="https://storage.googleapis.com/kbmc-website.firebasestorage.app/fasiliti%20World%20Class%204.png" 
                 alt="Premium Facilities" 
                 className="rounded-[3rem] shadow-2xl w-full aspect-[4/5] object-cover"
                 referrerPolicy="no-referrer"
@@ -175,7 +175,7 @@ const InternationalPatient: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="order-2 lg:order-1">
               <img 
-                src="https://storage.googleapis.com/igc-health/MRI%202.png" 
+                src="https://storage.googleapis.com/kbmc-website.firebasestorage.app/MRI%202.png" 
                 alt="Travel Support" 
                 className="rounded-[3rem] shadow-2xl w-full aspect-video object-cover"
                 referrerPolicy="no-referrer"
@@ -226,7 +226,7 @@ const InternationalPatient: React.FC = () => {
               </div>
               <div className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all space-y-6">
                 <div className="aspect-video rounded-2xl overflow-hidden">
-                  <img src="https://storage.googleapis.com/igc-health/fasiliti%20World%20Class%204.png" alt="Partner Hotels" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://storage.googleapis.com/kbmc-website.firebasestorage.app/fasiliti%20World%20Class%204.png" alt="Partner Hotels" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <h3 className="text-xl font-black text-[#006D77]">{t('ipc.partners.title')}</h3>
                 <p className="text-sm text-gray-500 font-medium leading-relaxed">Special rates at Perdana Hotel, Grand Renai, and other leading hotels nearby.</p>
@@ -298,7 +298,7 @@ const InternationalPatient: React.FC = () => {
       {/* Final CTA */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12">
         <div className="bg-gradient-to-br from-[#006D77] to-[#2A6B77] rounded-[4rem] p-12 md:p-24 text-center space-y-10 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/pattern/stardust.png')]"></div>
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://storage.googleapis.com/kbmc-website.firebasestorage.app/textures/stardust.png')]"></div>
           <div className="space-y-4 relative z-10">
             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
               {t('tourism.footer.title1')} <span className="text-[#E29578]">{t('tourism.footer.title2')}</span>

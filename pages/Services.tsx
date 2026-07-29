@@ -337,7 +337,7 @@ const Services: React.FC = () => {
             <div className={`relative ${isVisible ? 'animate-reveal-right' : ''}`}>
               <div className="absolute -inset-10 bg-[#006D77]/30 rounded-full blur-[80px]"></div>
               <img 
-                src="https://storage.googleapis.com/igc-health/kbmc-mri.jpg" 
+                src="https://storage.googleapis.com/kbmc-website.firebasestorage.app/kbmc-mri.jpg" 
                 alt="Medical Equipment" 
                 className="rounded-[4rem] shadow-2xl relative z-10 hover:grayscale-0 transition-all duration-1000 grayscale-[0.5]"
                 onError={(e) => {
